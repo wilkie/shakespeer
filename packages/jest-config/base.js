@@ -27,6 +27,8 @@ const base = {
           parser: { syntax: 'typescript', tsx: true },
           transform: { react: { runtime: 'automatic' } },
           target: 'es2023',
+          // Keep `with { type: 'json' }` so JSON modules load natively.
+          experimental: { keepImportAttributes: true },
         },
         module: { type: 'es6' },
       },

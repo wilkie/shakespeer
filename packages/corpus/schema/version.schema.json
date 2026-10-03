@@ -1,0 +1,423 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "playId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "versionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{16}$"
+    },
+    "characters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string"
+          },
+          "modernId": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "divisions": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "n": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "editorial": {
+            "type": "boolean"
+          },
+          "heading": {
+            "type": "string"
+          },
+          "scenes": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "scene",
+                    "prologue",
+                    "epilogue",
+                    "induction"
+                  ]
+                },
+                "n": {
+                  "anyOf": [
+                    {
+                      "type": "integer",
+                      "exclusiveMinimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "editorial": {
+                  "type": "boolean"
+                },
+                "heading": {
+                  "type": "string"
+                },
+                "blocks": {
+                  "type": "array",
+                  "items": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "speech"
+                          },
+                          "speakers": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "nodes": {
+                            "minItems": 1,
+                            "type": "array",
+                            "items": {
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "minLength": 1
+                                    },
+                                    "text": {
+                                      "type": "string",
+                                      "minLength": 1
+                                    },
+                                    "marks": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "start": {
+                                            "type": "integer",
+                                            "minimum": 0,
+                                            "maximum": 9007199254740991
+                                          },
+                                          "end": {
+                                            "type": "integer",
+                                            "exclusiveMinimum": 0,
+                                            "maximum": 9007199254740991
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "italic",
+                                              "sup",
+                                              "song",
+                                              "foreign",
+                                              "gap"
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "start",
+                                          "end",
+                                          "type"
+                                        ],
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "kind": {
+                                      "type": "string",
+                                      "const": "line"
+                                    },
+                                    "form": {
+                                      "type": "string",
+                                      "enum": [
+                                        "verse",
+                                        "prose"
+                                      ]
+                                    },
+                                    "part": {
+                                      "type": "string",
+                                      "enum": [
+                                        "initial",
+                                        "medial",
+                                        "final"
+                                      ]
+                                    },
+                                    "n": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "text",
+                                    "kind",
+                                    "form"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "minLength": 1
+                                    },
+                                    "text": {
+                                      "type": "string",
+                                      "minLength": 1
+                                    },
+                                    "marks": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "start": {
+                                            "type": "integer",
+                                            "minimum": 0,
+                                            "maximum": 9007199254740991
+                                          },
+                                          "end": {
+                                            "type": "integer",
+                                            "exclusiveMinimum": 0,
+                                            "maximum": 9007199254740991
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "italic",
+                                              "sup",
+                                              "song",
+                                              "foreign",
+                                              "gap"
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "start",
+                                          "end",
+                                          "type"
+                                        ],
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "kind": {
+                                      "type": "string",
+                                      "const": "sd"
+                                    },
+                                    "sdType": {
+                                      "type": "string"
+                                    },
+                                    "inlineAt": {
+                                      "type": "integer",
+                                      "exclusiveMinimum": 0,
+                                      "maximum": 9007199254740991
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "text",
+                                    "kind"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "speakers",
+                          "label",
+                          "nodes"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "const": "sd"
+                          },
+                          "node": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "text": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "marks": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "start": {
+                                      "type": "integer",
+                                      "minimum": 0,
+                                      "maximum": 9007199254740991
+                                    },
+                                    "end": {
+                                      "type": "integer",
+                                      "exclusiveMinimum": 0,
+                                      "maximum": 9007199254740991
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "italic",
+                                        "sup",
+                                        "song",
+                                        "foreign",
+                                        "gap"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "start",
+                                    "end",
+                                    "type"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              },
+                              "kind": {
+                                "type": "string",
+                                "const": "sd"
+                              },
+                              "sdType": {
+                                "type": "string"
+                              },
+                              "inlineAt": {
+                                "type": "integer",
+                                "exclusiveMinimum": 0,
+                                "maximum": 9007199254740991
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "text",
+                              "kind"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "node"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "kind",
+                "n",
+                "editorial",
+                "blocks"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "n",
+          "editorial",
+          "scenes"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "pageBreaks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "nodeId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "label": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nodeId",
+          "offset",
+          "label"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "playId",
+    "versionId",
+    "revision",
+    "characters",
+    "divisions"
+  ],
+  "additionalProperties": false
+}

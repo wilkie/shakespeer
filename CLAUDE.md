@@ -8,6 +8,9 @@ packages in `packages/`. See README.md for layout and conventions.
 - `pnpm check` — everything CI runs (format check, lint, typecheck, test, build). Run before committing.
 - `pnpm --filter @shakespeer/web test -- src/app/routes.test.tsx` — run a single test file.
 - `pnpm format` — fix formatting.
+- `pnpm --filter @shakespeer/corpus ingest` — regenerate the corpus from pinned sources
+  (`--update-lock` to pin a new source). Never hand-edit generated corpus JSON; fix the
+  converter or add a curation file in `packages/corpus/curation/`.
 
 ## Specs
 

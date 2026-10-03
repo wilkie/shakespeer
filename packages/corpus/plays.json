@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "plays": [
+    {
+      "id": "hamlet",
+      "title": "Hamlet",
+      "shortTitle": "Hamlet",
+      "genre": "tragedy",
+      "composed": {
+        "from": 1599,
+        "to": 1601
+      },
+      "modernVersionId": "folger",
+      "versions": [
+        {
+          "id": "folger",
+          "name": "Folger edition",
+          "shortName": "Folger",
+          "kind": "modern",
+          "sourceIds": [
+            "folger"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-tempest",
+      "title": "The Tempest",
+      "shortTitle": "Tempest",
+      "genre": "romance",
+      "composed": {
+        "from": 1610,
+        "to": 1611
+      },
+      "modernVersionId": "folger",
+      "versions": [
+        {
+          "id": "folger",
+          "name": "Folger edition",
+          "shortName": "Folger",
+          "kind": "modern",
+          "sourceIds": [
+            "folger"
+          ]
+        },
+        {
+          "id": "f1-1623",
+          "name": "First Folio (1623)",
+          "shortName": "F1",
+          "kind": "original",
+          "printed": 1623,
+          "sourceIds": [
+            "eebo-tcp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "troilus-and-cressida",
+      "title": "Troilus and Cressida",
+      "shortTitle": "Troilus",
+      "genre": "problem",
+      "composed": {
+        "from": 1601,
+        "to": 1602
+      },
+      "modernVersionId": "folger",
+      "versions": [
+        {
+          "id": "folger",
+          "name": "Folger edition",
+          "shortName": "Folger",
+          "kind": "modern",
+          "sourceIds": [
+            "folger"
+          ]
+        }
+      ]
+    }
+  ]
+}

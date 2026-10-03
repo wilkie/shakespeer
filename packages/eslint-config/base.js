@@ -37,6 +37,8 @@ export function base({ tsconfigRootDir }) {
           'error',
           { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
         ],
+        // Conflicts with strict's no-non-null-assertion (one demands `!`, the other forbids it).
+        '@typescript-eslint/non-nullable-type-assertion-style': 'off',
         eqeqeq: ['error', 'always', { null: 'ignore' }],
         'no-console': ['warn', { allow: ['warn', 'error'] }],
       },

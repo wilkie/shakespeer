@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "folger",
+      "name": "Folger Shakespeare",
+      "shortName": "Folger",
+      "description": "Modern-spelling editions edited by Barbara A. Mowat and Paul Werstine, encoded in TEI by the Folger Shakespeare Library.",
+      "url": "https://www.folger.edu/explore/shakespeares-works/",
+      "license": {
+        "name": "CC BY-NC 3.0 Unported",
+        "url": "https://creativecommons.org/licenses/by-nc/3.0/",
+        "commercialUse": false
+      },
+      "attribution": "Folger Shakespeare, edited by Barbara A. Mowat and Paul Werstine. Folger Shakespeare Library, https://shakespeare.folger.edu. Distributed under a Creative Commons Attribution-NonCommercial 3.0 Unported License."
+    },
+    {
+      "id": "eebo-tcp",
+      "name": "Early English Books Online Text Creation Partnership",
+      "shortName": "EEBO-TCP",
+      "description": "Keyboarded and encoded transcriptions of early printed books, preserving original spelling. Used here for the 1623 First Folio (STC 22273).",
+      "url": "https://textcreationpartnership.org/",
+      "license": {
+        "name": "CC0 1.0 Universal",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true
+      },
+      "attribution": "Transcription by the Text Creation Partnership (EEBO-TCP Phase I), dedicated to the public domain under CC0 1.0."
+    }
+  ]
+}

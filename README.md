@@ -49,6 +49,7 @@ apps/
       theme/            MUI theme (light/dark via CSS variables)
       test/             Jest setup and render helpers
 packages/
+  corpus/               Plays, versions, alignment and sources (generated data + ingest scripts)
   storage/              Typed IndexedDB layer (idb) with append-only schema migrations
   eslint-config/        Shared ESLint flat configs (base, react)
   jest-config/          Shared Jest presets (SWC transform, jsdom environment)
@@ -57,6 +58,17 @@ packages/
 
 Internal packages are consumed as TypeScript source (no build step); Vite and Jest compile them
 on the fly.
+
+## Corpus
+
+The texts are generated from pinned sources by `pnpm --filter @shakespeer/corpus ingest`, which
+downloads the sources into a git-ignored cache, verifies their hashes, converts and aligns them,
+and writes the committed JSON. Source files are never committed. Reviewed corrections live in
+`packages/corpus/curation/`. See [specs/data/corpus.md](specs/data/corpus.md).
+
+## Specifications
+
+Behavior and data are specified in [specs/](specs/README.md).
 
 ## Stack and conventions
 

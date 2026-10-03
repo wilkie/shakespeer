@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "playId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "versionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "modernVersionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revisions": {
+      "type": "object",
+      "properties": {
+        "orig": {
+          "type": "string"
+        },
+        "modern": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "orig",
+        "modern"
+      ],
+      "additionalProperties": false
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "orig": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "modern": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "same",
+              "variant",
+              "orig-only",
+              "modern-only",
+              "moved"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "reviewed"
+            ]
+          }
+        },
+        "required": [
+          "orig",
+          "modern",
+          "relation",
+          "status"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "playId",
+    "versionId",
+    "modernVersionId",
+    "revisions",
+    "entries"
+  ],
+  "additionalProperties": false
+}

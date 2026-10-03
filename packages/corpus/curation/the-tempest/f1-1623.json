@@ -1,0 +1,15 @@
+{
+  "speakers": {
+    "Master.": ["shipmaster"],
+    "Gen.": ["gonzalo"],
+    "Iu.": ["spirits-juno"]
+  },
+  "alignment": [
+    {
+      "orig": ["tmp-f1-00002"],
+      "modern": ["ftln-0001"],
+      "relation": "same",
+      "note": "F1's decorated initial splits the word: \"BOte-swaine.\""
+    }
+  ]
+}

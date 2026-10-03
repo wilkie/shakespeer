@@ -76,7 +76,11 @@ the Second Quarto (29).
 - **CRP-020** — A version document MUST contain: `schemaVersion`, `playId`, `versionId`,
   `revision` (CRP-025), `characters`, and `divisions` — an ordered list of acts, each an ordered
   list of scenes, each an ordered list of blocks. Prologues, epilogues and inductions are scenes
-  with `kind` `prologue` / `epilogue` / `induction`.
+  with `kind` `prologue` / `epilogue` / `induction`; one that stands outside any act belongs to
+  an act whose `n` is `null` (no act heading is shown). Acts and scenes MAY carry `heading`, the
+  heading as printed (e.g. "Scena prima."); the reader's own headings (RDR-021) are derived from
+  `n` and `kind`. Front and back matter (title pages, printed lists of characters) are not part
+  of the version document in the first release.
 - **CRP-021** — Blocks are **speeches** (`speakers`: character IDs; `label`: the speaker name as
   printed; `nodes`: lines and stage directions) and free-standing **stage directions**.
 - **CRP-022** — **Text nodes** are the only things notes attach to. Each has `id`, `kind`
@@ -88,27 +92,31 @@ the Second Quarto (29).
 - **CRP-023** — Inline presentation (italics, small caps, songs, the gap marker of CRP-032) MUST
   be stored as `marks` (`{ start, end, type }` over `text`), never as characters inside `text`, so
   character offsets are the same however the text is styled.
-- **CRP-024** — Text node IDs MUST be opaque strings, unique within the version, and permanent:
-  an ID is never reused or reassigned to different text. IDs derive from stable source IDs where
-  the source has them (Folger's `ftln-NNNN` line IDs and `stg-…` stage direction IDs); otherwise ingestion assigns them and records them in
-  a committed ID map (`ingest/ids/<playId>-<versionId>.json`) so re-ingestion preserves them.
-  Splitting or merging nodes in a correction creates new IDs and records the old ones in
-  `replaces` for anchor repair (ANC-031).
+- **CRP-024** — Text node IDs MUST be opaque strings, unique within the version, and permanent: an
+  ID is never reused or reassigned to different text. IDs derive from stable source IDs where the
+  source has them (Folger's `ftln-NNNN` line IDs and `stg-…` stage direction IDs); otherwise
+  ingestion assigns them and records them in a committed ID map
+  (`ingest/ids/<playId>-<versionId>.json`) so re-ingestion preserves them. Splitting or merging
+  nodes in a correction creates new IDs and records the old ones in `replaces` for anchor repair
+  (ANC-031).
 - **CRP-025** — `revision` MUST be a content hash of the version's text nodes. Each change to a
   version's text adds an entry to `plays/<playId>/CHANGES.md` listing affected node IDs.
 
 ## Original versions
 
-- **CRP-030** — Original versions MUST preserve the printed spelling, punctuation,
-  capitalization, u/v and i/j usage, abbreviations and tildes. Long s is shown as "s". Line-end
-  hyphenation within a word is joined. Running heads, catchwords and signatures are omitted from
-  the text; page breaks are kept as `pageBreaks` (`{ nodeId, offset, label }`, e.g. `"sig. G4v"`)
-  for citation.
+- **CRP-030** — Original versions MUST preserve the printed spelling, punctuation, capitalization,
+  u/v and i/j usage, abbreviations and tildes. Long s is shown as "s". Line-end hyphenation within a
+  word is joined. Where a transcription does not record prose line breaks (EEBO-TCP does not), each
+  prose paragraph is one `line` text node with `form: "prose"`. Running heads, catchwords and
+  signatures are omitted from the text; page breaks are kept as `pageBreaks` (`{ nodeId, offset,
+label }`, e.g. `"sig. G4v"`) for citation.
 - **CRP-031** — Where an original lacks act or scene divisions, ingestion MUST supply
   **editorial divisions** taken through alignment from the modern version, flagged
   `editorial: true`. Printed divisions are flagged `editorial: false`.
-- **CRP-032** — Illegible or missing characters in a transcription are represented by "•" in
-  `text` with a `gap` mark, so they remain countable and visible.
+- **CRP-032** — Illegible or missing characters in a transcription (including EEBO-TCP's "▪"
+  for unreadable punctuation) are represented by "•" in `text` with a `gap` mark, so they remain
+  countable and visible. Superscript letters in abbreviations keep their letters with a `sup`
+  mark; combining abbreviation strokes are kept as combining characters.
 - **CRP-033** — Speeches in original versions keep the printed speaker abbreviation as `label`
   and are linked to the modern version's characters through `characters[].modernId`.
 

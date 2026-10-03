@@ -1,0 +1,13 @@
+{
+  "extends": "@shakespeer/tsconfig/library.json",
+  "compilerOptions": {
+    // Ingest scripts run directly under Node's type stripping, which needs explicit `.ts`
+    // extensions on relative imports and only erasable TypeScript syntax.
+    "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
+    "types": ["node"],
+    "allowJs": true,
+    "checkJs": true
+  },
+  "include": ["src", "ingest", "*.config.js"]
+}

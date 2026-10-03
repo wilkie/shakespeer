@@ -1,0 +1,36 @@
+{
+  "name": "@shakespeer/corpus",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shakespeare texts, alignment and sourced definitions, with the scripts that build them.",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema": "./src/schema.ts"
+  },
+  "scripts": {
+    "ingest": "node ingest/main.ts",
+    "lint": "eslint . --cache --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-vm-modules --disable-warning=ExperimentalWarning ./node_modules/jest/bin/jest.js",
+    "test:watch": "pnpm test --watch",
+    "test:coverage": "pnpm test --coverage",
+    "clean": "rm -rf coverage .turbo .eslintcache"
+  },
+  "dependencies": {
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@jest/globals": "catalog:",
+    "@shakespeer/eslint-config": "workspace:*",
+    "@shakespeer/jest-config": "workspace:*",
+    "@shakespeer/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
+    "@xmldom/xmldom": "catalog:",
+    "eslint": "catalog:",
+    "fflate": "catalog:",
+    "jest": "catalog:",
+    "typescript": "catalog:"
+  }
+}
