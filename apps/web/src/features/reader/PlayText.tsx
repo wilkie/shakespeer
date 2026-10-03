@@ -100,8 +100,16 @@ function StageDirection({ node, context }: { node: StageDirectionNode; context: 
   );
 }
 
-function Line({ node, context }: { node: LineNode; context: BlockContext }) {
-  const label = lineNumberLabel(node);
+function Line({
+  node,
+  context,
+  showNumber = true,
+}: {
+  node: LineNode;
+  context: BlockContext;
+  showNumber?: boolean;
+}) {
+  const label = showNumber ? lineNumberLabel(node) : undefined;
   const ghost = context.ghosts.get(node.id);
   return (
     <span className={`line ${node.form}`}>
@@ -124,11 +132,43 @@ function Line({ node, context }: { node: LineNode; context: BlockContext }) {
   );
 }
 
-/** Groups a speech's nodes: verse lines and directions are blocks; prose lines flow together. */
+/**
+ * Whether `node` continues `previous` on the same line: the next part of a verse line. Within one
+ * speech that is a long line the printer turned over, shown joined (RDR-024).
+ */
+function continuesLine(previous: TextNode | undefined, node: TextNode): boolean {
+  return (
+    previous?.kind === 'line' &&
+    node.kind === 'line' &&
+    previous.form === 'verse' &&
+    node.form === 'verse' &&
+    (previous.part === 'initial' || previous.part === 'medial') &&
+    (node.part === 'medial' || node.part === 'final')
+  );
+}
+
+/** A verse row: one line, or a turned-over line's parts joined. */
+function VerseRow({ lines, context }: { lines: readonly LineNode[]; context: BlockContext }) {
+  // One number per row; with several parts, the first part that has one.
+  const numbered = lines.find((line) => lineNumberLabel(line) !== undefined);
+  return (
+    <div className="verse-row">
+      {lines.map((line, i) => (
+        <span key={line.id}>
+          {i > 0 && ' '}
+          <Line node={line} context={context} showNumber={line === numbered} />
+        </span>
+      ))}
+    </div>
+  );
+}
+
+/** Groups a speech's nodes: verse rows and directions are blocks; prose lines flow together. */
 function speechBody(nodes: readonly TextNode[], context: BlockContext): ReactNode[] {
   const body: ReactNode[] = [];
   let prose: LineNode[] = [];
-  const flushProse = () => {
+  let verse: LineNode[] = [];
+  const flush = () => {
     if (prose.length > 0) {
       const lines = prose;
       body.push(
@@ -143,39 +183,59 @@ function speechBody(nodes: readonly TextNode[], context: BlockContext): ReactNod
       );
       prose = [];
     }
+    if (verse.length > 0) {
+      body.push(<VerseRow key={verse[0]?.id} lines={verse} context={context} />);
+      verse = [];
+    }
   };
   for (const node of nodes) {
     if (node.kind === 'line' && node.form === 'prose') {
+      if (verse.length > 0) {
+        flush();
+      }
       prose.push(node);
-      continue;
+    } else if (node.kind === 'line') {
+      if (!continuesLine(verse.at(-1), node)) {
+        flush();
+      }
+      verse.push(node);
+    } else {
+      flush();
+      body.push(<StageDirection key={node.id} node={node} context={context} />);
     }
-    flushProse();
-    body.push(
-      node.kind === 'line' ? (
-        <div key={node.id} className="verse-row">
-          <Line node={node} context={context} />
-        </div>
-      ) : (
-        <StageDirection key={node.id} node={node} context={context} />
-      ),
-    );
   }
-  flushProse();
+  flush();
   return body;
+}
+
+/** A direction printed after the speaker's name: ", within", ", aside to Sebastian" (RDR-022). */
+function headingQualifier(nodes: readonly TextNode[]): StageDirectionNode | undefined {
+  const first = nodes[0];
+  return first?.kind === 'sd' && /^[,;:]/.test(first.text) ? first : undefined;
 }
 
 function BlockView({ block, context }: { block: Block; context: BlockContext }) {
   if (block.type === 'sd') {
     return <StageDirection node={block.node} context={context} />;
   }
+  const qualifier = headingQualifier(block.nodes);
   return (
     <div className="speech">
-      {block.label && (
-        <div className="speaker" aria-hidden="false">
+      {(block.label || qualifier) && (
+        <div className="speaker">
           {block.label}
+          {qualifier && (
+            <span className="speaker-sd">
+              <NodeText
+                node={qualifier}
+                decorations={context.decorations.get(qualifier.id)}
+                revealTerms={context.revealTerms}
+              />
+            </span>
+          )}
         </div>
       )}
-      {speechBody(block.nodes, context)}
+      {speechBody(qualifier ? block.nodes.slice(1) : block.nodes, context)}
     </div>
   );
 }
@@ -219,10 +279,15 @@ function SceneView({
   );
 }
 
-/** Text of preceding parts of split verse lines (RDR-024). */
+/**
+ * Text of the preceding parts of split verse lines, for indenting each part where the previous
+ * one ended (RDR-024). Parts within one speech are shown joined instead, so need no indent.
+ */
 function splitLineGhosts(doc: VersionDocument): Map<string, string> {
   const ghosts = new Map<string, string>();
   let chain = '';
+  let previous: TextNode | undefined;
+  let previousBlock: Block | undefined;
   for (const act of doc.divisions) {
     for (const scene of act.scenes) {
       for (const block of scene.blocks) {
@@ -233,9 +298,13 @@ function splitLineGhosts(doc: VersionDocument): Map<string, string> {
           if (node.part === 'initial') {
             chain = node.text;
           } else {
-            ghosts.set(node.id, chain);
+            if (!(continuesLine(previous, node) && previousBlock === block)) {
+              ghosts.set(node.id, chain);
+            }
             chain = `${chain} ${node.text}`;
           }
+          previous = node;
+          previousBlock = block;
         }
       }
     }
@@ -280,6 +349,12 @@ const textStyles: SxProps<Theme> = (theme) => {
       color: palette.text.secondary,
     },
     '& .speech': { my: 1.5 },
+    '& .speaker-sd': {
+      fontVariant: 'normal',
+      fontStyle: 'italic',
+      letterSpacing: 'normal',
+      userSelect: 'text',
+    },
     '& .speaker': {
       fontVariant: 'small-caps',
       letterSpacing: '0.04em',

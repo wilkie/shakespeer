@@ -40,12 +40,16 @@ right ([MAP](scene-map.md)) and the notes panel on the left ([PNL](side-panel.md
 - **RDR-021** — Each scene MUST begin with a heading "Act N, Scene M" (with "editorial" styling
   for editorial divisions, see CRP-031), followed by its text.
 - **RDR-022** — Each speech MUST show its speaker name(s) as given by the version, visually
-  distinct from the spoken text.
+  distinct from the spoken text. A stage direction that qualifies the speech heading (printed
+  after the name, such as ", within" or ", aside to Sebastian") MUST be shown beside the name,
+  still styled and selectable as a stage direction.
 - **RDR-023** — Verse lines MUST be displayed one per row and never re-flowed; long verse lines
   wrap with a hanging indent. Prose MUST flow as paragraphs, but each prose line remains its own
   text node (CRP-020) so notes and line numbers keep working.
 - **RDR-024** — A verse line shared between speakers (split line) MUST be indented so each part
-  continues where the previous part ended, as in printed editions.
+  continues where the previous part ended, as in printed editions. A verse line that continues
+  the previous line within the same speech (a long line the printer turned over) MUST be shown
+  joined to it as one line; its parts remain separate text nodes with their own line numbers.
 - **RDR-025** — Stage directions MUST be visually distinct (italic, set apart) and be part of
   the selectable, annotatable text.
 - **RDR-026** — Line numbers MUST be shown in the margin every fifth line, using the version's
