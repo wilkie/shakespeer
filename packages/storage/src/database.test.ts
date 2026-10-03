@@ -8,7 +8,14 @@ describe('openDatabase', () => {
     const db = await openDatabase({ name: `test-${crypto.randomUUID()}` });
 
     expect(db.version).toBe(DB_VERSION);
-    expect([...db.objectStoreNames].sort()).toStrictEqual(['kv', 'positions']);
+    expect([...db.objectStoreNames].sort()).toStrictEqual([
+      'annotations',
+      'collections',
+      'definitions',
+      'kv',
+      'positions',
+      'tombstones',
+    ]);
 
     db.close();
   });

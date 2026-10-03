@@ -504,6 +504,9 @@ importers:
 
   packages/storage:
     dependencies:
+      '@shakespeer/corpus':
+        specifier: workspace:*
+        version: link:../corpus
       idb:
         specifier: 'catalog:'
         version: 8.0.3
