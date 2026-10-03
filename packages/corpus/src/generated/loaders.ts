@@ -16,3 +16,24 @@ export const alignmentLoaders: Readonly<Partial<Record<string, Loader>>> = {
   'the-tempest/f1-1623': () =>
     import('../../plays/the-tempest/alignment/f1-1623.json', { with: { type: 'json' } }),
 };
+
+export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[]>>> = {
+  'hamlet/folger': [
+    () =>
+      import('../../plays/hamlet/definitions/folger/schmidt-1902.json', {
+        with: { type: 'json' },
+      }),
+  ],
+  'the-tempest/folger': [
+    () =>
+      import('../../plays/the-tempest/definitions/folger/schmidt-1902.json', {
+        with: { type: 'json' },
+      }),
+  ],
+  'troilus-and-cressida/folger': [
+    () =>
+      import('../../plays/troilus-and-cressida/definitions/folger/schmidt-1902.json', {
+        with: { type: 'json' },
+      }),
+  ],
+};

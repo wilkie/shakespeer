@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "playId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "versionId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "terms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "anchor": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "object",
+                "properties": {
+                  "nodeId": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "required": [
+                  "nodeId",
+                  "offset"
+                ],
+                "additionalProperties": false
+              },
+              "end": {
+                "type": "object",
+                "properties": {
+                  "nodeId": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "required": [
+                  "nodeId",
+                  "offset"
+                ],
+                "additionalProperties": false
+              },
+              "quote": {
+                "type": "object",
+                "properties": {
+                  "exact": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "prefix": {
+                    "type": "string"
+                  },
+                  "suffix": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "exact",
+                  "prefix",
+                  "suffix"
+                ],
+                "additionalProperties": false
+              },
+              "revision": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "start",
+              "end",
+              "quote",
+              "revision"
+            ],
+            "additionalProperties": false
+          },
+          "headword": {
+            "type": "string"
+          },
+          "definitions": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "meaning": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "partOfSpeech": {
+                  "type": "string",
+                  "enum": [
+                    "noun",
+                    "verb",
+                    "adjective",
+                    "adverb",
+                    "pronoun",
+                    "preposition",
+                    "conjunction",
+                    "interjection",
+                    "phrase",
+                    "other"
+                  ]
+                },
+                "sense": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "meaning"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "anchor",
+          "headword",
+          "definitions"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "playId",
+    "versionId",
+    "sourceId",
+    "terms"
+  ],
+  "additionalProperties": false
+}

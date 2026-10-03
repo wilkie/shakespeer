@@ -17,6 +17,7 @@ import { z } from 'zod';
 import {
   AlignmentFileSchema,
   PlayIndexSchema,
+  SourcedDefinitionsFileSchema,
   SourcesFileSchema,
   VersionDocumentSchema,
   type AlignmentEntry,
@@ -27,9 +28,11 @@ import {
   type VersionDocument,
 } from '../src/schema.ts';
 import { alignVersions } from './align.ts';
-import { PLAYS, SOURCES, type PlayConfig } from './config.ts';
+import { GLOSSARIES, PLAYS, SOURCES, type GlossaryConfig, type PlayConfig } from './config.ts';
 import { applyAlignmentCuration, loadCuration, type Curation } from './curation.ts';
 import { convertFolger } from './folger.ts';
+import { matchCitations, type GlossCitation } from './glossaries/match.ts';
+import { parseEntries, type Entry } from './glossaries/schmidt.ts';
 import { fetchLocked, type LockFile } from './lib/fetch.ts';
 import { IdMap } from './lib/ids.ts';
 import { computeRevision, textNodes } from './lib/revision.ts';
@@ -65,7 +68,7 @@ async function source(lockKey: string): Promise<string> {
 
 async function writeJson(path: string, data: unknown, indent = 1): Promise<void> {
   await mkdir(dirname(path), { recursive: true });
-  await writeFile(path, `${JSON.stringify(data, null, indent)}\n`);
+  await writeFile(path, `${JSON.stringify(data, null, indent || undefined)}\n`);
 }
 
 async function readJsonIfExists<T>(path: string): Promise<T | undefined> {
@@ -213,7 +216,7 @@ async function readText(path: string): Promise<string | undefined> {
   }
 }
 
-async function ingestPlay(play: PlayConfig): Promise<void> {
+async function ingestPlay(play: PlayConfig): Promise<Map<string, VersionDocument>> {
   const playId = play.info.id;
   const dir = join(ROOT, 'plays', playId);
   console.warn(play.info.title);
@@ -313,9 +316,28 @@ async function ingestPlay(play: PlayConfig): Promise<void> {
       );
     }
   }
+  return docs;
 }
 
 function loadersModule(index: PlayIndex): string {
+  const definitionLines = index.plays.flatMap((play) =>
+    play.versions.flatMap((version) => {
+      const sources = GLOSSARIES.filter(
+        (g) => g.playAbbreviations[play.id] && version.id === play.modernVersionId,
+      );
+      if (sources.length === 0) {
+        return [];
+      }
+      return [
+        `  '${play.id}/${version.id}': [`,
+        ...sources.map(
+          (g) =>
+            `    () =>\n      import('../../plays/${play.id}/definitions/${version.id}/${g.sourceId}.json', {\n        with: { type: 'json' },\n      }),`,
+        ),
+        '  ],',
+      ];
+    }),
+  );
   const entries = index.plays.flatMap((play) =>
     play.versions.map((version) => ({ play, version })),
   );
@@ -342,6 +364,10 @@ function loadersModule(index: PlayIndex): string {
     ...alignmentLines,
     '};',
     '',
+    'export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[]>>> = {',
+    ...definitionLines,
+    '};',
+    '',
   ].join('\n');
 }
 
@@ -349,8 +375,92 @@ const selected = args.only ? PLAYS.filter((play) => play.info.id === args.only) 
 if (selected.length === 0) {
   throw new Error(`Unknown play ${args.only ?? ''}`);
 }
+const modernDocs = new Map<string, VersionDocument>();
 for (const play of selected) {
-  await ingestPlay(play);
+  const docs = await ingestPlay(play);
+  const modern = docs.get(play.info.modernVersionId);
+  if (modern) {
+    modernDocs.set(play.info.id, modern);
+  }
+}
+
+/** Every glossed citation of one play in a glossary, ready for matching (CRP-071). */
+function playCitations(entries: Entry[], abbreviation: string): GlossCitation[] {
+  return entries.flatMap((entry) =>
+    entry.senses
+      .filter((sense) => sense.gloss !== '')
+      .flatMap((sense) =>
+        sense.citations
+          .filter((citation) => citation.play === abbreviation)
+          .map((citation) => ({
+            headword: entry.headword,
+            definition: {
+              meaning: sense.gloss,
+              ...(entry.partOfSpeech ? { partOfSpeech: entry.partOfSpeech } : {}),
+              ...(sense.label ? { sense: sense.label } : {}),
+            },
+            act: citation.act,
+            scene: citation.scene,
+            ...(citation.part ? { part: citation.part } : {}),
+            line: citation.line,
+            quote: citation.quote,
+          })),
+      ),
+  );
+}
+
+async function ingestGlossary(glossary: GlossaryConfig): Promise<void> {
+  console.warn(glossary.sourceId);
+  const entries: Entry[] = [];
+  for (const volume of glossary.volumes) {
+    const text = await source(volume.lockKey);
+    const start = text.search(volume.start);
+    const end = volume.end ? text.indexOf(volume.end) : text.length;
+    if (start < 0 || end < 0) {
+      throw new Error(`${volume.lockKey}: dictionary boundaries not found`);
+    }
+    entries.push(...parseEntries(text.slice(start, end)));
+  }
+  console.warn(`  ${String(entries.length)} entries`);
+  for (const [playId, doc] of modernDocs) {
+    const abbreviation = glossary.playAbbreviations[playId];
+    if (!abbreviation) {
+      continue;
+    }
+    const { terms, report } = matchCitations(
+      doc,
+      glossary.sourceId,
+      playCitations(entries, abbreviation),
+    );
+    const reasons = new Map<string, number>();
+    for (const { reason } of report.unmatched) {
+      reasons.set(reason, (reasons.get(reason) ?? 0) + 1);
+    }
+    console.warn(
+      `  ${playId}: ${String(report.matched)} citations matched to ${String(terms.length)} terms; skipped ${[
+        ...reasons,
+      ]
+        .map(([reason, count]) => `${String(count)} ${reason}`)
+        .join(', ')}`,
+    );
+    const file = SourcedDefinitionsFileSchema.parse({
+      schemaVersion: 1,
+      playId,
+      versionId: doc.versionId,
+      sourceId: glossary.sourceId,
+      terms,
+    });
+    // Compact: these files are large and only ever read by machines.
+    await writeJson(
+      join(ROOT, 'plays', playId, 'definitions', doc.versionId, `${glossary.sourceId}.json`),
+      file,
+      0,
+    );
+  }
+}
+
+for (const glossary of GLOSSARIES) {
+  await ingestGlossary(glossary);
 }
 
 const index: PlayIndex = PlayIndexSchema.parse({
@@ -373,6 +483,7 @@ const schemas = {
   'plays.schema.json': PlayIndexSchema,
   'version.schema.json': VersionDocumentSchema,
   'alignment.schema.json': AlignmentFileSchema,
+  'definitions.schema.json': SourcedDefinitionsFileSchema,
 };
 for (const [name, schema] of Object.entries(schemas)) {
   await writeJson(join(ROOT, 'schema', name), z.toJSONSchema(schema), 2);

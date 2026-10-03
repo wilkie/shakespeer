@@ -213,3 +213,56 @@ export const AlignmentFileSchema = z.object({
   entries: z.array(AlignmentEntrySchema),
 });
 export type AlignmentFile = z.infer<typeof AlignmentFileSchema>;
+
+// ---------------------------------------------------------------------------------------------
+// Anchors (ANC-002) and sourced definitions (CRP-070, DEF-002)
+
+const positionSchema = z.object({ nodeId: id, offset: z.int().nonnegative() });
+
+export const TextAnchorSchema = z.object({
+  start: positionSchema,
+  end: positionSchema,
+  quote: z.object({ exact: z.string().min(1), prefix: z.string(), suffix: z.string() }),
+  revision: z.string(),
+});
+export type TextAnchor = z.infer<typeof TextAnchorSchema>;
+
+export const PartOfSpeechSchema = z.enum([
+  'noun',
+  'verb',
+  'adjective',
+  'adverb',
+  'pronoun',
+  'preposition',
+  'conjunction',
+  'interjection',
+  'phrase',
+  'other',
+]);
+export type PartOfSpeech = z.infer<typeof PartOfSpeechSchema>;
+
+export const SourcedDefinitionSchema = z.object({
+  meaning: z.string().min(1),
+  partOfSpeech: PartOfSpeechSchema.optional(),
+  /** The source's sense label, e.g. "2" or "1b". */
+  sense: z.string().optional(),
+});
+export type SourcedDefinition = z.infer<typeof SourcedDefinitionSchema>;
+
+export const SourcedTermSchema = z.object({
+  id,
+  anchor: TextAnchorSchema,
+  /** The headword as the source prints it. */
+  headword: z.string(),
+  definitions: z.array(SourcedDefinitionSchema).min(1),
+});
+export type SourcedTerm = z.infer<typeof SourcedTermSchema>;
+
+export const SourcedDefinitionsFileSchema = z.object({
+  schemaVersion: z.literal(1),
+  playId: id,
+  versionId: id,
+  sourceId: id,
+  terms: z.array(SourcedTermSchema),
+});
+export type SourcedDefinitionsFile = z.infer<typeof SourcedDefinitionsFileSchema>;

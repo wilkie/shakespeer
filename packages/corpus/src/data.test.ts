@@ -2,17 +2,18 @@
  * Validates the committed corpus (CRP-003): every file matches its schema, the published JSON
  * Schemas are current, IDs and revisions are consistent, and alignments are complete.
  */
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { describe, expect, it } from '@jest/globals';
 import { z } from 'zod';
 
 import { computeRevision, textNodes } from '../ingest/lib/revision.ts';
-import { alignmentLoaders, versionLoaders } from './generated/loaders';
+import { alignmentLoaders, definitionLoaders, versionLoaders } from './generated/loaders';
 import {
   AlignmentFileSchema,
   PlayIndexSchema,
+  SourcedDefinitionsFileSchema,
   SourcesFileSchema,
   VersionDocumentSchema,
   type VersionDocument,
@@ -38,6 +39,7 @@ describe('committed corpus', () => {
       'plays.schema.json': PlayIndexSchema,
       'version.schema.json': VersionDocumentSchema,
       'alignment.schema.json': AlignmentFileSchema,
+      'definitions.schema.json': SourcedDefinitionsFileSchema,
     };
     for (const [file, schema] of Object.entries(schemas)) {
       expect(readJson(join('schema', file))).toStrictEqual(z.toJSONSchema(schema));
@@ -122,5 +124,36 @@ describe.each(originals)('%s alignment', (_key, play, version) => {
     expect(sorted(alignment.entries.flatMap((entry) => entry.modern))).toStrictEqual(
       sorted(textNodes(modern).map((node) => node.id)),
     );
+  });
+});
+
+const definitionFiles = Object.keys(definitionLoaders).flatMap((key) => {
+  const [playId = '', versionId = ''] = key.split('/');
+  return sources.sources
+    .filter((source) =>
+      existsSync(join(root, 'plays', playId, 'definitions', versionId, `${source.id}.json`)),
+    )
+    .map((source) => [`${key}/${source.id}`, playId, versionId, source.id] as const);
+});
+
+describe.each(definitionFiles)('%s definitions', (_key, playId, versionId, sourceId) => {
+  it('CRP-070, ANC-030: every anchor resolves exactly in the current text', () => {
+    const doc = loadDoc(playId, versionId);
+    const nodes = new Map(textNodes(doc).map((node) => [node.id, node]));
+    const file = SourcedDefinitionsFileSchema.parse(
+      readJson(join('plays', playId, 'definitions', versionId, `${sourceId}.json`)),
+    );
+    const broken = file.terms.filter(({ anchor }) => {
+      const node = nodes.get(anchor.start.nodeId);
+      return (
+        anchor.revision !== doc.revision ||
+        anchor.start.nodeId !== anchor.end.nodeId ||
+        node?.text.slice(anchor.start.offset, anchor.end.offset) !== anchor.quote.exact
+      );
+    });
+
+    expect(file.terms.length).toBeGreaterThan(0);
+    expect(broken).toStrictEqual([]);
+    expect(new Set(file.terms.map((term) => term.id)).size).toBe(file.terms.length);
   });
 });

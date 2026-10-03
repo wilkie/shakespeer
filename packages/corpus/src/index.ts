@@ -4,12 +4,13 @@
  */
 import playIndexData from '../plays.json' with { type: 'json' };
 import sourcesData from '../sources.json' with { type: 'json' };
-import { alignmentLoaders, versionLoaders } from './generated/loaders';
+import { alignmentLoaders, definitionLoaders, versionLoaders } from './generated/loaders';
 import type {
   AlignmentFile,
   PlayIndex,
   PlayInfo,
   Source,
+  SourcedDefinitionsFile,
   SourcesFile,
   VersionDocument,
   VersionInfo,
@@ -60,4 +61,14 @@ export async function loadAlignment(
 ): Promise<AlignmentFile | undefined> {
   const load = alignmentLoaders[`${playId}/${versionId}`];
   return load ? ((await load()).default as AlignmentFile) : undefined;
+}
+
+/** All sourced definitions for a version, one file per source (CRP-070). */
+export async function loadSourcedDefinitions(
+  playId: string,
+  versionId: string,
+): Promise<SourcedDefinitionsFile[]> {
+  const loaders = definitionLoaders[`${playId}/${versionId}`] ?? [];
+  const files = await Promise.all(loaders.map((load) => load()));
+  return files.map((file) => file.default as SourcedDefinitionsFile);
 }

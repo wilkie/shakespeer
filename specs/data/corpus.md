@@ -14,12 +14,12 @@ registry. The corpus lives in the repository and is read-only at runtime.
 | _Troilus and Cressida_ | `troilus-and-cressida` | `folger`, `q1-1609` (Quarto), `f1-1623` (First Folio)                                  |
 | _The Tempest_          | `the-tempest`          | `folger`, `f1-1623` (First Folio; the only early printing)                             |
 
-| Source                                                               | Used for                                   | License                                                                                       | Verified                             |
-| -------------------------------------------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------- | ------------------------------------ |
-| Folger Shakespeare, TEI XML (one zip per play from folger.edu)       | `folger` versions; variant seeds (CRP-061) | CC BY-NC 3.0 Unported (stated in each file)                                                   | Yes                                  |
-| EEBO-TCP transcriptions (Text Creation Partnership, on GitHub)       | quarto and folio versions                  | CC0 1.0 (stated in each file)                                                                 | Yes (First Folio); quartos to locate |
-| Schmidt, _Shakespeare-Lexicon_, 3rd ed. rev. Sarrazin (1902), 2 vols | sourced definitions                        | Public domain; archive.org scans with OCR (vol. 1: `in.ernet.dli.2015.203724`; vol. 2 to pin) | OCR needs cleanup (CRP-073)          |
-| Onions, _A Shakespeare Glossary_ (1911)                              | sourced definitions                        | Public domain; archive.org scans with OCR (`shakespearegloss00oniouoft`)                      | OCR needs cleanup (CRP-073)          |
+| Source                                                               | Used for                                   | License                                                                                                           | Verified                             |
+| -------------------------------------------------------------------- | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| Folger Shakespeare, TEI XML (one zip per play from folger.edu)       | `folger` versions; variant seeds (CRP-061) | CC BY-NC 3.0 Unported (stated in each file)                                                                       | Yes                                  |
+| EEBO-TCP transcriptions (Text Creation Partnership, on GitHub)       | quarto and folio versions                  | CC0 1.0 (stated in each file)                                                                                     | Yes (First Folio); quartos to locate |
+| Schmidt, _Shakespeare-Lexicon_, 3rd ed. rev. Sarrazin (1902), 2 vols | sourced definitions                        | Public domain; Internet Archive scans with OCR (`shakespearelexic0001alex_j8y5`, `shakespearelexic0002alex_w8r0`) | OCR needs cleanup (CRP-073)          |
+| Onions, _A Shakespeare Glossary_ (1911)                              | sourced definitions                        | Public domain; archive.org scans with OCR (`shakespearegloss00oniouoft`)                                          | OCR needs cleanup (CRP-073)          |
 
 What the Folger TEI provides (checked on _Hamlet_ and _The Tempest_): every line is a
 `milestone` with a permanent ID (`ftln-0001`, the Folger Through Line Number), its act.scene.line
@@ -39,7 +39,7 @@ the Second Quarto (29).
   - `plays/<playId>/alignment/<versionId>.json` — alignment of each original version to the
     modern version (CRP-050).
   - `plays/<playId>/variants.json` — curated variants (CRP-060).
-  - `plays/<playId>/definitions/<sourceId>.json` — sourced definitions (CRP-070).
+  - `plays/<playId>/definitions/<versionId>/<sourceId>.json` — sourced definitions (CRP-070).
   - `ingest/` — the scripts that produce all of the above from the sources.
 - **CRP-002** — The ingestion scripts and their generated output (all JSON under
   `packages/corpus` listed in CRP-001, including sourced definitions) MUST be committed, so the
@@ -150,27 +150,27 @@ label }`, e.g. `"sig. G4v"`) for citation.
   later (RDR-043) but are curated alongside alignment from the start.
 - **CRP-061** — Ingestion MUST seed _Hamlet_'s variants from the Folger markup: passages marked
   Folio-only and Second-Quarto-only become variants with readings in the corresponding original
-  versions (via alignment), and editorial emendations become variants recording the modern
-  reading against the original ones. Curated notes are added on top (CRP-004).
+  versions (via alignment), and editorial emendations become variants recording the modern reading
+  against the original ones. Curated notes are added on top (CRP-004).
 
 ## Sourced definitions
 
-- **CRP-070** — `definitions/<sourceId>.json` MUST contain terms: each with `id`, `versionId`, an
-  anchor (ANC-002) to one specific occurrence, the `headword` as the source prints it, and one or
-  more definitions (`meaning`, `partOfSpeech`, optional `sense` label such as "1b").
+- **CRP-070** — `definitions/<versionId>/<sourceId>.json` MUST contain the source's terms for that
+  version: each with `id`, an anchor (ANC-002) to one specific occurrence, the `headword` as the
+  source prints it, and one or more definitions (`meaning`, optional `partOfSpeech`, optional
+  `sense` label such as "1b").
 - **CRP-071** — Lexicon entries cite passages (Schmidt cites act, scene and line in the Globe
   edition). Ingestion MUST match each citation to the occurrence of the headword (allowing for
-  inflection and spelling) within a small window around the cited line in the modern version,
-  and attach the matching sense there. Ambiguous or unmatched citations MUST be skipped and
-  logged, never guessed: precision over coverage.
-- **CRP-073** — Glossary text MUST be recovered from the scans' OCR by a reproducible pipeline
-  in `ingest/`: rebuild reading order from word coordinates (hOCR or DjVu XML) so the two
-  columns are not interleaved; split entries by headword; parse senses and citations
+  inflection and spelling) within a small window around the cited line in the modern version, and
+  attach the matching sense there. Ambiguous or unmatched citations MUST be skipped and logged,
+  never guessed: precision over coverage.
+- **CRP-073** — Glossary text MUST be recovered from the scans' OCR by a reproducible pipeline in
+  `ingest/`: use an OCR text layer whose reading order keeps the two columns apart (or rebuild it
+  from word coordinates in hOCR or DjVu XML); split entries by headword; parse senses and citations
   (normalizing play abbreviations and misread Roman numerals). Corrections MUST be stored as
   reviewed curation files (CRP-004). Matching a citation to the headword in the corpus text
-  (CRP-071) is the acceptance test for each cleaned citation. Machine assistance (including an
-  LLM) MAY propose OCR corrections, but only corrections that pass that test or human review
-  are kept.
+  (CRP-071) is the acceptance test for each cleaned citation. Machine assistance (including an LLM)
+  MAY propose OCR corrections, but only corrections that pass that test or human review are kept.
 - **CRP-074** — _Planned:_ generated definitions. Definitions written offline by a language model
   for words and phrases in context, committed as their own source, labeled "Generated" with the
   model and date, switchable like any source (DEF-012), and never mixed into another source's

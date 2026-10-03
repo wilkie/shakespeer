@@ -18,6 +18,14 @@
     "tcp-first-folio": {
       "url": "https://raw.githubusercontent.com/textcreationpartnership/A11954/4a2977d77fcb9c2d07f43776e1a8bb092c3ea2c2/A11954.xml",
       "sha256": "77d50ab149976a6b0ccf2edfa8ec157a3894f62e44214f6072d1019968d110b1"
+    },
+    "schmidt-1902-v1": {
+      "url": "https://archive.org/download/shakespearelexic0001alex_j8y5/shakespearelexic0001alex_j8y5_djvu.txt",
+      "sha256": "cce18b36d095b771cd69b4bddc4d47861b94aafbe713f6189bad956de52156ef"
+    },
+    "schmidt-1902-v2": {
+      "url": "https://archive.org/download/shakespearelexic0002alex_w8r0/shakespearelexic0002alex_w8r0_djvu.txt",
+      "sha256": "f23cdce016ba7025f2c197775eb95d3e7e3dc064fa3a5fab3ab80292540140d7"
     }
   }
 }

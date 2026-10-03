@@ -32,6 +32,40 @@ export const SOURCES: Source[] = [
     attribution:
       'Transcription by the Text Creation Partnership (EEBO-TCP Phase I), dedicated to the public domain under CC0 1.0.',
   },
+  {
+    id: 'schmidt-1902',
+    name: 'Schmidt, Shakespeare-Lexicon (3rd edition, 1902)',
+    shortName: 'Schmidt',
+    description:
+      'Alexander Schmidt, Shakespeare-Lexicon: A Complete Dictionary of All the English Words, Phrases and Constructions in the Works of the Poet, 3rd edition, revised and enlarged by Gregor Sarrazin (Berlin: Georg Reimer, 1902). Definitions are matched to the passages the Lexicon cites; its text was recovered from scans digitized by the Internet Archive.',
+    url: 'https://archive.org/details/shakespearelexic0001alex_j8y5',
+    license: {
+      name: 'Public domain',
+      url: 'https://creativecommons.org/publicdomain/mark/1.0/',
+      commercialUse: true,
+    },
+    attribution:
+      'Alexander Schmidt, Shakespeare-Lexicon, 3rd ed., rev. Gregor Sarrazin (1902). Public domain. Scans by the Internet Archive.',
+  },
+];
+
+export interface GlossaryConfig {
+  sourceId: string;
+  /** Lock keys of the volumes' OCR text, in alphabetical order. */
+  volumes: { lockKey: string; start: RegExp; end?: string }[];
+  /** The glossary's abbreviation for each play it cites. */
+  playAbbreviations: Record<string, string>;
+}
+
+export const GLOSSARIES: GlossaryConfig[] = [
+  {
+    sourceId: 'schmidt-1902',
+    volumes: [
+      { lockKey: 'schmidt-1902-v1', start: /\n\nA\.\s*\n/ },
+      { lockKey: 'schmidt-1902-v2', start: /\n\nM\.\s*\n/, end: 'I. Grammatical Observations' },
+    ],
+    playAbbreviations: { hamlet: 'Hml', 'the-tempest': 'Tp', 'troilus-and-cressida': 'Troil' },
+  },
 ];
 
 export interface FolgerSource {

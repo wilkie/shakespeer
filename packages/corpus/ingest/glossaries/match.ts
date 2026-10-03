@@ -1,0 +1,284 @@
+/**
+ * Anchors glossary citations to specific occurrences in a version (CRP-070, CRP-071).
+ *
+ * Glossaries cite another edition's line numbers (Schmidt and Onions use the Globe edition),
+ * so a citation is matched to an occurrence of the headword within a window around the cited
+ * line in the corresponding scene. When the glossary prints the passage, the passage must also
+ * agree with the text there. Ambiguous or unmatched citations are skipped, never guessed.
+ */
+import type {
+  LineNode,
+  SourcedDefinition,
+  SourcedTerm,
+  TextAnchor,
+  VersionDocument,
+} from '../../src/schema.ts';
+import { wordKey } from '../align.ts';
+
+export interface GlossCitation {
+  headword: string;
+  definition: SourcedDefinition;
+  act: number | null;
+  scene: number | null;
+  part?: 'prologue' | 'epilogue';
+  line: number;
+  quote: string;
+}
+
+export interface MatchReport {
+  matched: number;
+  /** Not found near the cited line, or the quotation disagrees. */
+  unmatched: { citation: GlossCitation; reason: string }[];
+}
+
+/** Characters of surrounding text kept in anchors (ANC-002 allows up to 32). */
+const CONTEXT = 20;
+
+interface SceneLines {
+  lines: LineNode[];
+  /** Folger line number within the scene, per line. */
+  numbers: number[];
+}
+
+function sceneLines(doc: VersionDocument): Map<string, SceneLines> {
+  const scenes = new Map<string, SceneLines>();
+  for (const act of doc.divisions) {
+    for (const scene of act.scenes) {
+      const lines = scene.blocks.flatMap((block) =>
+        block.type === 'speech'
+          ? block.nodes.filter((node): node is LineNode => node.kind === 'line')
+          : [],
+      );
+      const numbers = lines.map((line) => Number(/(\d+)$/.exec(line.n ?? '')?.[1] ?? NaN));
+      const key = scene.kind === 'scene' ? `${String(act.n)}.${String(scene.n)}` : scene.kind; // "prologue", "epilogue"
+      scenes.set(key, { lines, numbers });
+    }
+  }
+  return scenes;
+}
+
+/** Scenes of an act, to resolve citations that omit the scene of a single-scene act. */
+function scenesOfAct(scenes: Map<string, SceneLines>, act: number): string[] {
+  return [...scenes.keys()].filter(
+    (key) => key.startsWith(`${String(act)}.`) && !key.includes('logue'),
+  );
+}
+
+interface Word {
+  start: number;
+  end: number;
+  key: string;
+}
+
+function words(text: string): Word[] {
+  return [...text.matchAll(/[\p{L}’'-]+/gu)].map((match) => {
+    const raw = match[0].replace(/^['’-]+|['’-]+$/g, '');
+    const start = match.index + match[0].indexOf(raw);
+    return { start, end: start + raw.length, key: wordKey(raw) };
+  });
+}
+
+/** Whether a word in the text is a form of the headword ("bodkin", "bodkins", "bobbed"). */
+function isFormOf(word: string, headword: string): boolean {
+  return word === headword || (word.startsWith(headword) && word.length - headword.length <= 3);
+}
+
+function anchorFor(line: LineNode, word: Word, revision: string): TextAnchor {
+  return {
+    start: { nodeId: line.id, offset: word.start },
+    end: { nodeId: line.id, offset: word.end },
+    quote: {
+      exact: line.text.slice(word.start, word.end),
+      prefix: line.text.slice(Math.max(0, word.start - CONTEXT), word.start),
+      suffix: line.text.slice(word.end, word.end + CONTEXT),
+    },
+    revision,
+  };
+}
+
+/** Lines on each side of the predicted line that a citation may match. */
+const NEAR = 15;
+
+interface Resolved {
+  citation: GlossCitation;
+  headword: string;
+  scene: SceneLines;
+  sceneKey: string;
+  quoteKeys: Set<string>;
+}
+
+interface Candidate {
+  index: number;
+  word: Word;
+  folgerLine: number;
+  overlap: number;
+}
+
+function candidatesIn(item: Resolved, from: number, to: number): Candidate[] {
+  const { scene, headword, quoteKeys } = item;
+  const found: Candidate[] = [];
+  scene.lines.forEach((line, index) => {
+    const folgerLine = scene.numbers[index] ?? NaN;
+    if (!(folgerLine >= from && folgerLine <= to)) {
+      return;
+    }
+    const context = new Set(
+      [scene.lines[index - 1], line, scene.lines[index + 1]].flatMap((l) =>
+        l ? words(l.text).map((w) => w.key) : [],
+      ),
+    );
+    const overlap = [...quoteKeys].filter((key) => context.has(key)).length;
+    for (const word of words(line.text)) {
+      if (isFormOf(word.key, headword)) {
+        found.push({ index, word, folgerLine, overlap });
+      }
+    }
+  });
+  return found;
+}
+
+/**
+ * Glossaries cite Globe line numbers, which drift from Folger's within long scenes (Folger
+ * numbers each part of a shared verse line). Each scene's drift is learned from confident
+ * matches: long quotations found unambiguously anywhere in the scene.
+ */
+function learnOffsets(items: Resolved[]): Map<string, [number, number][]> {
+  const pairs = new Map<string, [number, number][]>();
+  for (const item of items) {
+    const needed = Math.max(3, Math.ceil(item.quoteKeys.size * 0.6));
+    if (item.quoteKeys.size < 3) {
+      continue;
+    }
+    const strong = candidatesIn(item, -Infinity, Infinity).filter((c) => c.overlap >= needed);
+    const lines = new Set(strong.map((c) => c.index));
+    const best = strong[0];
+    if (best && lines.size === 1) {
+      const list = pairs.get(item.sceneKey) ?? [];
+      list.push([item.citation.line, best.folgerLine]);
+      pairs.set(item.sceneKey, list);
+    }
+  }
+  for (const list of pairs.values()) {
+    list.sort((a, b) => a[0] - b[0]);
+  }
+  return pairs;
+}
+
+/** The Folger line predicted for a Globe line: median offset of the nearest learned pairs. */
+function predict(pairs: [number, number][] | undefined, globeLine: number): number {
+  if (!pairs || pairs.length === 0) {
+    return globeLine;
+  }
+  const nearest = [...pairs]
+    .sort((a, b) => Math.abs(a[0] - globeLine) - Math.abs(b[0] - globeLine))
+    .slice(0, 5)
+    .map(([globe, folger]) => folger - globe)
+    .sort((a, b) => a - b);
+  return globeLine + (nearest[Math.floor(nearest.length / 2)] ?? 0);
+}
+
+export function matchCitations(
+  doc: VersionDocument,
+  sourceId: string,
+  citations: GlossCitation[],
+): { terms: SourcedTerm[]; report: MatchReport } {
+  const scenes = sceneLines(doc);
+  const terms = new Map<string, SourcedTerm>();
+  const report: MatchReport = { matched: 0, unmatched: [] };
+
+  const resolved: Resolved[] = [];
+  for (const citation of citations) {
+    const headword = wordKey(citation.headword);
+    if (headword.length < 2 || /\s/.test(citation.headword)) {
+      report.unmatched.push({ citation, reason: 'unsupported headword' });
+      continue;
+    }
+    let sceneKey: string | undefined;
+    if (citation.part) {
+      sceneKey = citation.part;
+    } else if (citation.act !== null && citation.scene !== null) {
+      sceneKey = `${String(citation.act)}.${String(citation.scene)}`;
+    } else if (citation.act !== null) {
+      const options = scenesOfAct(scenes, citation.act);
+      sceneKey = options.length === 1 ? options[0] : undefined;
+    }
+    const scene = sceneKey ? scenes.get(sceneKey) : undefined;
+    if (!scene || !sceneKey) {
+      report.unmatched.push({ citation, reason: 'no such scene' });
+      continue;
+    }
+    // Quotation words other than the headword (Schmidt abbreviates it to "b." or "—").
+    const quoteKeys = new Set(
+      words(citation.quote)
+        .map((w) => w.key)
+        .filter((key) => key.length > 2 && !isFormOf(key, headword)),
+    );
+    resolved.push({ citation, headword, scene, sceneKey, quoteKeys });
+  }
+
+  const offsets = learnOffsets(resolved);
+
+  for (const item of resolved) {
+    const { citation, scene, quoteKeys } = item;
+    const predicted = predict(offsets.get(item.sceneKey), citation.line);
+    const candidates = candidatesIn(item, predicted - NEAR, predicted + NEAR).map((c) => ({
+      ...c,
+      distance: Math.abs(c.folgerLine - predicted),
+    }));
+    if (candidates.length === 0) {
+      report.unmatched.push({ citation, reason: 'headword not found near cited line' });
+      continue;
+    }
+
+    let chosen: (typeof candidates)[number] | undefined;
+    if (quoteKeys.size >= 3) {
+      // An informative quotation must agree with the text, and pick a single line.
+      const needed = Math.min(2, quoteKeys.size);
+      const agreeing = candidates.filter((c) => c.overlap >= needed);
+      agreeing.sort((a, b) => b.overlap - a.overlap || a.distance - b.distance);
+      const [best, second] = agreeing;
+      if (!best) {
+        report.unmatched.push({ citation, reason: 'quotation disagrees' });
+        continue;
+      }
+      if (
+        second &&
+        second.index !== best.index &&
+        second.overlap === best.overlap &&
+        second.distance === best.distance
+      ) {
+        report.unmatched.push({ citation, reason: 'ambiguous' });
+        continue;
+      }
+      chosen = best;
+    } else {
+      // Without a usable quotation, only an unmistakable occurrence will do: the only line
+      // nearby with the headword, or one much closer than any other.
+      const byLine = [...new Map(candidates.map((c) => [c.index, c])).values()].sort(
+        (a, b) => a.distance - b.distance,
+      );
+      const [best, second] = byLine;
+      if (best && (!second || (best.distance <= 3 && second.distance - best.distance >= 8))) {
+        chosen = best;
+      } else {
+        report.unmatched.push({ citation, reason: 'ambiguous' });
+        continue;
+      }
+    }
+
+    const line = scene.lines[chosen.index] as LineNode;
+    const anchor = anchorFor(line, chosen.word, doc.revision);
+    const id = `${sourceId}:${line.id}:${String(chosen.word.start)}`;
+    const term = terms.get(id) ?? { id, anchor, headword: citation.headword, definitions: [] };
+    if (!term.definitions.some((d) => d.meaning === citation.definition.meaning)) {
+      term.definitions.push(citation.definition);
+    }
+    terms.set(id, term);
+    report.matched += 1;
+  }
+
+  const ordered = [...terms.values()].sort((a, b) =>
+    a.id.localeCompare(b.id, 'en', { numeric: true }),
+  );
+  return { terms: ordered, report };
+}
