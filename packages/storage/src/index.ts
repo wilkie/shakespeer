@@ -22,6 +22,7 @@ export {
   applyImport,
   checkItems,
   CollectionNameTakenError,
+  deletedItems,
   exportFileName,
   exportNotes,
   findCollection,

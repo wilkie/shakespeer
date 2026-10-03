@@ -1,9 +1,16 @@
 import { beforeAll, describe, expect, it, jest } from '@jest/globals';
 import { createVersionIndex, loadVersion, type TextAnchor } from '@shakespeer/corpus';
-import { readNotesArchive, writeNotesArchive, type NotesFile } from '@shakespeer/storage';
+import {
+  deleteNote,
+  listNotes,
+  readNotesArchive,
+  writeNotesArchive,
+  type NotesFile,
+} from '@shakespeer/storage';
 import { fireEvent, screen, waitFor, within } from '@testing-library/react';
 
 import { makeAnchor } from '@/features/reader/anchors';
+import { getDatabase } from '@/lib/storage';
 import { renderRoute } from '@/test/render';
 
 import { readBytes } from './files';
@@ -205,5 +212,43 @@ describe('import and export', () => {
     expect(file.collection.name).toBe('Shared');
     expect(file.definitions.map((d) => d.meaning)).toStrictEqual(['Petty officer']);
     click.mockRestore();
+  });
+
+  it('IOX-014a: re-importing offers to restore notes you deleted', async () => {
+    const db = await getDatabase();
+    const { definitions } = await listNotes(db, 'the-tempest', 'folger');
+    const imported = definitions.find((d) => d.origin.kind === 'imported');
+    await deleteNote(db, 'definitions', imported?.id ?? '');
+
+    const { user } = renderRoute('/');
+    await user.click(
+      await screen.findByRole('button', { name: 'Import notes…' }, { timeout: 10000 }),
+    );
+    choose(
+      zipFile(
+        notesFile({
+          definitions: [
+            {
+              id: 'd1',
+              versionId: 'folger',
+              anchor: boatswain,
+              meaning: 'Petty officer',
+              createdAt: '',
+              updatedAt: '',
+            },
+          ],
+          annotations: [],
+        }),
+      ),
+    );
+    const dialog = await screen.findByRole('dialog', { name: 'Import notes' });
+    await user.click(
+      await within(dialog).findByRole('checkbox', { name: 'Restore the 1 note you deleted' }, SLOW),
+    );
+    await user.click(within(dialog).getByRole('button', { name: 'Update “Class notes”' }));
+
+    expect(
+      await within(dialog).findByText('1 note you had deleted restored.', undefined, SLOW),
+    ).toBeInTheDocument();
   });
 });

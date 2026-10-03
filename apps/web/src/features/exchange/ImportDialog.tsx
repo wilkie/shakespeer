@@ -2,6 +2,7 @@ import UploadFile from '@mui/icons-material/UploadFileOutlined';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Checkbox from '@mui/material/Checkbox';
 import CircularProgress from '@mui/material/CircularProgress';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -38,6 +39,8 @@ function Summary({
   newName,
   onNewName,
   nameError,
+  restore,
+  onRestore,
 }: {
   plan: ImportPlan;
   currentPlayId: string | undefined;
@@ -46,6 +49,8 @@ function Summary({
   newName: string;
   onNewName: (name: string) => void;
   nameError: string | undefined;
+  restore: boolean;
+  onRestore: (restore: boolean) => void;
 }) {
   const { file, play, versions, notes, unattached, existing } = plan;
   const skipped = notes.skipped.unknownVersion + notes.skipped.tooLong;
@@ -112,6 +117,19 @@ function Summary({
             />
             <FormControlLabel value="new" control={<Radio />} label="Import as a new collection" />
           </RadioGroup>
+          {mode === 'update' && plan.deletedInFile > 0 && (
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={restore}
+                  onChange={(event) => {
+                    onRestore(event.target.checked);
+                  }}
+                />
+              }
+              label={`Restore the ${plural(plan.deletedInFile, 'note')} you deleted`}
+            />
+          )}
           {mode === 'new' && (
             <TextField
               label="New collection name"
@@ -138,6 +156,7 @@ function ReportView({ report }: { report: ImportReport }) {
     report.removed > 0 && `${plural(report.removed, 'note')} removed`,
     report.keptModified > 0 &&
       `${plural(report.keptModified, 'note')} kept because you changed them`,
+    report.restored > 0 && `${plural(report.restored, 'note')} you had deleted restored`,
     report.previouslyDeleted > 0 &&
       `${plural(report.previouslyDeleted, 'note')} you had deleted left out`,
   ].filter((line): line is string => Boolean(line));
@@ -177,6 +196,7 @@ function ImportFlow({ initialFile, currentPlayId, onClose, onImported }: ImportD
   const [mode, setMode] = useState<'update' | 'new'>('update');
   const [newName, setNewName] = useState('');
   const [nameError, setNameError] = useState<string | undefined>();
+  const [restore, setRestore] = useState(false);
   const input = useRef<HTMLInputElement>(null);
 
   /** Shows the summary for a checked file, or why it cannot be imported. */
@@ -213,7 +233,7 @@ function ImportFlow({ initialFile, currentPlayId, onClose, onImported }: ImportD
     const db = await getDatabase();
     let target: Parameters<typeof applyImport>[3];
     if (plan.existing && mode === 'update') {
-      target = { mode: 'update', collectionId: plan.existing.id };
+      target = { mode: 'update', collectionId: plan.existing.id, restoreDeleted: restore };
     } else {
       const name = plan.existing ? newName.trim() : plan.file.collection.name;
       if (!name) {
@@ -301,6 +321,8 @@ function ImportFlow({ initialFile, currentPlayId, onClose, onImported }: ImportD
               setNameError(undefined);
             }}
             nameError={nameError}
+            restore={restore}
+            onRestore={setRestore}
           />
         )}
         {step.kind === 'done' && <ReportView report={step.report} />}

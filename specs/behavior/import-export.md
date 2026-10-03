@@ -32,6 +32,10 @@ notes stay distinguishable from a reader's own, and re-importing an updated file
 - **IOX-014** — If a collection with the same name is already imported for that play, the
   summary MUST say so and offer **Update "<name>"** (the default) or **Import as a new
   collection** (which asks for a different name).
+- **IOX-014a** — When updating, if the reader deleted notes of that collection that the file
+  still contains (tombstones, XCH-041), the summary MUST say how many and offer **Restore the N
+  notes you deleted** (off by default). Choosing it brings them back with the update (XCH-040),
+  and the report counts them as restored.
 - **IOX-015** — Notes are matched by collection name (per play) and note ID; local edits are
   detected by each imported note's locally-modified flag (STO-020). An update MUST follow XCH-040 and report what it did: added, updated, removed,
   and kept because you changed them locally.
@@ -48,9 +52,7 @@ notes stay distinguishable from a reader's own, and re-importing an updated file
 - **IOX-021** — Each collection MAY be renamed. _Later:_ **Remove collection** (deletes its
   unmodified notes after confirmation, the "clear imported" feature).
 
-## Open questions
+## Decisions
 
-1. Tombstones (XCH-041) keep deleted imported notes from returning on an update. Each is two
-   IDs, removed when its collection is removed. Should **Imported collections…** also offer
-   **Restore deleted notes** for a collection (clearing its tombstones so the next update brings
-   them back)? Proposed: yes, it is cheap and makes the behavior reversible.
+1. Deleted imported notes can be restored when re-importing their collection (IOX-014a), rather
+   than from **Imported collections…**, since restoring needs the file's copy of each note.

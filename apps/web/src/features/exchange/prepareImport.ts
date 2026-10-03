@@ -7,6 +7,7 @@ import {
 } from '@shakespeer/corpus';
 import {
   checkItems,
+  deletedItems,
   findCollection,
   NOTES_FILE_LIMITS,
   NotesFileError,
@@ -39,6 +40,8 @@ export interface ImportPlan {
   unattached: number;
   /** An imported collection of the same name for the play (IOX-014). */
   existing: CollectionRecord | undefined;
+  /** Notes of that collection the reader deleted that the file still has (IOX-014a). */
+  deletedInFile: number;
 }
 
 async function countUnattached(playId: string, notes: CheckedNotes): Promise<number> {
@@ -75,9 +78,23 @@ export async function prepareImport(file: File): Promise<ImportPlan> {
       annotations: notes.annotations.filter((a) => a.versionId === version.id).length,
     }))
     .filter((count) => count.definitions + count.annotations > 0);
+  const db = await getDatabase();
   const [unattached, existing] = await Promise.all([
     countUnattached(play.id, notes),
-    getDatabase().then((db) => findCollection(db, play.id, notesFile.collection.name)),
+    findCollection(db, play.id, notesFile.collection.name),
   ]);
-  return { fileName: file.name, file: notesFile, play, notes, versions, unattached, existing };
+  const inFile = new Set([...notes.definitions, ...notes.annotations].map((item) => item.id));
+  const deletedInFile = existing
+    ? (await deletedItems(db, existing.id)).filter((id) => inFile.has(id)).length
+    : 0;
+  return {
+    fileName: file.name,
+    file: notesFile,
+    play,
+    notes,
+    versions,
+    unattached,
+    existing,
+    deletedInFile,
+  };
 }

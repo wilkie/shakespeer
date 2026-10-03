@@ -257,7 +257,13 @@ export async function renameCollection(
 // Applying an import (XCH-039 – XCH-042)
 
 export type ImportTarget =
-  { mode: 'new'; collectionName: string } | { mode: 'update'; collectionId: string };
+  | { mode: 'new'; collectionName: string }
+  | {
+      mode: 'update';
+      collectionId: string;
+      /** Bring back notes of the collection the reader deleted (IOX-014a). */
+      restoreDeleted?: boolean;
+    };
 
 export interface ImportReport {
   collectionId: string;
@@ -268,6 +274,20 @@ export interface ImportReport {
   keptModified: number;
   /** Skipped because the reader had deleted them (XCH-041). */
   previouslyDeleted: number;
+  /** Deleted by the reader and brought back on request (IOX-014a). */
+  restored: number;
+}
+
+/**
+ * Source item IDs of a collection's notes the reader deleted (XCH-041): what restoring them on
+ * an update would bring back, if the file still has them (IOX-014a).
+ */
+export async function deletedItems(
+  db: ShakespeerDatabase,
+  collectionId: string,
+): Promise<string[]> {
+  const tombstones = await db.getAllFromIndex('tombstones', 'byCollection', collectionId);
+  return tombstones.map((t) => t.sourceItemId);
 }
 
 function definitionContent(item: NotesFileDefinition) {
@@ -342,9 +362,18 @@ export async function applyImport(
     removed: 0,
     keptModified: 0,
     previouslyDeleted: 0,
+    restored: 0,
   };
   const versions = new Set<string>();
   const tombstones = tx.objectStore('tombstones');
+  // Restoring deleted notes clears the collection's tombstones first (XCH-040 step 1).
+  const restoring = new Set<string>();
+  if (target.mode === 'update' && target.restoreDeleted) {
+    for (const tombstone of await tombstones.index('byCollection').getAll(collection.id)) {
+      restoring.add(tombstone.sourceItemId);
+      await tombstones.delete([tombstone.collectionId, tombstone.sourceItemId]);
+    }
+  }
 
   const apply = async <K extends 'definitions' | 'annotations'>(
     kind: K,
@@ -392,6 +421,8 @@ export async function applyImport(
       if (existing) {
         versions.add(existing.versionId);
         report.updated += 1;
+      } else if (restoring.has(item.id)) {
+        report.restored += 1;
       } else {
         report.added += 1;
       }

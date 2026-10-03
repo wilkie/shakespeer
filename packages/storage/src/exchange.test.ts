@@ -9,6 +9,7 @@ import {
   applyImport,
   checkItems,
   CollectionNameTakenError,
+  deletedItems,
   exportFileName,
   exportNotes,
   findCollection,
@@ -335,6 +336,7 @@ describe('export and import', () => {
       removed: 1,
       keptModified: 2,
       previouslyDeleted: 1,
+      restored: 0,
     });
     const after = await local();
     expect(after.get('d1')?.meaning).toBe('officer, revised');
@@ -344,6 +346,22 @@ describe('export and import', () => {
     expect(after.get('d4')?.origin).toMatchObject({ modified: true, removedFromSource: true });
     expect(after.get('d5')?.meaning).toBe('new');
     expect((await listNotes(db, 'the-tempest', 'folger')).annotations).toStrictEqual([]);
+  });
+
+  it('IOX-014a: an update can bring back notes the reader deleted', async () => {
+    const { collectionId } = await importFile(file(), {
+      mode: 'new',
+      collectionName: 'Act 1 notes',
+    });
+    const [deleted] = (await listNotes(db, 'the-tempest', 'folger')).definitions;
+    await deleteNote(db, 'definitions', deleted?.id ?? '');
+    expect(await deletedItems(db, collectionId)).toHaveLength(1);
+
+    const report = await importFile(file(), { mode: 'update', collectionId, restoreDeleted: true });
+
+    expect(report).toMatchObject({ restored: 1, previouslyDeleted: 0, added: 0 });
+    expect(await deletedItems(db, collectionId)).toStrictEqual([]);
+    expect((await listNotes(db, 'the-tempest', 'folger')).definitions).toHaveLength(2);
   });
 
   it('IOX-020/021: lists collections with counts and renames them, names unique per play', async () => {

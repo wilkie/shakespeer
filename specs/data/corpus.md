@@ -142,8 +142,8 @@ label }`, e.g. `"sig. G4v"`) for citation.
   sequence alignment within scenes, with a fallback for Q1 _Hamlet_'s different scene order)
   followed by curated overrides (CRP-004). Each entry records `status`: `auto` or `reviewed`.
 - **CRP-052** — Ingestion MUST report alignment coverage (share of `reviewed` entries) per version;
-  the first release does not require full review but MUST NOT ship a version below a coverage
-  threshold to be agreed.
+  the first release ships the automatic alignment (with curated corrections) and is reviewed
+  after release; there is no coverage threshold for shipping.
 
 ## Variants
 
@@ -194,5 +194,4 @@ label }`, e.g. `"sig. G4v"`) for citation.
 
 1. Should the First Folio also show Hinman's Through Line Numbers (TLN), the standard for
    citing F1? Computing them reliably needs page-layout data that EEBO-TCP may not carry.
-2. Alignment coverage threshold for shipping (CRP-052): proposed 100% reviewed for scene
-   divisions and speaker attribution, and at least spot-checked line alignment.
+2. _Decided:_ alignments ship unreviewed and are reviewed after release (CRP-052).

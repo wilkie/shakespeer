@@ -71,13 +71,16 @@ The file produced by export and accepted by import ([IOX](../behavior/import-exp
   ID, `modified: false`).
 - **XCH-040** — An **update** of an existing collection (same play and name, IOX-014) MUST, in
   one transaction:
-  1. for each incoming item: if a tombstone exists for it, skip it; if a local note has its
+  1. if the reader chose to restore deleted notes (IOX-014a), delete the collection's
+     tombstones first;
+  2. for each incoming item: if a tombstone exists for it, skip it; if a local note has its
      `sourceItemId`, replace that note's content and anchor unless `modified` is true (then keep
      the local note); otherwise add it;
-  2. for each local note of the collection whose `sourceItemId` is not in the file: delete it
+  3. for each local note of the collection whose `sourceItemId` is not in the file: delete it
      unless `modified` is true (then keep it with `removedFromSource: true`);
-  3. update the collection's `updatedAt` and `fileName`;
-  4. report counts: added, updated, removed, kept because changed locally, previously deleted.
+  4. update the collection's `updatedAt` and `fileName`;
+  5. report counts: added, updated, removed, kept because changed locally, previously deleted
+     (skipped), and restored.
 - **XCH-041** — Deleting an imported note records a tombstone (STO-014), so updates do not
   restore it.
 - **XCH-042** — Own notes are never touched by an import.
