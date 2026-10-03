@@ -1,0 +1,77 @@
+packages:
+  - apps/*
+  - packages/*
+
+# Single source of truth for third-party versions. Reference with "catalog:".
+catalog:
+  # Runtime
+  '@emotion/react': ^11.14.0
+  '@emotion/styled': ^11.14.1
+  '@fontsource-variable/eb-garamond': ^5.3.0
+  '@fontsource-variable/roboto': ^5.3.0
+  '@mui/icons-material': ^9.4.0
+  '@mui/material': ^9.4.0
+  idb: ^8.0.3
+  react: ^19.3.0
+  react-dom: ^19.3.0
+  react-router: ^8.4.0
+
+  # Build
+  '@babel/core': ^8.0.6
+  '@rolldown/plugin-babel': ^0.2.4
+  '@vitejs/plugin-react': ^6.1.1
+  babel-plugin-react-compiler: ^1.0.0
+  turbo: ^2.11.7
+  typescript: ~6.0.3
+  vite: ^8.3.2
+
+  # Lint / format
+  '@eslint/js': ^10.0.1
+  eslint: ^10.12.0
+  eslint-config-prettier: ^10.1.8
+  eslint-plugin-jest: ^29.16.6
+  eslint-plugin-jsx-a11y: ^6.10.2
+  eslint-plugin-react-hooks: ^7.1.1
+  eslint-plugin-react-refresh: ^0.5.7
+  globals: ^17.13.0
+  husky: ^9.1.7
+  lint-staged: ^17.6.0
+  prettier: ^3.9.9
+  typescript-eslint: ^8.71.0
+
+  # Test
+  '@jest/globals': ^30.5.2
+  '@swc/core': ^1.16.13
+  '@swc/jest': ^0.2.39
+  '@testing-library/jest-dom': ^7.0.1
+  '@testing-library/react': ^16.3.3
+  '@testing-library/user-event': ^14.6.7
+  fake-indexeddb: ^6.2.5
+  identity-obj-proxy: ^3.0.0
+  jest: ^30.5.2
+  jest-environment-jsdom: ^30.5.2
+
+  # Types
+  '@types/node': ^24.0.0
+  '@types/react': ^19.3.0
+  '@types/react-dom': ^19.3.0
+
+engineStrict: true
+strictPeerDependencies: true
+peerDependencyRules:
+  allowedVersions:
+    # No ESLint 10 release of jsx-a11y yet; its rules work unchanged on the flat-config API.
+    eslint-plugin-jsx-a11y>eslint: '10'
+minimumReleaseAgeExclude:
+  - '@turbo/darwin-64@2.11.7'
+  - '@turbo/darwin-arm64@2.11.7'
+  - '@turbo/linux-64@2.11.7'
+  - '@turbo/linux-arm64@2.11.7'
+  - '@turbo/windows-64@2.11.7'
+  - '@turbo/windows-arm64@2.11.7'
+  - eslint@10.12.0
+  - turbo@2.11.7
+allowBuilds:
+  '@parcel/watcher': false
+  '@swc/core': false
+  unrs-resolver: false

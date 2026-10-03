@@ -1,0 +1,50 @@
+{
+  "name": "@shakespeer/web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --cache --max-warnings=0",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.node.json",
+    "test": "node --experimental-vm-modules --disable-warning=ExperimentalWarning ./node_modules/jest/bin/jest.js",
+    "test:watch": "pnpm test --watch",
+    "test:coverage": "pnpm test --coverage",
+    "clean": "rm -rf dist coverage .turbo .eslintcache"
+  },
+  "dependencies": {
+    "@emotion/react": "catalog:",
+    "@emotion/styled": "catalog:",
+    "@fontsource-variable/eb-garamond": "catalog:",
+    "@fontsource-variable/roboto": "catalog:",
+    "@mui/icons-material": "catalog:",
+    "@mui/material": "catalog:",
+    "@shakespeer/storage": "workspace:*",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-router": "catalog:"
+  },
+  "devDependencies": {
+    "@babel/core": "catalog:",
+    "@jest/globals": "catalog:",
+    "@rolldown/plugin-babel": "catalog:",
+    "@shakespeer/eslint-config": "workspace:*",
+    "@shakespeer/jest-config": "workspace:*",
+    "@shakespeer/tsconfig": "workspace:*",
+    "@testing-library/jest-dom": "catalog:",
+    "@testing-library/react": "catalog:",
+    "@testing-library/user-event": "catalog:",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "babel-plugin-react-compiler": "catalog:",
+    "eslint": "catalog:",
+    "fake-indexeddb": "catalog:",
+    "jest": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:"
+  }
+}
