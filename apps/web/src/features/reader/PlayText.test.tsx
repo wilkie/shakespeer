@@ -1,8 +1,14 @@
 import { describe, expect, it } from '@jest/globals';
 import { render } from '@testing-library/react';
-import type { LineNode, TextNode, VersionDocument } from '@shakespeer/corpus';
+import {
+  createVersionIndex,
+  type LineNode,
+  type TextNode,
+  type VersionDocument,
+} from '@shakespeer/corpus';
 
 import { AppProviders } from '@/app/AppProviders';
+import { createNoteIndex } from '@/features/notes/noteIndex';
 
 import { PlayText } from './PlayText';
 
@@ -46,9 +52,16 @@ function doc(...speeches: { label: string; nodes: TextNode[] }[]): VersionDocume
 }
 
 function renderText(version: VersionDocument) {
-  return render(<PlayText doc={version} decorations={new Map()} revealTerms={false} />, {
-    wrapper: AppProviders,
-  });
+  return render(
+    <PlayText
+      doc={version}
+      notes={createNoteIndex(createVersionIndex(version), [], [], [])}
+      revealTerms={false}
+    />,
+    {
+      wrapper: AppProviders,
+    },
+  );
 }
 
 describe('PlayText', () => {

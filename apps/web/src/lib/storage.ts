@@ -1,6 +1,7 @@
 import {
   createKeyValueStore,
   openDatabase,
+  type HighlightColor,
   type KeyValueStore,
   type ShakespeerDatabase,
 } from '@shakespeer/storage';
@@ -9,6 +10,7 @@ import {
 export interface Settings extends Record<string, unknown> {
   'definitions.showUnderlines': boolean;
   'map.showAnnotationMarks': boolean;
+  'annotations.lastColor': HighlightColor;
   [key: `reader.lastVersion.${string}`]: string;
 }
 

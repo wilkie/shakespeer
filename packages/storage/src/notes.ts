@@ -82,6 +82,24 @@ export async function saveNote<K extends NoteKind>(
 }
 
 /**
+ * Stores a repaired anchor (ANC-031). This is not an edit by the reader: `updatedAt` and the
+ * imported note's modified flag are left alone.
+ */
+export async function updateAnchor(
+  db: ShakespeerDatabase,
+  kind: NoteKind,
+  id: string,
+  anchor: DefinitionRecord['anchor'],
+): Promise<void> {
+  const tx = db.transaction(kind, 'readwrite');
+  const record = await tx.store.get(id);
+  if (record) {
+    await tx.store.put({ ...record, anchor });
+  }
+  await tx.done;
+}
+
+/**
  * Deletes a note. Deleting an imported note leaves a tombstone so collection updates do not
  * bring it back (STO-014, XCH-041).
  */

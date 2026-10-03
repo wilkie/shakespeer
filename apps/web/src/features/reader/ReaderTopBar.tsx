@@ -38,6 +38,8 @@ export interface ReaderTopBarProps {
   onVersion: (versionId: string) => void;
   showUnderlines: boolean;
   onShowUnderlines: (value: boolean) => void;
+  showAnnotationMarks: boolean;
+  onShowAnnotationMarks: (value: boolean) => void;
   onAbout: () => void;
   onMenuOpenChange: (open: boolean) => void;
   /** On phones, previous/next scene controls live in the top bar (MAP-051). */
@@ -128,6 +130,8 @@ export function ReaderTopBar({
   onVersion,
   showUnderlines,
   onShowUnderlines,
+  showAnnotationMarks,
+  onShowAnnotationMarks,
   onAbout,
   onMenuOpenChange,
   compactScenes,
@@ -244,6 +248,23 @@ export function ReaderTopBar({
               />
             </ListItemIcon>
             <ListItemText primary="Show definition underlines" />
+          </MenuItem>
+          <MenuItem
+            role="menuitemcheckbox"
+            aria-checked={showAnnotationMarks}
+            onClick={() => {
+              onShowAnnotationMarks(!showAnnotationMarks);
+            }}
+          >
+            <ListItemIcon>
+              <Switch
+                size="small"
+                checked={showAnnotationMarks}
+                tabIndex={-1}
+                slotProps={{ input: { 'aria-hidden': true } }}
+              />
+            </ListItemIcon>
+            <ListItemText primary="Show annotation marks on map" />
           </MenuItem>
           <MenuItem
             onClick={() => {

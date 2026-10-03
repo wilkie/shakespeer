@@ -21,3 +21,10 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: jest.fn(),
   })),
 });
+
+// jsdom has no layout, so ranges have no geometry; give them an on-screen box.
+const rect = () => new DOMRect(100, 300, 50, 20);
+Object.assign(Range.prototype, {
+  getBoundingClientRect: rect,
+  getClientRects: () => [rect()],
+});

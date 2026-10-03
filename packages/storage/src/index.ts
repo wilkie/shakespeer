@@ -10,6 +10,7 @@ export {
   snapshotNotes,
   subscribeNotes,
   trackCreated,
+  updateAnchor,
   type NoteChange,
   type NoteCounts,
   type NoteKind,

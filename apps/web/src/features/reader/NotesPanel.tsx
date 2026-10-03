@@ -1,134 +1,187 @@
 import Close from '@mui/icons-material/Close';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
 import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
+import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { getSource, type SourcedDefinition } from '@shakespeer/corpus';
+import type { TextAnchor } from '@shakespeer/corpus';
+import type { AnnotationRecord, DefinitionRecord } from '@shakespeer/storage';
 import { useState, type ReactNode } from 'react';
 
-import type { TermEntry } from './terms';
+import { AnnotationEntry } from '@/features/notes/AnnotationEntry';
+import type { TermGroup } from '@/features/notes/noteIndex';
+import { truncate } from '@/features/notes/format';
+import { TermEntry } from '@/features/notes/TermEntry';
 
-const PART_OF_SPEECH_LABELS: Record<NonNullable<SourcedDefinition['partOfSpeech']>, string> = {
-  noun: 'noun',
-  verb: 'verb',
-  adjective: 'adj.',
-  adverb: 'adv.',
-  pronoun: 'pron.',
-  preposition: 'prep.',
-  conjunction: 'conj.',
-  interjection: 'interj.',
-  phrase: 'phrase',
-  other: '',
-};
-
-function truncate(text: string, length = 80): string {
-  return text.length > length ? `${text.slice(0, length - 1)}…` : text;
+export interface PanelTerm {
+  key: string;
+  anchor: TextAnchor;
+  group: TermGroup | undefined;
+  drafts: DefinitionRecord[];
 }
 
-/** One term and its definitions, grouped by source (DEF-031, PNL-011, ATR-010). */
-function TermView({
-  entries,
-  onSource,
-}: {
-  entries: readonly TermEntry[];
-  onSource: (sourceId: string) => void;
-}) {
-  const quote = entries[0]?.term.anchor.quote.exact ?? '';
-  return (
-    <Box component="article" sx={{ py: 2 }}>
-      <Typography variant="overline" color="text.secondary">
-        Definition
-      </Typography>
-      <Typography variant="h6" component="h3" sx={{ fontStyle: 'italic', mb: 1 }}>
-        “{truncate(quote)}”
-      </Typography>
-      {entries.map(({ term, sourceId }) => {
-        const source = getSource(sourceId);
-        return (
-          <Box key={term.id} sx={{ mb: 1.5 }}>
-            <Stack component="ol" spacing={1} sx={{ pl: 2.5, my: 0 }}>
-              {term.definitions.map((definition, i) => (
-                <Typography component="li" key={i}>
-                  {definition.partOfSpeech && PART_OF_SPEECH_LABELS[definition.partOfSpeech] && (
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      sx={{ fontStyle: 'italic', mr: 0.75 }}
-                    >
-                      {PART_OF_SPEECH_LABELS[definition.partOfSpeech]}
-                    </Typography>
-                  )}
-                  {definition.meaning}
-                </Typography>
-              ))}
-            </Stack>
-            <Typography variant="caption" color="text.secondary" component="p" sx={{ mt: 0.5 }}>
-              {term.headword !== quote && <>Headword “{term.headword}”. </>}
-              Source:{' '}
-              <Link
-                component="button"
-                variant="caption"
-                onClick={() => {
-                  onSource(sourceId);
-                }}
-              >
-                {source?.shortName ?? sourceId}
-              </Link>
-            </Typography>
-          </Box>
-        );
-      })}
-    </Box>
-  );
-}
-
-export interface NotesPanelContent {
-  /** Terms covering the activated point (PNL-010), grouped by anchor. */
-  terms: (readonly TermEntry[])[];
-}
+export type SaveStatus = 'idle' | 'saving' | 'saved' | 'error';
 
 export interface NotesPanelProps {
-  content: NotesPanelContent;
+  terms: readonly PanelTerm[];
+  annotations: readonly AnnotationRecord[];
+  editing: boolean;
+  /** The field to focus when the panel opens in edit mode (SELX-006, SELX-007). */
+  focusId: string | undefined;
+  status: SaveStatus;
   variant: 'column' | 'sheet';
   onClose: () => void;
+  onToggleEdit: () => void;
+  onCancel: () => void;
+  onRetry: () => void;
   onSource: (sourceId: string) => void;
+  onAddDefinition: (term: PanelTerm) => void;
+  onSaveDefinition: (record: DefinitionRecord) => void;
+  onDeleteDefinition: (record: DefinitionRecord) => void;
+  onSaveAnnotation: (record: AnnotationRecord) => void;
+  onDeleteAnnotation: (record: AnnotationRecord) => void;
 }
 
-function Header({ onClose }: { onClose: () => void }) {
+const STATUS_TEXT: Record<SaveStatus, string> = {
+  idle: '',
+  saving: 'Saving…',
+  saved: 'Saved',
+  error: 'Not saved',
+};
+
+function Header({
+  editing,
+  status,
+  onClose,
+  onToggleEdit,
+  onCancel,
+  onRetry,
+}: Pick<
+  NotesPanelProps,
+  'editing' | 'status' | 'onClose' | 'onToggleEdit' | 'onCancel' | 'onRetry'
+>) {
   return (
-    <Stack
-      direction="row"
-      sx={{ alignItems: 'center', justifyContent: 'space-between', px: 2, pt: 1 }}
-    >
-      <Typography variant="subtitle1" component="h2" sx={{ fontWeight: 600 }}>
-        Notes
+    <Box sx={{ px: 2, pt: 1 }}>
+      <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+        <Typography variant="subtitle1" component="h2" sx={{ fontWeight: 600, flex: 1 }}>
+          Notes
+        </Typography>
+        {editing && (
+          <Button size="small" onClick={onCancel}>
+            Cancel
+          </Button>
+        )}
+        <Button
+          size="small"
+          variant={editing ? 'contained' : 'outlined'}
+          aria-pressed={editing}
+          onClick={onToggleEdit}
+        >
+          {editing ? 'Done' : 'Edit'}
+        </Button>
+        <IconButton aria-label="Close notes" onClick={onClose} edge="end">
+          <Close />
+        </IconButton>
+      </Stack>
+      {/* PNL-027: saving state, with a retry if storage failed. */}
+      <Typography
+        variant="caption"
+        color={status === 'error' ? 'error' : 'text.secondary'}
+        role="status"
+        sx={{ minHeight: 20, display: 'block' }}
+      >
+        {STATUS_TEXT[status]}
+        {status === 'error' && (
+          <Button size="small" color="error" onClick={onRetry} sx={{ ml: 1, py: 0 }}>
+            Retry
+          </Button>
+        )}
       </Typography>
-      <IconButton aria-label="Close notes" onClick={onClose} edge="end">
-        <Close />
-      </IconButton>
-    </Stack>
+    </Box>
   );
 }
 
-function Body({ content, onSource }: Pick<NotesPanelProps, 'content' | 'onSource'>) {
-  const items: ReactNode[] = content.terms.map((entries, i) => (
-    <Box key={entries[0]?.term.id ?? i}>
-      {i > 0 && <Divider />}
-      <TermView entries={entries} onSource={onSource} />
+function Body(props: NotesPanelProps) {
+  const { terms, annotations, editing, focusId } = props;
+  const entries: { key: string; label: string; content: ReactNode }[] = [
+    ...terms.map((term) => ({
+      key: `t:${term.key}`,
+      label: `Definition: “${truncate(term.anchor.quote.exact, 40)}”`,
+      content: (
+        <TermEntry
+          anchor={term.anchor}
+          group={term.group}
+          drafts={term.drafts}
+          editing={editing}
+          focusId={focusId}
+          onAddDefinition={() => {
+            props.onAddDefinition(term);
+          }}
+          onSave={props.onSaveDefinition}
+          onDelete={props.onDeleteDefinition}
+          onSource={props.onSource}
+        />
+      ),
+    })),
+    ...annotations.map((record) => ({
+      key: `a:${record.id}`,
+      label: `Annotation: “${truncate(record.anchor.quote.exact, 40)}”`,
+      content: (
+        <AnnotationEntry
+          record={record}
+          editing={editing}
+          focusNotes={record.id === focusId}
+          onSave={props.onSaveAnnotation}
+          onDelete={props.onDeleteAnnotation}
+        />
+      ),
+    })),
+  ];
+
+  if (entries.length === 0) {
+    return (
+      <Typography color="text.secondary" sx={{ px: 2, py: 2 }}>
+        Nothing here any more.
+      </Typography>
+    );
+  }
+  if (entries.length === 1) {
+    return <Box sx={{ px: 2, pb: 2 }}>{entries[0]?.content}</Box>;
+  }
+  // Several notes are collapsible, all expanded when there are at most three (PNL-012).
+  return (
+    <Box sx={{ px: 1, pb: 2 }}>
+      {entries.map((entry) => (
+        <Accordion
+          key={entry.key}
+          defaultExpanded={entries.length <= 3}
+          disableGutters
+          elevation={0}
+          sx={{ '&::before': { display: 'none' } }}
+        >
+          <AccordionSummary expandIcon={<ExpandMore />}>
+            <Typography variant="body2">{entry.label}</Typography>
+          </AccordionSummary>
+          <AccordionDetails sx={{ pt: 0 }}>{entry.content}</AccordionDetails>
+        </Accordion>
+      ))}
     </Box>
-  ));
-  return <Box sx={{ px: 2, pb: 2 }}>{items}</Box>;
+  );
 }
 
 /**
- * The notes panel (PNL): a column at the left on wide screens (PNL-002), a bottom sheet that
- * can be dragged taller or dismissed on phones (PNL-003).
+ * The notes panel (PNL): a column at the left on wide screens (PNL-002), a bottom sheet that can
+ * be dragged taller or dismissed on phones (PNL-003).
  */
-export function NotesPanel({ content, variant, onClose, onSource }: NotesPanelProps) {
+export function NotesPanel(props: NotesPanelProps) {
+  const { variant, onClose } = props;
   const [sheetHeight, setSheetHeight] = useState(50); // percent of viewport height
   const [drag, setDrag] = useState<{ startY: number; startHeight: number } | null>(null);
+  const header = <Header {...props} />;
 
   if (variant === 'column') {
     return (
@@ -136,7 +189,7 @@ export function NotesPanel({ content, variant, onClose, onSource }: NotesPanelPr
         component="aside"
         aria-label="Notes"
         sx={{
-          width: 360,
+          width: 380,
           flexShrink: 0,
           position: 'sticky',
           top: 'var(--reader-top, 64px)',
@@ -147,8 +200,8 @@ export function NotesPanel({ content, variant, onClose, onSource }: NotesPanelPr
           bgcolor: 'background.paper',
         }}
       >
-        <Header onClose={onClose} />
-        <Body content={content} onSource={onSource} />
+        {header}
+        <Body {...props} />
       </Box>
     );
   }
@@ -162,7 +215,7 @@ export function NotesPanel({ content, variant, onClose, onSource }: NotesPanelPr
         left: 0,
         right: 0,
         bottom: 0,
-        height: `${String(sheetHeight)}dvh`,
+        height: `${String(props.editing ? Math.max(sheetHeight, 70) : sheetHeight)}dvh`,
         zIndex: (theme) => theme.zIndex.drawer,
         bgcolor: 'background.paper',
         borderTopLeftRadius: 16,
@@ -206,9 +259,9 @@ export function NotesPanel({ content, variant, onClose, onSource }: NotesPanelPr
       >
         <Box sx={{ width: 40, height: 4, borderRadius: 2, bgcolor: 'text.disabled' }} />
       </Box>
-      <Header onClose={onClose} />
+      {header}
       <Box sx={{ overflowY: 'auto', flex: 1 }}>
-        <Body content={content} onSource={onSource} />
+        <Body {...props} />
       </Box>
     </Box>
   );

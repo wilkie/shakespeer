@@ -4,8 +4,13 @@ import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Tooltip from '@mui/material/Tooltip';
 import type { IndexedScene, VersionIndex } from '@shakespeer/corpus';
-import { useRef, useState } from 'react';
+import type { AnnotationRecord } from '@shakespeer/storage';
+import { useEffect, useRef, useState } from 'react';
 
+import { truncate } from '@/features/notes/format';
+import { HIGHLIGHT_COLORS, HIGHLIGHTS } from '@/features/notes/palette';
+
+import { MARK_HEIGHT, markGroups } from './map-marks';
 import { sceneNavigation } from './navigation';
 import { sceneShortTitle, sceneTitle } from './titles';
 
@@ -19,6 +24,26 @@ export interface SceneMapProps {
   onScene: (sceneIndex: number) => void;
   /** Scrubbing: jump to a node index without animation (MAP-021). */
   onScrub: (nodeIndex: number) => void;
+  /** Annotations to mark along the bar, or none when marks are off (MAP-040, MAP-044). */
+  annotations: readonly AnnotationRecord[];
+  onMark: (annotations: readonly AnnotationRecord[]) => void;
+}
+
+/** One stripe per color present, in palette order (MAP-042), in the stronger mark tones. */
+function stripes(annotations: readonly AnnotationRecord[]): string {
+  const colors = HIGHLIGHT_COLORS.filter((c) => annotations.some((a) => a.color === c));
+  const step = 100 / colors.length;
+  const stops = colors.map(
+    (c, i) => `${HIGHLIGHTS[c].mark} ${String(i * step)}% ${String((i + 1) * step)}%`,
+  );
+  return `linear-gradient(to right, ${stops.join(', ')})`;
+}
+
+function markLabel(annotations: readonly AnnotationRecord[]): string {
+  const [first] = annotations;
+  return annotations.length === 1 && first
+    ? `Annotation: “${truncate(first.anchor.quote.exact, 40)}”`
+    : `${String(annotations.length)} annotations`;
 }
 
 function NavButton({
@@ -70,12 +95,29 @@ export function SceneMap({
   compact,
   onScene,
   onScrub,
+  annotations,
+  onMark,
 }: SceneMapProps) {
   const barRef = useRef<HTMLDivElement>(null);
   const drag = useRef<{ startY: number; moved: boolean } | null>(null);
   // One label for the scene under the pointer, drawn inside the fixed map so it never moves
   // with the page (per-segment tooltips re-anchored on every scroll) (MAP-005).
   const [hover, setHover] = useState<{ y: number; sceneIndex: number } | null>(null);
+  const [barHeight, setBarHeight] = useState(0);
+
+  useEffect(() => {
+    const bar = barRef.current;
+    if (!bar || typeof ResizeObserver === 'undefined') {
+      return;
+    }
+    const observer = new ResizeObserver(() => {
+      setBarHeight(bar.clientHeight);
+    });
+    observer.observe(bar);
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
   const total = Math.max(1, index.nodes.length);
   const navigation = sceneNavigation(index, currentIndex);
   const currentScene =
@@ -232,6 +274,37 @@ export function SceneMap({
             {sceneTitle(hoverScene.scene, hoverScene.actN)}
           </Box>
         )}
+        {barHeight > 0 &&
+          markGroups(index, annotations, barHeight).map((group) => (
+            <ButtonBase
+              key={group.annotations[0]?.id}
+              aria-label={markLabel(group.annotations)}
+              // Marks are not part of scrubbing the bar.
+              onPointerDown={(event) => {
+                event.stopPropagation();
+              }}
+              onPointerUp={(event) => {
+                event.stopPropagation();
+              }}
+              onClick={() => {
+                onMark(group.annotations);
+              }}
+              sx={{
+                position: 'absolute',
+                top: group.top,
+                right: compact ? -3 : -9,
+                width: compact ? 4 : 7,
+                height: MARK_HEIGHT,
+                zIndex: 1,
+                backgroundImage: stripes(group.annotations),
+                outline: 1,
+                outlineColor: 'background.default',
+                // A larger touch target than the mark itself.
+                '&::before': { content: '""', position: 'absolute', inset: '-4px -4px' },
+                '&:hover, &.Mui-focusVisible': { outline: 2, outlineColor: 'text.primary' },
+              }}
+            />
+          ))}
         {currentIndex !== undefined && (
           <Box
             aria-hidden="true"

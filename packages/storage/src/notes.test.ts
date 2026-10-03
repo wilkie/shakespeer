@@ -11,6 +11,7 @@ import {
   snapshotNotes,
   subscribeNotes,
   trackCreated,
+  updateAnchor,
 } from './notes';
 import type { AnnotationRecord, DefinitionRecord, ShakespeerDatabase } from './schema';
 
@@ -136,6 +137,19 @@ describe('notes repository', () => {
       notes: 'before',
     });
     await expect(getNote(db, 'definitions', created.id)).resolves.toBeUndefined();
+  });
+
+  it('ANC-031: storing a repaired anchor is not an edit', async () => {
+    const theirs = annotation({ origin: imported });
+    await db.put('annotations', theirs);
+    const repaired = { ...anchor, revision: 'sha256:1111111111111111' };
+
+    await updateAnchor(db, 'annotations', theirs.id, repaired);
+
+    await expect(getNote(db, 'annotations', theirs.id)).resolves.toStrictEqual({
+      ...theirs,
+      anchor: repaired,
+    });
   });
 
   it('STO-004: notifies subscribers of changes', async () => {

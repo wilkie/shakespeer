@@ -25,7 +25,9 @@
     "@shakespeer/storage": "workspace:*",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "react-router": "catalog:"
+    "react-markdown": "catalog:",
+    "react-router": "catalog:",
+    "remark-gfm": "catalog:"
   },
   "devDependencies": {
     "@babel/core": "catalog:",

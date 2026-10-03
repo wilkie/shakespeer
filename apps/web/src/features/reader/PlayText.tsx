@@ -10,15 +10,18 @@ import type {
   TextNode,
   VersionDocument,
 } from '@shakespeer/corpus';
-import type { ReactNode, Ref } from 'react';
+import type { CSSProperties, ReactNode, Ref } from 'react';
 
-import { segmentText, type Decoration } from './segments';
+import { ANNOTATION_PREFIX, TERM_PREFIX, type NoteIndex } from '@/features/notes/noteIndex';
+import { highlightVar } from '@/features/notes/palette';
+
+import { segmentText } from './segments';
 import { sceneTitle } from './titles';
 
 export interface PlayTextProps {
   doc: VersionDocument;
-  /** Definition terms per text node (DEF-030). */
-  decorations: ReadonlyMap<string, readonly Decoration[]>;
+  /** Terms and annotations attached to the text (DEF-030, ANN-020). */
+  notes: NoteIndex;
   /** Whether all definition underlines are revealed (DEF-034, DEF-035). */
   revealTerms: boolean;
   ref?: Ref<HTMLDivElement>;
@@ -34,38 +37,73 @@ const MARK_CLASSES: Record<MarkType, string> = {
   gap: 'm-gap',
 };
 
-function NodeText({
-  node,
-  decorations,
-  revealTerms,
-}: {
-  node: TextNode;
-  decorations: readonly Decoration[] | undefined;
-  revealTerms: boolean;
-}) {
-  const segments = segmentText(node.text, node.marks, decorations);
+/** Background for a run covered by annotations: one color, or equal stripes (ANN-021). */
+function highlightStyle(colors: readonly string[]): CSSProperties | undefined {
+  if (colors.length === 0) {
+    return undefined;
+  }
+  if (colors.length === 1) {
+    return { backgroundColor: colors[0] };
+  }
+  const step = 100 / colors.length;
+  const stops = colors.map(
+    (color, i) => `${color} ${String(i * step)}% ${String((i + 1) * step)}%`,
+  );
+  return { backgroundImage: `linear-gradient(to bottom, ${stops.join(', ')})` };
+}
+
+function NodeText({ node, context }: { node: TextNode; context: BlockContext }) {
+  const { notes, revealTerms } = context;
+  const segments = segmentText(node.text, node.marks, notes.byNode.get(node.id));
   return (
     <span className="node" data-node-id={node.id}>
       {segments.map((segment) => {
-        const className = segment.marks.map((mark) => MARK_CLASSES[mark]).join(' ');
+        const classes = segment.marks.map((mark) => MARK_CLASSES[mark]);
         const content = segment.marks.includes('sup') ? <sup>{segment.text}</sup> : segment.text;
         if (segment.ids.length === 0) {
-          return className ? (
-            <span key={segment.start} className={className}>
+          return classes.length > 0 ? (
+            <span key={segment.start} className={classes.join(' ')}>
               {content}
             </span>
           ) : (
             content
           );
         }
-        // Terms are activated by delegated handlers on the text root (see Reader).
+        const terms = segment.ids
+          .filter((id) => id.startsWith(TERM_PREFIX))
+          .map((id) => id.slice(TERM_PREFIX.length));
+        const annotations = segment.ids
+          .filter((id) => id.startsWith(ANNOTATION_PREFIX))
+          .flatMap((id) => notes.annotation(id.slice(ANNOTATION_PREFIX.length)) ?? []);
+        if (terms.length > 0) {
+          classes.push('term');
+        }
+        if (annotations.length > 0) {
+          classes.push('hl');
+          // A marker ends highlights that carry notes, links or citations (ANN-022).
+          const ending = annotations.some(
+            (a) =>
+              a.anchor.end.nodeId === node.id &&
+              a.anchor.end.offset === segment.end &&
+              (a.notes.trim() !== '' || a.links.length > 0 || a.citations.length > 0),
+          );
+          if (ending) {
+            classes.push('hl-end');
+          }
+        }
+        const interactive = annotations.length > 0 || revealTerms;
+        // Notes are activated by delegated handlers on the text root (see ReaderPage).
         return (
           <span
             key={segment.start}
-            className={`term ${className}`}
-            data-terms={segment.ids.join(' ')}
+            className={classes.join(' ')}
+            style={highlightStyle(annotations.map((a) => highlightVar(a.color)))}
             data-offset={segment.start}
-            {...(revealTerms ? { role: 'button', tabIndex: 0 } : {})}
+            {...(terms.length > 0 ? { 'data-terms': terms.join(' ') } : {})}
+            {...(annotations.length > 0
+              ? { 'data-annotations': annotations.map((a) => a.id).join(' ') }
+              : {})}
+            {...(interactive ? { role: 'button', tabIndex: 0 } : {})}
           >
             {content}
           </span>
@@ -82,7 +120,7 @@ function lineNumberLabel(line: LineNode): string | undefined {
 }
 
 interface BlockContext {
-  decorations: PlayTextProps['decorations'];
+  notes: NoteIndex;
   revealTerms: boolean;
   /** Text of earlier parts of each split verse line, for indentation (RDR-024). */
   ghosts: ReadonlyMap<string, string>;
@@ -91,11 +129,7 @@ interface BlockContext {
 function StageDirection({ node, context }: { node: StageDirectionNode; context: BlockContext }) {
   return (
     <div className={`sd${node.sdType === 'label' ? ' sd-label' : ''}`}>
-      <NodeText
-        node={node}
-        decorations={context.decorations.get(node.id)}
-        revealTerms={context.revealTerms}
-      />
+      <NodeText node={node} context={context} />
     </div>
   );
 }
@@ -123,11 +157,7 @@ function Line({
           {ghost}
         </span>
       )}
-      <NodeText
-        node={node}
-        decorations={context.decorations.get(node.id)}
-        revealTerms={context.revealTerms}
-      />
+      <NodeText node={node} context={context} />
     </span>
   );
 }
@@ -226,11 +256,7 @@ function BlockView({ block, context }: { block: Block; context: BlockContext }) 
           {block.label}
           {qualifier && (
             <span className="speaker-sd">
-              <NodeText
-                node={qualifier}
-                decorations={context.decorations.get(qualifier.id)}
-                revealTerms={context.revealTerms}
-              />
+              <NodeText node={qualifier} context={context} />
             </span>
           )}
         </div>
@@ -401,13 +427,26 @@ const textStyles: SxProps<Theme> = (theme) => {
       textUnderlineOffset: '0.2em',
       cursor: 'pointer',
     },
+    '& .hl': { borderRadius: '2px', cursor: 'pointer', boxDecorationBreak: 'clone' },
+    '& .hl-end::after': {
+      content: '"\\25C6"',
+      fontSize: '0.55em',
+      verticalAlign: 'super',
+      marginLeft: '1px',
+      color: palette.text.secondary,
+      userSelect: 'none',
+    },
+    '@media (forced-colors: active)': {
+      '& .hl': { outline: '1px solid CanvasText', background: 'none' },
+    },
+    '& .hl:focus-visible': { outline: `2px solid ${palette.primary.main}`, outlineOffset: '1px' },
     '& .term:focus-visible': { outline: `2px solid ${palette.primary.main}`, outlineOffset: '1px' },
   };
 };
 
 /** The whole version as one continuous document (RDR-020 – RDR-028). */
-export function PlayText({ doc, decorations, revealTerms, ref, footer }: PlayTextProps) {
-  const context: BlockContext = { decorations, revealTerms, ghosts: splitLineGhosts(doc) };
+export function PlayText({ doc, notes, revealTerms, ref, footer }: PlayTextProps) {
+  const context: BlockContext = { notes, revealTerms, ghosts: splitLineGhosts(doc) };
   return (
     <Box ref={ref} className={revealTerms ? 'reveal-terms' : undefined} sx={textStyles}>
       {doc.divisions.map((act) =>

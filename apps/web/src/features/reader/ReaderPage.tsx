@@ -15,15 +15,21 @@ import { getDatabase, getSettings } from '@/lib/storage';
 import { useSetting } from '@/lib/useSetting';
 
 import { fragmentFor, resolveFragment } from './fragment';
-import { NotesPanel, type NotesPanelContent } from './NotesPanel';
+import { HighlightVariables } from '@/features/notes/HighlightVariables';
+import { createNoteIndex } from '@/features/notes/noteIndex';
+import { useVersionNotes } from '@/features/notes/useVersionNotes';
+
+import { makeAnchor, snapToWords } from './anchors';
+import { NotesPanel, type NotesPanelProps } from './NotesPanel';
 import { PlayText } from './PlayText';
 import { ReaderTopBar } from './ReaderTopBar';
 import { sceneNavigation } from './navigation';
 import type { ReaderData } from './routes';
 import { SceneMap } from './SceneMap';
 import { AboutThisText, SourceDialog } from './SourceInfo';
-import { createTermIndex, type TermEntry } from './terms';
+import { SelectionMenu, type SelectedRange } from './SelectionMenu';
 import { useCurrentLine } from './useCurrentLine';
+import { useNotesPanel } from './useNotesPanel';
 import { mapThroughAlignment } from './version-map';
 
 interface NavigationState {
@@ -122,13 +128,15 @@ export function ReaderPage() {
   const noHover = useMediaQuery('(hover: none)');
 
   const index = createVersionIndex(doc);
-  const terms = createTermIndex(definitions);
+  const stored = useVersionNotes(play.id, version.id, index);
+  const notes = createNoteIndex(index, definitions, stored.definitions, stored.annotations);
 
   const textRef = useRef<HTMLDivElement>(null);
   const topBarRef = useRef<HTMLDivElement>(null);
   const [showUnderlines, setShowUnderlines] = useSetting('definitions.showUnderlines', false);
+  const [showMarks, setShowMarks] = useSetting('map.showAnnotationMarks', true);
   const [peek, setPeek] = useState(false);
-  const [panel, setPanel] = useState<NotesPanelContent | null>(null);
+  const panel = useNotesPanel(play.id, version.id, index, notes);
   const [menuOpen, setMenuOpen] = useState(false);
   const [sourceDialog, setSourceDialog] = useState<{ title: string; sourceIds: string[] } | null>(
     null,
@@ -138,7 +146,7 @@ export function ReaderPage() {
 
   // On phones the top bar slides away while scrolling down (RDR-016).
   const scrolledDown = useScrollTrigger({ threshold: 80 });
-  const topBarHidden = isPhone && scrolledDown && panel === null && !menuOpen;
+  const topBarHidden = isPhone && scrolledDown && !panel.isOpen && !menuOpen;
 
   const topOffset = () => Math.max(0, topBarRef.current?.getBoundingClientRect().bottom ?? 0);
   const lines = useCurrentLine(textRef, topOffset);
@@ -220,21 +228,16 @@ export function ReaderPage() {
     };
   }, [restored, lines.top, index, play.id, version.id]);
 
-  const openTerms = (element: HTMLElement) => {
-    const ids = (element.dataset['terms'] ?? '').split(' ').filter(Boolean);
-    const entries = ids
-      .map((id) => terms.get(id))
-      .filter((entry): entry is TermEntry => entry !== undefined);
-    if (entries.length === 0) {
-      return;
-    }
-    opener.current = element;
-    setPanel({ terms: entries.map((entry) => [entry]) });
+  /** Keeps the activated text in view beside or above the panel (PNL-002, PNL-003). */
+  const revealInPanel = (element: Element | null, editing: boolean) => {
     requestAnimationFrame(() => {
+      if (!element) {
+        return;
+      }
       if (isPhone) {
-        // Keep the activated text above the bottom sheet (PNL-003).
         const rect = element.getBoundingClientRect();
-        const limit = window.innerHeight * 0.45;
+        // The sheet opens at half height, taller while editing.
+        const limit = window.innerHeight * (editing ? 0.25 : 0.45);
         if (rect.bottom > limit) {
           window.scrollBy({ top: rect.bottom - limit + 16, behavior: 'instant' });
         }
@@ -244,24 +247,51 @@ export function ReaderPage() {
     });
   };
 
-  // Delegated activation of terms (DEF-030): one listener instead of thousands.
+  /** Opens every note at an activated piece of text (PNL-010). */
+  const openNotes = (element: HTMLElement) => {
+    const ids = (name: string) => (element.dataset[name] ?? '').split(' ').filter(Boolean);
+    if (panel.openAt(ids('terms'), ids('annotations'))) {
+      opener.current = element;
+      revealInPanel(element, false);
+    }
+  };
+
+  /** Turns a selection into an anchor, snapped to whole words (SELX-005). */
+  const selectionAnchor = ({ start, end }: SelectedRange) => {
+    const snapped = snapToWords(index, start, end);
+    return snapped && makeAnchor(index, snapped.start, snapped.end);
+  };
+
+  const fromSelection = (range: SelectedRange, action: 'define' | 'annotate') => {
+    const anchor = selectionAnchor(range);
+    if (!anchor) {
+      return;
+    }
+    opener.current = null;
+    panel[action](anchor);
+    revealInPanel(nodeElement(anchor.start.nodeId), true);
+  };
+
+  // Delegated activation of terms and highlights (DEF-030, ANN-020): one listener, not thousands.
   useEffect(() => {
     const root = textRef.current;
     if (!root) {
       return;
     }
+    const target = (event: Event) =>
+      (event.target as Element).closest<HTMLElement>('[data-terms], [data-annotations]');
     const onClick = (event: MouseEvent) => {
-      const term = (event.target as Element).closest<HTMLElement>('.term');
+      const element = target(event);
       // Don't treat the end of a text selection as a click.
-      if (term && (window.getSelection()?.isCollapsed ?? true)) {
-        openTerms(term);
+      if (element && (window.getSelection()?.isCollapsed ?? true)) {
+        openNotes(element);
       }
     };
     const onKeyDown = (event: KeyboardEvent) => {
-      const term = (event.target as Element).closest<HTMLElement>('.term');
-      if (term && (event.key === 'Enter' || event.key === ' ')) {
+      const element = target(event);
+      if (element && (event.key === 'Enter' || event.key === ' ')) {
         event.preventDefault();
-        openTerms(term);
+        openNotes(element);
       }
     };
     root.addEventListener('click', onClick);
@@ -273,20 +303,25 @@ export function ReaderPage() {
   });
 
   const closePanel = () => {
-    setPanel(null);
+    panel.close();
     const element = opener.current;
     opener.current = null;
-    if (element?.tabIndex === 0) {
+    if (element?.isConnected && element.tabIndex === 0) {
       element.focus();
     }
   };
 
   useEffect(() => {
-    if (!panel) {
+    if (!panel.isOpen) {
       return;
     }
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
+      // Escape inside a dialog or menu belongs to it.
+      if (
+        event.key === 'Escape' &&
+        !event.defaultPrevented &&
+        !(event.target as Element).closest('[role="dialog"], [role="listbox"], [role="menu"]')
+      ) {
         closePanel();
       }
     };
@@ -337,10 +372,30 @@ export function ReaderPage() {
       ? index.scenes[0]
       : index.scenes.find((s) => currentIndex >= s.start && currentIndex < s.end);
   const revealTerms = showUnderlines || peek;
+  const panelProps: Omit<NotesPanelProps, 'variant'> = {
+    terms: panel.terms,
+    annotations: panel.annotations,
+    editing: panel.editing,
+    focusId: panel.focusId,
+    status: panel.status,
+    onClose: closePanel,
+    onToggleEdit: panel.toggleEdit,
+    onCancel: panel.cancel,
+    onRetry: panel.retry,
+    onSource: (sourceId) => {
+      setSourceDialog({ title: 'Source', sourceIds: [sourceId] });
+    },
+    onAddDefinition: panel.addDefinition,
+    onSaveDefinition: panel.saveDefinition,
+    onDeleteDefinition: panel.deleteDefinition,
+    onSaveAnnotation: panel.saveAnnotation,
+    onDeleteAnnotation: panel.deleteAnnotation,
+  };
 
   return (
     <>
       <title>{`${play.title} (${version.shortName}) · Shakespeer`}</title>
+      <HighlightVariables />
       <ReaderTopBar
         ref={topBarRef}
         play={play}
@@ -351,6 +406,8 @@ export function ReaderPage() {
         }}
         showUnderlines={showUnderlines}
         onShowUnderlines={setShowUnderlines}
+        showAnnotationMarks={showMarks}
+        onShowAnnotationMarks={setShowMarks}
         onAbout={() => {
           setSourceDialog({ title: 'About this text', sourceIds: version.sourceIds });
         }}
@@ -386,21 +443,12 @@ export function ReaderPage() {
           bgcolor: 'background.default',
         }}
       >
-        {panel && !isPhone && (
-          <NotesPanel
-            content={panel}
-            variant="column"
-            onClose={closePanel}
-            onSource={(sourceId) => {
-              setSourceDialog({ title: 'Source', sourceIds: [sourceId] });
-            }}
-          />
-        )}
+        {panel.isOpen && !isPhone && <NotesPanel {...panelProps} variant="column" />}
         <Box component="main" sx={{ flex: 1, minWidth: 0, pr: isPhone ? '20px' : '64px' }}>
           <PlayText
             ref={textRef}
             doc={doc}
-            decorations={terms.byNode}
+            notes={notes}
             revealTerms={revealTerms}
             footer={<AboutThisText sourceIds={version.sourceIds} />}
           />
@@ -426,9 +474,25 @@ export function ReaderPage() {
           compact={isPhone}
           onScene={goToScene}
           onScrub={scrub}
+          annotations={showMarks ? stored.annotations : []}
+          onMark={(marked) => {
+            // Scroll to the annotation and open it (MAP-043).
+            const [first] = marked;
+            if (!first) {
+              return;
+            }
+            const element = nodeElement(first.anchor.start.nodeId);
+            scrollToElement(element, false);
+            opener.current = null;
+            panel.openAt(
+              [],
+              marked.map((a) => a.id),
+            );
+            revealInPanel(element, false);
+          }}
         />
       </Box>
-      {noHover && !panel && (
+      {noHover && !panel.isOpen && (
         <RevealButton
           revealed={revealTerms}
           onToggle={() => {
@@ -437,16 +501,17 @@ export function ReaderPage() {
           onPeek={setPeek}
         />
       )}
-      {panel && isPhone && (
-        <NotesPanel
-          content={panel}
-          variant="sheet"
-          onClose={closePanel}
-          onSource={(sourceId) => {
-            setSourceDialog({ title: 'Source', sourceIds: [sourceId] });
-          }}
-        />
-      )}
+      {panel.isOpen && isPhone && <NotesPanel {...panelProps} variant="sheet" />}
+      <SelectionMenu
+        root={textRef}
+        topOffset={topOffset}
+        onDefine={(range) => {
+          fromSelection(range, 'define');
+        }}
+        onAnnotate={(range) => {
+          fromSelection(range, 'annotate');
+        }}
+      />
       <SourceDialog
         title={sourceDialog?.title ?? ''}
         sourceIds={sourceDialog?.sourceIds ?? []}
