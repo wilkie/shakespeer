@@ -14,13 +14,21 @@ registry. The corpus lives in the repository and is read-only at runtime.
 | _Troilus and Cressida_ | `troilus-and-cressida` | `folger`, `q1-1609` (Quarto), `f1-1623` (First Folio)                                  |
 | _The Tempest_          | `the-tempest`          | `folger`, `f1-1623` (First Folio; the only early printing)                             |
 
-| Source                                                                     | Used for                        | License (to verify at ingestion)                      |
-| -------------------------------------------------------------------------- | ------------------------------- | ----------------------------------------------------- |
-| Folger Shakespeare (Folger Shakespeare Library), TEI XML                   | `folger` versions; glosses      | CC BY-NC 3.0                                          |
-| EEBO-TCP transcriptions (Text Creation Partnership)                        | quarto and folio versions       | CC0 1.0 (public domain dedication)                    |
-| Schmidt, _Shakespeare-Lexicon_ (1874–75), Perseus Digital Library encoding | sourced definitions             | Public-domain text; check the encoding's license      |
-| Onions, _A Shakespeare Glossary_ (1911)                                    | sourced definitions             | Public domain; digitization source to be chosen       |
-| _Shakespeare's Words_ (David & Ben Crystal), shakespeareswords.com         | sourced definitions (candidate) | Copyrighted; usable only with the authors' permission |
+| Source                                                         | Used for                                   | License                                                                     | Verified                             |
+| -------------------------------------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------- | ------------------------------------ |
+| Folger Shakespeare, TEI XML (one zip per play from folger.edu) | `folger` versions; variant seeds (CRP-061) | CC BY-NC 3.0 Unported (stated in each file)                                 | Yes                                  |
+| EEBO-TCP transcriptions (Text Creation Partnership, on GitHub) | quarto and folio versions                  | CC0 1.0 (stated in each file)                                               | Yes (First Folio); quartos to locate |
+| Schmidt, _Shakespeare-Lexicon_ (1874–75)                       | sourced definitions                        | Text public domain; Perseus's online encoding is for "personal use"         | Needs a reusable digitization        |
+| Onions, _A Shakespeare Glossary_ (1911)                        | sourced definitions                        | Public domain; scans with OCR on archive.org (`shakespearegloss00oniouoft`) | OCR needs cleanup                    |
+| _Shakespeare's Words_ (David & Ben Crystal)                    | sourced definitions (candidate)            | Copyrighted; only with permission                                           | —                                    |
+
+What the Folger TEI provides (checked on _Hamlet_ and _The Tempest_): every line is a
+`milestone` with a permanent ID (`ftln-0001`, the Folger Through Line Number), its act.scene.line
+number (`n="1.1.1"`) and verse/prose type; stage directions have IDs (`stg-0004.1`) and types
+(entrance, exit, business…); every word and punctuation mark has an ID; speeches name their
+characters. It does **not** include the edition's glosses. It **does** mark every editorial
+emendation (228 in _Hamlet_) and every passage that comes only from the Folio (318) or only from
+the Second Quarto (29).
 
 ## Repository layout
 
@@ -71,7 +79,7 @@ registry. The corpus lives in the repository and is read-only at runtime.
   character offsets are the same however the text is styled.
 - **CRP-024** — Text node IDs MUST be opaque strings, unique within the version, and permanent:
   an ID is never reused or reassigned to different text. IDs derive from stable source IDs where
-  the source has them (Folger's line IDs); otherwise ingestion assigns them and records them in
+  the source has them (Folger's `ftln-NNNN` line IDs and `stg-…` stage direction IDs); otherwise ingestion assigns them and records them in
   a committed ID map (`ingest/ids/<playId>-<versionId>.json`) so re-ingestion preserves them.
   Splitting or merging nodes in a correction creates new IDs and records the old ones in
   `replaces` for anchor repair (ANC-031).
@@ -121,6 +129,10 @@ registry. The corpus lives in the repository and is read-only at runtime.
   (Markdown), `sourceIds` (where the observation comes from), and `readings`: one per version,
   each an anchor-like span (`start`, `end`, as in ANC-002) with its text. These are displayed
   later (RDR-043) but are curated alongside alignment from the start.
+- **CRP-061** — Ingestion MUST seed _Hamlet_'s variants from the Folger markup: passages marked
+  Folio-only and Second-Quarto-only become variants with readings in the corresponding original
+  versions (via alignment), and editorial emendations become variants recording the modern
+  reading against the original ones. Curated notes are added on top (CRP-004).
 
 ## Sourced definitions
 
@@ -144,18 +156,14 @@ registry. The corpus lives in the repository and is read-only at runtime.
 
 ## Open questions
 
-1. The cloud environment's network policy currently blocks `folger.edu`, `shakespeareswords.com`,
-   `gutenberg.org` and `archive.org` (EEBO-TCP on GitHub is reachable). Either allow those hosts
-   in the environment's network settings, or download the source files and commit them under
-   `packages/corpus/ingest/raw/` (Folger's license permits non-commercial redistribution with
-   attribution).
+1. Schmidt's _Lexicon_: is there a reusable digital text? Perseus's encoding is offered for
+   personal use only. Options: ask Perseus for permission, find another digitization, or OCR a
+   public-domain scan. Onions needs OCR cleanup of the archive.org scans either way.
 2. _Shakespeare's Words_ has excellent, context-specific glosses but is not openly licensed.
    Ask the publishers for permission to include its glosses (with attribution and a link per
    definition)? Without permission it can still be offered as an external "Look up on
-   Shakespeare's Words" link from a term, which needs no license.
-3. Do the Folger downloads include the edition's glosses, and under what terms? If not, Folger
-   definitions are dropped from the first release.
-4. Should the First Folio also show Hinman's Through Line Numbers (TLN), the standard for
+   Shakespeare's Words" link from a term (DEF-013), which needs no license.
+3. Should the First Folio also show Hinman's Through Line Numbers (TLN), the standard for
    citing F1? Computing them reliably needs page-layout data that EEBO-TCP may not carry.
-5. Alignment coverage threshold for shipping (CRP-052): proposed 100% reviewed for scene
+4. Alignment coverage threshold for shipping (CRP-052): proposed 100% reviewed for scene
    divisions and speaker attribution, and at least spot-checked line alignment.
