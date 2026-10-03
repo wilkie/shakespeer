@@ -58,7 +58,9 @@ export function useCurrentLine(
       );
     };
     const schedule = () => {
-      frame ||= requestAnimationFrame(measure);
+      if (frame === 0) {
+        frame = requestAnimationFrame(measure);
+      }
     };
     schedule();
     window.addEventListener('scroll', schedule, { passive: true });

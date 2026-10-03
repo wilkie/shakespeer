@@ -137,13 +137,14 @@ function StageDirection({ node, context }: { node: StageDirectionNode; context: 
 function Line({
   node,
   context,
-  showNumber = true,
+  showNumber,
 }: {
   node: LineNode;
   context: BlockContext;
   showNumber?: boolean;
 }) {
-  const label = showNumber ? lineNumberLabel(node) : undefined;
+  // Numbered unless told otherwise.
+  const label = showNumber === false ? undefined : lineNumberLabel(node);
   const ghost = context.ghosts.get(node.id);
   return (
     <span className={`line ${node.form}`}>

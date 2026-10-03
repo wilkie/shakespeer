@@ -14,7 +14,7 @@ import {
   type TextAnchor,
 } from '@shakespeer/corpus';
 import { getPosition, savePosition, type NoteCounts } from '@shakespeer/storage';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useEffectEvent, useRef, useState } from 'react';
 import { useLoaderData, useLocation, useNavigate } from 'react-router';
 
 import { getDatabase, getSettings } from '@/lib/storage';
@@ -173,7 +173,8 @@ export function ReaderPage() {
   const [sourceDialog, setSourceDialog] = useState<{ title: string; sourceIds: string[] } | null>(
     null,
   );
-  const [restored, setRestored] = useState(false);
+  /** Whether the version's position has been restored; until then, tracking would undo it. */
+  const restored = useRef(false);
   const opener = useRef<HTMLElement | null>(null);
 
   // On phones the top bar slides away while scrolling down (RDR-016).
@@ -208,40 +209,40 @@ export function ReaderPage() {
   }, [play.id, version.id]);
 
   // Restore the position: URL fragment, then a version switch's target, then the saved line
-  // (RDR-032 – RDR-034).
+  // (RDR-032 – RDR-034). It reads the location as it is when a version opens; later fragment
+  // changes are our own (RDR-031).
+  const restorePosition = useEffectEvent(async (isCancelled: () => boolean) => {
+    restored.current = false;
+    const target = location.hash ? resolveFragment(index, location.hash) : undefined;
+    const stateNode = (location.state as NavigationState | null)?.nodeId;
+    if (target?.kind === 'scene') {
+      const scene = index.scenes[target.sceneIndex];
+      scrollToElement(document.getElementById(`scene-${scene?.scene.id ?? ''}`), false);
+    } else {
+      const saved =
+        target || stateNode
+          ? undefined
+          : await getPosition(await getDatabase(), play.id, version.id);
+      const nodeId = target?.nodeId ?? stateNode ?? saved?.nodeId;
+      if (!isCancelled() && nodeId) {
+        scrollToElement(nodeElement(nodeId), false);
+      }
+    }
+    if (!isCancelled()) {
+      restored.current = true;
+    }
+  });
   useEffect(() => {
     let cancelled = false;
-    const restore = async () => {
-      const target = location.hash ? resolveFragment(index, location.hash) : undefined;
-      const stateNode = (location.state as NavigationState | null)?.nodeId;
-      if (target?.kind === 'scene') {
-        const scene = index.scenes[target.sceneIndex];
-        scrollToElement(document.getElementById(`scene-${scene?.scene.id ?? ''}`), false);
-      } else {
-        const saved =
-          target || stateNode
-            ? undefined
-            : await getPosition(await getDatabase(), play.id, version.id);
-        const nodeId = target?.nodeId ?? stateNode ?? saved?.nodeId;
-        if (!cancelled && nodeId) {
-          scrollToElement(nodeElement(nodeId), false);
-        }
-      }
-      if (!cancelled) {
-        setRestored(true);
-      }
-    };
-    void restore();
+    void restorePosition(() => cancelled);
     return () => {
       cancelled = true;
     };
-    // Only on opening a version; later fragment changes are our own (RDR-031).
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [play.id, version.id]);
 
   // Track the current line in the URL fragment and saved position (RDR-031, RDR-033).
   useEffect(() => {
-    if (!restored || !lines.top) {
+    if (!restored.current || !lines.top) {
       return;
     }
     const nodeId = lines.top;
@@ -258,7 +259,7 @@ export function ReaderPage() {
       window.clearTimeout(fragmentTimer);
       window.clearTimeout(saveTimer);
     };
-  }, [restored, lines.top, index, play.id, version.id]);
+  }, [lines.top, index, play.id, version.id]);
 
   /** Keeps the activated text in view beside or above the panel (PNL-002, PNL-003). */
   const revealInPanel = (element: Element | null, editing: boolean) => {

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /**
  * Focuses a field when it first appears, if asked to: the new definition or annotation a
@@ -6,12 +6,12 @@ import { useEffect, useRef } from 'react';
  */
 export function useFocusOnMount<T extends HTMLElement>(focus: boolean) {
   const ref = useRef<T>(null);
+  // Only as the field appears: later renders must not steal focus back.
+  const [initial] = useState(focus);
   useEffect(() => {
-    if (focus) {
+    if (initial) {
       ref.current?.focus({ preventScroll: true });
     }
-    // Only on mount: later renders must not steal focus back.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [initial]);
   return ref;
 }

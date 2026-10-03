@@ -232,7 +232,7 @@ export function useNotesPanel(
     // Editors flush their drafts as they unmount; those saves must not land after the restore.
     cancelling.current = true;
     setPanel({ ...panel, editing: false, drafts: [], created: [], focusId: undefined });
-    try {
+    const revert = async () => {
       await Promise.all(pending.current);
       let snapshot = await current.snapshot;
       snapshot = {
@@ -249,9 +249,10 @@ export function useNotesPanel(
         await restoreSnapshot(await getDatabase(), restored);
       });
       await Promise.all(pending.current);
-    } finally {
+    };
+    await revert().finally(() => {
       cancelling.current = false;
-    }
+    });
     // Nothing left that existed before the session: close (PNL-023).
     const before = (await current.snapshot).entries.filter(
       (entry) => entry.record && !current.deleted.has(entry.id),
