@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Tooltip from '@mui/material/Tooltip';
 import type { IndexedScene, VersionIndex } from '@shakespeer/corpus';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import { sceneNavigation } from './navigation';
 import { sceneShortTitle, sceneTitle } from './titles';
@@ -73,6 +73,9 @@ export function SceneMap({
 }: SceneMapProps) {
   const barRef = useRef<HTMLDivElement>(null);
   const drag = useRef<{ startY: number; moved: boolean } | null>(null);
+  // One label for the scene under the pointer, drawn inside the fixed map so it never moves
+  // with the page (per-segment tooltips re-anchored on every scroll) (MAP-005).
+  const [hover, setHover] = useState<{ y: number; sceneIndex: number } | null>(null);
   const total = Math.max(1, index.nodes.length);
   const navigation = sceneNavigation(index, currentIndex);
   const currentScene =
@@ -88,6 +91,21 @@ export function SceneMap({
     const fraction = Math.min(0.9999, Math.max(0, (clientY - rect.top) / rect.height));
     return Math.floor(fraction * total);
   };
+
+  const sceneAtPointer = (clientY: number) => {
+    const node = nodeAtPointer(clientY);
+    return index.scenes.findIndex((s) => node >= s.start && node < s.end);
+  };
+
+  const showLabel = (clientY: number) => {
+    const rect = barRef.current?.getBoundingClientRect();
+    const sceneIndex = sceneAtPointer(clientY);
+    if (rect && sceneIndex >= 0) {
+      setHover({ y: clientY - rect.top, sceneIndex });
+    }
+  };
+
+  const hoverScene = hover ? index.scenes[hover.sceneIndex] : undefined;
 
   const viewportTop = ((currentIndex ?? 0) / total) * 100;
   const viewportHeight = Math.max(
@@ -126,6 +144,9 @@ export function SceneMap({
           drag.current = { startY: event.clientY, moved: false };
         }}
         onPointerMove={(event) => {
+          if (event.pointerType === 'mouse' || drag.current) {
+            showLabel(event.clientY);
+          }
           if (
             drag.current &&
             (drag.current.moved || Math.abs(event.clientY - drag.current.startY) > 4)
@@ -137,13 +158,24 @@ export function SceneMap({
         onPointerUp={(event) => {
           if (drag.current && !drag.current.moved) {
             // A click goes to the start of the scene under the pointer (MAP-020).
-            const node = nodeAtPointer(event.clientY);
-            const sceneIndex = index.scenes.findIndex((s) => node >= s.start && node < s.end);
+            const sceneIndex = sceneAtPointer(event.clientY);
             if (sceneIndex >= 0) {
               onScene(sceneIndex);
             }
           }
           drag.current = null;
+          if (event.pointerType !== 'mouse') {
+            setHover(null);
+          }
+        }}
+        onPointerLeave={() => {
+          if (!drag.current) {
+            setHover(null);
+          }
+        }}
+        onPointerCancel={() => {
+          drag.current = null;
+          setHover(null);
         }}
         sx={{
           position: 'relative',
@@ -161,24 +193,45 @@ export function SceneMap({
           const actBoundary = i > 0 && index.scenes[i - 1]?.actN !== scene.actN;
           const title = sceneTitle(scene.scene, scene.actN);
           return (
-            <Tooltip key={scene.scene.id} title={title} placement="left" disableInteractive>
-              <Box
-                aria-label={title}
-                aria-current={i === currentScene ? 'location' : undefined}
-                sx={{
-                  flexGrow: Math.max(1, scene.end - scene.start),
-                  flexBasis: 0,
-                  minHeight: 2,
-                  borderTop: i === 0 ? 0 : actBoundary ? 2 : 1,
-                  borderColor: actBoundary ? 'text.secondary' : 'background.default',
-                  bgcolor: i === currentScene ? 'primary.main' : 'action.selected',
-                  opacity: i === currentScene ? 0.55 : 1,
-                  borderRadius: '2px',
-                }}
-              />
-            </Tooltip>
+            <Box
+              key={scene.scene.id}
+              aria-label={title}
+              aria-current={i === currentScene ? 'location' : undefined}
+              sx={{
+                flexGrow: Math.max(1, scene.end - scene.start),
+                flexBasis: 0,
+                minHeight: 2,
+                borderTop: i === 0 ? 0 : actBoundary ? 2 : 1,
+                borderColor: actBoundary ? 'text.secondary' : 'background.default',
+                bgcolor: i === currentScene ? 'primary.main' : 'action.selected',
+                opacity: i === currentScene ? 0.55 : 1,
+                borderRadius: '2px',
+              }}
+            />
           );
         })}
+        {hover && hoverScene && (
+          <Box
+            aria-hidden="true"
+            sx={{
+              position: 'absolute',
+              right: 'calc(100% + 12px)',
+              top: hover.y,
+              transform: 'translateY(-50%)',
+              px: 1,
+              py: 0.5,
+              borderRadius: 1,
+              bgcolor: 'grey.800',
+              color: 'common.white',
+              fontSize: '0.75rem',
+              whiteSpace: 'nowrap',
+              pointerEvents: 'none',
+              boxShadow: 2,
+            }}
+          >
+            {sceneTitle(hoverScene.scene, hoverScene.actN)}
+          </Box>
+        )}
         {currentIndex !== undefined && (
           <Box
             aria-hidden="true"
