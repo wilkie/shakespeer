@@ -1,3 +1,4 @@
+import StickyNote from '@mui/icons-material/StickyNote2Outlined';
 import UploadFile from '@mui/icons-material/UploadFileOutlined';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -12,6 +13,7 @@ import { Link as RouterLink, useNavigate } from 'react-router';
 
 import { ImportDialog } from '@/features/exchange/ImportDialog';
 import { useFileDrop } from '@/features/exchange/useFileDrop';
+import { totalNotes, useNoteCounts } from '@/features/notes/useNoteCounts';
 
 const GENRES: Record<Genre, string> = {
   comedy: 'Comedy',
@@ -30,10 +32,24 @@ function composed({ from, to }: PlayInfo['composed']): string {
   return from === to ? `c. ${String(from)}` : `c. ${String(from)}–${String(to).slice(-2)}`;
 }
 
+/** How many own and imported notes a play has, so plays in use stand out (SEL-006). */
+function NotesChip({ count }: { count: number }) {
+  return count > 0 ? (
+    <Chip
+      icon={<StickyNote />}
+      label={`${String(count)} ${count === 1 ? 'note' : 'notes'}`}
+      size="small"
+      color="primary"
+      variant="outlined"
+    />
+  ) : null;
+}
+
 /** The entry page: every play in the corpus (SEL-001 – SEL-007). */
 export function PlaySelectionPage() {
   const plays = [...listPlays()].sort((a, b) => sortKey(a).localeCompare(sortKey(b)));
   const navigate = useNavigate();
+  const counts = useNoteCounts(plays.map((play) => play.id));
   const [importing, setImporting] = useState(false);
   const [droppedFile, setDroppedFile] = useState<File | undefined>();
   // A notes file dropped on the page opens the import (IOX-010).
@@ -97,6 +113,7 @@ export function PlaySelectionPage() {
                     {play.versions.map((version) => (
                       <Chip key={version.id} label={version.name} size="small" variant="outlined" />
                     ))}
+                    <NotesChip count={totalNotes(counts.get(play.id)?.values())} />
                   </Stack>
                 </CardContent>
               </CardActionArea>

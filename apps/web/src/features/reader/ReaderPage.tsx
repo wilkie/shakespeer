@@ -6,8 +6,14 @@ import Fab from '@mui/material/Fab';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-import { createVersionIndex, getVersionInfo, loadAlignment } from '@shakespeer/corpus';
-import { getPosition, savePosition } from '@shakespeer/storage';
+import {
+  createVersionIndex,
+  getSource,
+  getVersionInfo,
+  loadAlignment,
+  type TextAnchor,
+} from '@shakespeer/corpus';
+import { getPosition, savePosition, type NoteCounts } from '@shakespeer/storage';
 import { useEffect, useRef, useState } from 'react';
 import { useLoaderData, useLocation, useNavigate } from 'react-router';
 
@@ -24,6 +30,7 @@ import { CollectionNamesContext } from '@/features/notes/collectionNames';
 import { HighlightVariables } from '@/features/notes/HighlightVariables';
 import { createNoteIndex } from '@/features/notes/noteIndex';
 import { UnattachedDialog } from '@/features/notes/UnattachedDialog';
+import { useNoteCounts } from '@/features/notes/useNoteCounts';
 import { useVersionNotes } from '@/features/notes/useVersionNotes';
 
 import { makeAnchor, snapToWords } from './anchors';
@@ -34,6 +41,7 @@ import { sceneNavigation } from './navigation';
 import type { ReaderData } from './routes';
 import { SceneMap } from './SceneMap';
 import { AboutThisText, SourceDialog } from './SourceInfo';
+import { rangePositions, textSelection } from './selection';
 import { SelectionMenu, type SelectedRange } from './SelectionMenu';
 import { useCurrentLine } from './useCurrentLine';
 import { useNotesPanel } from './useNotesPanel';
@@ -136,7 +144,11 @@ export function ReaderPage() {
 
   const index = createVersionIndex(doc);
   const stored = useVersionNotes(play.id, version.id, index);
-  const notes = createNoteIndex(index, definitions, stored.definitions, stored.annotations);
+  // Sources switched off show none of their definitions (DEF-012).
+  const [enabledSources, setEnabledSources] = useSetting('definitions.enabledSources', {});
+  const shownSources = definitions.filter((file) => enabledSources[file.sourceId] !== false);
+  const notes = createNoteIndex(index, shownSources, stored.definitions, stored.annotations);
+  const noteCounts = useNoteCounts([play.id]).get(play.id) ?? new Map<string, NoteCounts>();
 
   const textRef = useRef<HTMLDivElement>(null);
   const topBarRef = useRef<HTMLDivElement>(null);
@@ -150,6 +162,8 @@ export function ReaderPage() {
     null,
   );
   const [droppedFile, setDroppedFile] = useState<File | undefined>();
+  /** The text selected when the overflow menu opened, to attach a note to (ANC-032). */
+  const [attachTarget, setAttachTarget] = useState<TextAnchor | undefined>();
   // A notes file dropped on the reader opens the import (IOX-010).
   useFileDrop((file) => {
     setDroppedFile(file);
@@ -426,6 +440,15 @@ export function ReaderPage() {
         onShowUnderlines={setShowUnderlines}
         showAnnotationMarks={showMarks}
         onShowAnnotationMarks={setShowMarks}
+        noteCounts={noteCounts}
+        definitionSources={definitions.map((file) => ({
+          id: file.sourceId,
+          name: getSource(file.sourceId)?.shortName ?? file.sourceId,
+          enabled: enabledSources[file.sourceId] !== false,
+        }))}
+        onDefinitionSource={(id, enabled) => {
+          setEnabledSources({ ...enabledSources, [id]: enabled });
+        }}
         onExport={() => {
           setDialog('export');
         }}
@@ -443,7 +466,16 @@ export function ReaderPage() {
         onAbout={() => {
           setSourceDialog({ title: 'About this text', sourceIds: version.sourceIds });
         }}
-        onMenuOpenChange={setMenuOpen}
+        onMenuOpenChange={(open) => {
+          setMenuOpen(open);
+          if (open) {
+            // What is selected as a menu opens, before choosing an item can clear it.
+            const root = textRef.current;
+            const range = root ? textSelection(root) : undefined;
+            const positions = root && range ? rangePositions(root, range) : undefined;
+            setAttachTarget(positions && selectionAnchor(positions));
+          }
+        }}
         compactScenes={
           isPhone
             ? {
@@ -583,6 +615,7 @@ export function ReaderPage() {
       <UnattachedDialog
         open={dialog === 'unattached'}
         notes={stored.unattached}
+        selection={attachTarget}
         onClose={() => {
           setDialog(null);
         }}

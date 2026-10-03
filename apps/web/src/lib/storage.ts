@@ -11,6 +11,8 @@ export interface Settings extends Record<string, unknown> {
   'definitions.showUnderlines': boolean;
   'map.showAnnotationMarks': boolean;
   'annotations.lastColor': HighlightColor;
+  /** Definition sources switched on or off; sources not listed are on (DEF-012). */
+  'definitions.enabledSources': Record<string, boolean>;
   [key: `reader.lastVersion.${string}`]: string;
   [key: `export.lastName.${string}`]: string;
 }

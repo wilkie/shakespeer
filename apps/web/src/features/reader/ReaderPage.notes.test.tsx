@@ -1,47 +1,16 @@
 import { describe, expect, it } from '@jest/globals';
-import { act, screen, waitFor, within } from '@testing-library/react';
+import { screen, waitFor, within } from '@testing-library/react';
 
 import { renderRoute } from '@/test/render';
+import { select } from '@/test/selection';
 
-/** Saving re-renders the whole play, which is slow under test (no React Compiler). */
+/** Saving and re-rendering a whole play take a while under jsdom. */
 const SLOW = { timeout: 5000 };
 
 async function openReader() {
   const result = renderRoute('/plays/the-tempest/folger');
   await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 10000 });
   return result;
-}
-
-/** Selects part of the first text node whose text contains `word`. */
-function select(word: string, from = 0, to = word.length): string {
-  const element = [...document.querySelectorAll<HTMLElement>('[data-node-id]')].find((el) =>
-    el.textContent.includes(word),
-  );
-  if (!element) {
-    throw new Error(`No text contains ${word}`);
-  }
-  const start = element.textContent.indexOf(word) + from;
-  const end = start + (to - from);
-  const range = document.createRange();
-  const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
-  let offset = 0;
-  for (let node = walker.nextNode(); node; node = walker.nextNode()) {
-    const length = node.textContent?.length ?? 0;
-    if (start >= offset && start < offset + length) {
-      range.setStart(node, start - offset);
-    }
-    if (end > offset && end <= offset + length) {
-      range.setEnd(node, end - offset);
-    }
-    offset += length;
-  }
-  act(() => {
-    const selection = window.getSelection();
-    selection?.removeAllRanges();
-    selection?.addRange(range);
-    document.dispatchEvent(new Event('selectionchange'));
-  });
-  return element.dataset['nodeId'] ?? '';
 }
 
 describe('selection and notes', () => {

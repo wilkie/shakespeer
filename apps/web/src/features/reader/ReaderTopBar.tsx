@@ -9,6 +9,7 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import ListSubheader from '@mui/material/ListSubheader';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Switch from '@mui/material/Switch';
@@ -16,6 +17,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import type { IndexedScene, PlayInfo, VersionInfo, VersionIndex } from '@shakespeer/corpus';
+import type { NoteCounts } from '@shakespeer/storage';
 import { useState, type Ref } from 'react';
 import { Link as RouterLink } from 'react-router';
 
@@ -41,6 +43,11 @@ export interface ReaderTopBarProps {
   onShowUnderlines: (value: boolean) => void;
   showAnnotationMarks: boolean;
   onShowAnnotationMarks: (value: boolean) => void;
+  /** Note counts per version, for the version switcher (RDR-042). */
+  noteCounts: ReadonlyMap<string, NoteCounts>;
+  /** Sources of this version's sourced definitions, each switchable (DEF-012). */
+  definitionSources: readonly { id: string; name: string; enabled: boolean }[];
+  onDefinitionSource: (id: string, enabled: boolean) => void;
   onExport: () => void;
   onImport: () => void;
   onCollections: () => void;
@@ -129,6 +136,16 @@ function SceneRow({
 }
 
 /** The reader's top bar (RDR-010 – RDR-016). */
+/** "12 notes" or "12 notes, 3 imported" for a version (RDR-042); empty without notes. */
+function notesLabel(counts: NoteCounts | undefined): string {
+  const total = (counts?.own ?? 0) + (counts?.imported ?? 0);
+  if (total === 0) {
+    return '';
+  }
+  const notes = `${String(total)} ${total === 1 ? 'note' : 'notes'}`;
+  return counts?.imported ? `${notes}, ${String(counts.imported)} imported` : notes;
+}
+
 export function ReaderTopBar({
   ref,
   play,
@@ -139,6 +156,9 @@ export function ReaderTopBar({
   onShowUnderlines,
   showAnnotationMarks,
   onShowAnnotationMarks,
+  noteCounts,
+  definitionSources,
+  onDefinitionSource,
   onExport,
   onImport,
   onCollections,
@@ -221,7 +241,12 @@ export function ReaderTopBar({
               >
                 <ListItemText
                   primary={option.name}
-                  secondary={option.kind === 'modern' ? 'Modern spelling' : 'Original spelling'}
+                  secondary={[
+                    option.kind === 'modern' ? 'Modern spelling' : 'Original spelling',
+                    notesLabel(noteCounts.get(option.id)),
+                  ]
+                    .filter(Boolean)
+                    .join(' · ')}
                 />
               </MenuItem>
             ))}
@@ -231,6 +256,10 @@ export function ReaderTopBar({
           aria-label="More actions"
           aria-haspopup="menu"
           edge="end"
+          // Keep any text selection: Unattached notes attaches to it (ANC-032).
+          onMouseDown={(event) => {
+            event.preventDefault();
+          }}
           onClick={(event) => {
             setMenu(event.currentTarget);
           }}
@@ -278,6 +307,32 @@ export function ReaderTopBar({
             </ListItemIcon>
             <ListItemText primary="Show annotation marks on map" />
           </MenuItem>
+          {definitionSources.length > 0 && <Divider />}
+          {definitionSources.length > 0 && (
+            <ListSubheader sx={{ lineHeight: 2.5, bgcolor: 'transparent' }}>
+              Definition sources
+            </ListSubheader>
+          )}
+          {definitionSources.map((source) => (
+            <MenuItem
+              key={source.id}
+              role="menuitemcheckbox"
+              aria-checked={source.enabled}
+              onClick={() => {
+                onDefinitionSource(source.id, !source.enabled);
+              }}
+            >
+              <ListItemIcon>
+                <Switch
+                  size="small"
+                  checked={source.enabled}
+                  tabIndex={-1}
+                  slotProps={{ input: { 'aria-hidden': true } }}
+                />
+              </ListItemIcon>
+              <ListItemText primary={source.name} />
+            </MenuItem>
+          ))}
           <Divider />
           {(
             [
