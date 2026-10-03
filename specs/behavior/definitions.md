@@ -22,8 +22,10 @@ period senses, wordplay), so a definition never spreads to other occurrences of 
   _Shakespeare-Lexicon_ and Onions' _A Shakespeare Glossary_, matched to specific occurrences
   ([CRP-070](../data/corpus.md)). (Folger's downloadable texts carry no glosses, so Folger is not
   a definition source.)
-- **DEF-013** — A term SHOULD offer a "Look up on Shakespeare's Words" link to that site's entry
-  for the headword. A link needs no license; including its glosses would (CRP open question 2).
+- **DEF-013** — _Removed._ (Was: a link to Shakespeare's Words; dropped as that work is
+  copyrighted.)
+- **DEF-014** — _Planned:_ generated definitions (CRP-074) appear as one more source, always
+  labeled as generated, and can be switched off like any source.
 - **DEF-011** — Sourced definitions MUST be read-only and MUST NOT be deletable.
 - **DEF-012** — Each source of sourced definitions MUST be individually switchable on or off in
   the reader's overflow menu ("Definition sources"). All are on by default; the setting is

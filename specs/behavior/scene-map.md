@@ -63,7 +63,7 @@ with a previous-scene button above it and a next-scene button below it.
   that still shows scene segments, the current scene, the viewport indicator and annotation
   marks, and supports scrubbing (MAP-021).
 - **MAP-051** — Below `md`, the previous/next scene buttons MUST move out of the strip into a
-  compact control that appears with the top bar (RDR open question 2), showing the current scene
+  compact control that appears with the top bar (RDR-016), showing the current scene
   name between them. Tapping the scene name opens a scene list for direct navigation.
 
 ## Open questions

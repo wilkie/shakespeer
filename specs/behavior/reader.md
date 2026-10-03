@@ -28,6 +28,10 @@ right ([MAP](scene-map.md)) and the notes panel on the left ([PNL](side-panel.md
   action set.
 - **RDR-015** — On narrow screens the play title MAY truncate with an ellipsis; the back control
   and overflow menu MUST NOT be hidden.
+- **RDR-016** — Below the `md` breakpoint the top bar MUST slide out of view while the reader
+  scrolls down and slide back on any upward scroll, at the top of the play, and whenever the
+  notes panel or a menu opens. The compact scene control (MAP-051) moves with it. Above `md`
+  the top bar is always visible.
 
 ## The text
 
@@ -56,7 +60,7 @@ right ([MAP](scene-map.md)) and the notes panel on the left ([PNL](side-panel.md
 ## Current scene and reading position
 
 - **RDR-030** — The **current line** is the first text node whose top edge is at or below the
-  bottom of the top bar. The **current scene** is the scene containing the current line. Only
+  bottom of the top bar (or the top of the viewport while the top bar is hidden, RDR-016). The **current scene** is the scene containing the current line. Only
   the current scene drives the scene map (MAP-010).
 - **RDR-031** — The URL fragment MUST track the current line as `#<line number>` (e.g.
   `#3.1.56`), updated with `history.replaceState` at most every 250 ms while scrolling. Scrolling
@@ -93,5 +97,3 @@ right ([MAP](scene-map.md)) and the notes panel on the left ([PNL](side-panel.md
 
 1. Line numbers every fifth line, or every line on hover/focus as well? Proposed: every fifth,
    plus the number of any line under the pointer or containing the selection.
-2. Should the top bar hide while scrolling down on phones (as many reading apps do) to save
-   space? Proposed: yes on phones only, reappearing on any upward scroll.

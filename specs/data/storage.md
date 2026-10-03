@@ -66,7 +66,8 @@ All IDs are UUIDs from `crypto.randomUUID()`. Timestamps are ISO 8601 strings in
 - **STO-013** — `collections`: one record per imported collection: `id`, `playId`, `name`,
   `importedAt`, `updatedAt`, `fileName`. Unique index on `[playId, name]` (IOX-014).
 - **STO-014** — `tombstones`: `[collectionId, sourceItemId]` pairs for imported notes the reader
-  deleted, so updates do not bring them back (XCH-041).
+  deleted, so updates do not bring them back (XCH-041). A collection's tombstones are deleted
+  with the collection.
 - **STO-015** — `positions`: reading position per `[playId, versionId]`: `nodeId`, `updatedAt`
   (RDR-033).
 - **STO-016** — `kv`: settings, with these keys: `reader.lastVersion.<playId>` (RDR-041),

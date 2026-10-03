@@ -14,13 +14,12 @@ registry. The corpus lives in the repository and is read-only at runtime.
 | _Troilus and Cressida_ | `troilus-and-cressida` | `folger`, `q1-1609` (Quarto), `f1-1623` (First Folio)                                  |
 | _The Tempest_          | `the-tempest`          | `folger`, `f1-1623` (First Folio; the only early printing)                             |
 
-| Source                                                         | Used for                                   | License                                                                     | Verified                             |
-| -------------------------------------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------- | ------------------------------------ |
-| Folger Shakespeare, TEI XML (one zip per play from folger.edu) | `folger` versions; variant seeds (CRP-061) | CC BY-NC 3.0 Unported (stated in each file)                                 | Yes                                  |
-| EEBO-TCP transcriptions (Text Creation Partnership, on GitHub) | quarto and folio versions                  | CC0 1.0 (stated in each file)                                               | Yes (First Folio); quartos to locate |
-| Schmidt, _Shakespeare-Lexicon_ (1874–75)                       | sourced definitions                        | Text public domain; Perseus's online encoding is for "personal use"         | Needs a reusable digitization        |
-| Onions, _A Shakespeare Glossary_ (1911)                        | sourced definitions                        | Public domain; scans with OCR on archive.org (`shakespearegloss00oniouoft`) | OCR needs cleanup                    |
-| _Shakespeare's Words_ (David & Ben Crystal)                    | sourced definitions (candidate)            | Copyrighted; only with permission                                           | —                                    |
+| Source                                                               | Used for                                   | License                                                                                       | Verified                             |
+| -------------------------------------------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------- | ------------------------------------ |
+| Folger Shakespeare, TEI XML (one zip per play from folger.edu)       | `folger` versions; variant seeds (CRP-061) | CC BY-NC 3.0 Unported (stated in each file)                                                   | Yes                                  |
+| EEBO-TCP transcriptions (Text Creation Partnership, on GitHub)       | quarto and folio versions                  | CC0 1.0 (stated in each file)                                                                 | Yes (First Folio); quartos to locate |
+| Schmidt, _Shakespeare-Lexicon_, 3rd ed. rev. Sarrazin (1902), 2 vols | sourced definitions                        | Public domain; archive.org scans with OCR (vol. 1: `in.ernet.dli.2015.203724`; vol. 2 to pin) | OCR needs cleanup (CRP-073)          |
+| Onions, _A Shakespeare Glossary_ (1911)                              | sourced definitions                        | Public domain; archive.org scans with OCR (`shakespearegloss00oniouoft`)                      | OCR needs cleanup (CRP-073)          |
 
 What the Folger TEI provides (checked on _Hamlet_ and _The Tempest_): every line is a
 `milestone` with a permanent ID (`ftln-0001`, the Folger Through Line Number), its act.scene.line
@@ -144,6 +143,18 @@ the Second Quarto (29).
   inflection and spelling) within a small window around the cited line in the modern version,
   and attach the matching sense there. Ambiguous or unmatched citations MUST be skipped and
   logged, never guessed: precision over coverage.
+- **CRP-073** — Glossary text MUST be recovered from the scans' OCR by a reproducible pipeline
+  in `ingest/`: rebuild reading order from word coordinates (hOCR or DjVu XML) so the two
+  columns are not interleaved; split entries by headword; parse senses and citations
+  (normalizing play abbreviations and misread Roman numerals). Corrections MUST be stored as
+  reviewed curation files (CRP-004). Matching a citation to the headword in the corpus text
+  (CRP-071) is the acceptance test for each cleaned citation. Machine assistance (including an
+  LLM) MAY propose OCR corrections, but only corrections that pass that test or human review
+  are kept.
+- **CRP-074** — _Planned:_ generated definitions. Definitions written offline by a language model
+  for words and phrases in context, committed as their own source, labeled "Generated" with the
+  model and date, switchable like any source (DEF-012), and never mixed into another source's
+  entries. Details to be specified after the public-domain glossaries ship.
 - **CRP-072** — Sourced definitions for original versions MAY be derived from the modern
   version's through alignment where the aligned line contains the same word; otherwise original
   versions have none.
@@ -156,14 +167,7 @@ the Second Quarto (29).
 
 ## Open questions
 
-1. Schmidt's _Lexicon_: is there a reusable digital text? Perseus's encoding is offered for
-   personal use only. Options: ask Perseus for permission, find another digitization, or OCR a
-   public-domain scan. Onions needs OCR cleanup of the archive.org scans either way.
-2. _Shakespeare's Words_ has excellent, context-specific glosses but is not openly licensed.
-   Ask the publishers for permission to include its glosses (with attribution and a link per
-   definition)? Without permission it can still be offered as an external "Look up on
-   Shakespeare's Words" link from a term (DEF-013), which needs no license.
-3. Should the First Folio also show Hinman's Through Line Numbers (TLN), the standard for
+1. Should the First Folio also show Hinman's Through Line Numbers (TLN), the standard for
    citing F1? Computing them reliably needs page-layout data that EEBO-TCP may not carry.
-4. Alignment coverage threshold for shipping (CRP-052): proposed 100% reviewed for scene
+2. Alignment coverage threshold for shipping (CRP-052): proposed 100% reviewed for scene
    divisions and speaker attribution, and at least spot-checked line alignment.

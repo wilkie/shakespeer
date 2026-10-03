@@ -15,7 +15,7 @@ Selecting text is how notes are created.
 - **SELX-004** — Speaker names, line numbers and scene headings MUST NOT be part of a selection
   (rendered with `user-select: none`). If a selection begins or ends on them, it is trimmed to the
   nearest text node.
-- **SELX-005** — When an action is chosen, the selection MUST be snapped outward to whole words
+- **SELX-005** — For every action (definitions and annotations alike), when it is chosen, the selection MUST be snapped outward to whole words
   (a partial word becomes the whole word) and trimmed of leading and trailing whitespace and
   punctuation, then converted to an anchor ([ANC](../data/anchors.md)).
 - **SELX-006** — **Add definition** opens the panel ([PNL](side-panel.md)) for the term at
@@ -35,8 +35,3 @@ Selecting text is how notes are created.
   pressing the context-menu key or `Shift+F10` focuses the menu.
 - **SELX-012** — Copying selected text MUST keep working and copy plain text with line breaks
   between lines.
-
-## Open questions
-
-1. Should whole-word snapping apply to annotations too, or only to definitions? Proposed: both,
-   for predictability; a reader who wants a single letter highlighted is rare.

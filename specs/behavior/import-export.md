@@ -32,7 +32,8 @@ notes stay distinguishable from a reader's own, and re-importing an updated file
 - **IOX-014** — If a collection with the same name is already imported for that play, the
   summary MUST say so and offer **Update "<name>"** (the default) or **Import as a new
   collection** (which asks for a different name).
-- **IOX-015** — An update MUST follow XCH-040 and report what it did: added, updated, removed,
+- **IOX-015** — Notes are matched by collection name (per play) and note ID; local edits are
+  detected by each imported note's locally-modified flag (STO-020). An update MUST follow XCH-040 and report what it did: added, updated, removed,
   and kept because you changed them locally.
 - **IOX-016** — Imported notes MUST be shown with their collection name (PNL-011) and are fully
   editable (DEF-022, ANN-031).
@@ -49,8 +50,7 @@ notes stay distinguishable from a reader's own, and re-importing an updated file
 
 ## Open questions
 
-1. When an imported note is edited locally and the collection is updated, XCH-040 keeps the
-   local edit. Should the reader be offered a per-note choice instead? Proposed: keep it simple
-   (keep local edits, report them) for the first release.
-2. Should deleting an imported note prevent it from returning on the next update? Proposed: yes
-   (XCH-041), since the reader deliberately removed it.
+1. Tombstones (XCH-041) keep deleted imported notes from returning on an update. Each is two
+   IDs, removed when its collection is removed. Should **Imported collections…** also offer
+   **Restore deleted notes** for a collection (clearing its tombstones so the next update brings
+   them back)? Proposed: yes, it is cheap and makes the behavior reversible.
