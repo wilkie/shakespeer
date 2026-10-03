@@ -340,6 +340,9 @@ importers:
       '@mui/material':
         specifier: 'catalog:'
         version: 9.4.0(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(@types/react@19.3.0)(react@19.3.0)(supports-color@8.1.1))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@shakespeer/corpus':
+        specifier: workspace:*
+        version: link:../../packages/corpus
       '@shakespeer/storage':
         specifier: workspace:*
         version: link:../../packages/storage

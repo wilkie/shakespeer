@@ -21,6 +21,7 @@
     "@fontsource-variable/roboto": "catalog:",
     "@mui/icons-material": "catalog:",
     "@mui/material": "catalog:",
+    "@shakespeer/corpus": "workspace:*",
     "@shakespeer/storage": "workspace:*",
     "react": "catalog:",
     "react-dom": "catalog:",

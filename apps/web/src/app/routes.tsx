@@ -15,12 +15,31 @@ export const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        lazy: async () => ({ Component: (await import('@/pages/HomePage')).HomePage }),
+        lazy: async () => ({
+          Component: (await import('@/pages/PlaySelectionPage')).PlaySelectionPage,
+        }),
       },
       {
         path: '*',
         lazy: async () => ({ Component: (await import('@/pages/NotFoundPage')).NotFoundPage }),
       },
     ],
+  },
+  {
+    path: '/plays/:playId',
+    errorElement: <RouteErrorPage />,
+    HydrateFallback: () => null,
+    lazy: async () => ({ loader: (await import('@/features/reader/routes')).playRedirectLoader }),
+  },
+  {
+    path: '/plays/:playId/:versionId',
+    errorElement: <RouteErrorPage />,
+    lazy: async () => {
+      const [{ ReaderPage, ReaderLoading }, { readerLoader }] = await Promise.all([
+        import('@/features/reader/ReaderPage'),
+        import('@/features/reader/routes'),
+      ]);
+      return { loader: readerLoader, Component: ReaderPage, HydrateFallback: ReaderLoading };
+    },
   },
 ];

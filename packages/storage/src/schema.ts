@@ -10,6 +10,19 @@ export interface ShakespeerSchema extends DBSchema {
     key: string;
     value: unknown;
   };
+  /** Reading position per play version (STO-015). */
+  positions: {
+    key: [playId: string, versionId: string];
+    value: ReadingPosition;
+  };
+}
+
+export interface ReadingPosition {
+  playId: string;
+  versionId: string;
+  /** The current line (RDR-030) when last read. */
+  nodeId: string;
+  updatedAt: string;
 }
 
 export type ShakespeerDatabase = IDBPDatabase<ShakespeerSchema>;
@@ -27,6 +40,10 @@ export const migrations: readonly Migration[] = [
   // v1: initial schema
   (db) => {
     db.createObjectStore('kv');
+  },
+  // v2: reading positions
+  (db) => {
+    db.createObjectStore('positions', { keyPath: ['playId', 'versionId'] });
   },
 ];
 

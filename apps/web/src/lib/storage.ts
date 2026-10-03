@@ -5,10 +5,11 @@ import {
   type ShakespeerDatabase,
 } from '@shakespeer/storage';
 
-/** Typed map of everything the app keeps in the IndexedDB key/value store. */
-export interface Preferences extends Record<string, unknown> {
-  /** Reader text size multiplier. */
-  fontScale: number;
+/** Everything the app keeps in the IndexedDB key/value store (STO-016). */
+export interface Settings extends Record<string, unknown> {
+  'definitions.showUnderlines': boolean;
+  'map.showAnnotationMarks': boolean;
+  [key: `reader.lastVersion.${string}`]: string;
 }
 
 let dbPromise: Promise<ShakespeerDatabase> | undefined;
@@ -19,6 +20,6 @@ export function getDatabase(): Promise<ShakespeerDatabase> {
   return dbPromise;
 }
 
-export async function getPreferences(): Promise<KeyValueStore<Preferences>> {
-  return createKeyValueStore<Preferences>(await getDatabase());
+export async function getSettings(): Promise<KeyValueStore<Settings>> {
+  return createKeyValueStore<Settings>(await getDatabase());
 }

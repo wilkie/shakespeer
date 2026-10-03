@@ -4,12 +4,10 @@ import { screen } from '@testing-library/react';
 import { renderRoute } from '@/test/render';
 
 describe('routes', () => {
-  it('renders the home page at /', async () => {
+  it('SEL-001: renders play selection at /', async () => {
     renderRoute('/');
 
-    expect(
-      await screen.findByRole('heading', { level: 1, name: 'Shakespeer' }),
-    ).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { level: 1, name: 'Plays' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Skip to content' })).toHaveAttribute(
       'href',
       '#main-content',
