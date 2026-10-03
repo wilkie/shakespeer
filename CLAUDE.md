@@ -9,6 +9,12 @@ packages in `packages/`. See README.md for layout and conventions.
 - `pnpm --filter @shakespeer/web test -- src/app/routes.test.tsx` — run a single test file.
 - `pnpm format` — fix formatting.
 
+## Specs
+
+Behavior and data are defined in `specs/` (start at `specs/README.md`). Implement only specs
+marked `Approved`; change the spec before changing behavior; cite requirement IDs in test names
+(`it('RDR-031: …')`). Use the vocabulary in `specs/glossary.md`.
+
 ## Rules
 
 - Add dependency versions to the `catalog` in `pnpm-workspace.yaml` and reference them as
