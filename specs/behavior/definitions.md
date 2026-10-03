@@ -33,15 +33,23 @@ period senses, wordplay), so a definition never spreads to other occurrences of 
 
 ## Display
 
-- **DEF-030** — Every term with at least one visible definition MUST be marked in the text with
-  a dotted underline. Activating it (click, tap, or Enter when focused) opens the panel.
+- **DEF-030** — Terms are unmarked by default, for legibility. A term MUST show a dotted
+  underline while the pointer hovers over it (with a pointer cursor), and all terms MUST show
+  dotted underlines while underlines are revealed (DEF-034, DEF-035). Activating a term (click,
+  tap, or Enter when focused) opens the panel whether or not its underline is showing.
 - **DEF-031** — The panel entry for a term MUST show the quoted term and then its definitions:
   own, then imported, then sourced (grouped by source in a stable order). Each shows meaning,
   part of speech and source.
-- **DEF-032** — Terms MUST be reachable without a pointer: terms are focusable in document
-  order. (Too many tab stops is acceptable for now; revisit with a "notes in this scene" list.)
+- **DEF-032** — Terms MUST be reachable without a pointer: while underlines are revealed, terms
+  are focusable in document order. (Hidden terms are not tab stops, so the keyboard is not
+  trapped among thousands of invisible stops; revisit with a "notes in this scene" list.)
 - **DEF-033** — Where terms overlap (one inside another, or partially), the underline marks the
   union; activating any point lists every term covering that point (PNL-010).
+- **DEF-034** — The reader's overflow menu MUST offer **Show definition underlines**, revealing
+  all underlines while on. The setting is global, persisted, and defaults to off.
+- **DEF-035** — On touch devices (no hover), a small floating button at the bottom right of the
+  text MUST reveal all underlines while held, and toggle them on or off when tapped. It shows
+  whether underlines are revealed and has the accessible name "Show definition underlines".
 
 ## Creating and editing
 

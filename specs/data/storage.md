@@ -72,7 +72,7 @@ All IDs are UUIDs from `crypto.randomUUID()`. Timestamps are ISO 8601 strings in
   (RDR-033).
 - **STO-016** — `kv`: settings, with these keys: `reader.lastVersion.<playId>` (RDR-041),
   `map.showAnnotationMarks` (MAP-044), `annotations.lastColor` (ANN-011),
-  `definitions.enabledSources` (DEF-012), `export.lastName.<playId>` (IOX-002).
+  `definitions.enabledSources` (DEF-012), `definitions.showUnderlines` (DEF-034), `export.lastName.<playId>` (IOX-002).
 
 ## Origin
 
