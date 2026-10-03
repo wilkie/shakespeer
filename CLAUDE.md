@@ -11,6 +11,8 @@ packages in `packages/`. See README.md for layout and conventions.
 - `pnpm --filter @shakespeer/corpus ingest` — regenerate the corpus from pinned sources
   (`--update-lock` to pin a new source). Never hand-edit generated corpus JSON; fix the
   converter or add a curation file in `packages/corpus/curation/`.
+- `pnpm --filter @shakespeer/storage schema` — regenerate the notes-file JSON Schema
+  (`packages/storage/schema/notes-file.v1.json`) after changing `src/notes-file.ts`.
 
 ## Specs
 
