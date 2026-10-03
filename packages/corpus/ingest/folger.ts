@@ -31,9 +31,40 @@ import {
   plainText,
 } from './lib/xml.ts';
 
+/** Where a Folger word, space or punctuation token ended up in our text (CRP-061). */
+export interface TokenSpan {
+  nodeId: string;
+  start: number;
+  end: number;
+}
+
+/** A passage the edition marks: an emendation, or text from only one early printing. */
+export interface MarkedPassage {
+  /** The Folger pointer's ID, e.g. "ptr-0001". */
+  id: string;
+  /** The edition's own description of the mark, e.g. "editorial emendation". */
+  description: string;
+  /** "emend", "texta" or "textb". */
+  kind: string;
+  /** Token IDs, in order. */
+  tokens: string[];
+}
+
 export interface ConvertedVersion {
   characters: Character[];
   divisions: Act[];
+  tokens: Map<string, TokenSpan>;
+  passages: MarkedPassage[];
+}
+
+/** Token positions collected while converting (one conversion at a time). */
+let tokenSink: Map<string, TokenSpan> | undefined;
+
+function recordToken(element: Element, nodeId: string, start: number, end: number): void {
+  const id = attr(element, 'xml:id');
+  if (id && tokenSink) {
+    tokenSink.set(id, { nodeId, start, end });
+  }
 }
 
 /** Folger person IDs look like `Prospero_Tmp`; ours drop the play suffix: `prospero`. */
@@ -95,10 +126,13 @@ function appendInline(node: Node, builder: TextBuilder): void {
 /** A stage direction, or undefined if it is empty in the current edition (older printings only). */
 function stageNode(stage: Element): StageDirectionNode | undefined {
   const builder = new TextBuilder();
+  const stageId = attr(stage, 'xml:id') ?? '';
   const visit = (node: Element) => {
     for (const child of children(node)) {
       if (['w', 'c', 'pc'].includes(child.localName ?? '')) {
+        const start = builder.length;
         appendInline(child, builder);
+        recordToken(child, stageId, start, builder.length);
       } else if (child.localName === 'lb') {
         // Within a stage direction a line break separates words.
         builder.append(' ');
@@ -171,7 +205,9 @@ class SpeechWalker {
           this.#line.node.n = n;
         }
       }
+      const start = this.#line.builder.length;
       appendInline(element, this.#line.builder);
+      recordToken(element, this.#line.node.id, start, this.#line.builder.length);
       return;
     }
     // Folger leaves quotation marks to the renderer: <q> and <title rend="quotes">.
@@ -339,8 +375,34 @@ function scene(div: Element, actN: number | null): Scene {
   return { id, kind, n, editorial: false, blocks };
 }
 
+/** The edition's marked passages (its emendation pointers) and what each kind means. */
+function markedPassages(root: Element): MarkedPassage[] {
+  const descriptions = new Map(
+    descendants(root, 'interp').map((interp) => [
+      attr(interp, 'xml:id') ?? '',
+      plainText(interp).trim(),
+    ]),
+  );
+  return descendants(root, 'ptr')
+    .filter((ptr) => attr(ptr, 'type') === 'emendation')
+    .map((ptr) => {
+      const kind = (attr(ptr, 'ana') ?? '').replace(/^#/, '');
+      return {
+        id: attr(ptr, 'xml:id') ?? '',
+        description: descriptions.get(kind) ?? kind,
+        kind,
+        tokens: (attr(ptr, 'target') ?? '')
+          .split(/\s+/)
+          .map((target) => target.replace(/^#/, ''))
+          .filter(Boolean),
+      };
+    });
+}
+
 export function convertFolger(xml: string): ConvertedVersion {
   const root = parseXml(xml);
+  const tokens = new Map<string, TokenSpan>();
+  tokenSink = tokens;
   const body = first(root, 'body');
   if (!body) {
     throw new Error('TEI has no body');
@@ -361,5 +423,6 @@ export function convertFolger(xml: string): ConvertedVersion {
       divisions.push({ n: null, editorial: false, scenes: [scene(div1, null)] });
     }
   }
-  return { characters: readCharacters(root), divisions };
+  tokenSink = undefined;
+  return { characters: readCharacters(root), divisions, tokens, passages: markedPassages(root) };
 }

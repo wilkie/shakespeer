@@ -149,8 +149,10 @@ label }`, e.g. `"sig. G4v"`) for citation.
 
 - **CRP-060** — `variants.json` MUST list curated notable variants: `id`, `title`, `note`
   (Markdown), `sourceIds` (where the observation comes from), and `readings`: one per version,
-  each an anchor-like span (`start`, `end`, as in ANC-002) with its text. These are displayed
-  later (RDR-043) but are curated alongside alignment from the start.
+  each an anchor-like span (`start`, `end`, as in ANC-002) with its text; a version that lacks
+  the passage has a reading with no span and empty text. These are displayed later (RDR-043) but
+  are curated alongside alignment from the start. Notes are curated in
+  `curation/<playId>/variants.json` (`{ "notes": { "<variantId>": "<Markdown>" } }`).
 - **CRP-061** — Ingestion MUST seed _Hamlet_'s variants from the Folger markup: passages marked
   Folio-only and Second-Quarto-only become variants with readings in the corresponding original
   versions (via alignment), and editorial emendations become variants recording the modern reading

@@ -18,6 +18,7 @@ import {
   AlignmentFileSchema,
   PlayIndexSchema,
   SourcedDefinitionsFileSchema,
+  VariantsFileSchema,
   SourcesFileSchema,
   VersionDocumentSchema,
   type AlignmentEntry,
@@ -31,7 +32,7 @@ import { alignVersions } from './align.ts';
 import { GLOSSARIES, PLAYS, SOURCES, type GlossaryConfig, type PlayConfig } from './config.ts';
 import { applyAlignmentCuration, loadCuration, type Curation } from './curation.ts';
 import { supplyEditorialDivisions } from './divisions.ts';
-import { convertFolger } from './folger.ts';
+import { convertFolger, type ConvertedVersion } from './folger.ts';
 import { matchCitations, type GlossCitation, type SceneOffsets } from './glossaries/match.ts';
 import { parseOnions } from './glossaries/onions.ts';
 import { parseEntries, type Entry } from './glossaries/schmidt.ts';
@@ -39,6 +40,7 @@ import { fetchLocked, type LockFile } from './lib/fetch.ts';
 import { IdMap } from './lib/ids.ts';
 import { computeRevision, textNodes } from './lib/revision.ts';
 import { convertTcpPlay } from './tcp.ts';
+import { seedVariants, type OriginalVersion } from './variants.ts';
 
 const ROOT = dirname(import.meta.dirname);
 const LOCK_PATH = join(import.meta.dirname, 'sources.lock.json');
@@ -224,12 +226,15 @@ async function ingestPlay(play: PlayConfig): Promise<Map<string, VersionDocument
   console.warn(play.info.title);
   const docs = new Map<string, VersionDocument>();
   const idMaps: { path: string; ids: IdMap }[] = [];
+  let marked: Pick<ConvertedVersion, 'tokens' | 'passages'> | undefined;
+  const originals: OriginalVersion[] = [];
 
   for (const version of play.versions) {
     const xml = await source(version.source.lockKey);
     let doc: VersionDocument;
     if (version.source.kind === 'folger') {
-      const { characters, divisions } = convertFolger(xml);
+      const { characters, divisions, tokens, passages } = convertFolger(xml);
+      marked = { tokens, passages };
       doc = {
         schemaVersion: 1,
         playId,
@@ -276,6 +281,7 @@ async function ingestPlay(play: PlayConfig): Promise<Map<string, VersionDocument
       }
       const entries = applyAlignmentCuration(alignVersions(doc, modern), curation);
       applyAlignment(doc, modern, entries, curation);
+      originals.push({ doc, entries });
       const alignment: AlignmentFile = {
         schemaVersion: 1,
         playId,
@@ -317,6 +323,27 @@ async function ingestPlay(play: PlayConfig): Promise<Map<string, VersionDocument
     await recordChanges(dir, await readJsonIfExists<VersionDocument>(path), doc);
     await writeJson(path, VersionDocumentSchema.parse(doc));
     console.warn(`  ${version.id}: ${String(textNodes(doc).length)} text nodes, ${doc.revision}`);
+  }
+
+  // Variants seeded from the edition's marked passages (CRP-061), with curated notes.
+  if (marked && marked.passages.length > 0) {
+    const curated = await readJsonIfExists<{ notes?: Record<string, string> }>(
+      join(ROOT, 'curation', playId, 'variants.json'),
+    );
+    const { variants, report } = seedVariants(
+      modern,
+      marked.tokens,
+      marked.passages,
+      originals,
+      curated?.notes,
+    );
+    await writeJson(
+      join(dir, 'variants.json'),
+      VariantsFileSchema.parse({ schemaVersion: 1, playId, variants }),
+    );
+    console.warn(
+      `  variants: ${String(report.seeded)} seeded from the edition's markup${report.skipped ? `; ${String(report.skipped)} lie in headings or speaker names` : ''}`,
+    );
   }
 
   for (const { path, ids } of idMaps) {
@@ -506,6 +533,7 @@ const schemas = {
   'version.schema.json': VersionDocumentSchema,
   'alignment.schema.json': AlignmentFileSchema,
   'definitions.schema.json': SourcedDefinitionsFileSchema,
+  'variants.schema.json': VariantsFileSchema,
 };
 for (const [name, schema] of Object.entries(schemas)) {
   await writeJson(join(ROOT, 'schema', name), z.toJSONSchema(schema), 2);

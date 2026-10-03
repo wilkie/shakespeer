@@ -15,6 +15,7 @@ import {
   PlayIndexSchema,
   SourcedDefinitionsFileSchema,
   SourcesFileSchema,
+  VariantsFileSchema,
   VersionDocumentSchema,
   type VersionDocument,
 } from './schema';
@@ -40,6 +41,7 @@ describe('committed corpus', () => {
       'version.schema.json': VersionDocumentSchema,
       'alignment.schema.json': AlignmentFileSchema,
       'definitions.schema.json': SourcedDefinitionsFileSchema,
+      'variants.schema.json': VariantsFileSchema,
     };
     for (const [file, schema] of Object.entries(schemas)) {
       expect(readJson(join('schema', file))).toStrictEqual(z.toJSONSchema(schema));
@@ -155,5 +157,42 @@ describe.each(definitionFiles)('%s definitions', (_key, playId, versionId, sourc
     expect(file.terms.length).toBeGreaterThan(0);
     expect(broken).toStrictEqual([]);
     expect(new Set(file.terms.map((term) => term.id)).size).toBe(file.terms.length);
+  });
+});
+
+const variantPlays = index.plays
+  .filter((play) => existsSync(join(root, 'plays', play.id, 'variants.json')))
+  .map((play) => [play.id, play] as const);
+
+describe.each(variantPlays)('%s variants', (playId, play) => {
+  it("CRP-060/061: every reading spans its version's text exactly", () => {
+    const file = VariantsFileSchema.parse(readJson(join('plays', playId, 'variants.json')));
+    const docs = new Map(play.versions.map((v) => [v.id, loadDoc(playId, v.id)]));
+    const broken = file.variants.flatMap((variant) =>
+      variant.readings.flatMap((reading) => {
+        if (!reading.start || !reading.end) {
+          return reading.text === '' ? [] : [`${variant.id}: text without a span`];
+        }
+        const nodes = textNodes(docs.get(reading.versionId) as VersionDocument);
+        const from = nodes.findIndex((n) => n.id === reading.start?.nodeId);
+        const to = nodes.findIndex((n) => n.id === reading.end?.nodeId);
+        const text = nodes
+          .slice(from, to + 1)
+          .map((n, i, all) =>
+            n.text.slice(
+              i === 0 ? reading.start?.offset : 0,
+              i === all.length - 1 ? reading.end?.offset : undefined,
+            ),
+          )
+          .join('\n');
+        return from < 0 || to < from || text !== reading.text
+          ? [`${variant.id} ${reading.versionId}`]
+          : [];
+      }),
+    );
+
+    expect(file.variants.length).toBeGreaterThan(0);
+    expect(broken).toStrictEqual([]);
+    expect(new Set(file.variants.map((v) => v.id)).size).toBe(file.variants.length);
   });
 });

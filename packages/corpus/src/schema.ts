@@ -266,3 +266,33 @@ export const SourcedDefinitionsFileSchema = z.object({
   terms: z.array(SourcedTermSchema),
 });
 export type SourcedDefinitionsFile = z.infer<typeof SourcedDefinitionsFileSchema>;
+
+// ---------------------------------------------------------------------------------------------
+// Variants (CRP-060, CRP-061)
+
+/** A version's reading of a variant passage; without a span, the version lacks the passage. */
+export const VariantReadingSchema = z.object({
+  versionId: id,
+  start: positionSchema.optional(),
+  end: positionSchema.optional(),
+  text: z.string(),
+});
+export type VariantReading = z.infer<typeof VariantReadingSchema>;
+
+export const VariantSchema = z.object({
+  id,
+  title: z.string().min(1),
+  /** Markdown; empty until curated (CRP-004). */
+  note: z.string(),
+  /** Where the observation comes from (CRP-080). */
+  sourceIds: z.array(id).min(1),
+  readings: z.array(VariantReadingSchema).min(1),
+});
+export type Variant = z.infer<typeof VariantSchema>;
+
+export const VariantsFileSchema = z.object({
+  schemaVersion: z.literal(1),
+  playId: id,
+  variants: z.array(VariantSchema),
+});
+export type VariantsFile = z.infer<typeof VariantsFileSchema>;

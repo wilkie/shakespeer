@@ -1,0 +1,4644 @@
+{
+ "schemaVersion": 1,
+ "playId": "the-tempest",
+ "variants": [
+  {
+   "id": "folger-ptr-0001",
+   "title": "Editorial emendation: “with Alonso, Sebastian, and the other courtiers.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0034.1",
+      "offset": 9
+     },
+     "end": {
+      "nodeId": "stg-0034.1",
+      "offset": 57
+     },
+     "text": "with Alonso, Sebastian, and the other courtiers."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0002",
+   "title": "Editorial emendation: “more”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0051.1",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "stg-0051.1",
+      "offset": 10
+     },
+     "text": "more"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-00029",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-00029",
+      "offset": 19
+     },
+     "text": "Enter Mariners wet."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0003",
+   "title": "Editorial emendation: “Mariners exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0052.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0052.1",
+      "offset": 14
+     },
+     "text": "Mariners exit."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0004",
+   "title": "Editorial emendation: “Boatswain exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0059.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0059.1",
+      "offset": 16
+     },
+     "text": "Boatswain exits."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0005",
+   "title": "Editorial emendation: “with Antonio.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0067.1",
+      "offset": 9
+     },
+     "end": {
+      "nodeId": "stg-0067.1",
+      "offset": 22
+     },
+     "text": "with Antonio."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0006",
+   "title": "Editorial emendation: “Putting aside his cloak.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0100.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0100.1",
+      "offset": 24
+     },
+     "text": "Putting aside his cloak."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0007",
+   "title": "Editorial emendation: “They sit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0112",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0112",
+      "offset": 9
+     },
+     "text": "They sit."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0008",
+   "title": "Editorial emendation: “standing”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0274",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0274",
+      "offset": 10
+     },
+     "text": "standing"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0009",
+   "title": "Editorial emendation: “Miranda falls asleep. Prospero puts on his cloak.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0292.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0292.2",
+      "offset": 27
+     },
+     "text": "Miranda falls asleep.\nProspero puts on his cloak."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0010",
+   "title": "Editorial emendation: “He folds his arms.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0336",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0336",
+      "offset": 18
+     },
+     "text": "He folds his arms."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0011",
+   "title": "Editorial emendation: “she” (1.2.335)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0406",
+      "offset": 23
+     },
+     "end": {
+      "nodeId": "ftln-0406",
+      "offset": 26
+     },
+     "text": "she"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-00376",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-00376",
+      "offset": 45
+     },
+     "text": "(Saue for the Son, that he did littour heere,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0012",
+   "title": "Editorial emendation: “Ariel”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0433.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0433.1",
+      "offset": 5
+     },
+     "text": "Ariel"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0013",
+   "title": "Editorial emendation: “Miranda wakes.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0435",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0435",
+      "offset": 14
+     },
+     "text": "Miranda wakes."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0014",
+   "title": "Editorial emendation: “rising”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0441",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0441",
+      "offset": 8
+     },
+     "text": "rising"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0015",
+   "title": "Editorial emendation: “He whispers to Ariel.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0452",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0452",
+      "offset": 21
+     },
+     "text": "He whispers to Ariel."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0016",
+   "title": "Editorial emendation: “to Caliban”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0454.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0454.0",
+      "offset": 12
+     },
+     "text": "to Caliban"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0017",
+   "title": "Editorial emendation: “forth at” (1.2.391)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0462",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "ftln-0462",
+      "offset": 14
+     },
+     "text": "forth at"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-00436",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-00436",
+      "offset": 49
+     },
+     "text": "Shall for that vast of night, that they may worke"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0018",
+   "title": "Editorial emendation: “Aside.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0519",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0519",
+      "offset": 6
+     },
+     "text": "Aside."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0019",
+   "title": "Editorial emendation: “within:”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0530",
+      "offset": 20
+     },
+     "end": {
+      "nodeId": "stg-0530",
+      "offset": 27
+     },
+     "text": "within:"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0020",
+   "title": "Editorial emendation: “Burden dispersedly, within:”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0532",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0532",
+      "offset": 27
+     },
+     "text": "Burden dispersedly, within:"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0021",
+   "title": "Editorial emendation: “within:”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0552",
+      "offset": 8
+     },
+     "end": {
+      "nodeId": "stg-0552",
+      "offset": 15
+     },
+     "text": "within:"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0022",
+   "title": "Editorial emendation: “to Miranda”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0557.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0557.0",
+      "offset": 12
+     },
+     "text": "to Miranda"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0023",
+   "title": "Editorial emendation: “aside”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0572",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0572",
+      "offset": 7
+     },
+     "text": "aside"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0024",
+   "title": "Editorial emendation: “To Ariel.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0573",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0573",
+      "offset": 9
+     },
+     "text": "To Ariel."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0025",
+   "title": "Editorial emendation: “seeing Miranda”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0576",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0576",
+      "offset": 16
+     },
+     "text": "seeing Miranda"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0026",
+   "title": "Editorial emendation: “aside”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0598",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0598",
+      "offset": 7
+     },
+     "text": "aside"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0027",
+   "title": "Editorial emendation: “To Ferdinand.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0602",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0602",
+      "offset": 13
+     },
+     "text": "To Ferdinand."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0028",
+   "title": "Editorial emendation: “Aside.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0613",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0613",
+      "offset": 6
+     },
+     "text": "Aside."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0029",
+   "title": "Editorial emendation: “To Ferdinand.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0616",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0616",
+      "offset": 13
+     },
+     "text": "To Ferdinand."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0030",
+   "title": "Editorial emendation: “to Ferdinand”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0626",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0626",
+      "offset": 14
+     },
+     "text": "to Ferdinand"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0031",
+   "title": "Editorial emendation: “To Miranda.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0627",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0627",
+      "offset": 11
+     },
+     "text": "To Miranda."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0032",
+   "title": "Editorial emendation: “To Ferdinand.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0628",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0628",
+      "offset": 13
+     },
+     "text": "To Ferdinand."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0033",
+   "title": "Editorial emendation: “to Ferdinand”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0660",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0660",
+      "offset": 14
+     },
+     "text": "to Ferdinand"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0034",
+   "title": "Editorial emendation: “aside”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0672",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0672",
+      "offset": 7
+     },
+     "text": "aside"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0035",
+   "title": "Editorial emendation: “To Ariel.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0674",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0674",
+      "offset": 9
+     },
+     "text": "To Ariel."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0036",
+   "title": "Editorial emendation: “to Ferdinand”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0675",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0675",
+      "offset": 14
+     },
+     "text": "to Ferdinand"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0037",
+   "title": "Editorial emendation: “to Ariel”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0680",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0680",
+      "offset": 10
+     },
+     "text": "to Ariel"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0038",
+   "title": "Editorial emendation: “to Ferdinand”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0684.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0684.0",
+      "offset": 14
+     },
+     "text": "to Ferdinand"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0039",
+   "title": "Editorial emendation: “To Miranda.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0684",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0684",
+      "offset": 11
+     },
+     "text": "To Miranda."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0040",
+   "title": "Editorial emendation: “to Alonso”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0685.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0685.0",
+      "offset": 11
+     },
+     "text": "to Alonso"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0041",
+   "title": "Editorial emendation: “aside to Antonio”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0695",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0695",
+      "offset": 18
+     },
+     "text": "aside to Antonio"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0042",
+   "title": "Editorial emendation: “to Alonso”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0700",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0700",
+      "offset": 11
+     },
+     "text": "to Alonso"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0043",
+   "title": "Editorial emendation: “to Alonso”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0709",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0709",
+      "offset": 11
+     },
+     "text": "to Alonso"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0044",
+   "title": "Editorial emendation: “to Gonzalo”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0711",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0711",
+      "offset": 12
+     },
+     "text": "to Gonzalo"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0045",
+   "title": "Editorial emendation: “aside to Antonio”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0713",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0713",
+      "offset": 18
+     },
+     "text": "aside to Antonio"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0046",
+   "title": "Editorial emendation: “aside to Sebastian”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0714",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0714",
+      "offset": 20
+     },
+     "text": "aside to Sebastian"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0049",
+   "title": "Editorial emendation: “gloss,” (2.1.66)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0750",
+      "offset": 14
+     },
+     "end": {
+      "nodeId": "ftln-0750",
+      "offset": 20
+     },
+     "text": "gloss,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-00700",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-00700",
+      "offset": 163
+     },
+     "text": "That our Garments being (as they were) drencht in the Sea, hold notwithstanding their freshnesse and glosses, being rather new dy'de then stain'd with salte water."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0050",
+   "title": "Editorial emendation: “to Gonzalo”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0768",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0768",
+      "offset": 12
+     },
+     "text": "to Gonzalo"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0051",
+   "title": "Editorial emendation: “to Alonso”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0784",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0784",
+      "offset": 11
+     },
+     "text": "to Alonso"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0052",
+   "title": "Editorial emendation: “to Alonso”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0791",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0791",
+      "offset": 11
+     },
+     "text": "to Alonso"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0053",
+   "title": "Editorial emendation: “to Alonso”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0794",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0794",
+      "offset": 11
+     },
+     "text": "to Alonso"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0054",
+   "title": "Editorial emendation: “to Alonso”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0837.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0837.0",
+      "offset": 11
+     },
+     "text": "to Alonso"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0055",
+   "title": "Editorial emendation: “invisible,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0885.1",
+      "offset": 12
+     },
+     "end": {
+      "nodeId": "stg-0885.1",
+      "offset": 22
+     },
+     "text": "invisible,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-00808",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-00808",
+      "offset": 37
+     },
+     "text": "Enter Ariell playing solemne Musicke."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0056",
+   "title": "Editorial emendation: “to Gonzalo”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0887",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0887",
+      "offset": 12
+     },
+     "text": "to Gonzalo"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0057",
+   "title": "Editorial emendation: “All sink down asleep except Alonso, Antonio, and Sebastian.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0891.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0891.1",
+      "offset": 59
+     },
+     "text": "All sink down asleep except Alonso, Antonio, and Sebastian."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0058",
+   "title": "Editorial emendation: “Alonso sleeps. Ariel exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0902.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0902.1",
+      "offset": 27
+     },
+     "text": "Alonso sleeps. Ariel exits."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0059",
+   "title": "Editorial emendation: “They draw their swords.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1023",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1023",
+      "offset": 23
+     },
+     "text": "They draw their swords."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0060",
+   "title": "Editorial emendation: “They talk apart.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1024.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1024.1",
+      "offset": 16
+     },
+     "text": "They talk apart."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0061",
+   "title": "Editorial emendation: “invisible,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1024.2",
+      "offset": 13
+     },
+     "end": {
+      "nodeId": "stg-1024.2",
+      "offset": 23
+     },
+     "text": "invisible,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-00943",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-00943",
+      "offset": 35
+     },
+     "text": "Enter Ariell with Musicke and Song."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0062",
+   "title": "Editorial emendation: “to the sleeping Gonzalo”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1025.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1025.0",
+      "offset": 25
+     },
+     "text": "to the sleeping Gonzalo"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0063",
+   "title": "Editorial emendation: “to Sebastian”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1034",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1034",
+      "offset": 14
+     },
+     "text": "to Sebastian"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0064",
+   "title": "Editorial emendation: “waking”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1035",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1035",
+      "offset": 8
+     },
+     "text": "waking"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0065",
+   "title": "Editorial emendation: “He wakes Alonso.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1036",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1036",
+      "offset": 16
+     },
+     "text": "He wakes Alonso."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0066",
+   "title": "Editorial emendation: “to Sebastian”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1037.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1037.0",
+      "offset": 14
+     },
+     "text": "to Sebastian"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0067",
+   "title": "Editorial emendation: “to Sebastian”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1039",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1039",
+      "offset": 14
+     },
+     "text": "to Sebastian"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0068",
+   "title": "Editorial emendation: “aside”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1060.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1060.0",
+      "offset": 7
+     },
+     "text": "aside"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0069",
+   "title": "Editorial emendation: “He lies down and covers himself with a cloak.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1078.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1078.1",
+      "offset": 45
+     },
+     "text": "He lies down and covers himself with a cloak."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0070",
+   "title": "Editorial emendation: “Noticing Caliban.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1085",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1085",
+      "offset": 17
+     },
+     "text": "Noticing Caliban."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0071",
+   "title": "Editorial emendation: “Thunder.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1099",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1099",
+      "offset": 8
+     },
+     "text": "Thunder."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0072",
+   "title": "Editorial emendation: “He crawls under Caliban’s cloak.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1103",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1103",
+      "offset": 32
+     },
+     "text": "He crawls under Caliban’s cloak."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0073",
+   "title": "Editorial emendation: “Caliban drinks.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1148",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1148",
+      "offset": 15
+     },
+     "text": "Caliban drinks."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0074",
+   "title": "Editorial emendation: “Caliban drinks.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1158",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1158",
+      "offset": 15
+     },
+     "text": "Caliban drinks."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0075",
+   "title": "Editorial emendation: “He pulls him out from under Caliban’s cloak.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1169",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1169",
+      "offset": 44
+     },
+     "text": "He pulls him out from under Caliban’s cloak."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0076",
+   "title": "Editorial emendation: “aside”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1181",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1181",
+      "offset": 7
+     },
+     "text": "aside"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0077",
+   "title": "Editorial emendation: “He crawls out from under the cloak.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1183",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1183",
+      "offset": 35
+     },
+     "text": "He crawls out from under the cloak."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0078",
+   "title": "Editorial emendation: “to Trinculo”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1184",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1184",
+      "offset": 13
+     },
+     "text": "to Trinculo"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0079",
+   "title": "Editorial emendation: “to Trinculo”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1192",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1192",
+      "offset": 13
+     },
+     "text": "to Trinculo"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0080",
+   "title": "Editorial emendation: “Trinculo drinks.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1196",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1196",
+      "offset": 16
+     },
+     "text": "Trinculo drinks."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0081",
+   "title": "Editorial emendation: “Caliban drinks.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1210",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1210",
+      "offset": 15
+     },
+     "text": "Caliban drinks."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0082",
+   "title": "Editorial emendation: “Caliban kneels.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1220.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1220.1",
+      "offset": 15
+     },
+     "text": "Caliban kneels."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0083",
+   "title": "Editorial emendation: “standing”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1234.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1234.0",
+      "offset": 10
+     },
+     "text": "standing"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0084",
+   "title": "Editorial emendation: “sings”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1247.0",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1247.0",
+      "offset": 5
+     },
+     "text": "sings"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0085",
+   "title": "Editorial emendation: “sets” (3.1.2)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1257",
+      "offset": 16
+     },
+     "end": {
+      "nodeId": "ftln-1257",
+      "offset": 20
+     },
+     "text": "sets"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-01089",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-01089",
+      "offset": 49
+     },
+     "text": "Delight in them set off: Some kindes of basenesse"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0086",
+   "title": "Editorial emendation: “busiest” (3.1.16)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1271",
+      "offset": 5
+     },
+     "end": {
+      "nodeId": "ftln-1271",
+      "offset": 12
+     },
+     "text": "busiest"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-01102",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-01102",
+      "offset": 31
+     },
+     "text": "Most busie lest, when I doe it."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0087",
+   "title": "Editorial emendation: “at a distance, unobserved.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1271.1",
+      "offset": 28
+     },
+     "end": {
+      "nodeId": "stg-1271.1",
+      "offset": 54
+     },
+     "text": "at a distance, unobserved."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-01103",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-01103",
+      "offset": 27
+     },
+     "text": "Enter Miranda and Prospero."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0088",
+   "title": "Editorial emendation: “aside”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1293",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1293",
+      "offset": 7
+     },
+     "text": "aside"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0089",
+   "title": "Editorial emendation: “aside”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1344",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1344",
+      "offset": 7
+     },
+     "text": "aside"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0090",
+   "title": "Editorial emendation: “clasping his hand”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1363.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1363.0",
+      "offset": 19
+     },
+     "text": "clasping his hand"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0091",
+   "title": "Editorial emendation: “to Trinculo”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1371",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1371",
+      "offset": 13
+     },
+     "text": "to Trinculo"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0092",
+   "title": "Editorial emendation: “Caliban drinks.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1380.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1380.1",
+      "offset": 15
+     },
+     "text": "Caliban drinks."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0093",
+   "title": "Editorial emendation: “kneeling”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1416",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1416",
+      "offset": 10
+     },
+     "text": "kneeling"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0094",
+   "title": "Editorial emendation: “in Trinculo’s voice”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1419",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1419",
+      "offset": 21
+     },
+     "text": "in Trinculo’s voice"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0095",
+   "title": "Editorial emendation: “to Trinculo”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1420",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1420",
+      "offset": 13
+     },
+     "text": "to Trinculo"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0096",
+   "title": "Editorial emendation: “He stands.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1421",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1421",
+      "offset": 10
+     },
+     "text": "He stands."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0097",
+   "title": "Editorial emendation: “Trinculo stands aside.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1427",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1427",
+      "offset": 22
+     },
+     "text": "Trinculo stands aside."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0098",
+   "title": "Editorial emendation: “in Trinculo’s voice”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1439",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1439",
+      "offset": 21
+     },
+     "text": "in Trinculo’s voice"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0099",
+   "title": "Editorial emendation: “in Trinculo’s voice”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1452",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1452",
+      "offset": 21
+     },
+     "text": "in Trinculo’s voice"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0100",
+   "title": "Editorial emendation: “He beats Trinculo.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1453",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1453",
+      "offset": 18
+     },
+     "text": "He beats Trinculo."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0101",
+   "title": "Editorial emendation: “To Trinculo.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1460",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1460",
+      "offset": 12
+     },
+     "text": "To Trinculo."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0102",
+   "title": "Editorial emendation: “Trinculo moves farther away.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1464",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1464",
+      "offset": 28
+     },
+     "text": "Trinculo moves farther away."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0103",
+   "title": "Editorial emendation: “aside”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1497",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1497",
+      "offset": 7
+     },
+     "text": "aside"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0104",
+   "title": "Editorial emendation: “to the invisible musician”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1510",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1510",
+      "offset": 27
+     },
+     "text": "to the invisible musician"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0105",
+   "title": "Editorial emendation: “aside to Sebastian”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1549.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1549.0",
+      "offset": 20
+     },
+     "text": "aside to Sebastian"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0106",
+   "title": "Editorial emendation: “aside to Antonio”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1552",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1552",
+      "offset": 18
+     },
+     "text": "aside to Antonio"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0107",
+   "title": "Editorial emendation: “aside to Sebastian”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1554",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1554",
+      "offset": 20
+     },
+     "text": "aside to Sebastian"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0108",
+   "title": "Editorial emendation: “aside to Antonio”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1558",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1558",
+      "offset": 18
+     },
+     "text": "aside to Antonio"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0109",
+   "title": "Editorial emendation: “enter”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1558.1",
+      "offset": 30
+     },
+     "end": {
+      "nodeId": "stg-1558.1",
+      "offset": 35
+     },
+     "text": "enter"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-01359",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-01359",
+      "offset": 221
+     },
+     "text": "Solemne and strange Musicke: and Prosper on the top (inuisible•) Enter seuerall strange shapes, bringing in a Banket; and dance about it with gentle actions of salutations, and inuiting the King, &c. to eate, they depart."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0110",
+   "title": "Editorial emendation: “islanders” (3.3.36)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1572",
+      "offset": 27
+     },
+     "end": {
+      "nodeId": "ftln-1572",
+      "offset": 36
+     },
+     "text": "islanders"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-01374",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-01374",
+      "offset": 35
+     },
+     "text": "If I should say I saw such Islands;"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0111",
+   "title": "Editorial emendation: “aside”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1578",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1578",
+      "offset": 7
+     },
+     "text": "aside"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0112",
+   "title": "Editorial emendation: “aside”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1586",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1586",
+      "offset": 7
+     },
+     "text": "aside"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0113",
+   "title": "Editorial emendation: “the shapes”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1586.1",
+      "offset": 33
+     },
+     "end": {
+      "nodeId": "stg-1586.1",
+      "offset": 43
+     },
+     "text": "the shapes"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0114",
+   "title": "Editorial emendation: “Alonso, Sebastian, and Antonio move toward the table.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1605.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1605.1",
+      "offset": 53
+     },
+     "text": "Alonso, Sebastian, and Antonio move toward the table."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0115",
+   "title": "Editorial emendation: “as Harpy”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1606.0",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1606.0",
+      "offset": 8
+     },
+     "text": "as Harpy"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0116",
+   "title": "Editorial emendation: “Alonso, Sebastian, and Antonio draw their swords.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1613.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1613.1",
+      "offset": 49
+     },
+     "text": "Alonso, Sebastian, and Antonio draw their swords."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0117",
+   "title": "Editorial emendation: “aside”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1638.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1638.0",
+      "offset": 7
+     },
+     "text": "aside"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0118",
+   "title": "Editorial emendation: “He exits, above.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1649",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1649",
+      "offset": 16
+     },
+     "text": "He exits, above."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0119",
+   "title": "Editorial emendation: “to Alonso”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1650.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1650.0",
+      "offset": 11
+     },
+     "text": "to Alonso"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0120",
+   "title": "Editorial emendation: “to Ferdinand”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1670.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1670.0",
+      "offset": 14
+     },
+     "text": "to Ferdinand"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0121",
+   "title": "Editorial emendation: “of her,” (4.1.9)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1678",
+      "offset": 32
+     },
+     "end": {
+      "nodeId": "ftln-1678",
+      "offset": 39
+     },
+     "text": "of her,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-01479",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-01479",
+      "offset": 41
+     },
+     "text": "Doe not smile at me, that I boast her of,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0122",
+   "title": "Editorial emendation: “gift” (4.1.14)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1683",
+      "offset": 12
+     },
+     "end": {
+      "nodeId": "ftln-1683",
+      "offset": 16
+     },
+     "text": "gift"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-01484",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-01484",
+      "offset": 45
+     },
+     "text": "Then, as my guest, and thine owne acquisition"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0123",
+   "title": "Editorial emendation: “Ferdinand and Miranda move aside.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1704.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1704.1",
+      "offset": 33
+     },
+     "text": "Ferdinand and Miranda move aside."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0124",
+   "title": "Editorial emendation: “to Ferdinand”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1725.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1725.0",
+      "offset": 14
+     },
+     "text": "to Ferdinand"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0125",
+   "title": "Editorial emendation: “Her” (4.1.82)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1751",
+      "offset": 19
+     },
+     "end": {
+      "nodeId": "ftln-1751",
+      "offset": 22
+     },
+     "text": "Her"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-01556",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-01556",
+      "offset": 46
+     },
+     "text": "To come, and sport: here Peacocks flye amaine:"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0127",
+   "title": "Editorial emendation: “the spirits”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1827.1",
+      "offset": 42
+     },
+     "end": {
+      "nodeId": "stg-1827.1",
+      "offset": 53
+     },
+     "text": "the spirits"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0128",
+   "title": "Editorial emendation: “to Miranda”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1828.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1828.0",
+      "offset": 12
+     },
+     "text": "to Miranda"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0129",
+   "title": "Editorial emendation: “to Ferdinand”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1832.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1832.0",
+      "offset": 14
+     },
+     "text": "to Ferdinand"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0130",
+   "title": "Editorial emendation: “They”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1850.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1850.1",
+      "offset": 4
+     },
+     "text": "They"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-01659",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-01659",
+      "offset": 5
+     },
+     "text": "Exit."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0131",
+   "title": "Editorial emendation: “them on” (4.1.217)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1886",
+      "offset": 11
+     },
+     "end": {
+      "nodeId": "ftln-1886",
+      "offset": 18
+     },
+     "text": "them on"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0132",
+   "title": "Editorial emendation: “as Prospero and Ariel look on.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1886.1",
+      "offset": 48
+     },
+     "end": {
+      "nodeId": "stg-1886.1",
+      "offset": 78
+     },
+     "text": "as Prospero and Ariel look on."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-01694",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-01694",
+      "offset": 98
+     },
+     "text": "Enter Ariell, loaden with glistering apparell, &c. Enter Caliban, Stephano, and Trinculo, all wet."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0133",
+   "title": "Editorial emendation: “seeing the apparel”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1916",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1916",
+      "offset": 20
+     },
+     "text": "seeing the apparel"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0134",
+   "title": "Editorial emendation: “He puts on one of the gowns.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1921",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1921",
+      "offset": 28
+     },
+     "text": "He puts on one of the gowns."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0135",
+   "title": "Editorial emendation: “Let ’t” (4.1.258)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1927",
+      "offset": 30
+     },
+     "end": {
+      "nodeId": "ftln-1927",
+      "offset": 36
+     },
+     "text": "Let ’t"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-01727",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-01727",
+      "offset": 42
+     },
+     "text": "To doate thus on such luggage? let's alone"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0136",
+   "title": "Editorial emendation: “He takes a jacket from the tree.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1932",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1932",
+      "offset": 32
+     },
+     "text": "He takes a jacket from the tree."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0137",
+   "title": "Editorial emendation: “Caliban, Stephano, and Trinculo are driven off.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1953.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1953.1",
+      "offset": 47
+     },
+     "text": "Caliban, Stephano, and Trinculo are driven off."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0138",
+   "title": "Editorial emendation: “Prospero draws a large circle on the stage with his staff.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2005.2",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2005.2",
+      "offset": 58
+     },
+     "text": "Prospero draws a large circle on the stage with his staff."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0139",
+   "title": "Editorial emendation: “Prospero gestures with his staff.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2025.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2025.1",
+      "offset": 33
+     },
+     "text": "Prospero gestures with his staff."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0140",
+   "title": "Editorial emendation: “boiled” (5.1.69)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2033",
+      "offset": 13
+     },
+     "end": {
+      "nodeId": "ftln-2033",
+      "offset": 19
+     },
+     "text": "boiled"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-01824",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-01824",
+      "offset": 50
+     },
+     "text": "(Now vselesse) boile within thy skull: there stand"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0141",
+   "title": "Editorial emendation: “entertained” (5.1.85)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2049",
+      "offset": 24
+     },
+     "end": {
+      "nodeId": "ftln-2049",
+      "offset": 35
+     },
+     "text": "entertained"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-01839",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-01839",
+      "offset": 44
+     },
+     "text": "You, brother mine, that entertaine ambition,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0142",
+   "title": "Editorial emendation: “lies” (5.1.92)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2056",
+      "offset": 9
+     },
+     "end": {
+      "nodeId": "ftln-2056",
+      "offset": 13
+     },
+     "text": "lies"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-01846",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-01846",
+      "offset": 45
+     },
+     "text": "That now ly foule, and muddy: not one of them"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0143",
+   "title": "Editorial emendation: “Ariel exits and at once returns with Prospero’s ducal robes.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2058.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2058.1",
+      "offset": 60
+     },
+     "text": "Ariel exits and at once returns with Prospero’s ducal robes."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0144",
+   "title": "Editorial emendation: “to Alonso”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2081",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2081",
+      "offset": 11
+     },
+     "text": "to Alonso"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0145",
+   "title": "Editorial emendation: “He embraces Alonso.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2084.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2084.1",
+      "offset": 19
+     },
+     "text": "He embraces Alonso."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0146",
+   "title": "Editorial emendation: “to Gonzalo”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2098",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2098",
+      "offset": 12
+     },
+     "text": "to Gonzalo"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0147",
+   "title": "Editorial emendation: “not” (5.1.140)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2104",
+      "offset": 39
+     },
+     "end": {
+      "nodeId": "ftln-2104",
+      "offset": 42
+     },
+     "text": "not"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-01894",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-01894",
+      "offset": 50
+     },
+     "text": "Some subtleties o' th' Isle, that will not let you"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0148",
+   "title": "Editorial emendation: “Aside to Sebastian and Antonio.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2106",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2106",
+      "offset": 31
+     },
+     "text": "Aside to Sebastian and Antonio."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0149",
+   "title": "Editorial emendation: “aside”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2111",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2111",
+      "offset": 7
+     },
+     "text": "aside"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0150",
+   "title": "Editorial emendation: “aside to Sebastian”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2112",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2112",
+      "offset": 20
+     },
+     "text": "aside to Sebastian"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0151",
+   "title": "Editorial emendation: “To Antonio.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2113",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2113",
+      "offset": 11
+     },
+     "text": "To Antonio."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0152",
+   "title": "Editorial emendation: “To Alonso.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2157",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2157",
+      "offset": 10
+     },
+     "text": "To Alonso."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0153",
+   "title": "Editorial emendation: “to Ferdinand”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2164.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2164.0",
+      "offset": 14
+     },
+     "text": "to Ferdinand"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0154",
+   "title": "Editorial emendation: “seeing Alonso and coming forward”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2173.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2173.0",
+      "offset": 34
+     },
+     "text": "seeing Alonso and coming forward"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0155",
+   "title": "Editorial emendation: “He kneels.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2174",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2174",
+      "offset": 10
+     },
+     "text": "He kneels."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0156",
+   "title": "Editorial emendation: “Ferdinand stands.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2178.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2178.1",
+      "offset": 17
+     },
+     "text": "Ferdinand stands."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0157",
+   "title": "Editorial emendation: “rising and coming forward”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2179",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2179",
+      "offset": 27
+     },
+     "text": "rising and coming forward"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0158",
+   "title": "Editorial emendation: “to Ferdinand”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2184.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2184.0",
+      "offset": 14
+     },
+     "text": "to Ferdinand"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0159",
+   "title": "Editorial emendation: “to Ferdinand and Miranda”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2219",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2219",
+      "offset": 26
+     },
+     "text": "to Ferdinand and Miranda"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0160",
+   "title": "Editorial emendation: “aside to Prospero”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2235",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2235",
+      "offset": 19
+     },
+     "text": "aside to Prospero"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0161",
+   "title": "Editorial emendation: “aside to Ariel”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2237",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2237",
+      "offset": 16
+     },
+     "text": "aside to Ariel"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0162",
+   "title": "Editorial emendation: “her” (5.1.286)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2250",
+      "offset": 17
+     },
+     "end": {
+      "nodeId": "ftln-2250",
+      "offset": 20
+     },
+     "text": "her"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-02031",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-02031",
+      "offset": 41
+     },
+     "text": "Where we, in all our trim, freshly beheld"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0163",
+   "title": "Editorial emendation: “aside to Prospero”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2255",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2255",
+      "offset": 19
+     },
+     "text": "aside to Prospero"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0164",
+   "title": "Editorial emendation: “aside to Ariel”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2256.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2256.0",
+      "offset": 16
+     },
+     "text": "aside to Ariel"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0165",
+   "title": "Editorial emendation: “Aside to Ariel.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2267",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2267",
+      "offset": 15
+     },
+     "text": "Aside to Ariel."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0166",
+   "title": "Editorial emendation: “Ariel exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2270",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2270",
+      "offset": 12
+     },
+     "text": "Ariel exits."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0167",
+   "title": "Editorial emendation: “To Trinculo.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2301",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2301",
+      "offset": 12
+     },
+     "text": "To Trinculo."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0168",
+   "title": "Editorial emendation: “indicating Caliban”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2310.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2310.0",
+      "offset": 20
+     },
+     "text": "indicating Caliban"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0169",
+   "title": "Editorial emendation: “as” (5.1.346)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2310",
+      "offset": 8
+     },
+     "end": {
+      "nodeId": "ftln-2310",
+      "offset": 10
+     },
+     "text": "as"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-02090",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-02090",
+      "offset": 43
+     },
+     "text": "This is a strange thing as ere I look'd on."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0170",
+   "title": "Editorial emendation: “a” (5.1.346)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2310",
+      "offset": 19
+     },
+     "end": {
+      "nodeId": "ftln-2310",
+      "offset": 20
+     },
+     "text": "a"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "tmp-f1-02090",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "tmp-f1-02090",
+      "offset": 43
+     },
+     "text": "This is a strange thing as ere I look'd on."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0171",
+   "title": "Editorial emendation: “To Caliban.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2312",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2312",
+      "offset": 11
+     },
+     "text": "To Caliban."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0172",
+   "title": "Editorial emendation: “to Stephano and Trinculo”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2320.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2320.0",
+      "offset": 26
+     },
+     "text": "to Stephano and Trinculo"
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0173",
+   "title": "Editorial emendation: “Caliban, Stephano, and Trinculo exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2321.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2321.1",
+      "offset": 37
+     },
+     "text": "Caliban, Stephano, and Trinculo exit."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0174",
+   "title": "Editorial emendation: “Aside to Ariel.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2340",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2340",
+      "offset": 15
+     },
+     "text": "Aside to Ariel."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  }
+ ]
+}
