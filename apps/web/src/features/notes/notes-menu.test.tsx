@@ -97,21 +97,32 @@ describe('note counts, unattached notes and definition sources', () => {
 
   it('DEF-012: switching a definition source off hides its terms', async () => {
     const { user } = await openReader();
+    const terms = () => document.querySelectorAll('.term').length;
     await waitFor(() => {
-      expect(document.querySelectorAll('.term').length).toBeGreaterThan(0);
+      expect(terms()).toBeGreaterThan(0);
+    }, SLOW);
+    const all = terms();
+    const toggle = async (name: string) => {
+      await user.click(screen.getByRole('button', { name: 'More actions' }));
+      const item = await screen.findByRole('menuitemcheckbox', { name });
+      await user.click(item);
+      await user.keyboard('{Escape}');
+    };
+
+    await toggle('Schmidt');
+    await waitFor(() => {
+      expect(terms()).toBeLessThan(all);
+    }, SLOW);
+    expect(terms()).toBeGreaterThan(0); // Onions' terms remain
+    await toggle('Onions');
+    await waitFor(() => {
+      expect(terms()).toBe(0);
     }, SLOW);
 
-    await user.click(screen.getByRole('button', { name: 'More actions' }));
-    const schmidt = await screen.findByRole('menuitemcheckbox', { name: 'Schmidt' });
-    expect(schmidt).toHaveAttribute('aria-checked', 'true');
-    await user.click(schmidt);
-
+    await toggle('Schmidt');
+    await toggle('Onions');
     await waitFor(() => {
-      expect(document.querySelectorAll('.term')).toHaveLength(0);
-    }, SLOW);
-    await user.click(screen.getByRole('menuitemcheckbox', { name: 'Schmidt' }));
-    await waitFor(() => {
-      expect(document.querySelectorAll('.term').length).toBeGreaterThan(0);
+      expect(terms()).toBe(all);
     }, SLOW);
   });
 });

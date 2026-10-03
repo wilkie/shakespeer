@@ -39,6 +39,19 @@
         "commercialUse": true
       },
       "attribution": "Alexander Schmidt, Shakespeare-Lexicon, 3rd ed., rev. Gregor Sarrazin (1902). Public domain. Scans by the Internet Archive."
+    },
+    {
+      "id": "onions-1919",
+      "name": "Onions, A Shakespeare Glossary (2nd edition, 1919)",
+      "shortName": "Onions",
+      "description": "C. T. Onions, A Shakespeare Glossary, 2nd edition, revised (Oxford: Clarendon Press, 1919). Definitions are matched to the passages the Glossary cites; its text was recovered from scans digitized by the Internet Archive.",
+      "url": "https://archive.org/details/shakespeareglos00onio",
+      "license": {
+        "name": "Public domain in the United States",
+        "url": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "commercialUse": true
+      },
+      "attribution": "C. T. Onions, A Shakespeare Glossary, 2nd ed. (1919). Public domain in the United States (published 1919). Scans by the Internet Archive."
     }
   ]
 }

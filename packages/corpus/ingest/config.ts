@@ -47,10 +47,27 @@ export const SOURCES: Source[] = [
     attribution:
       'Alexander Schmidt, Shakespeare-Lexicon, 3rd ed., rev. Gregor Sarrazin (1902). Public domain. Scans by the Internet Archive.',
   },
+  {
+    id: 'onions-1919',
+    name: 'Onions, A Shakespeare Glossary (2nd edition, 1919)',
+    shortName: 'Onions',
+    description:
+      'C. T. Onions, A Shakespeare Glossary, 2nd edition, revised (Oxford: Clarendon Press, 1919). Definitions are matched to the passages the Glossary cites; its text was recovered from scans digitized by the Internet Archive.',
+    url: 'https://archive.org/details/shakespeareglos00onio',
+    license: {
+      name: 'Public domain in the United States',
+      url: 'https://creativecommons.org/publicdomain/mark/1.0/',
+      commercialUse: true,
+    },
+    attribution:
+      'C. T. Onions, A Shakespeare Glossary, 2nd ed. (1919). Public domain in the United States (published 1919). Scans by the Internet Archive.',
+  },
 ];
 
 export interface GlossaryConfig {
   sourceId: string;
+  /** Which parser reads the glossary's layout. */
+  format: 'schmidt' | 'onions';
   /** Lock keys of the volumes' OCR text, in alphabetical order. */
   volumes: { lockKey: string; start: RegExp; end?: string }[];
   /** The glossary's abbreviation for each play it cites. */
@@ -60,11 +77,18 @@ export interface GlossaryConfig {
 export const GLOSSARIES: GlossaryConfig[] = [
   {
     sourceId: 'schmidt-1902',
+    format: 'schmidt',
     volumes: [
       { lockKey: 'schmidt-1902-v1', start: /\n\nA\.\s*\n/ },
       { lockKey: 'schmidt-1902-v2', start: /\n\nM\.\s*\n/, end: 'I. Grammatical Observations' },
     ],
     playAbbreviations: { hamlet: 'Hml', 'the-tempest': 'Tp', 'troilus-and-cressida': 'Troil' },
+  },
+  {
+    sourceId: 'onions-1919',
+    format: 'onions',
+    volumes: [{ lockKey: 'onions-1919', start: /\n\s*a1?\s*:/, end: 'ADDENDA' }],
+    playAbbreviations: { hamlet: 'Ham', 'the-tempest': 'Tp', 'troilus-and-cressida': 'Troil' },
   },
 ];
 

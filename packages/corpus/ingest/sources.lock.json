@@ -26,6 +26,10 @@
     "schmidt-1902-v2": {
       "url": "https://archive.org/download/shakespearelexic0002alex_w8r0/shakespearelexic0002alex_w8r0_djvu.txt",
       "sha256": "f23cdce016ba7025f2c197775eb95d3e7e3dc064fa3a5fab3ab80292540140d7"
+    },
+    "onions-1919": {
+      "url": "https://archive.org/download/shakespeareglos00onio/shakespeareglos00onio_djvu.txt",
+      "sha256": "70e990f4ad35f665c1e68261d602328c0e9b530512d221122851e8209b988bea"
     }
   }
 }

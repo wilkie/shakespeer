@@ -47,8 +47,9 @@ describe('loadSourcedDefinitions', () => {
   it('CRP-070: loads every source for a version, or none', async () => {
     const files = await loadSourcedDefinitions('the-tempest', 'folger');
 
-    expect(files.map((file) => file.sourceId)).toStrictEqual(['schmidt-1902']);
+    expect(files.map((file) => file.sourceId)).toStrictEqual(['schmidt-1902', 'onions-1919']);
     expect(files[0]?.terms.length).toBeGreaterThan(1000);
+    expect(files[1]?.terms.length).toBeGreaterThan(400);
     await expect(loadSourcedDefinitions('the-tempest', 'f1-1623')).resolves.toStrictEqual([]);
   });
 });

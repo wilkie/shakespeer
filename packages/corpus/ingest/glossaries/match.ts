@@ -142,7 +142,10 @@ function candidatesIn(item: Resolved, from: number, to: number): Candidate[] {
  * numbers each part of a shared verse line). Each scene's drift is learned from confident
  * matches: long quotations found unambiguously anywhere in the scene.
  */
-function learnOffsets(items: Resolved[]): Map<string, [number, number][]> {
+/** Learned (cited line, Folger line) pairs per scene. */
+export type SceneOffsets = Map<string, [number, number][]>;
+
+function learnOffsets(items: Resolved[]): SceneOffsets {
   const pairs = new Map<string, [number, number][]>();
   for (const item of items) {
     const needed = Math.max(3, Math.ceil(item.quoteKeys.size * 0.6));
@@ -177,11 +180,17 @@ function predict(pairs: [number, number][] | undefined, globeLine: number): numb
   return globeLine + (nearest[Math.floor(nearest.length / 2)] ?? 0);
 }
 
+/**
+ * Matches a glossary's citations to a version. `prior` offsets, learned from another glossary
+ * citing the same numbering, help where this glossary's own quotations are too short to learn
+ * from (Onions quotes briefly; Schmidt at length).
+ */
 export function matchCitations(
   doc: VersionDocument,
   sourceId: string,
   citations: GlossCitation[],
-): { terms: SourcedTerm[]; report: MatchReport } {
+  prior?: SceneOffsets,
+): { terms: SourcedTerm[]; report: MatchReport; offsets: SceneOffsets } {
   const scenes = sceneLines(doc);
   const terms = new Map<string, SourcedTerm>();
   const report: MatchReport = { matched: 0, unmatched: [] };
@@ -216,7 +225,14 @@ export function matchCitations(
     resolved.push({ citation, headword, scene, sceneKey, quoteKeys });
   }
 
-  const offsets = learnOffsets(resolved);
+  const learned = learnOffsets(resolved);
+  const offsets: SceneOffsets = new Map(prior);
+  for (const [scene, pairs] of learned) {
+    offsets.set(
+      scene,
+      [...(offsets.get(scene) ?? []), ...pairs].sort((a, b) => a[0] - b[0]),
+    );
+  }
 
   for (const item of resolved) {
     const { citation, scene, quoteKeys } = item;
@@ -280,5 +296,5 @@ export function matchCitations(
   const ordered = [...terms.values()].sort((a, b) =>
     a.id.localeCompare(b.id, 'en', { numeric: true }),
   );
-  return { terms: ordered, report };
+  return { terms: ordered, report, offsets: learned };
 }

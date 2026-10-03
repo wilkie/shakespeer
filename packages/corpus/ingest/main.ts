@@ -31,7 +31,8 @@ import { alignVersions } from './align.ts';
 import { GLOSSARIES, PLAYS, SOURCES, type GlossaryConfig, type PlayConfig } from './config.ts';
 import { applyAlignmentCuration, loadCuration, type Curation } from './curation.ts';
 import { convertFolger } from './folger.ts';
-import { matchCitations, type GlossCitation } from './glossaries/match.ts';
+import { matchCitations, type GlossCitation, type SceneOffsets } from './glossaries/match.ts';
+import { parseOnions } from './glossaries/onions.ts';
 import { parseEntries, type Entry } from './glossaries/schmidt.ts';
 import { fetchLocked, type LockFile } from './lib/fetch.ts';
 import { IdMap } from './lib/ids.ts';
@@ -409,6 +410,9 @@ function playCitations(entries: Entry[], abbreviation: string): GlossCitation[] 
   );
 }
 
+/** Line offsets learned per play and scene, shared across glossaries (see matchCitations). */
+const learnedOffsets = new Map<string, SceneOffsets>();
+
 async function ingestGlossary(glossary: GlossaryConfig): Promise<void> {
   console.warn(glossary.sourceId);
   const entries: Entry[] = [];
@@ -419,7 +423,8 @@ async function ingestGlossary(glossary: GlossaryConfig): Promise<void> {
     if (start < 0 || end < 0) {
       throw new Error(`${volume.lockKey}: dictionary boundaries not found`);
     }
-    entries.push(...parseEntries(text.slice(start, end)));
+    const body = text.slice(start, end);
+    entries.push(...(glossary.format === 'onions' ? parseOnions(body) : parseEntries(body)));
   }
   console.warn(`  ${String(entries.length)} entries`);
   for (const [playId, doc] of modernDocs) {
@@ -427,11 +432,18 @@ async function ingestGlossary(glossary: GlossaryConfig): Promise<void> {
     if (!abbreviation) {
       continue;
     }
-    const { terms, report } = matchCitations(
+    const { terms, report, offsets } = matchCitations(
       doc,
       glossary.sourceId,
       playCitations(entries, abbreviation),
+      learnedOffsets.get(playId),
     );
+    // Later glossaries citing the same numbering reuse what this one learned.
+    const known = learnedOffsets.get(playId) ?? new Map<string, [number, number][]>();
+    for (const [scene, pairs] of offsets) {
+      known.set(scene, [...(known.get(scene) ?? []), ...pairs]);
+    }
+    learnedOffsets.set(playId, known);
     const reasons = new Map<string, number>();
     for (const { reason } of report.unmatched) {
       reasons.set(reason, (reasons.get(reason) ?? 0) + 1);
