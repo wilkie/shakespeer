@@ -1,7 +1,12 @@
 {
   "extends": "@shakespeer/tsconfig/library.json",
-  "include": ["src", "*.config.js"],
+  "include": ["src", "scripts", "*.config.js"],
   "compilerOptions": {
+    // The schema script runs under Node's type stripping, which needs explicit `.ts`
+    // extensions on relative imports.
+    "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
+    "types": ["node"],
     "allowJs": true,
     "checkJs": true
   }

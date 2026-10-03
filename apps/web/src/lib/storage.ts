@@ -12,6 +12,7 @@ export interface Settings extends Record<string, unknown> {
   'map.showAnnotationMarks': boolean;
   'annotations.lastColor': HighlightColor;
   [key: `reader.lastVersion.${string}`]: string;
+  [key: `export.lastName.${string}`]: string;
 }
 
 let dbPromise: Promise<ShakespeerDatabase> | undefined;

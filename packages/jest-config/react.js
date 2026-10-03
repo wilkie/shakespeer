@@ -6,12 +6,20 @@ import base from './base.js';
 const require = createRequire(import.meta.url);
 
 /**
- * Shared Jest config for React packages: jsdom, static-asset stubs and CSS module proxies.
+ * Shared Jest config for React packages: the React Compiler, jsdom, static-asset stubs and CSS
+ * module proxies.
  *
  * @type {import('jest').Config}
  */
 const react = {
   ...base,
+  // React Compiler, then SWC with the base options.
+  transform: {
+    '^.+\\.tsx?$': [
+      require.resolve('./transform-react-compiler.cjs'),
+      base.transform?.['^.+\\.tsx?$']?.[1],
+    ],
+  },
   testEnvironment: fileURLToPath(new URL('./environment-jsdom.js', import.meta.url)),
   moduleNameMapper: {
     '\\.module\\.css$': require.resolve('identity-obj-proxy'),

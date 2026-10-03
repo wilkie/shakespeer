@@ -36,6 +36,10 @@ function basePath(): string {
 // https://vite.dev/config/
 export default defineConfig({
   base: basePath(),
+  define: {
+    // Recorded in exported notes files (XCH-002): the commit CI built, else "dev".
+    __APP_VERSION__: JSON.stringify(process.env['GITHUB_SHA']?.slice(0, 7) ?? 'dev'),
+  },
   plugins: [dynamicJsonImports(), react(), babel({ presets: [reactCompilerPreset()] })],
   resolve: {
     alias: {

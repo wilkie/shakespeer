@@ -5,6 +5,7 @@ import MoreVert from '@mui/icons-material/MoreVert';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -40,6 +41,12 @@ export interface ReaderTopBarProps {
   onShowUnderlines: (value: boolean) => void;
   showAnnotationMarks: boolean;
   onShowAnnotationMarks: (value: boolean) => void;
+  onExport: () => void;
+  onImport: () => void;
+  onCollections: () => void;
+  /** Notes whose text cannot be found (ANC-032); the item shows only when there are some. */
+  unattachedCount: number;
+  onUnattached: () => void;
   onAbout: () => void;
   onMenuOpenChange: (open: boolean) => void;
   /** On phones, previous/next scene controls live in the top bar (MAP-051). */
@@ -132,6 +139,11 @@ export function ReaderTopBar({
   onShowUnderlines,
   showAnnotationMarks,
   onShowAnnotationMarks,
+  onExport,
+  onImport,
+  onCollections,
+  unattachedCount,
+  onUnattached,
   onAbout,
   onMenuOpenChange,
   compactScenes,
@@ -266,6 +278,35 @@ export function ReaderTopBar({
             </ListItemIcon>
             <ListItemText primary="Show annotation marks on map" />
           </MenuItem>
+          <Divider />
+          {(
+            [
+              ['Export notes…', onExport],
+              ['Import notes…', onImport],
+              ['Imported collections…', onCollections],
+            ] as const
+          ).map(([label, action]) => (
+            <MenuItem
+              key={label}
+              onClick={() => {
+                setMenu(null);
+                action();
+              }}
+            >
+              <ListItemText primary={label} />
+            </MenuItem>
+          ))}
+          {unattachedCount > 0 && (
+            <MenuItem
+              onClick={() => {
+                setMenu(null);
+                onUnattached();
+              }}
+            >
+              <ListItemText primary={`Unattached notes (${String(unattachedCount)})`} />
+            </MenuItem>
+          )}
+          <Divider />
           <MenuItem
             onClick={() => {
               setMenu(null);

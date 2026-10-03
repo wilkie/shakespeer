@@ -14,17 +14,21 @@
     "test": "node --experimental-vm-modules --disable-warning=ExperimentalWarning ./node_modules/jest/bin/jest.js",
     "test:watch": "pnpm test --watch",
     "test:coverage": "pnpm test --coverage",
+    "schema": "node scripts/write-schema.ts",
     "clean": "rm -rf coverage .turbo .eslintcache"
   },
   "dependencies": {
     "@shakespeer/corpus": "workspace:*",
-    "idb": "catalog:"
+    "fflate": "catalog:",
+    "idb": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@jest/globals": "catalog:",
     "@shakespeer/eslint-config": "workspace:*",
     "@shakespeer/jest-config": "workspace:*",
     "@shakespeer/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
     "eslint": "catalog:",
     "fake-indexeddb": "catalog:",
     "jest": "catalog:",

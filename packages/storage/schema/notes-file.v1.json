@@ -1,0 +1,373 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "format": {
+      "type": "string",
+      "const": "shakespeer-notes"
+    },
+    "formatVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "exportedAt": {
+      "type": "string"
+    },
+    "generator": {
+      "type": "object",
+      "properties": {
+        "app": {
+          "type": "string",
+          "const": "shakespeer"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": ["app", "version"]
+    },
+    "collection": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": ["name"]
+    },
+    "play": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": ["id"]
+    },
+    "versions": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "revision": {
+            "type": "string"
+          }
+        },
+        "required": ["revision"]
+      }
+    },
+    "definitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "versionId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "anchor": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "object",
+                "properties": {
+                  "nodeId": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "required": ["nodeId", "offset"]
+              },
+              "end": {
+                "type": "object",
+                "properties": {
+                  "nodeId": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "required": ["nodeId", "offset"]
+              },
+              "quote": {
+                "type": "object",
+                "properties": {
+                  "exact": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "prefix": {
+                    "type": "string"
+                  },
+                  "suffix": {
+                    "type": "string"
+                  }
+                },
+                "required": ["exact", "prefix", "suffix"]
+              },
+              "revision": {
+                "type": "string"
+              }
+            },
+            "required": ["start", "end", "quote", "revision"]
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "meaning": {
+            "type": "string"
+          },
+          "partOfSpeech": {
+            "type": "string",
+            "enum": [
+              "noun",
+              "verb",
+              "adjective",
+              "adverb",
+              "pronoun",
+              "preposition",
+              "conjunction",
+              "interjection",
+              "phrase",
+              "other"
+            ]
+          },
+          "source": {
+            "type": "string"
+          }
+        },
+        "required": ["id", "versionId", "anchor", "createdAt", "updatedAt", "meaning"]
+      }
+    },
+    "annotations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "versionId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "anchor": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "object",
+                "properties": {
+                  "nodeId": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "required": ["nodeId", "offset"]
+              },
+              "end": {
+                "type": "object",
+                "properties": {
+                  "nodeId": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991
+                  }
+                },
+                "required": ["nodeId", "offset"]
+              },
+              "quote": {
+                "type": "object",
+                "properties": {
+                  "exact": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "prefix": {
+                    "type": "string"
+                  },
+                  "suffix": {
+                    "type": "string"
+                  }
+                },
+                "required": ["exact", "prefix", "suffix"]
+              },
+              "revision": {
+                "type": "string"
+              }
+            },
+            "required": ["start", "end", "quote", "revision"]
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": ["url"]
+            }
+          },
+          "citations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "author": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "family": {
+                            "type": "string"
+                          },
+                          "given": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["family"]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "literal": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["literal"]
+                      }
+                    ]
+                  }
+                },
+                "issued": {
+                  "type": "object",
+                  "properties": {
+                    "date-parts": {
+                      "type": "array",
+                      "items": {
+                        "minItems": 1,
+                        "maxItems": 3,
+                        "type": "array",
+                        "items": {
+                          "type": "integer",
+                          "minimum": -9007199254740991,
+                          "maximum": 9007199254740991
+                        }
+                      }
+                    }
+                  },
+                  "required": ["date-parts"]
+                },
+                "container-title": {
+                  "type": "string"
+                },
+                "publisher": {
+                  "type": "string"
+                },
+                "publisher-place": {
+                  "type": "string"
+                },
+                "volume": {
+                  "type": "string"
+                },
+                "issue": {
+                  "type": "string"
+                },
+                "page": {
+                  "type": "string"
+                },
+                "URL": {
+                  "type": "string"
+                },
+                "DOI": {
+                  "type": "string"
+                },
+                "note": {
+                  "type": "string"
+                }
+              },
+              "required": ["type", "title"]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "versionId",
+          "anchor",
+          "createdAt",
+          "updatedAt",
+          "color",
+          "notes",
+          "links",
+          "citations"
+        ]
+      }
+    }
+  },
+  "required": [
+    "format",
+    "formatVersion",
+    "exportedAt",
+    "generator",
+    "collection",
+    "play",
+    "versions",
+    "definitions",
+    "annotations"
+  ]
+}

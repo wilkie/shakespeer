@@ -15,8 +15,15 @@ import { getDatabase, getSettings } from '@/lib/storage';
 import { useSetting } from '@/lib/useSetting';
 
 import { fragmentFor, resolveFragment } from './fragment';
+import { CollectionsDialog } from '@/features/exchange/CollectionsDialog';
+import { ExportDialog } from '@/features/exchange/ExportDialog';
+import { ImportDialog } from '@/features/exchange/ImportDialog';
+import { useCollections } from '@/features/exchange/useCollections';
+import { useFileDrop } from '@/features/exchange/useFileDrop';
+import { CollectionNamesContext } from '@/features/notes/collectionNames';
 import { HighlightVariables } from '@/features/notes/HighlightVariables';
 import { createNoteIndex } from '@/features/notes/noteIndex';
+import { UnattachedDialog } from '@/features/notes/UnattachedDialog';
 import { useVersionNotes } from '@/features/notes/useVersionNotes';
 
 import { makeAnchor, snapToWords } from './anchors';
@@ -137,6 +144,17 @@ export function ReaderPage() {
   const [showMarks, setShowMarks] = useSetting('map.showAnnotationMarks', true);
   const [peek, setPeek] = useState(false);
   const panel = useNotesPanel(play.id, version.id, index, notes);
+  const collections = useCollections(play.id);
+  const collectionNames = new Map(collections.map((c) => [c.id, c.name]));
+  const [dialog, setDialog] = useState<'export' | 'import' | 'collections' | 'unattached' | null>(
+    null,
+  );
+  const [droppedFile, setDroppedFile] = useState<File | undefined>();
+  // A notes file dropped on the reader opens the import (IOX-010).
+  useFileDrop((file) => {
+    setDroppedFile(file);
+    setDialog('import');
+  });
   const [menuOpen, setMenuOpen] = useState(false);
   const [sourceDialog, setSourceDialog] = useState<{ title: string; sourceIds: string[] } | null>(
     null,
@@ -393,7 +411,7 @@ export function ReaderPage() {
   };
 
   return (
-    <>
+    <CollectionNamesContext value={collectionNames}>
       <title>{`${play.title} (${version.shortName}) · Shakespeer`}</title>
       <HighlightVariables />
       <ReaderTopBar
@@ -408,6 +426,20 @@ export function ReaderPage() {
         onShowUnderlines={setShowUnderlines}
         showAnnotationMarks={showMarks}
         onShowAnnotationMarks={setShowMarks}
+        onExport={() => {
+          setDialog('export');
+        }}
+        onImport={() => {
+          setDroppedFile(undefined);
+          setDialog('import');
+        }}
+        onCollections={() => {
+          setDialog('collections');
+        }}
+        unattachedCount={stored.unattached.length}
+        onUnattached={() => {
+          setDialog('unattached');
+        }}
         onAbout={() => {
           setSourceDialog({ title: 'About this text', sourceIds: version.sourceIds });
         }}
@@ -520,7 +552,42 @@ export function ReaderPage() {
           setSourceDialog(null);
         }}
       />
-    </>
+      <ExportDialog
+        open={dialog === 'export'}
+        play={play}
+        onClose={() => {
+          setDialog(null);
+        }}
+      />
+      <ImportDialog
+        open={dialog === 'import'}
+        initialFile={droppedFile}
+        currentPlayId={play.id}
+        onClose={() => {
+          setDialog(null);
+        }}
+        onImported={(playId) => {
+          // Notes for another play open that play (IOX-013).
+          if (playId !== play.id) {
+            void navigate(`/plays/${playId}`);
+          }
+        }}
+      />
+      <CollectionsDialog
+        open={dialog === 'collections'}
+        collections={collections}
+        onClose={() => {
+          setDialog(null);
+        }}
+      />
+      <UnattachedDialog
+        open={dialog === 'unattached'}
+        notes={stored.unattached}
+        onClose={() => {
+          setDialog(null);
+        }}
+      />
+    </CollectionNamesContext>
   );
 }
 

@@ -203,7 +203,8 @@ function getChannel(): BroadcastChannel | undefined {
   return channel;
 }
 
-function notifyChange(playId: string, versionId: string) {
+/** Tells listeners a play version's notes changed; an empty `versionId` means its collections. */
+export function notifyChange(playId: string, versionId: string) {
   const change = { playId, versionId };
   for (const listener of listeners) {
     listener(change);

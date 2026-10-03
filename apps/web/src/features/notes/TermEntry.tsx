@@ -12,6 +12,7 @@ import { getSource, type PartOfSpeech, type TextAnchor } from '@shakespeer/corpu
 import type { DefinitionRecord } from '@shakespeer/storage';
 import { useState } from 'react';
 
+import { useCollectionName } from './collectionNames';
 import { ConfirmDelete } from './ConfirmDelete';
 import { originLabel, truncate } from './format';
 import type { TermGroup } from './noteIndex';
@@ -180,6 +181,7 @@ export function TermEntry({
   onDelete,
   onSource,
 }: TermEntryProps) {
+  const collectionName = useCollectionName();
   const definitions = group?.definitions ?? [];
   const own = definitions.filter((d) => d.origin.kind === 'own');
   const imported = definitions.filter((d) => d.origin.kind === 'imported');
@@ -223,7 +225,7 @@ export function TermEntry({
             </Typography>
             <Typography variant="caption" color="text.secondary" component="p">
               {record.source ? `${record.source} · ` : ''}
-              {originLabel(record.origin)}
+              {originLabel(record.origin, collectionName)}
             </Typography>
           </Box>
         ))

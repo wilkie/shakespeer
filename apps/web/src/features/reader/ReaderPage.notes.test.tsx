@@ -3,6 +3,9 @@ import { act, screen, waitFor, within } from '@testing-library/react';
 
 import { renderRoute } from '@/test/render';
 
+/** Saving re-renders the whole play, which is slow under test (no React Compiler). */
+const SLOW = { timeout: 5000 };
+
 async function openReader() {
   const result = renderRoute('/plays/the-tempest/folger');
   await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 10000 });
@@ -53,11 +56,11 @@ describe('selection and notes', () => {
     const notes = within(panel).getByRole('textbox', { name: 'Notes' });
     await waitFor(() => {
       expect(notes).toHaveFocus();
-    });
+    }, SLOW);
     expect(screen.queryByRole('toolbar', { name: 'Selection' })).not.toBeInTheDocument();
     await waitFor(() => {
       expect(document.querySelector('.hl')?.textContent).toBe('Boatswain');
-    });
+    }, SLOW);
 
     await user.paste('The *first* word spoken.');
     await user.click(within(panel).getByRole('button', { name: 'Done' }));
@@ -65,7 +68,7 @@ describe('selection and notes', () => {
     expect(await within(panel).findByText('first')).toBeInTheDocument();
     await waitFor(() => {
       expect(within(panel).getByRole('status')).toHaveTextContent('Saved');
-    });
+    }, SLOW);
   });
 
   it('SELX-005/006, DEF-030: Add definition snaps to whole words and adds a term', async () => {
@@ -79,7 +82,7 @@ describe('selection and notes', () => {
     const meaning = within(panel).getByRole('textbox', { name: 'Meaning' });
     await waitFor(() => {
       expect(meaning).toHaveFocus();
-    });
+    }, SLOW);
     await user.paste('An officer in charge of the deck crew');
     await user.click(within(panel).getByRole('button', { name: 'Done' }));
 
@@ -90,7 +93,7 @@ describe('selection and notes', () => {
       expect(
         [...document.querySelectorAll('.term')].some((el) => el.textContent === 'mariners'),
       ).toBe(true);
-    });
+    }, SLOW);
   });
 
   it('PNL-023: Cancel deletes notes created during the edit session', async () => {
@@ -102,18 +105,18 @@ describe('selection and notes', () => {
     const highlighted = () => [...document.querySelectorAll('.hl')].map((el) => el.textContent);
     await waitFor(() => {
       expect(highlighted()).toContain('topsail');
-    });
+    }, SLOW);
     await waitFor(() => {
       expect(within(panel).getByRole('textbox', { name: 'Notes' })).toHaveFocus();
-    });
+    }, SLOW);
     await user.paste('Never mind');
     await user.click(within(panel).getByRole('button', { name: 'Cancel' }));
 
     await waitFor(() => {
       expect(screen.queryByRole('complementary', { name: 'Notes' })).not.toBeInTheDocument();
-    });
+    }, SLOW);
     await waitFor(() => {
       expect(highlighted()).not.toContain('topsail');
-    });
+    }, SLOW);
   });
 });

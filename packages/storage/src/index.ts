@@ -18,6 +18,31 @@ export {
   type NoteSnapshot,
   type VersionNotes,
 } from './notes';
+export {
+  applyImport,
+  checkItems,
+  CollectionNameTakenError,
+  exportFileName,
+  exportNotes,
+  findCollection,
+  listCollections,
+  renameCollection,
+  type CheckedNotes,
+  type CollectionSummary,
+  type ExportOptions,
+  type ImportReport,
+  type ImportTarget,
+  type SkippedItems,
+} from './exchange';
+export {
+  LIMITS as NOTES_FILE_LIMITS,
+  NotesFileError,
+  readNotesArchive,
+  writeNotesArchive,
+  type NotesFile,
+  type NotesFileAnnotation,
+  type NotesFileDefinition,
+} from './notes-file';
 export { getPosition, savePosition } from './positions';
 export {
   DB_VERSION,

@@ -6,7 +6,7 @@
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", "!**/*.test.{ts,tsx}", "!**/__tests__/**"],
       "outputs": ["dist/**"],
-      "env": ["BASE_PATH"]
+      "env": ["BASE_PATH", "GITHUB_SHA"]
     },
     "dev": {
       "cache": false,

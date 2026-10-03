@@ -13,6 +13,7 @@ import type { AnnotationRecord, HighlightColor } from '@shakespeer/storage';
 import { useState, type ReactNode } from 'react';
 
 import { CitationsEditor, CitationView } from './CitationsEditor';
+import { useCollectionName } from './collectionNames';
 import { ConfirmDelete } from './ConfirmDelete';
 import { originLabel, truncate } from './format';
 import { isSafeUrl, linkText } from './links';
@@ -234,6 +235,7 @@ export function AnnotationEntry({
   onSave,
   onDelete,
 }: AnnotationEntryProps) {
+  const collectionName = useCollectionName();
   return (
     <Box component="article" sx={{ py: 1 }}>
       <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
@@ -256,7 +258,7 @@ export function AnnotationEntry({
         “{truncate(record.anchor.quote.exact)}”
       </Typography>
       <Typography variant="caption" color="text.secondary" component="p" sx={{ mb: 1.5 }}>
-        {originLabel(record.origin)}
+        {originLabel(record.origin, collectionName)}
       </Typography>
       {editing ? (
         <AnnotationEditor

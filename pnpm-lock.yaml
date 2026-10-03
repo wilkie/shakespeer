@@ -498,12 +498,18 @@ importers:
 
   packages/jest-config:
     dependencies:
+      '@babel/core':
+        specifier: 'catalog:'
+        version: 8.0.6
       '@swc/core':
         specifier: 'catalog:'
         version: 1.16.13
       '@swc/jest':
         specifier: 'catalog:'
         version: 0.2.39(@swc/core@1.16.13)
+      babel-plugin-react-compiler:
+        specifier: 'catalog:'
+        version: 1.0.0
       identity-obj-proxy:
         specifier: 'catalog:'
         version: 3.0.0
@@ -519,9 +525,15 @@ importers:
       '@shakespeer/corpus':
         specifier: workspace:*
         version: link:../corpus
+      fflate:
+        specifier: 'catalog:'
+        version: 0.8.3
       idb:
         specifier: 'catalog:'
         version: 8.0.3
+      zod:
+        specifier: 'catalog:'
+        version: 4.6.5
     devDependencies:
       '@jest/globals':
         specifier: 'catalog:'
@@ -535,6 +547,9 @@ importers:
       '@shakespeer/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.19.1
       eslint:
         specifier: 'catalog:'
         version: 10.12.0(supports-color@8.1.1)

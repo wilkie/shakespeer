@@ -10,11 +10,14 @@
   },
   "files": [
     "*.js",
+    "*.cjs",
     "stubs"
   ],
   "dependencies": {
+    "@babel/core": "catalog:",
     "@swc/core": "catalog:",
     "@swc/jest": "catalog:",
+    "babel-plugin-react-compiler": "catalog:",
     "identity-obj-proxy": "catalog:",
     "jest-environment-jsdom": "catalog:"
   },
