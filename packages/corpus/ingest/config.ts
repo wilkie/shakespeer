@@ -143,7 +143,7 @@ export const PLAYS: PlayConfig[] = [
       composed: { from: 1599, to: 1601 },
       modernVersionId: 'folger',
     },
-    versions: [folgerVersion('folger-hamlet')],
+    versions: [folgerVersion('folger-hamlet'), firstFolio(/HAMLET/, 'ham-f1')],
   },
   {
     info: {
@@ -165,6 +165,9 @@ export const PLAYS: PlayConfig[] = [
       composed: { from: 1601, to: 1602 },
       modernVersionId: 'folger',
     },
-    versions: [folgerVersion('folger-troilus-and-cressida')],
+    versions: [
+      folgerVersion('folger-troilus-and-cressida'),
+      firstFolio(/Troylus and Cre/, 'tro-f1'),
+    ],
   },
 ];

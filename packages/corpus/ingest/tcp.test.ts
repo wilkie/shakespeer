@@ -112,3 +112,58 @@ describe('convertTcpPlay', () => {
     ]);
   });
 });
+
+const HAMLET = `<TEI xmlns="http://www.tei-c.org/ns/1.0"><text><body>
+  <div type="play">
+    <div type="prologue"><head>The Prologue.</head><l>In Troy there lyes the Scene</l></div>
+    <div n="1" type="act"><head>THE TRAGEDIE OF HAMLET.</head><head type="sub">Actus Primus.</head>
+      <div n="1" type="scene"><head>Scoena Prima.</head>
+        <sp><speaker>Bar.</speaker><p>Who's there?</p></sp>
+      </div>
+    </div>
+    <div n="2" type="act"><head>Actus Secundus.</head>
+      <stage>Enter Polonius, and Reynoldo.</stage>
+      <sp><speaker>Polon.</speaker><p>Giue him his money</p></sp>
+      <div n="2" type="scene"><head>Scena Secunda.</head>
+        <sp><speaker>Pol.</speaker>
+          <floatingText type="letter"><body>
+            <opener>To the Celestiall, and my Soules Idoll,</opener>
+            <q><l>Doubt thou, the Starres are fire,</l></q>
+          </body></floatingText>
+        </sp>
+      </div>
+    </div>
+  </div>
+</body></text></TEI>`;
+
+describe('convertTcpPlay on a partly divided play', () => {
+  const { divisions } = convertTcpPlay(HAMLET, { title: /HAMLET/, ids: IdMap.empty('ham-f1') });
+  const texts = (sceneIndex: number) =>
+    divisions[2]?.scenes[sceneIndex]?.blocks.flatMap((b) =>
+      (b.type === 'speech' ? b.nodes : [b.node]).map((n) => n.text),
+    );
+
+  it('CRP-031: finds a play titled in its first act, keeping text printed under an act heading as its first scene', () => {
+    expect(divisions.map((act) => [act.n, act.scenes.map((s) => [s.id, s.heading])])).toStrictEqual(
+      [
+        [null, [['prologue', 'The Prologue.']]],
+        [1, [['1.1', 'Scoena Prima.']]],
+        [
+          2,
+          [
+            ['2.1', undefined],
+            ['2.2', 'Scena Secunda.'],
+          ],
+        ],
+      ],
+    );
+    expect(texts(0)).toStrictEqual(['Enter Polonius, and Reynoldo.', 'Giue him his money']);
+  });
+
+  it('reads letters and quotations inside speeches as lines', () => {
+    expect(texts(1)).toStrictEqual([
+      'To the Celestiall, and my Soules Idoll,',
+      'Doubt thou, the Starres are fire,',
+    ]);
+  });
+});

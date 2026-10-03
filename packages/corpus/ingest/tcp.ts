@@ -198,6 +198,20 @@ function speechNodes(element: Element, context: Context, marks: MarkType[] = [])
       case 'p':
         nodes.push(...lineNodes(child, 'prose', context, marks));
         break;
+      case 'q':
+      case 'floatingText':
+      case 'body':
+        // A quoted passage or a letter read aloud: its lines are part of the speech.
+        nodes.push(...speechNodes(child, context, marks));
+        break;
+      case 'opener':
+      case 'closer':
+      case 'salute':
+      case 'signed':
+      case 'dateline':
+        // The parts of a letter around its body read as prose lines.
+        nodes.push(...lineNodes(child, 'prose', context, marks));
+        break;
       case 'lg':
         nodes.push(
           ...speechNodes(
@@ -285,10 +299,12 @@ function findPlay(root: Element, title: RegExp): Element {
     ? children(children(root, 'text')[0] as Element, 'body')[0]
     : undefined;
   const plays = body ? children(body, 'div').filter((div) => attr(div, 'type') === 'play') : [];
-  const play = plays.find((div) => {
-    const head = children(div, 'head')[0];
-    return head !== undefined && title.test(headingText(head));
-  });
+  // The title heads the play, or (Troilus, whose prologue was printed first) its first act.
+  const play = plays.find((div) =>
+    [...children(div, 'head'), ...children(div, 'div').flatMap((child) => children(child, 'head'))]
+      .slice(0, 3)
+      .some((head) => title.test(headingText(head))),
+  );
   if (!play) {
     throw new Error(`No play matching ${String(title)}`);
   }
@@ -326,9 +342,21 @@ export function convertTcpPlay(xml: string, { title, ids }: TcpPlayOptions): Con
   };
   const divisions: Act[] = [];
 
-  const makeScene = (div: Element, act: Act | undefined, kind: Scene['kind']): Scene => {
+  const makeScene = (
+    div: Element,
+    act: Act | undefined,
+    kind: Scene['kind'],
+    options: { heading?: boolean } = {},
+  ): Scene => {
+    // The printed scene number where the transcription records it, else the next in order.
+    const counted = (act?.scenes.filter((s) => s.kind === 'scene').length ?? 0) + 1;
+    const printed = Number(attr(div, 'n'));
     const n =
-      kind === 'scene' ? (act?.scenes.filter((s) => s.kind === 'scene').length ?? 0) + 1 : null;
+      kind === 'scene'
+        ? div.localName === 'div' && attr(div, 'type') === 'scene' && printed >= counted
+          ? printed
+          : counted
+        : null;
     const sceneId =
       kind === 'scene'
         ? `${String(act?.n)}.${String(n)}`
@@ -337,7 +365,7 @@ export function convertTcpPlay(xml: string, { title, ids }: TcpPlayOptions): Con
           : kind;
     context.sceneId = sceneId;
     context.ordinal = { line: 0, sd: 0 };
-    const head = children(div, 'head')[0];
+    const head = options.heading === false ? undefined : children(div, 'head')[0];
     return {
       id: sceneId,
       kind,
@@ -366,6 +394,15 @@ export function convertTcpPlay(xml: string, { title, ids }: TcpPlayOptions): Con
         scenes: [],
       };
       divisions.push(act);
+      // Text printed under the act heading before its first scene heading (Hamlet's Act 2
+      // in the Folio) is the act's first scene.
+      if (
+        children(div).some((child) =>
+          ['sp', 'stage', 'l', 'p', 'lg'].includes(child.localName ?? ''),
+        )
+      ) {
+        act.scenes.push(makeScene(div, act, 'scene', { heading: false }));
+      }
       for (const child of children(div, 'div')) {
         const childKind = divisionKind(child);
         if (childKind === 'scene' || childKind === 'epilogue' || childKind === 'prologue') {

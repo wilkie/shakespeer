@@ -30,6 +30,7 @@ import {
 import { alignVersions } from './align.ts';
 import { GLOSSARIES, PLAYS, SOURCES, type GlossaryConfig, type PlayConfig } from './config.ts';
 import { applyAlignmentCuration, loadCuration, type Curation } from './curation.ts';
+import { supplyEditorialDivisions } from './divisions.ts';
 import { convertFolger } from './folger.ts';
 import { matchCitations, type GlossCitation, type SceneOffsets } from './glossaries/match.ts';
 import { parseOnions } from './glossaries/onions.ts';
@@ -264,6 +265,10 @@ async function ingestPlay(play: PlayConfig): Promise<Map<string, VersionDocument
     const doc = docs.get(version.id) as VersionDocument;
     if (version.kind === 'original') {
       const curation = await loadCuration(ROOT, playId, version.id);
+      const { added } = supplyEditorialDivisions(doc, modern);
+      if (added.length > 0) {
+        console.warn(`  ${version.id}: ${String(added.length)} editorial scenes (CRP-031)`);
+      }
       const entries = applyAlignmentCuration(alignVersions(doc, modern), curation);
       applyAlignment(doc, modern, entries, curation);
       const alignment: AlignmentFile = {
