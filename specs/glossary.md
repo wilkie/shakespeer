@@ -1,6 +1,6 @@
 # Glossary
 
-Status: Draft
+Status: Approved
 
 **Play.** One of Shakespeare's works, e.g. _Hamlet_. Identified by a slug: `hamlet`,
 `troilus-and-cressida`, `the-tempest`.

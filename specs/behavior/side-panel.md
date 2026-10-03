@@ -1,6 +1,6 @@
 # Side panel
 
-Status: Draft
+Status: Approved
 
 The panel where notes are read and edited. It opens on the left on wide screens and as a bottom
 sheet on phones.

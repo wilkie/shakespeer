@@ -1,6 +1,6 @@
 # Annotations
 
-Status: Draft
+Status: Approved
 
 An annotation works like a paper highlighter: a colored span of text, optionally carrying notes,
 links and citations.

@@ -1,6 +1,6 @@
 # Play selection
 
-Status: Draft
+Status: Approved
 
 The entry page. A reader chooses a play here and returns here from any play.
 

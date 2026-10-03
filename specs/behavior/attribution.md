@@ -1,6 +1,6 @@
 # Sources and licensing
 
-Status: Draft
+Status: Approved
 
 Shakespeer is non-commercial and redistributes texts and reference works under their licenses.
 Every piece of sourced content says where it came from and under what terms.

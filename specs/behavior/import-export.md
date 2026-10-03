@@ -1,6 +1,6 @@
 # Import and export
 
-Status: Draft
+Status: Approved
 
 Readers exchange notes as files: a teacher exports a collection, students import it. Imported
 notes stay distinguishable from a reader's own, and re-importing an updated file updates them.

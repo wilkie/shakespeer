@@ -1,6 +1,6 @@
 # Storage
 
-Status: Draft
+Status: Approved
 
 Everything the reader creates is stored locally in the browser with IndexedDB, through the
 `@shakespeer/storage` package. There is no server.

@@ -1,6 +1,6 @@
 # Text selection
 
-Status: Draft
+Status: Approved
 
 Selecting text is how notes are created.
 

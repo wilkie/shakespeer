@@ -1,6 +1,6 @@
 # Definitions
 
-Status: Draft
+Status: Approved
 
 A definition explains a word or phrase **at one occurrence**. Meanings depend on context (puns,
 period senses, wordplay), so a definition never spreads to other occurrences of the same word.

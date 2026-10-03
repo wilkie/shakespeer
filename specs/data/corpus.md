@@ -1,6 +1,6 @@
 # Corpus
 
-Status: Draft
+Status: Approved
 
 The plays, their versions, and everything shipped with them: structure, permanent IDs, line
 numbers, alignment between versions, curated variants, sourced definitions, and the source

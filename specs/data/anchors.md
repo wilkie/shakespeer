@@ -1,6 +1,6 @@
 # Anchors
 
-Status: Draft
+Status: Approved
 
 An anchor records which span of text a note is attached to. Anchors must survive page reloads,
 export/import between devices, corrections to the corpus, and (later) cuts.

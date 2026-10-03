@@ -1,6 +1,6 @@
 # Scene map
 
-Status: Draft
+Status: Approved
 
 A vertical bar at the right edge of the reader showing the whole play as a column of scenes,
 with a previous-scene button above it and a next-scene button below it.

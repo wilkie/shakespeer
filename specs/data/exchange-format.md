@@ -1,6 +1,6 @@
 # Exchange format
 
-Status: Draft
+Status: Approved
 
 The file produced by export and accepted by import ([IOX](../behavior/import-export.md)).
 

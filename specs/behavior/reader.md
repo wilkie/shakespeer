@@ -1,6 +1,6 @@
 # Reader
 
-Status: Draft
+Status: Approved
 
 The play page: the full text of one version of one play, with a top bar, the scene map on the
 right ([MAP](scene-map.md)) and the notes panel on the left ([PNL](side-panel.md)).
