@@ -7,14 +7,24 @@ export interface ViewportLines {
   bottom: string | undefined;
 }
 
+/**
+ * The first text node whose top edge is at or below `y` (RDR-030), found by probing the element
+ * under a point and stepping past nodes that start above it.
+ */
 function nodeAt(x: number, y: number): string | undefined {
-  // Probe a few points downwards in case y falls between lines.
-  for (let dy = 0; dy <= 48; dy += 8) {
-    const element = document.elementFromPoint(x, y + dy);
+  let probe = y;
+  for (let step = 0; step < 12; step += 1) {
+    const element = document.elementFromPoint(x, probe);
     const node = element?.closest<HTMLElement>('[data-node-id]');
-    if (node?.dataset['nodeId']) {
+    if (!node) {
+      probe += 8; // between lines: look a little lower
+      continue;
+    }
+    const rect = node.getBoundingClientRect();
+    if (rect.top >= y - 1) {
       return node.dataset['nodeId'];
     }
+    probe = rect.bottom + 1; // starts above the line: the next node is the current one
   }
   return undefined;
 }
@@ -41,7 +51,7 @@ export function useCurrentLine(
         return;
       }
       const x = rect.left + Math.min(rect.width / 2, 240);
-      const top = nodeAt(x, topOffset() + 2);
+      const top = nodeAt(x, topOffset());
       const bottom = nodeAt(x, window.innerHeight - 56);
       setLines((previous) =>
         previous.top === top && previous.bottom === bottom ? previous : { top, bottom },

@@ -24,8 +24,18 @@ function dynamicJsonImports(): Plugin {
   };
 }
 
+/**
+ * The path the app is served from. GitHub Pages serves project sites from `/<repo>/`, so the
+ * Pages workflow sets BASE_PATH; everywhere else the app is served from the root.
+ */
+function basePath(): string {
+  const base = process.env['BASE_PATH'] ?? '/';
+  return base.endsWith('/') ? base : `${base}/`;
+}
+
 // https://vite.dev/config/
 export default defineConfig({
+  base: basePath(),
   plugins: [dynamicJsonImports(), react(), babel({ presets: [reactCompilerPreset()] })],
   resolve: {
     alias: {

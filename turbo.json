@@ -5,7 +5,8 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", "!**/*.test.{ts,tsx}", "!**/__tests__/**"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**"],
+      "env": ["BASE_PATH"]
     },
     "dev": {
       "cache": false,
