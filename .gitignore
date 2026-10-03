@@ -28,3 +28,6 @@ Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
+
+# Downloaded corpus sources (never committed; see specs/data/corpus.md CRP-002)
+packages/corpus/.cache/

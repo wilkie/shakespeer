@@ -41,12 +41,24 @@ the Second Quarto (29).
   - `plays/<playId>/variants.json` — curated variants (CRP-060).
   - `plays/<playId>/definitions/<sourceId>.json` — sourced definitions (CRP-070).
   - `ingest/` — the scripts that produce all of the above from the sources.
-- **CRP-002** — Generated files MUST be committed, so the app builds without network access.
-  Raw source files are not committed; `ingest/sources.lock.json` pins each by URL and SHA-256.
+- **CRP-002** — The ingestion scripts and their generated output (all JSON under
+  `packages/corpus` listed in CRP-001, including sourced definitions) MUST be committed, so the
+  app builds without network access. Source material MUST NOT be committed: no source texts, OCR
+  text, scans or downloaded archives. Instead:
+  - `ingest/sources.lock.json` pins every source file by URL (for archive.org: item identifier
+    and file name) and SHA-256;
+  - `pnpm --filter @shakespeer/corpus ingest` downloads the pinned files into a git-ignored
+    cache (`packages/corpus/.cache/`), verifies their hashes, and regenerates all output;
+  - an ingest run needs only the network and the committed files; it MUST NOT depend on
+    anything that was done by hand outside the repository.
+- **CRP-006** — Ingestion MUST NOT call a language model or any other non-deterministic service.
+  Any machine-assisted work (such as LLM-proposed OCR corrections, CRP-073) happens in a
+  separate, optional step whose accepted results are committed as curation files (CRP-004);
+  the ingest run then applies those files like any other correction.
 - **CRP-003** — Ingestion MUST be deterministic: running it twice on the same pinned sources
   produces byte-identical output. CI MUST verify that committed data validates against the JSON
   Schemas in `packages/corpus/schema/`.
-- **CRP-004** — Hand-made corrections (alignment overrides, variant notes, text corrections) MUST
+- **CRP-004** — Corrections (alignment overrides, variant notes, text and OCR corrections) MUST
   live in separate, reviewed files under `packages/corpus/curation/` that ingestion applies, so
   re-ingesting never loses them.
 - **CRP-005** — The app MUST load the play index eagerly and each version's files lazily, only
