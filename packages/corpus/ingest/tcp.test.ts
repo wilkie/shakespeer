@@ -167,3 +167,49 @@ describe('convertTcpPlay on a partly divided play', () => {
     ]);
   });
 });
+
+const QUARTO = `<TEI xmlns="http://www.tei-c.org/ns/1.0"><text><body>
+  <div type="text"><head>The history of Troylus and Cresseida.</head>
+    <stage>Enter Hector and Troylus.</stage>
+    <sp><speaker>Hect.</speaker>
+      <l>This I presume will wake him.</l>
+      <stage>Exeunt.</stage>
+      <p>How now Thersites? what lost in the Labyrinth of thy furie?</p>
+    </sp>
+    <sp><speaker>Hect.</speaker>
+      <l>Why then flie on, ile hunt thee for thy hide.</l>
+      <stage>Exit.</stage>
+      <stage>Enter Achilles with Myrmidons.</stage>
+      <l>Come here about me you my Myrmidons,</l>
+    </sp>
+    <trailer>FINIS.</trailer>
+  </div>
+</body></text></TEI>`;
+
+describe('convertTcpPlay on an undivided quarto', () => {
+  const { divisions } = convertTcpPlay(QUARTO, { title: /Troylus/, ids: IdMap.empty('tro-q1') });
+  const blocks = divisions[0]?.scenes[0]?.blocks ?? [];
+
+  it('CRP-031: holds the whole text in one editorial scene until divisions are supplied', () => {
+    expect(
+      divisions.map((act) => [act.n, act.editorial, act.scenes.map((s) => [s.id, s.editorial])]),
+    ).toStrictEqual([[1, true, [['1.1', true]]]]);
+  });
+
+  it('starts a new, unheaded speech where text follows everyone leaving', () => {
+    expect(
+      blocks.map((b) =>
+        b.type === 'sd'
+          ? `sd: ${b.node.text}`
+          : `${b.label}: ${b.nodes.map((n) => n.text).join(' / ')}`,
+      ),
+    ).toStrictEqual([
+      'sd: Enter Hector and Troylus.',
+      'Hect.: This I presume will wake him. / Exeunt.',
+      ': How now Thersites? what lost in the Labyrinth of thy furie?',
+      'Hect.: Why then flie on, ile hunt thee for thy hide. / Exit.',
+      'sd: Enter Achilles with Myrmidons.',
+      ': Come here about me you my Myrmidons,',
+    ]);
+  });
+});

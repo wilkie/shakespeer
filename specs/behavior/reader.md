@@ -38,7 +38,8 @@ right ([MAP](scene-map.md)) and the notes panel on the left ([PNL](side-panel.md
 - **RDR-020** — The whole version MUST be rendered as one scrolling document: every act, scene,
   speech, line and stage direction, in order. The reader never pages or loads scene by scene.
 - **RDR-021** — Each scene MUST begin with a heading "Act N, Scene M" (with "editorial" styling
-  for editorial divisions, see CRP-031), followed by its text.
+  for editorial divisions, see CRP-031), followed by its text. Where a version returns to a scene
+  after another (Q1 _Hamlet_), the later part's heading adds "(continued)".
 - **RDR-022** — Each speech MUST show its speaker name(s) as given by the version, visually
   distinct from the spoken text. A stage direction that qualifies the speech heading (printed
   after the name, such as ", within" or ", aside to Sebastian") MUST be shown beside the name,

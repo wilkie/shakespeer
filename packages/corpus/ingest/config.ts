@@ -105,6 +105,8 @@ export interface TcpSource {
   title: RegExp;
   /** Prefix for IDs allocated to this version's nodes. */
   idPrefix: string;
+  /** "free": scenes come in another order than the modern version's (Q1 Hamlet, CRP-051). */
+  order?: 'free';
 }
 
 export type VersionConfig = PlayInfo['versions'][number] & { source: FolgerSource | TcpSource };
@@ -133,6 +135,22 @@ const firstFolio = (title: RegExp, idPrefix: string): VersionConfig => ({
   source: { kind: 'tcp', lockKey: 'tcp-first-folio', title, idPrefix },
 });
 
+const quarto = (
+  id: string,
+  name: string,
+  shortName: string,
+  printed: number,
+  source: Omit<TcpSource, 'kind'>,
+): VersionConfig => ({
+  id,
+  name,
+  shortName,
+  kind: 'original',
+  printed,
+  sourceIds: ['eebo-tcp'],
+  source: { kind: 'tcp', ...source },
+});
+
 export const PLAYS: PlayConfig[] = [
   {
     info: {
@@ -143,7 +161,16 @@ export const PLAYS: PlayConfig[] = [
       composed: { from: 1599, to: 1601 },
       modernVersionId: 'folger',
     },
-    versions: [folgerVersion('folger-hamlet'), firstFolio(/HAMLET/, 'ham-f1')],
+    versions: [
+      folgerVersion('folger-hamlet'),
+      quarto('q1-1603', 'First Quarto (1603)', 'Q1', 1603, {
+        lockKey: 'tcp-hamlet-q1',
+        title: /HAMLET/,
+        idPrefix: 'ham-q1',
+        order: 'free',
+      }),
+      firstFolio(/HAMLET/, 'ham-f1'),
+    ],
   },
   {
     info: {
@@ -167,6 +194,11 @@ export const PLAYS: PlayConfig[] = [
     },
     versions: [
       folgerVersion('folger-troilus-and-cressida'),
+      quarto('q1-1609', 'Quarto (1609)', 'Q', 1609, {
+        lockKey: 'tcp-troilus-q1',
+        title: /Troylus/,
+        idPrefix: 'tro-q1',
+      }),
       firstFolio(/Troylus and Cre/, 'tro-f1'),
     ],
   },

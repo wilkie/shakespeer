@@ -6,25 +6,7 @@
  */
 import type { Act, Block, Scene, TextNode, VersionDocument } from '../src/schema.ts';
 import { wordKey } from './align.ts';
-
-/** A scene in reading order with the act it belongs to. */
-interface Placed {
-  actN: number | null;
-  scene: Scene;
-}
-
-function placed(doc: Pick<VersionDocument, 'divisions'>): Placed[] {
-  return doc.divisions.flatMap((act) => act.scenes.map((scene) => ({ actN: act.n, scene })));
-}
-
-/** "2.1", or "prologue", "5.epilogue": how a scene is matched across versions. */
-export function sceneKey({ actN, scene }: Placed): string {
-  return scene.kind === 'scene'
-    ? `${String(actN)}.${String(scene.n)}`
-    : actN === null
-      ? scene.kind
-      : `${String(actN)}.${scene.kind}`;
-}
+import { modernCounterparts, placed, sceneKey, type Placed } from './scenes.ts';
 
 function blockNodes(block: Block): TextNode[] {
   return block.type === 'speech' ? block.nodes : [block.node];
@@ -105,8 +87,8 @@ function origPosition(chain: [number, number][], modern: number): number {
   return Math.round(before[0] + fraction * (after[0] - before[0]));
 }
 
-/** How far (in words) to look for an entrance near a predicted scene start. */
-const WINDOW = 120;
+/** How many words nearer a plain block boundary must be to win over an entrance. */
+const ENTRANCE_PREFERENCE = 40;
 
 const isEntrance = (block: Block) => block.type === 'sd' && /\benter\b/i.test(block.node.text);
 
@@ -137,9 +119,9 @@ function split(blocks: Block[], modernScenes: Scene[]): Block[][] {
     let bestScore = Infinity;
     for (let b = floor; b < blocks.length; b += 1) {
       const distance = Math.abs((starts[b] ?? 0) - predicted);
-      // Entrances within the window win over plain boundaries.
-      const score =
-        isEntrance(blocks[b] as Block) && distance <= WINDOW ? distance : distance + WINDOW * 4;
+      // An entrance wins over a plain boundary a little nearer; not over one much nearer,
+      // since an original may omit the entrance that begins a scene.
+      const score = isEntrance(blocks[b] as Block) ? distance : distance + ENTRANCE_PREFERENCE;
       if (score < bestScore) {
         bestScore = score;
         best = b;
@@ -162,6 +144,34 @@ function split(blocks: Block[], modernScenes: Scene[]): Block[][] {
   return pieces;
 }
 
+/**
+ * Groups scenes in reading order into acts: printed acts keep their headings; acts first
+ * reached by an added scene are editorial.
+ */
+function regroup(orig: VersionDocument, result: Placed[]): Act[] {
+  const printedActs = new Map(orig.divisions.filter((a) => a.n !== null).map((a) => [a.n, a]));
+  const divisions: Act[] = [];
+  for (const { actN, scene } of result) {
+    const current = divisions.at(-1);
+    if (actN !== null && current?.n === actN) {
+      current.scenes.push(scene);
+      continue;
+    }
+    const printedAct = actN === null ? undefined : printedActs.get(actN);
+    divisions.push(
+      printedAct
+        ? {
+            n: actN,
+            editorial: printedAct.editorial,
+            ...(printedAct.heading ? { heading: printedAct.heading } : {}),
+            scenes: [scene],
+          }
+        : { n: actN, editorial: actN !== null, scenes: [scene] },
+    );
+  }
+  return divisions;
+}
+
 export interface EditorialReport {
   /** Keys of the scenes added, e.g. "3.1". */
   added: string[];
@@ -175,27 +185,14 @@ export interface EditorialReport {
 export function supplyEditorialDivisions(
   orig: VersionDocument,
   modern: VersionDocument,
+  options: { order?: 'modern' | 'free'; scenes?: readonly { from: string; scene: string }[] } = {},
 ): EditorialReport {
+  if (options.order === 'free') {
+    return supplyReordered(orig, modern, options.scenes);
+  }
   const origScenes = placed(orig);
   const modernScenes = placed(modern);
-  const modernIndex = new Map(modernScenes.map((p, i) => [sceneKey(p), i]));
-  // A prologue or epilogue may sit in an act in one version and stand alone in the other.
-  const byKind = new Map<string, number[]>();
-  modernScenes.forEach((p, i) => {
-    byKind.set(p.scene.kind, [...(byKind.get(p.scene.kind) ?? []), i]);
-  });
-  const firsts = origScenes.map((p) => {
-    const sameKind = byKind.get(p.scene.kind) ?? [];
-    const index =
-      modernIndex.get(sceneKey(p)) ??
-      (p.scene.kind !== 'scene' && sameKind.length === 1 ? sameKind[0] : undefined);
-    if (index === undefined) {
-      throw new Error(
-        `${orig.playId} ${orig.versionId}: printed scene ${sceneKey(p)} has no modern counterpart`,
-      );
-    }
-    return index;
-  });
+  const firsts = modernCounterparts(origScenes, modernScenes, `${orig.playId} ${orig.versionId}`);
   if (firsts.some((index, i) => i > 0 && index <= (firsts[i - 1] ?? -1))) {
     throw new Error(`${orig.playId} ${orig.versionId}: printed scenes are out of the modern order`);
   }
@@ -234,28 +231,206 @@ export function supplyEditorialDivisions(
     });
   });
 
-  // Regroup into acts: printed acts keep their headings; acts first reached by an added scene
-  // are editorial.
-  const printedActs = new Map(orig.divisions.filter((a) => a.n !== null).map((a) => [a.n, a]));
-  const divisions: Act[] = [];
-  for (const { actN, scene } of result) {
-    const current = divisions.at(-1);
-    if (actN !== null && current?.n === actN) {
-      current.scenes.push(scene);
-      continue;
+  orig.divisions = regroup(orig, result);
+  return { added };
+}
+
+// ---------------------------------------------------------------------------------------------
+// Versions in a different scene order (CRP-051: Q1 Hamlet)
+
+const TRIGRAM = 3;
+/** Words on each side of a block that inform its label. */
+const CONTEXT_WORDS = 60;
+/** Runs shorter than this many words are absorbed by their neighbours. */
+const MIN_RUN = 60;
+
+/**
+ * For a version whose scenes come in another order (the first quarto of Hamlet moves "To be,
+ * or not to be" before the players arrive), each block is labelled with the modern scene whose
+ * three-word phrases its neighbourhood shares most, weighting phrases found in few scenes. Short
+ * runs are smoothed away, and each change of label becomes a scene, cut at an entrance nearby
+ * if there is one. A modern scene that recurs gets its later pieces as "2.2b", "2.2c".
+ */
+function supplyReordered(
+  orig: VersionDocument,
+  modern: VersionDocument,
+  curated: readonly { from: string; scene: string }[] | undefined,
+): EditorialReport {
+  const modernScenes = placed(modern);
+  const blocks = placed(orig).flatMap((p) => p.scene.blocks);
+  if (curated && curated.length > 0) {
+    return applyCuratedScenes(orig, modernScenes, blocks, curated);
+  }
+
+  // Trigram weights per modern scene.
+  const sceneGrams = modernScenes.map((p) => {
+    const words = p.scene.blocks.flatMap(blockWords);
+    const grams = new Set<string>();
+    for (let i = 0; i + TRIGRAM <= words.length; i += 1) {
+      grams.add(words.slice(i, i + TRIGRAM).join(' '));
     }
-    const printedAct = actN === null ? undefined : printedActs.get(actN);
-    divisions.push(
-      printedAct
-        ? {
-            n: actN,
-            editorial: false,
-            ...(printedAct.heading ? { heading: printedAct.heading } : {}),
-            scenes: [scene],
-          }
-        : { n: actN, editorial: actN !== null, scenes: [scene] },
+    return grams;
+  });
+  const spread = new Map<string, number>();
+  for (const grams of sceneGrams) {
+    for (const gram of grams) {
+      spread.set(gram, (spread.get(gram) ?? 0) + 1);
+    }
+  }
+
+  // Each block's words, and a label from its neighbourhood.
+  const words = blocks.map(blockWords);
+  const flat = words.flat();
+  const starts: number[] = [];
+  let position = 0;
+  for (const list of words) {
+    starts.push(position);
+    position += list.length;
+  }
+  const labels = blocks.map((_, b) => {
+    const from = Math.max(0, (starts[b] ?? 0) - CONTEXT_WORDS);
+    const to = Math.min(flat.length, (starts[b] ?? 0) + (words[b]?.length ?? 0) + CONTEXT_WORDS);
+    const scores = new Array<number>(modernScenes.length).fill(0);
+    for (let i = from; i + TRIGRAM <= to; i += 1) {
+      const gram = flat.slice(i, i + TRIGRAM).join(' ');
+      const count = spread.get(gram);
+      if (count === undefined) {
+        continue;
+      }
+      sceneGrams.forEach((grams, k) => {
+        if (grams.has(gram)) {
+          scores[k] = (scores[k] ?? 0) + 1 / count;
+        }
+      });
+    }
+    const best = Math.max(...scores);
+    return best > 0 ? scores.indexOf(best) : -1;
+  });
+
+  // Runs of equal labels; unlabelled blocks join the run before them.
+  let runs: { label: number; from: number; to: number }[] = [];
+  labels.forEach((label, b) => {
+    const last = runs.at(-1);
+    if (last && (label === last.label || label < 0)) {
+      last.to = b + 1;
+    } else {
+      runs.push({ label, from: b, to: b + 1 });
+    }
+  });
+  const length = (run: { from: number; to: number }) =>
+    (starts[run.to] ?? flat.length) - (starts[run.from] ?? 0);
+  for (let changed = true; changed;) {
+    changed = false;
+    const short = runs.findIndex((run) => length(run) < MIN_RUN);
+    if (short >= 0 && runs.length > 1) {
+      const run = runs[short] as (typeof runs)[number];
+      const neighbour =
+        short > 0 ? (runs[short - 1] as typeof run) : (runs[short + 1] as typeof run);
+      neighbour.from = Math.min(neighbour.from, run.from);
+      neighbour.to = Math.max(neighbour.to, run.to);
+      runs.splice(short, 1);
+      // Neighbours that now share a label become one run.
+      runs = runs.reduce<typeof runs>((merged, r) => {
+        const last = merged.at(-1);
+        if (last?.label === r.label) {
+          last.to = r.to;
+        } else {
+          merged.push({ ...r });
+        }
+        return merged;
+      }, []);
+      changed = true;
+    }
+  }
+
+  // Move each boundary to an entrance within a few blocks, if there is one.
+  for (let r = 1; r < runs.length; r += 1) {
+    const run = runs[r] as (typeof runs)[number];
+    const previous = runs[r - 1] as typeof run;
+    const candidates = [0, -1, 1, -2, 2, -3, 3, -4, 4, -5, 5, -6, 6]
+      .map((d) => run.from + d)
+      .filter(
+        (b) =>
+          b > previous.from &&
+          b < run.to &&
+          isEntrance(blocks[b] as Block) &&
+          Math.abs((starts[b] ?? 0) - (starts[run.from] ?? 0)) <= 120,
+      );
+    const cut = candidates[0];
+    if (cut !== undefined) {
+      previous.to = cut;
+      run.from = cut;
+    }
+  }
+
+  return build(
+    orig,
+    runs.map((run) => ({
+      target: modernScenes[Math.max(0, run.label)] as Placed,
+      blocks: blocks.slice(run.from, run.to),
+    })),
+  );
+}
+
+/** Scenes from a reviewed list of starts (curation, CRP-004). */
+function applyCuratedScenes(
+  orig: VersionDocument,
+  modernScenes: Placed[],
+  blocks: Block[],
+  curated: readonly { from: string; scene: string }[],
+): EditorialReport {
+  const byKey = new Map(modernScenes.map((p) => [sceneKey(p), p]));
+  const starts = curated.map(({ from, scene }) => {
+    const index = blocks.findIndex((block) => blockNodes(block)[0]?.id === from);
+    const target = byKey.get(scene);
+    if (index < 0 || !target) {
+      throw new Error(
+        `${orig.playId} ${orig.versionId}: curated scene ${scene} at ${from} not found`,
+      );
+    }
+    return { index, target };
+  });
+  if (
+    starts[0]?.index !== 0 ||
+    starts.some((s, i) => i > 0 && s.index <= (starts[i - 1]?.index ?? 0))
+  ) {
+    throw new Error(
+      `${orig.playId} ${orig.versionId}: curated scenes must start at the first block, in order`,
     );
   }
-  orig.divisions = divisions;
+  return build(
+    orig,
+    starts.map(({ index, target }, i) => ({
+      target,
+      blocks: blocks.slice(index, starts[i + 1]?.index ?? blocks.length),
+    })),
+  );
+}
+
+/** Editorial scenes from pieces in reading order; a recurring scene's later pieces are "b", "c". */
+function build(
+  orig: VersionDocument,
+  pieces: { target: Placed; blocks: Block[] }[],
+): EditorialReport {
+  const seen = new Map<string, number>();
+  const added: string[] = [];
+  const result: Placed[] = pieces.map(({ target, blocks }) => {
+    const key = sceneKey(target);
+    const count = (seen.get(key) ?? 0) + 1;
+    seen.set(key, count);
+    const id = count === 1 ? key : `${key}${String.fromCharCode(97 + count - 1)}`;
+    added.push(id);
+    return {
+      actN: target.actN,
+      scene: {
+        id,
+        kind: target.scene.kind,
+        n: target.scene.n,
+        editorial: true,
+        blocks,
+      },
+    };
+  });
+  orig.divisions = regroup({ ...orig, divisions: [] }, result);
   return { added };
 }

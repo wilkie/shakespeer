@@ -103,3 +103,78 @@ describe('supplyEditorialDivisions', () => {
     expect(orig.divisions).toStrictEqual(before);
   });
 });
+
+describe('supplyEditorialDivisions for a reordered version', () => {
+  // Each scene's words are its own, so its phrases are distinctive.
+  const A = `alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima mike november oscar papa quebec romeo sierra tango uniform victor whiskey xray yankee zulu`;
+  const B = `one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty thirty forty fifty sixty seventy eighty`;
+  const C = `mercury venus earth mars jupiter saturn uranus neptune pluto ceres eris makemake haumea sedna quaoar orcus ixion varuna gonggong salacia chaos deucalion huya`;
+  const long = (words: string) => `${words} ${words} ${words}`;
+
+  const modern = () =>
+    doc([
+      {
+        n: 1,
+        editorial: false,
+        scenes: [
+          scene(1, [sd('Enter A.'), speech(long(A))]),
+          scene(2, [sd('Enter B.'), speech(long(B))]),
+          scene(3, [sd('Enter C.'), speech(long(C))]),
+        ],
+      },
+    ]);
+  const undivided = () =>
+    doc([
+      {
+        n: 1,
+        editorial: true,
+        scenes: [
+          scene(
+            1,
+            [
+              sd('Enter A.'),
+              speech(long(A)),
+              sd('Enter C.'),
+              speech(long(C)),
+              sd('Enter B.'),
+              speech(long(B)),
+            ],
+            true,
+          ),
+        ],
+      },
+    ]);
+
+  it('CRP-031, CRP-051: labels each stretch with the modern scene it matches, in its own order', () => {
+    const orig = undivided();
+    expect(supplyEditorialDivisions(orig, modern(), { order: 'free' }).added).toStrictEqual([
+      '1.1',
+      '1.3',
+      '1.2',
+    ]);
+    expect(
+      orig.divisions[0]?.scenes.map((s) => [s.id, s.editorial, s.blocks.length]),
+    ).toStrictEqual([
+      ['1.1', true, 2],
+      ['1.3', true, 2],
+      ['1.2', true, 2],
+    ]);
+  });
+
+  it('CRP-004: curated scene starts replace the automatic ones', () => {
+    const orig = undivided();
+    const first = (i: number) => {
+      const block = orig.divisions[0]?.scenes[0]?.blocks[i];
+      return block?.type === 'sd' ? block.node.id : '';
+    };
+    const scenes = [
+      { from: first(0), scene: '1.1' },
+      { from: first(4), scene: '1.2' },
+    ];
+    supplyEditorialDivisions(orig, modern(), { order: 'free', scenes });
+    expect(orig.divisions[0]?.scenes.map((s) => [s.id, s.blocks.length])).toStrictEqual([
+      ['1.1', 4],
+      ['1.2', 2],
+    ]);
+  });
+});

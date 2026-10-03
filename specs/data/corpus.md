@@ -8,18 +8,18 @@ registry. The corpus lives in the repository and is read-only at runtime.
 
 ## Contents of the first release
 
-| Play                   | ID                     | Versions                                                                               |
-| ---------------------- | ---------------------- | -------------------------------------------------------------------------------------- |
-| _Hamlet_               | `hamlet`               | `folger`, `q1-1603` (First Quarto), `q2-1604` (Second Quarto), `f1-1623` (First Folio) |
-| _Troilus and Cressida_ | `troilus-and-cressida` | `folger`, `q1-1609` (Quarto), `f1-1623` (First Folio)                                  |
-| _The Tempest_          | `the-tempest`          | `folger`, `f1-1623` (First Folio; the only early printing)                             |
+| Play                   | ID                     | Versions                                                                                                            |
+| ---------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| _Hamlet_               | `hamlet`               | `folger`, `q1-1603` (First Quarto), `q2-1604` (Second Quarto; pending a source, see below), `f1-1623` (First Folio) |
+| _Troilus and Cressida_ | `troilus-and-cressida` | `folger`, `q1-1609` (Quarto), `f1-1623` (First Folio)                                                               |
+| _The Tempest_          | `the-tempest`          | `folger`, `f1-1623` (First Folio; the only early printing)                                                          |
 
-| Source                                                               | Used for                                   | License                                                                                                                                                                                                       | Verified                             |
-| -------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| Folger Shakespeare, TEI XML (one zip per play from folger.edu)       | `folger` versions; variant seeds (CRP-061) | CC BY-NC 3.0 Unported (stated in each file)                                                                                                                                                                   | Yes                                  |
-| EEBO-TCP transcriptions (Text Creation Partnership, on GitHub)       | quarto and folio versions                  | CC0 1.0 (stated in each file)                                                                                                                                                                                 | Yes (First Folio); quartos to locate |
-| Schmidt, _Shakespeare-Lexicon_, 3rd ed. rev. Sarrazin (1902), 2 vols | sourced definitions                        | Public domain; Internet Archive scans with OCR (`shakespearelexic0001alex_j8y5`, `shakespearelexic0002alex_w8r0`)                                                                                             | OCR needs cleanup (CRP-073)          |
-| Onions, _A Shakespeare Glossary_, 2nd ed. (1919)                     | sourced definitions                        | Public domain in the US (published 1919; Onions died 1965, so in copyright in the UK and EU until 2036); Internet Archive scans with OCR (`shakespeareglos00onio`), chosen over the 1911 scan for cleaner OCR | OCR needs cleanup (CRP-073)          |
+| Source                                                               | Used for                                   | License                                                                                                                                                                                                       | Verified                                                                                                                                                                    |
+| -------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Folger Shakespeare, TEI XML (one zip per play from folger.edu)       | `folger` versions; variant seeds (CRP-061) | CC BY-NC 3.0 Unported (stated in each file)                                                                                                                                                                   | Yes                                                                                                                                                                         |
+| EEBO-TCP transcriptions (Text Creation Partnership, on GitHub)       | quarto and folio versions                  | CC0 1.0 (stated in each file)                                                                                                                                                                                 | Yes: First Folio (`A11954`), Q1 _Hamlet_ (`A11959`), 1609 _Troilus_ (`A12021`). Q2 _Hamlet_ (STC 22276) is not in EEBO-TCP; another openly licensed transcription is needed |
+| Schmidt, _Shakespeare-Lexicon_, 3rd ed. rev. Sarrazin (1902), 2 vols | sourced definitions                        | Public domain; Internet Archive scans with OCR (`shakespearelexic0001alex_j8y5`, `shakespearelexic0002alex_w8r0`)                                                                                             | OCR needs cleanup (CRP-073)                                                                                                                                                 |
+| Onions, _A Shakespeare Glossary_, 2nd ed. (1919)                     | sourced definitions                        | Public domain in the US (published 1919; Onions died 1965, so in copyright in the UK and EU until 2036); Internet Archive scans with OCR (`shakespeareglos00onio`), chosen over the 1911 scan for cleaner OCR | OCR needs cleanup (CRP-073)                                                                                                                                                 |
 
 What the Folger TEI provides (checked on _Hamlet_ and _The Tempest_): every line is a
 `milestone` with a permanent ID (`ftln-0001`, the Folger Through Line Number), its act.scene.line
@@ -113,6 +113,9 @@ label }`, e.g. `"sig. G4v"`) for citation.
 - **CRP-031** — Where an original lacks act or scene divisions, ingestion MUST supply
   **editorial divisions** taken through alignment from the modern version, flagged
   `editorial: true`. Printed divisions are flagged `editorial: false`.
+  A version whose scenes come in another order (Q1 _Hamlet_) is divided by matching its text to
+  the modern scenes; where it returns to a scene, the later part's ID takes a letter (`2.2b`).
+  Reviewed scene starts can replace the automatic ones (CRP-004).
 - **CRP-032** — Illegible or missing characters in a transcription (including EEBO-TCP's "▪"
   for unreadable punctuation) are represented by "•" in `text` with a `gap` mark, so they remain
   countable and visible. Superscript letters in abbreviations keep their letters with a `sup`

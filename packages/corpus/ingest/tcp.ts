@@ -16,7 +16,6 @@ import type {
   MarkType,
   PageBreak,
   Scene,
-  SpeechBlock,
   StageDirectionNode,
   TextNode,
 } from '../src/schema.ts';
@@ -261,14 +260,46 @@ function sceneBlocks(div: Element, context: Context): Block[] {
         break;
       case 'sp': {
         const speaker = children(child, 'speaker')[0];
-        const block: SpeechBlock = {
-          type: 'speech',
-          speakers: [],
-          label: speaker ? headingText(speaker) : '',
-          nodes: speechNodes(child, context),
+        const nodes = speechNodes(child, context);
+        const label = speaker ? headingText(speaker) : '';
+        // Where everyone leaves mid-speech, what follows is someone else's, printed without a
+        // heading (the 1609 Troilus runs Thersites' soliloquy on from Hector's speech after
+        // "Exeunt", and Achilles' "Come here about me" after Hector's "Exit" and "Enter
+        // Achilles"): a new speech, whose speaker alignment supplies, after any entrance.
+        let part: TextNode[] = [];
+        let partLabel = label;
+        const flush = () => {
+          if (part.some((n) => n.kind === 'line')) {
+            blocks.push({ type: 'speech', speakers: [], label: partLabel, nodes: part });
+          } else {
+            blocks.push(
+              ...part.map((node): Block => ({ type: 'sd', node: node as StageDirectionNode })),
+            );
+          }
+          part = [];
+          partLabel = '';
         };
-        if (block.nodes.length > 0) {
-          blocks.push(block);
+        nodes.forEach((node, i) => {
+          const rest = nodes.slice(i + 1);
+          const previous = nodes[i - 1];
+          const enteringAfterExit =
+            node.kind === 'sd' &&
+            /^\s*enter\b/i.test(node.text) &&
+            previous?.kind === 'sd' &&
+            /^\s*(?:exit|exeunt)\b/i.test(previous.text) &&
+            rest.some((n) => n.kind === 'line');
+          if (enteringAfterExit) {
+            flush();
+            blocks.push({ type: 'sd', node });
+            return;
+          }
+          part.push(node);
+          if (node.kind === 'sd' && /^\s*exeunt\b/i.test(node.text) && rest[0]?.kind === 'line') {
+            flush();
+          }
+        });
+        if (part.length > 0) {
+          flush();
         }
         break;
       }
@@ -287,6 +318,8 @@ function sceneBlocks(div: Element, context: Context): Block[] {
       case 'pb':
         context.pendingPage = attr(child, 'n') ?? context.pendingPage;
         break;
+      case 'trailer':
+        break; // "FINIS."
       default:
         throw new Error(`Unexpected <${child.localName ?? '?'}> in ${context.sceneId}`);
     }
@@ -298,7 +331,10 @@ function findPlay(root: Element, title: RegExp): Element {
   const body = children(root, 'text')[0]
     ? children(children(root, 'text')[0] as Element, 'body')[0]
     : undefined;
-  const plays = body ? children(body, 'div').filter((div) => attr(div, 'type') === 'play') : [];
+  // A collection's plays are "play" divisions; a single-play quarto is one "text" division.
+  const plays = body
+    ? children(body, 'div').filter((div) => ['play', 'text'].includes(attr(div, 'type') ?? ''))
+    : [];
   // The title heads the play, or (Troilus, whose prologue was printed first) its first act.
   const play = plays.find((div) =>
     [...children(div, 'head'), ...children(div, 'div').flatMap((child) => children(child, 'head'))]
@@ -375,6 +411,16 @@ export function convertTcpPlay(xml: string, { title, ids }: TcpPlayOptions): Con
       blocks: sceneBlocks(div, context),
     };
   };
+
+  // A play printed without any divisions (the quartos) is one undivided stretch of text, held
+  // in an editorial scene until divisions are supplied from the modern version (CRP-031).
+  const undivided = children(play).some((child) => ['sp', 'stage'].includes(child.localName ?? ''));
+  if (undivided) {
+    const act: Act = { n: 1, editorial: true, scenes: [] };
+    act.scenes.push({ ...makeScene(play, act, 'scene', { heading: false }), editorial: true });
+    divisions.push(act);
+    return { divisions, pageBreaks: context.pageBreaks };
+  }
 
   for (const div of children(play)) {
     if (div.localName === 'pb') {

@@ -13,6 +13,14 @@ import { AlignmentRelationSchema, type AlignmentEntry } from '../src/schema.ts';
 const CurationSchema = z.object({
   /** Printed speech headings mapped to modern character IDs, where automatic linking fails. */
   speakers: z.record(z.string(), z.array(z.string())).optional(),
+  /**
+   * Reviewed scene divisions for a version in another scene order (CRP-031): where each scene
+   * starts (its first node) and the modern scene it corresponds to, in reading order. They
+   * replace the automatic segmentation.
+   */
+  scenes: z
+    .array(z.object({ from: z.string(), scene: z.string(), note: z.string().optional() }))
+    .optional(),
   /** Alignment entries that replace whatever the aligner produced for the same nodes. */
   alignment: z
     .array(

@@ -8,6 +8,7 @@
  * `variant`; nodes with no matched words are `orig-only` / `modern-only`.
  */
 import type { AlignmentEntry, Scene, TextNode, VersionDocument } from '../src/schema.ts';
+import { modernCounterparts, placed, type Placed } from './scenes.ts';
 
 interface Token {
   key: string;
@@ -216,28 +217,70 @@ function alignScene(orig: TextNode[], modern: TextNode[]): AlignmentEntry[] {
   return result;
 }
 
-/** Scenes of a version in order. */
-function scenes(doc: Pick<VersionDocument, 'divisions'>): Scene[] {
-  return doc.divisions.flatMap((act) => act.scenes);
-}
-
 /**
- * Aligns scene by scene. Scenes correspond by position; the two versions must have the same
- * scene sequence (versions with different scene orders, like Q1 Hamlet, need a scene map).
+ * Aligns scene by scene (CRP-051). Each original scene is aligned with its modern counterpart
+ * (same act and scene); where an original divides a modern scene into several pieces (Q1
+ * Hamlet's reordering, CRP-031), the pieces are aligned together. Modern scenes the original
+ * lacks (the 1609 Troilus has no prologue) are modern-only. Entries follow the original's
+ * reading order.
  */
 export function alignVersions(
-  orig: Pick<VersionDocument, 'divisions'>,
+  orig: Pick<VersionDocument, 'divisions'> & { playId?: string; versionId?: string },
   modern: Pick<VersionDocument, 'divisions'>,
 ): AlignmentEntry[] {
-  const origScenes = scenes(orig);
-  const modernScenes = scenes(modern);
-  const describe = (list: Scene[]) => list.map((s) => `${s.kind}:${String(s.n)}`).join(' ');
-  if (describe(origScenes) !== describe(modernScenes)) {
-    throw new Error(
-      `Scene structures differ; a scene map is needed.\n  orig:   ${describe(origScenes)}\n  modern: ${describe(modernScenes)}`,
-    );
-  }
-  return origScenes.flatMap((scene, i) =>
-    alignScene(sceneNodes(scene), sceneNodes(modernScenes[i] as Scene)),
+  const origScenes = placed(orig);
+  const modernScenes = placed(modern);
+  const counterparts = modernCounterparts(
+    origScenes,
+    modernScenes,
+    `${orig.playId ?? ''} ${orig.versionId ?? ''}`.trim(),
   );
+
+  // Align each modern scene with all the original pieces that correspond to it.
+  const byOrigScene = origScenes.map((): AlignmentEntry[] => []);
+  const covered = new Set(counterparts);
+  for (const modernIndex of covered) {
+    const pieces = counterparts.flatMap((m, i) => (m === modernIndex ? [i] : []));
+    const pieceOf = new Map<string, number>();
+    for (const i of pieces) {
+      for (const node of sceneNodes((origScenes[i] as Placed).scene)) {
+        pieceOf.set(node.id, i);
+      }
+    }
+    const entries = alignScene(
+      pieces.flatMap((i) => sceneNodes((origScenes[i] as Placed).scene)),
+      sceneNodes((modernScenes[modernIndex] as Placed).scene),
+    );
+    // Modern-only entries go with the piece of the entry before them.
+    let current = pieces[0] ?? 0;
+    for (const entry of entries) {
+      const first = entry.orig[0];
+      if (first !== undefined) {
+        current = pieceOf.get(first) ?? current;
+      }
+      byOrigScene[current]?.push(entry);
+    }
+  }
+
+  // In the original's order, with uncovered modern scenes placed by modern order.
+  const result: AlignmentEntry[] = [];
+  let nextModern = 0;
+  const flushUncoveredBefore = (limit: number) => {
+    for (; nextModern < limit; nextModern += 1) {
+      if (!covered.has(nextModern)) {
+        for (const node of sceneNodes((modernScenes[nextModern] as Placed).scene)) {
+          result.push({ orig: [], modern: [node.id], relation: 'modern-only', status: 'auto' });
+        }
+      }
+    }
+  };
+  origScenes.forEach((_, i) => {
+    const modernIndex = counterparts[i] ?? 0;
+    if (modernIndex >= nextModern) {
+      flushUncoveredBefore(modernIndex);
+    }
+    result.push(...(byOrigScene[i] ?? []));
+  });
+  flushUncoveredBefore(modernScenes.length);
+  return result;
 }

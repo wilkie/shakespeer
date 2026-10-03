@@ -265,7 +265,12 @@ async function ingestPlay(play: PlayConfig): Promise<Map<string, VersionDocument
     const doc = docs.get(version.id) as VersionDocument;
     if (version.kind === 'original') {
       const curation = await loadCuration(ROOT, playId, version.id);
-      const { added } = supplyEditorialDivisions(doc, modern);
+      const { added } = supplyEditorialDivisions(doc, modern, {
+        ...(version.source.kind === 'tcp' && version.source.order
+          ? { order: version.source.order }
+          : {}),
+        ...(curation.scenes ? { scenes: curation.scenes } : {}),
+      });
       if (added.length > 0) {
         console.warn(`  ${version.id}: ${String(added.length)} editorial scenes (CRP-031)`);
       }

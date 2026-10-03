@@ -75,9 +75,9 @@ describe('alignVersions', () => {
     ]);
   });
 
-  it('rejects versions whose scene structures differ', () => {
-    const other = version(line('m1', 'x'));
-    other.divisions[0]?.scenes.push({
+  it('rejects an original scene with no modern counterpart', () => {
+    const orig = version(line('o1', 'x'));
+    orig.divisions[0]?.scenes.push({
       id: '1.2',
       kind: 'scene',
       n: 2,
@@ -85,6 +85,63 @@ describe('alignVersions', () => {
       blocks: [],
     });
 
-    expect(() => alignVersions(version(line('o1', 'x')), other)).toThrow(/scene map/);
+    expect(() => alignVersions(orig, version(line('m1', 'x')))).toThrow(/no modern counterpart/);
+  });
+});
+
+describe('alignVersions across scene structures', () => {
+  const scene = (id: string, n: number, nodes: TextNode[]) => ({
+    id,
+    kind: 'scene' as const,
+    n,
+    editorial: true,
+    blocks: [{ type: 'speech' as const, speakers: [], label: '', nodes }],
+  });
+
+  it('CRP-051: aligns pieces of one modern scene together and marks scenes an original lacks as modern-only', () => {
+    const modern = {
+      divisions: [
+        {
+          n: null,
+          editorial: false,
+          scenes: [
+            {
+              ...scene('prologue', 1, [line('p1', 'In Troy there lies the scene')]),
+              kind: 'prologue' as const,
+              n: null,
+            },
+          ],
+        },
+        {
+          n: 1,
+          editorial: false,
+          scenes: [
+            scene('1.1', 1, [line('a1', 'first of the first'), line('a2', 'second of the first')]),
+            scene('1.2', 2, [line('b1', 'only of the second')]),
+          ],
+        },
+      ],
+    };
+    // An original without the prologue, with 1.1 split around 1.2 (as Q1 Hamlet does).
+    const orig = {
+      divisions: [
+        {
+          n: 1,
+          editorial: true,
+          scenes: [
+            scene('1.1', 1, [line('o1', 'first of the first')]),
+            scene('1.2', 2, [line('o2', 'only of the second')]),
+            scene('1.1b', 1, [line('o3', 'second of the first')]),
+          ],
+        },
+      ],
+    };
+
+    expect(alignVersions(orig, modern).map((e) => [e.orig, e.modern, e.relation])).toStrictEqual([
+      [[], ['p1'], 'modern-only'],
+      [['o1'], ['a1'], 'same'],
+      [['o2'], ['b1'], 'same'],
+      [['o3'], ['a2'], 'same'],
+    ]);
   });
 });

@@ -22,6 +22,16 @@
           ]
         },
         {
+          "id": "q1-1603",
+          "name": "First Quarto (1603)",
+          "shortName": "Q1",
+          "kind": "original",
+          "printed": 1603,
+          "sourceIds": [
+            "eebo-tcp"
+          ]
+        },
+        {
           "id": "f1-1623",
           "name": "First Folio (1623)",
           "shortName": "F1",
@@ -83,6 +93,16 @@
           "kind": "modern",
           "sourceIds": [
             "folger"
+          ]
+        },
+        {
+          "id": "q1-1609",
+          "name": "Quarto (1609)",
+          "shortName": "Q",
+          "kind": "original",
+          "printed": 1609,
+          "sourceIds": [
+            "eebo-tcp"
           ]
         },
         {

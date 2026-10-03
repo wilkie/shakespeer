@@ -30,6 +30,14 @@
     "onions-1919": {
       "url": "https://archive.org/download/shakespeareglos00onio/shakespeareglos00onio_djvu.txt",
       "sha256": "70e990f4ad35f665c1e68261d602328c0e9b530512d221122851e8209b988bea"
+    },
+    "tcp-hamlet-q1": {
+      "url": "https://raw.githubusercontent.com/textcreationpartnership/A11959/2ab9868294175b00c84802109286564281d3f611/A11959.xml",
+      "sha256": "932e9c57991e0223046641b988532b11f57f93f89ff8b9e9566b97e47de4f3e3"
+    },
+    "tcp-troilus-q1": {
+      "url": "https://raw.githubusercontent.com/textcreationpartnership/A12021/7ff804dfdfe379e1e943f9c4d6ea199e95b49132/A12021.xml",
+      "sha256": "160b38c7bcaed72a2486dc68aad8e600ba44c5f0a782f1d241ecced6e447683d"
     }
   }
 }

@@ -4,6 +4,7 @@ type Loader = () => Promise<{ default: unknown }>;
 
 export const versionLoaders: Readonly<Partial<Record<string, Loader>>> = {
   'hamlet/folger': () => import('../../plays/hamlet/folger.json', { with: { type: 'json' } }),
+  'hamlet/q1-1603': () => import('../../plays/hamlet/q1-1603.json', { with: { type: 'json' } }),
   'hamlet/f1-1623': () => import('../../plays/hamlet/f1-1623.json', { with: { type: 'json' } }),
   'the-tempest/folger': () =>
     import('../../plays/the-tempest/folger.json', { with: { type: 'json' } }),
@@ -11,15 +12,21 @@ export const versionLoaders: Readonly<Partial<Record<string, Loader>>> = {
     import('../../plays/the-tempest/f1-1623.json', { with: { type: 'json' } }),
   'troilus-and-cressida/folger': () =>
     import('../../plays/troilus-and-cressida/folger.json', { with: { type: 'json' } }),
+  'troilus-and-cressida/q1-1609': () =>
+    import('../../plays/troilus-and-cressida/q1-1609.json', { with: { type: 'json' } }),
   'troilus-and-cressida/f1-1623': () =>
     import('../../plays/troilus-and-cressida/f1-1623.json', { with: { type: 'json' } }),
 };
 
 export const alignmentLoaders: Readonly<Partial<Record<string, Loader>>> = {
+  'hamlet/q1-1603': () =>
+    import('../../plays/hamlet/alignment/q1-1603.json', { with: { type: 'json' } }),
   'hamlet/f1-1623': () =>
     import('../../plays/hamlet/alignment/f1-1623.json', { with: { type: 'json' } }),
   'the-tempest/f1-1623': () =>
     import('../../plays/the-tempest/alignment/f1-1623.json', { with: { type: 'json' } }),
+  'troilus-and-cressida/q1-1609': () =>
+    import('../../plays/troilus-and-cressida/alignment/q1-1609.json', { with: { type: 'json' } }),
   'troilus-and-cressida/f1-1623': () =>
     import('../../plays/troilus-and-cressida/alignment/f1-1623.json', { with: { type: 'json' } }),
 };
