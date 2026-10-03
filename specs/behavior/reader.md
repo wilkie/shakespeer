@@ -60,7 +60,8 @@ right ([MAP](scene-map.md)) and the notes panel on the left ([PNL](side-panel.md
 ## Current scene and reading position
 
 - **RDR-030** — The **current line** is the first text node whose top edge is at or below the
-  bottom of the top bar (or the top of the viewport while the top bar is hidden, RDR-016). The **current scene** is the scene containing the current line. Only
+  bottom of the top bar (or the top of the viewport while the top bar is hidden, RDR-016). The
+  **current scene** is the scene containing the current line. Only
   the current scene drives the scene map (MAP-010).
 - **RDR-031** — The URL fragment MUST track the current line as `#<line number>` (e.g.
   `#3.1.56`), updated with `history.replaceState` at most every 250 ms while scrolling. Scrolling
