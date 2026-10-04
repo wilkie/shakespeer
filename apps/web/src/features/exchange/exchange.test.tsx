@@ -5,6 +5,7 @@ import {
   listNotes,
   readNotesArchive,
   writeNotesArchive,
+  type CutsFile,
   type NotesFile,
 } from '@shakespeer/storage';
 import { fireEvent, screen, waitFor, within } from '@testing-library/react';
@@ -78,8 +79,8 @@ function notesFile(overrides: Partial<NotesFile> = {}): NotesFile {
   };
 }
 
-const zipFile = (file: NotesFile, name = 'class-notes.zip') =>
-  new File([writeNotesArchive(file) as BlobPart], name, { type: 'application/zip' });
+const zipFile = (file: NotesFile, name = 'class-notes.zip', cuts?: CutsFile) =>
+  new File([writeNotesArchive(file, cuts) as BlobPart], name, { type: 'application/zip' });
 
 function choose(file: File) {
   fireEvent.change(screen.getByTestId('import-file'), { target: { files: [file] } });
@@ -250,5 +251,40 @@ describe('import and export', () => {
     expect(
       await within(dialog).findByText('1 note you had deleted restored.', undefined, SLOW),
     ).toBeInTheDocument();
+  });
+
+  it('CUT-052: imports cuts with the notes, counted in the summary and report', async () => {
+    const { user } = renderRoute('/');
+    await user.click(
+      await screen.findByRole('button', { name: 'Import notes…' }, { timeout: 10000 }),
+    );
+    const cuts: CutsFile = {
+      format: 'shakespeer-cuts',
+      formatVersion: 1,
+      play: { id: 'the-tempest' },
+      cuts: [
+        {
+          id: 'k1',
+          versionId: 'folger',
+          name: 'Class cut',
+          createdAt: '',
+          updatedAt: '',
+          operations: [{ id: 'o1', type: 'hide', anchor: boatswain }],
+        },
+      ],
+    };
+    choose(
+      zipFile(
+        notesFile({ collection: { name: 'Cuts only' }, definitions: [], annotations: [] }),
+        'cuts.zip',
+        cuts,
+      ),
+    );
+    const dialog = await screen.findByRole('dialog', { name: 'Import notes' });
+    expect(
+      await within(dialog).findByText(/0 definitions, 0 annotations, 1 cut/, undefined, SLOW),
+    ).toBeInTheDocument();
+    await user.click(within(dialog).getByRole('button', { name: 'Import' }));
+    expect(await within(dialog).findByText('1 cut added.', undefined, SLOW)).toBeInTheDocument();
   });
 });

@@ -13,7 +13,8 @@ notes stay distinguishable from a reader's own, and re-importing an updated file
   notes** (off by default).
 - **IOX-003** — Export MUST include every own definition and annotation for the play, across
   all of its versions (each note records its version). With the checkbox, it also includes
-  imported notes. Sourced definitions are never exported.
+  imported notes. Sourced definitions are never exported. When the play has cuts, a checkbox
+  **Include cuts** (on by default) also exports its cuts the same way (CUT-052).
 - **IOX-004** — Export MUST download a `.zip` file containing the notes as JSON in the format of
   [XCH](../data/exchange-format.md). The file name is
   `shakespeer-<playId>-<collection-name-slug>-<YYYY-MM-DD>.zip`.
@@ -26,7 +27,7 @@ notes stay distinguishable from a reader's own, and re-importing an updated file
 - **IOX-011** — The file MUST be validated before anything is written (XCH-030). An invalid file
   shows an error explaining the problem in plain language and changes nothing.
 - **IOX-012** — Before importing, a summary MUST show: the collection name, the play, and counts
-  of definitions and annotations per version. Import happens only on confirmation.
+  of definitions, annotations and cuts per version. Import happens only on confirmation.
 - **IOX-013** — If the file's play differs from the open play, the summary says so and importing
   opens that play afterwards.
 - **IOX-014** — If a collection with the same name is already imported for that play, the

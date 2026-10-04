@@ -18,7 +18,7 @@ disagree, one of them is a bug. Behavior changes start as spec changes, reviewed
 | [behavior/annotations.md](behavior/annotations.md)       | ANN    | Highlights with notes, links and citations                    |
 | [behavior/import-export.md](behavior/import-export.md)   | IOX    | Exporting and importing notes                                 |
 | [behavior/attribution.md](behavior/attribution.md)       | ATR    | Showing sources and licenses                                  |
-| [behavior/cuts.md](behavior/cuts.md)                     | CUT    | _Planned:_ cuts, text edits, added stage directions           |
+| [behavior/cuts.md](behavior/cuts.md)                     | CUT    | Cuts, text edits, added stage directions                      |
 | **Data**                                                 |        | How the behavior is represented                               |
 | [data/corpus.md](data/corpus.md)                         | CRP    | Plays, versions, text structure, IDs, alignment, sources      |
 | [data/anchors.md](data/anchors.md)                       | ANC    | How notes point at text and survive corpus changes            |
@@ -47,5 +47,4 @@ disagree, one of them is a bug. Behavior changes start as spec changes, reviewed
 
 Three plays: _Hamlet_, _Troilus and Cressida_, _The Tempest_. Each is available as the Folger
 edition and in the original printings (quartos and First Folio), with notes, definitions,
-import/export, and full phone support. Cuts and text edits ([CUT](behavior/cuts.md)) come next
-and constrain today's data design.
+import/export, full phone support, and cuts and text edits ([CUT](behavior/cuts.md)).

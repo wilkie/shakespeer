@@ -10,6 +10,9 @@ import { z } from 'zod';
 export const NOTES_FILE_NAME = 'shakespeer-notes.json';
 export const NOTES_FORMAT = 'shakespeer-notes';
 export const NOTES_FORMAT_VERSION = 1;
+export const CUTS_FILE_NAME = 'shakespeer-cuts.json';
+export const CUTS_FORMAT = 'shakespeer-cuts';
+export const CUTS_FORMAT_VERSION = 1;
 
 /** Limits checked before anything is written (XCH-030). */
 export const LIMITS = {
@@ -17,6 +20,8 @@ export const LIMITS = {
   jsonBytes: 50 * 1024 * 1024,
   meaning: 5_000,
   notes: 100_000,
+  /** A cut's added or replacement text. */
+  cutText: 5_000,
 } as const;
 
 const CitationNameSchema = z.union([
@@ -79,6 +84,50 @@ export const NotesFileSchema = z.object({
 });
 
 export type NotesFile = z.infer<typeof NotesFileSchema>;
+
+/** A cut's operations (CUT-050). */
+export const CutOperationSchema = z.discriminatedUnion('type', [
+  z.object({ id: z.string().min(1), type: z.literal('hide'), anchor: TextAnchorSchema }),
+  z.object({
+    id: z.string().min(1),
+    type: z.literal('replace'),
+    anchor: TextAnchorSchema,
+    text: z.string(),
+  }),
+  z.object({
+    id: z.string().min(1),
+    type: z.literal('insert'),
+    after: z.string().min(1),
+    kind: z.enum(['sd', 'narration']),
+    text: z.string(),
+  }),
+]);
+
+export const CutsFileCutSchema = z.object({
+  id: z.string().min(1),
+  versionId: z.string().min(1),
+  name: z.string().trim().min(1),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  operations: z.array(CutOperationSchema),
+});
+
+/** `shakespeer-cuts.json`, format version 1 (CUT-052, XCH-005). */
+export const CutsFileSchema = z.object({
+  format: z.literal(CUTS_FORMAT),
+  formatVersion: z.literal(1),
+  play: z.object({ id: z.string().min(1) }),
+  cuts: z.array(CutsFileCutSchema),
+});
+
+export type CutsFile = z.infer<typeof CutsFileSchema>;
+export type CutsFileCut = z.infer<typeof CutsFileCutSchema>;
+
+/** A notes archive's contents: its notes, and its cuts if it has any (XCH-001). */
+export interface NotesArchive {
+  notes: NotesFile;
+  cuts: CutsFile | undefined;
+}
 export type NotesFileDefinition = z.infer<typeof NotesFileDefinitionSchema>;
 export type NotesFileAnnotation = z.infer<typeof NotesFileAnnotationSchema>;
 
@@ -87,10 +136,10 @@ export class NotesFileError extends Error {
 }
 
 /**
- * Inflates `shakespeer-notes.json` from a ZIP archive, stopping as soon as it passes the size
- * limit rather than trusting the archive's declared sizes (XCH-001, XCH-030).
+ * Inflates the archive's known entries, stopping as soon as they pass the size limit together
+ * rather than trusting the archive's declared sizes (XCH-001, XCH-030).
  */
-function inflateNotesJson(archive: Uint8Array): Uint8Array {
+function inflateEntries(archive: Uint8Array): Map<string, Uint8Array> {
   if (archive.byteLength > LIMITS.archiveBytes) {
     throw new NotesFileError('The file is larger than 10 MB, too large to be a notes file.');
   }
@@ -100,19 +149,16 @@ function inflateNotesJson(archive: Uint8Array): Uint8Array {
       'This is not a ZIP file. Notes files are .zip files exported from Shakespeer.',
     );
   }
-  const chunks: Uint8Array[] = [];
+  const chunks = new Map<string, Uint8Array[]>();
   let size = 0;
   // Set from the unzip callbacks.
-  const state: { found: boolean; tooLarge: boolean; failure: Error | null } = {
-    found: false,
-    tooLarge: false,
-    failure: null,
-  };
+  const state: { tooLarge: boolean; failure: Error | null } = { tooLarge: false, failure: null };
   const unzip = new Unzip((file) => {
-    if (file.name !== NOTES_FILE_NAME) {
+    if (file.name !== NOTES_FILE_NAME && file.name !== CUTS_FILE_NAME) {
       return; // Other entries are reserved (XCH-001).
     }
-    state.found = true;
+    const entry: Uint8Array[] = [];
+    chunks.set(file.name, entry);
     file.ondata = (error, chunk) => {
       if (error) {
         state.failure = error;
@@ -124,7 +170,7 @@ function inflateNotesJson(archive: Uint8Array): Uint8Array {
         file.terminate();
         return;
       }
-      chunks.push(chunk);
+      entry.push(chunk);
     };
     file.start();
   });
@@ -140,53 +186,94 @@ function inflateNotesJson(archive: Uint8Array): Uint8Array {
   if (state.failure) {
     throw new NotesFileError('The ZIP file is damaged and could not be read.');
   }
-  if (!state.found) {
+  if (!chunks.has(NOTES_FILE_NAME)) {
     throw new NotesFileError(
       `The ZIP file does not contain ${NOTES_FILE_NAME}, so it is not a Shakespeer notes file.`,
     );
   }
-  const json = new Uint8Array(size);
-  let offset = 0;
-  for (const chunk of chunks) {
-    json.set(chunk, offset);
-    offset += chunk.byteLength;
+  const entries = new Map<string, Uint8Array>();
+  for (const [name, parts] of chunks) {
+    const bytes = new Uint8Array(parts.reduce((n, part) => n + part.byteLength, 0));
+    let offset = 0;
+    for (const part of parts) {
+      bytes.set(part, offset);
+      offset += part.byteLength;
+    }
+    entries.set(name, bytes);
   }
-  return json;
+  return entries;
 }
 
-/** Reads and validates a notes archive's file (XCH-030). Throws `NotesFileError` with a reason. */
-export function readNotesArchive(archive: Uint8Array): NotesFile {
-  const bytes = inflateNotesJson(archive);
+/** Parses one JSON entry, checking its format and version before its schema (XCH-030). */
+function parseEntry<T>(
+  bytes: Uint8Array,
+  fileName: string,
+  format: string,
+  formatVersion: number,
+  schema: z.ZodType<T>,
+  what: string,
+): T {
   let data: unknown;
   try {
     data = JSON.parse(strFromU8(bytes));
   } catch {
-    throw new NotesFileError(`${NOTES_FILE_NAME} in the ZIP file is not valid JSON.`);
+    throw new NotesFileError(`${fileName} in the ZIP file is not valid JSON.`);
   }
   const header = z
     .object({ format: z.string().optional(), formatVersion: z.unknown().optional() })
     .safeParse(data);
-  if (!header.success || header.data.format !== NOTES_FORMAT) {
+  if (!header.success || header.data.format !== format) {
     throw new NotesFileError('This is not a Shakespeer notes file.');
   }
   const version = header.data.formatVersion;
-  if (typeof version === 'number' && version > NOTES_FORMAT_VERSION) {
+  if (typeof version === 'number' && version > formatVersion) {
     throw new NotesFileError(
       'This file was made by a newer version of Shakespeer. Update the app to import it.',
     );
   }
-  const parsed = NotesFileSchema.safeParse(data);
+  const parsed = schema.safeParse(data);
   if (!parsed.success) {
     const issue = parsed.error.issues[0];
     const where = issue?.path.join('.') ?? '';
     throw new NotesFileError(
-      `The notes file is incomplete or damaged${where ? ` (at ${where})` : ''}: ${issue?.message ?? 'invalid'}.`,
+      `The ${what} file is incomplete or damaged${where ? ` (at ${where})` : ''}: ${issue?.message ?? 'invalid'}.`,
     );
   }
   return parsed.data;
 }
 
-/** Writes a notes archive (XCH-001). */
-export function writeNotesArchive(file: NotesFile): Uint8Array {
-  return zipSync({ [NOTES_FILE_NAME]: strToU8(JSON.stringify(file, null, 2)) });
+/** Reads and validates a notes archive: its notes and any cuts (XCH-030). */
+export function readArchive(archive: Uint8Array): NotesArchive {
+  const entries = inflateEntries(archive);
+  const notes = parseEntry(
+    entries.get(NOTES_FILE_NAME) ?? new Uint8Array(),
+    NOTES_FILE_NAME,
+    NOTES_FORMAT,
+    NOTES_FORMAT_VERSION,
+    NotesFileSchema,
+    'notes',
+  );
+  const cutsBytes = entries.get(CUTS_FILE_NAME);
+  const cuts =
+    cutsBytes &&
+    parseEntry(cutsBytes, CUTS_FILE_NAME, CUTS_FORMAT, CUTS_FORMAT_VERSION, CutsFileSchema, 'cuts');
+  if (cuts && cuts.play.id !== notes.play.id) {
+    throw new NotesFileError('The cuts in this file are for a different play than its notes.');
+  }
+  return { notes, cuts };
+}
+
+/** Reads and validates a notes archive's notes file (XCH-030). Throws `NotesFileError`. */
+export function readNotesArchive(archive: Uint8Array): NotesFile {
+  return readArchive(archive).notes;
+}
+
+/** Writes a notes archive, with cuts beside the notes when there are any (XCH-001, CUT-052). */
+export function writeNotesArchive(file: NotesFile, cuts?: CutsFile): Uint8Array {
+  return zipSync({
+    [NOTES_FILE_NAME]: strToU8(JSON.stringify(file, null, 2)),
+    ...(cuts && cuts.cuts.length > 0
+      ? { [CUTS_FILE_NAME]: strToU8(JSON.stringify(cuts, null, 2)) }
+      : {}),
+  });
 }

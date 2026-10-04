@@ -10,18 +10,23 @@ import {
   checkItems,
   CollectionNameTakenError,
   deletedItems,
+  exportCuts,
   exportFileName,
   exportNotes,
   findCollection,
   listCollections,
   renameCollection,
 } from './exchange';
+import { deleteCut, listCuts, saveCut } from './cuts';
 import { deleteNote, listNotes, saveNote } from './notes';
 import {
+  CutsFileSchema,
   NotesFileError,
   NotesFileSchema,
+  readArchive,
   readNotesArchive,
   writeNotesArchive,
+  type CutsFile,
   type NotesFile,
 } from './notes-file';
 import type { AnnotationRecord, DefinitionRecord, ShakespeerDatabase } from './schema';
@@ -106,17 +111,46 @@ function file(overrides: Partial<NotesFile> = {}): NotesFile {
 const zip = (entries: Record<string, string>) =>
   zipSync(Object.fromEntries(Object.entries(entries).map(([k, v]) => [k, strToU8(v)])));
 
+function cutsFile(overrides: Partial<CutsFile> = {}): CutsFile {
+  return {
+    format: 'shakespeer-cuts',
+    formatVersion: 1,
+    play: { id: 'the-tempest' },
+    cuts: [
+      {
+        id: 'k1',
+        versionId: 'folger',
+        name: 'Study cut',
+        createdAt: '',
+        updatedAt: '',
+        operations: [{ id: 'o1', type: 'hide', anchor }],
+      },
+    ],
+    ...overrides,
+  };
+}
+
 describe('notes exchange file', () => {
   it('XCH-001/002: a written archive reads back unchanged', () => {
     const original = file();
     expect(readNotesArchive(writeNotesArchive(original))).toStrictEqual(original);
   });
 
-  it('XCH-004: the published JSON Schema matches the schema definition', () => {
-    const published: unknown = JSON.parse(
-      readFileSync(new URL('../schema/notes-file.v1.json', import.meta.url), 'utf8'),
+  it('XCH-004/005: the published JSON Schemas match the schema definitions', () => {
+    const published = (name: string): unknown =>
+      JSON.parse(readFileSync(new URL(`../schema/${name}`, import.meta.url), 'utf8'));
+    expect(published('notes-file.v1.json')).toStrictEqual(
+      z.toJSONSchema(NotesFileSchema, { io: 'input' }),
     );
-    expect(published).toStrictEqual(z.toJSONSchema(NotesFileSchema, { io: 'input' }));
+    expect(published('cuts-file.v1.json')).toStrictEqual(
+      z.toJSONSchema(CutsFileSchema, { io: 'input' }),
+    );
+  });
+
+  it('CUT-052: cuts are written beside the notes and read back', () => {
+    const cuts = cutsFile();
+    expect(readArchive(writeNotesArchive(file(), cuts))).toStrictEqual({ notes: file(), cuts });
+    expect(readArchive(writeNotesArchive(file())).cuts).toBeUndefined();
   });
 
   it('XCH-001: ignores other entries in the archive', () => {
@@ -337,6 +371,14 @@ describe('export and import', () => {
       keptModified: 2,
       previouslyDeleted: 1,
       restored: 0,
+      cuts: {
+        added: 0,
+        updated: 0,
+        removed: 0,
+        keptModified: 0,
+        previouslyDeleted: 0,
+        restored: 0,
+      },
     });
     const after = await local();
     expect(after.get('d1')?.meaning).toBe('officer, revised');
@@ -379,5 +421,57 @@ describe('export and import', () => {
     );
     await renameCollection(db, first.collectionId, 'Renamed');
     expect((await findCollection(db, 'the-tempest', 'Renamed'))?.id).toBe(first.collectionId);
+  });
+
+  it('CUT-052: exports own cuts; imports them as a collection’s, updating like notes', async () => {
+    const now = '2026-01-01T00:00:00.000Z';
+    await saveCut(db, {
+      id: 'mine',
+      playId: 'the-tempest',
+      versionId: 'folger',
+      name: 'Study cut',
+      origin: { kind: 'own' },
+      createdAt: now,
+      updatedAt: now,
+      operations: [],
+    });
+    const exported = await exportCuts(db, { playId: 'the-tempest', includeImported: false });
+    expect(exported.cuts.map((c) => c.id)).toStrictEqual(['mine']);
+
+    const notes = file({ definitions: [], annotations: [] });
+    const importWithCuts = (cuts: CutsFile, target: Parameters<typeof applyImport>[3]) =>
+      applyImport(db, 'the-tempest', checkItems(notes, VERSIONS, cuts), target, 'n.zip', NOW);
+    const first = await importWithCuts(cutsFile(), { mode: 'new', collectionName: 'Class' });
+    expect(first.cuts.added).toBe(1);
+    // The reader already has a cut of that name: the imported one is named after its collection.
+    const names = async () => (await listCuts(db, 'the-tempest', 'folger')).map((c) => c.name);
+    expect(await names()).toStrictEqual(['Study cut', 'Study cut (Class)']);
+
+    const update = await importWithCuts(
+      cutsFile({
+        cuts: [
+          {
+            id: 'k1',
+            versionId: 'folger',
+            name: 'Study cut',
+            createdAt: '',
+            updatedAt: '',
+            operations: [],
+          },
+        ],
+      }),
+      { mode: 'update', collectionId: first.collectionId },
+    );
+    expect(update.cuts.updated).toBe(1);
+    expect(await names()).toStrictEqual(['Study cut', 'Study cut (Class)']);
+
+    const imported = (await listCuts(db, 'the-tempest', 'folger')).find((c) => c.id !== 'mine');
+    await deleteCut(db, imported?.id ?? '');
+    const again = await importWithCuts(cutsFile(), {
+      mode: 'update',
+      collectionId: first.collectionId,
+    });
+    expect(again.cuts.previouslyDeleted).toBe(1);
+    expect((await listCollections(db, 'the-tempest'))[0]?.cuts).toBe(0);
   });
 });

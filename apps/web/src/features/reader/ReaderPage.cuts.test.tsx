@@ -15,6 +15,12 @@ async function openReader() {
   return result;
 }
 
+/** Until a dialog has gone, the rest of the page is hidden from queries. */
+const dialogClosed = () =>
+  waitFor(() => {
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  }, SLOW);
+
 const firstLine = () => document.querySelector<HTMLElement>('[data-node-id="ftln-0001"]');
 
 // The tests share one database and build on each other, in order.
@@ -28,9 +34,7 @@ describe('cuts', () => {
       const dialog = screen.getByRole('dialog', { name: 'New cut' });
       await user.type(within(dialog).getByRole('textbox', { name: 'Name' }), 'Study cut');
       await user.click(within(dialog).getByRole('button', { name: 'Create' }));
-      await waitFor(() => {
-        expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-      }, SLOW);
+      await dialogClosed();
 
       const edit = await screen.findByRole('button', { name: 'Edit cut' }, SLOW);
       await waitFor(() => {
@@ -96,6 +100,7 @@ describe('cuts', () => {
       let dialog = screen.getByRole('dialog', { name: 'Replace wording' });
       await user.type(within(dialog).getByRole('textbox', { name: 'New wording' }), 'Aye, master');
       await user.click(within(dialog).getByRole('button', { name: 'Save' }));
+      await dialogClosed();
       const replacement = await screen.findByRole(
         'button',
         { name: 'Aye, master (replaces “Here, master”)' },
@@ -109,6 +114,7 @@ describe('cuts', () => {
       await user.click(within(dialog).getByRole('radio', { name: 'Narration' }));
       await user.type(within(dialog).getByRole('textbox', { name: 'Text' }), 'The ship rolls.');
       await user.click(within(dialog).getByRole('button', { name: 'Save' }));
+      await dialogClosed();
       await waitFor(() => {
         expect(document.querySelector('.cut-added.narration')?.textContent).toBe(
           '+ AddedThe ship rolls.',

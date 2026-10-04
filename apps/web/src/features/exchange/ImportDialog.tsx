@@ -76,6 +76,7 @@ function Summary({
           <li key={v.versionId}>
             <Typography>
               {v.name}: {plural(v.definitions, 'definition')}, {plural(v.annotations, 'annotation')}
+              {v.cuts > 0 && `, ${plural(v.cuts, 'cut')}`}
             </Typography>
           </li>
         ))}
@@ -117,7 +118,7 @@ function Summary({
             />
             <FormControlLabel value="new" control={<Radio />} label="Import as a new collection" />
           </RadioGroup>
-          {mode === 'update' && plan.deletedInFile > 0 && (
+          {mode === 'update' && plan.deletedInFile + plan.deletedCutsInFile > 0 && (
             <FormControlLabel
               control={
                 <Checkbox
@@ -127,7 +128,12 @@ function Summary({
                   }}
                 />
               }
-              label={`Restore the ${plural(plan.deletedInFile, 'note')} you deleted`}
+              label={`Restore the ${[
+                plan.deletedInFile > 0 && plural(plan.deletedInFile, 'note'),
+                plan.deletedCutsInFile > 0 && plural(plan.deletedCutsInFile, 'cut'),
+              ]
+                .filter(Boolean)
+                .join(' and ')} you deleted`}
             />
           )}
           {mode === 'new' && (
@@ -150,6 +156,7 @@ function Summary({
 }
 
 function ReportView({ report }: { report: ImportReport }) {
+  const { cuts } = report;
   const lines = [
     report.added > 0 && `${plural(report.added, 'note')} added`,
     report.updated > 0 && `${plural(report.updated, 'note')} updated`,
@@ -159,6 +166,14 @@ function ReportView({ report }: { report: ImportReport }) {
     report.restored > 0 && `${plural(report.restored, 'note')} you had deleted restored`,
     report.previouslyDeleted > 0 &&
       `${plural(report.previouslyDeleted, 'note')} you had deleted left out`,
+    // Cuts (CUT-052).
+    cuts.added > 0 && `${plural(cuts.added, 'cut')} added`,
+    cuts.updated > 0 && `${plural(cuts.updated, 'cut')} updated`,
+    cuts.removed > 0 && `${plural(cuts.removed, 'cut')} removed`,
+    cuts.keptModified > 0 && `${plural(cuts.keptModified, 'cut')} kept because you changed them`,
+    cuts.restored > 0 && `${plural(cuts.restored, 'cut')} you had deleted restored`,
+    cuts.previouslyDeleted > 0 &&
+      `${plural(cuts.previouslyDeleted, 'cut')} you had deleted left out`,
   ].filter((line): line is string => Boolean(line));
   return (
     <Stack spacing={1}>

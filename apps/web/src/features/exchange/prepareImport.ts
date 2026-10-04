@@ -11,7 +11,7 @@ import {
   findCollection,
   NOTES_FILE_LIMITS,
   NotesFileError,
-  readNotesArchive,
+  readArchive,
   type CheckedNotes,
   type CollectionRecord,
   type NotesFile,
@@ -27,6 +27,7 @@ export interface VersionCount {
   name: string;
   definitions: number;
   annotations: number;
+  cuts: number;
 }
 
 /** Everything the import summary shows before anything is written (IOX-012). */
@@ -42,6 +43,8 @@ export interface ImportPlan {
   existing: CollectionRecord | undefined;
   /** Notes of that collection the reader deleted that the file still has (IOX-014a). */
   deletedInFile: number;
+  /** The same for its cuts (CUT-052). */
+  deletedCutsInFile: number;
 }
 
 async function countUnattached(playId: string, notes: CheckedNotes): Promise<number> {
@@ -62,31 +65,33 @@ export async function prepareImport(file: File): Promise<ImportPlan> {
   if (file.size > NOTES_FILE_LIMITS.archiveBytes) {
     throw new NotesFileError('The file is larger than 10 MB, too large to be a notes file.');
   }
-  const notesFile = readNotesArchive(await readBytes(file));
+  const { notes: notesFile, cuts: cutsFile } = readArchive(await readBytes(file));
   const play = getPlay(notesFile.play.id);
   if (!play) {
     throw new NotesFileError(
       `These notes are for a play that is not in Shakespeer (“${notesFile.play.id}”).`,
     );
   }
-  const notes = checkItems(notesFile, new Set(play.versions.map((v) => v.id)));
+  const notes = checkItems(notesFile, new Set(play.versions.map((v) => v.id)), cutsFile);
   const versions = play.versions
     .map((version) => ({
       versionId: version.id,
       name: version.name,
       definitions: notes.definitions.filter((d) => d.versionId === version.id).length,
       annotations: notes.annotations.filter((a) => a.versionId === version.id).length,
+      cuts: notes.cuts.filter((c) => c.versionId === version.id).length,
     }))
-    .filter((count) => count.definitions + count.annotations > 0);
+    .filter((count) => count.definitions + count.annotations + count.cuts > 0);
   const db = await getDatabase();
   const [unattached, existing] = await Promise.all([
     countUnattached(play.id, notes),
     findCollection(db, play.id, notesFile.collection.name),
   ]);
   const inFile = new Set([...notes.definitions, ...notes.annotations].map((item) => item.id));
-  const deletedInFile = existing
-    ? (await deletedItems(db, existing.id)).filter((id) => inFile.has(id)).length
-    : 0;
+  const cutsInFile = new Set(notes.cuts.map((cut) => cut.id));
+  const deleted = existing ? await deletedItems(db, existing.id) : [];
+  const deletedInFile = deleted.filter((id) => inFile.has(id)).length;
+  const deletedCutsInFile = deleted.filter((id) => cutsInFile.has(id)).length;
   return {
     fileName: file.name,
     file: notesFile,
@@ -96,5 +101,6 @@ export async function prepareImport(file: File): Promise<ImportPlan> {
     unattached,
     existing,
     deletedInFile,
+    deletedCutsInFile,
   };
 }

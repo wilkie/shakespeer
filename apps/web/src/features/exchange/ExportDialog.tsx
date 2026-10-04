@@ -11,9 +11,11 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import type { PlayInfo } from '@shakespeer/corpus';
 import {
+  exportCuts,
   exportFileName,
   exportNotes,
   writeNotesArchive,
+  type CutsFile,
   type NotesFile,
 } from '@shakespeer/storage';
 import { useEffect, useState } from 'react';
@@ -26,10 +28,34 @@ import { download } from './files';
 
 const plural = (n: number, one: string) => `${String(n)} ${one}${n === 1 ? '' : 's'}`;
 
+/** The play's notes and, if asked, its cuts, as an archive (IOX-004, CUT-052). */
+async function exportArchive(
+  playId: string,
+  collectionName: string,
+  includeImported: boolean,
+  includeCuts: boolean,
+  now: Date,
+): Promise<Uint8Array> {
+  const db = await getDatabase();
+  const file = await exportNotes(db, {
+    playId,
+    collectionName,
+    includeImported,
+    appVersion: APP_VERSION,
+    now,
+  });
+  if (!includeCuts) {
+    return writeNotesArchive(file);
+  }
+  return writeNotesArchive(file, await exportCuts(db, { playId, includeImported }));
+}
+
 function ExportForm({ play, onClose }: { play: PlayInfo; onClose: () => void }) {
   const [name, setName] = useState('');
   const [includeImported, setIncludeImported] = useState(false);
-  const [preview, setPreview] = useState<NotesFile | null>(null);
+  const [preview, setPreview] = useState<{ notes: NotesFile; cuts: CutsFile } | null>(null);
+  /** On by default when the play has cuts (CUT-052); null until the reader chooses. */
+  const [includeCutsChoice, setIncludeCuts] = useState<boolean | null>(null);
   const [failed, setFailed] = useState(false);
 
   // The name last used for this play, or "<Play title> notes" (IOX-002).
@@ -51,14 +77,15 @@ function ExportForm({ play, onClose }: { play: PlayInfo; onClose: () => void }) 
   useEffect(() => {
     let cancelled = false;
     void getDatabase()
-      .then((db) =>
-        exportNotes(db, {
+      .then(async (db) => ({
+        notes: await exportNotes(db, {
           playId: play.id,
           collectionName: 'preview',
           includeImported,
           appVersion: APP_VERSION,
         }),
-      )
+        cuts: await exportCuts(db, { playId: play.id, includeImported }),
+      }))
       .then((file) => {
         if (!cancelled) {
           setPreview(file);
@@ -69,19 +96,25 @@ function ExportForm({ play, onClose }: { play: PlayInfo; onClose: () => void }) 
     };
   }, [play.id, includeImported]);
 
-  const count = preview ? preview.definitions.length + preview.annotations.length : 0;
+  const hasCuts = (preview?.cuts.cuts.length ?? 0) > 0;
+  const includeCuts = hasCuts && (includeCutsChoice ?? true);
+  const cutCount = includeCuts ? (preview?.cuts.cuts.length ?? 0) : 0;
+  const noteCount = preview
+    ? preview.notes.definitions.length + preview.notes.annotations.length
+    : 0;
+  const count = noteCount + cutCount;
   const save = async () => {
     const collectionName = name.trim();
     try {
       const now = new Date();
-      const file = await exportNotes(await getDatabase(), {
-        playId: play.id,
+      const archive = await exportArchive(
+        play.id,
         collectionName,
         includeImported,
-        appVersion: APP_VERSION,
+        includeCuts,
         now,
-      });
-      download(writeNotesArchive(file), exportFileName(play.id, collectionName, now));
+      );
+      download(archive, exportFileName(play.id, collectionName, now));
       void setSetting(`export.lastName.${play.id}`, collectionName);
       onClose();
     } catch {
@@ -113,11 +146,24 @@ function ExportForm({ play, onClose }: { play: PlayInfo; onClose: () => void }) 
             }
             label="Include imported notes"
           />
+          {hasCuts && (
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={includeCuts}
+                  onChange={(event) => {
+                    setIncludeCuts(event.target.checked);
+                  }}
+                />
+              }
+              label="Include cuts"
+            />
+          )}
           {preview && (
             <Typography color="text.secondary" role="status">
               {count === 0
                 ? 'There are no notes to export for this play.'
-                : `${plural(preview.definitions.length, 'definition')} and ${plural(preview.annotations.length, 'annotation')} from every version of ${play.title}.`}
+                : `${plural(preview.notes.definitions.length, 'definition')}${cutCount > 0 ? ', ' : ' and '}${plural(preview.notes.annotations.length, 'annotation')}${cutCount > 0 ? ` and ${plural(cutCount, 'cut')}` : ''} from every version of ${play.title}.`}
             </Typography>
           )}
           {failed && <Alert severity="error">The notes could not be exported. Try again.</Alert>}

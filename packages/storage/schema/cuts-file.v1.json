@@ -1,0 +1,225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "format": {
+      "type": "string",
+      "const": "shakespeer-cuts"
+    },
+    "formatVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "play": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": ["id"]
+    },
+    "cuts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "versionId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "operations": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "type": {
+                      "type": "string",
+                      "const": "hide"
+                    },
+                    "anchor": {
+                      "type": "object",
+                      "properties": {
+                        "start": {
+                          "type": "object",
+                          "properties": {
+                            "nodeId": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "offset": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 9007199254740991
+                            }
+                          },
+                          "required": ["nodeId", "offset"]
+                        },
+                        "end": {
+                          "type": "object",
+                          "properties": {
+                            "nodeId": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "offset": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 9007199254740991
+                            }
+                          },
+                          "required": ["nodeId", "offset"]
+                        },
+                        "quote": {
+                          "type": "object",
+                          "properties": {
+                            "exact": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "prefix": {
+                              "type": "string"
+                            },
+                            "suffix": {
+                              "type": "string"
+                            }
+                          },
+                          "required": ["exact", "prefix", "suffix"]
+                        },
+                        "revision": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["start", "end", "quote", "revision"]
+                    }
+                  },
+                  "required": ["id", "type", "anchor"]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "type": {
+                      "type": "string",
+                      "const": "replace"
+                    },
+                    "anchor": {
+                      "type": "object",
+                      "properties": {
+                        "start": {
+                          "type": "object",
+                          "properties": {
+                            "nodeId": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "offset": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 9007199254740991
+                            }
+                          },
+                          "required": ["nodeId", "offset"]
+                        },
+                        "end": {
+                          "type": "object",
+                          "properties": {
+                            "nodeId": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "offset": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "maximum": 9007199254740991
+                            }
+                          },
+                          "required": ["nodeId", "offset"]
+                        },
+                        "quote": {
+                          "type": "object",
+                          "properties": {
+                            "exact": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "prefix": {
+                              "type": "string"
+                            },
+                            "suffix": {
+                              "type": "string"
+                            }
+                          },
+                          "required": ["exact", "prefix", "suffix"]
+                        },
+                        "revision": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["start", "end", "quote", "revision"]
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["id", "type", "anchor", "text"]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "type": {
+                      "type": "string",
+                      "const": "insert"
+                    },
+                    "after": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": ["sd", "narration"]
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["id", "type", "after", "kind", "text"]
+                }
+              ]
+            }
+          }
+        },
+        "required": ["id", "versionId", "name", "createdAt", "updatedAt", "operations"]
+      }
+    }
+  },
+  "required": ["format", "formatVersion", "play", "cuts"]
+}

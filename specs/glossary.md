@@ -59,6 +59,6 @@ device), or **imported** (from an imported collection).
 **Collection.** A named set of notes for one play exchanged through export/import, e.g.
 "Ms. Rivera — Period 3". Imported notes remember their collection.
 
-**Cut.** _(Planned.)_ A named arrangement of a version's text with lines or scenes hidden,
+**Cut.** A named arrangement of a version's text with lines or scenes hidden,
 words edited, and stage directions or narration added. "Full play" is the built-in cut that
 shows the version unchanged.

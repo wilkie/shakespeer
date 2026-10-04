@@ -1,10 +1,15 @@
 /**
  * Exporting and importing notes (specs/behavior/import-export.md, specs/data/exchange-format.md).
  */
+import { notifyCutsChange } from './cuts';
 import {
+  CUTS_FORMAT,
+  CUTS_FORMAT_VERSION,
   LIMITS,
   NOTES_FORMAT,
   NOTES_FORMAT_VERSION,
+  type CutsFile,
+  type CutsFileCut,
   type NotesFile,
   type NotesFileAnnotation,
   type NotesFileDefinition,
@@ -100,6 +105,35 @@ export async function exportNotes(
   };
 }
 
+/**
+ * The cuts file for a play: own cuts of every version, and imported ones if asked (CUT-052).
+ * Cut IDs are the local record IDs, stable across exports (XCH-003).
+ */
+export async function exportCuts(
+  db: ShakespeerDatabase,
+  options: Pick<ExportOptions, 'playId' | 'includeImported'>,
+): Promise<CutsFile> {
+  const range = IDBKeyRange.bound([options.playId, ''], [options.playId, '￿']);
+  const cuts = (await db.getAllFromIndex('cuts', 'byVersion', range)).filter(
+    (cut) => options.includeImported || cut.origin.kind === 'own',
+  );
+  return {
+    format: CUTS_FORMAT,
+    formatVersion: CUTS_FORMAT_VERSION,
+    play: { id: options.playId },
+    cuts: cuts
+      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+      .map((cut) => ({
+        id: cut.id,
+        versionId: cut.versionId,
+        name: cut.name,
+        createdAt: cut.createdAt,
+        updatedAt: cut.updatedAt,
+        operations: cut.operations,
+      })),
+  };
+}
+
 /** `shakespeer-<playId>-<collection-name-slug>-<YYYY-MM-DD>.zip` (IOX-004). */
 export function exportFileName(playId: string, collectionName: string, now = new Date()): string {
   const slug =
@@ -126,6 +160,8 @@ export interface SkippedItems {
 export interface CheckedNotes {
   definitions: NotesFileDefinition[];
   annotations: NotesFileAnnotation[];
+  /** Cuts in the file (CUT-052). */
+  cuts: CutsFileCut[];
   skipped: SkippedItems;
 }
 
@@ -150,7 +186,11 @@ const CITATION_TYPES = new Set<string>([
  * Checks a file's items one by one: unknown versions and overlong text are skipped and counted;
  * unknown colors become yellow and unsafe links are dropped (XCH-030).
  */
-export function checkItems(file: NotesFile, versionIds: ReadonlySet<string>): CheckedNotes {
+export function checkItems(
+  file: NotesFile,
+  versionIds: ReadonlySet<string>,
+  cutsFile?: CutsFile,
+): CheckedNotes {
   const skipped: SkippedItems = { unknownVersion: 0, tooLong: 0 };
   const known = (item: { versionId: string }) => {
     if (!versionIds.has(item.versionId)) {
@@ -189,7 +229,17 @@ export function checkItems(file: NotesFile, versionIds: ReadonlySet<string>): Ch
         type: CITATION_TYPES.has(c.type) ? c.type : 'document',
       })),
     }));
-  return { definitions, annotations, skipped };
+  const cuts = (cutsFile?.cuts ?? []).filter((cut) => {
+    if (!known(cut)) {
+      return false;
+    }
+    if (cut.operations.some((op) => op.type !== 'hide' && op.text.length > LIMITS.cutText)) {
+      skipped.tooLong += 1;
+      return false;
+    }
+    return true;
+  });
+  return { definitions, annotations, cuts, skipped };
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -206,6 +256,7 @@ export async function findCollection(
 export interface CollectionSummary extends CollectionRecord {
   definitions: number;
   annotations: number;
+  cuts: number;
 }
 
 /** A play's imported collections with their note counts, oldest first (IOX-020). */
@@ -220,6 +271,7 @@ export async function listCollections(
       ...collection,
       definitions: await db.countFromIndex('definitions', 'byCollection', collection.id),
       annotations: await db.countFromIndex('annotations', 'byCollection', collection.id),
+      cuts: await db.countFromIndex('cuts', 'byCollection', collection.id),
     })),
   );
   return summaries.sort((a, b) => a.importedAt.localeCompare(b.importedAt));
@@ -265,7 +317,16 @@ export type ImportTarget =
       restoreDeleted?: boolean;
     };
 
-export interface ImportReport {
+export interface ImportCounts {
+  added: number;
+  updated: number;
+  removed: number;
+  keptModified: number;
+  previouslyDeleted: number;
+  restored: number;
+}
+
+export interface ImportReport extends ImportCounts {
   collectionId: string;
   added: number;
   updated: number;
@@ -276,6 +337,8 @@ export interface ImportReport {
   previouslyDeleted: number;
   /** Deleted by the reader and brought back on request (IOX-014a). */
   restored: number;
+  /** The same counts for cuts (CUT-052); the fields above count notes. */
+  cuts: ImportCounts;
 }
 
 /**
@@ -297,6 +360,16 @@ function definitionContent(item: NotesFileDefinition) {
     meaning: item.meaning,
     ...(item.partOfSpeech ? { partOfSpeech: item.partOfSpeech } : {}),
     ...(item.source ? { source: item.source } : {}),
+    createdAt: item.createdAt,
+    updatedAt: item.updatedAt,
+  };
+}
+
+function cutContent(item: CutsFileCut) {
+  return {
+    versionId: item.versionId,
+    name: item.name.trim(),
+    operations: item.operations,
     createdAt: item.createdAt,
     updatedAt: item.updatedAt,
   };
@@ -329,7 +402,7 @@ export async function applyImport(
 ): Promise<ImportReport> {
   const stamp = now.toISOString();
   const tx = db.transaction(
-    ['definitions', 'annotations', 'collections', 'tombstones'],
+    ['definitions', 'annotations', 'cuts', 'collections', 'tombstones'],
     'readwrite',
   );
   const collections = tx.objectStore('collections');
@@ -363,8 +436,10 @@ export async function applyImport(
     keptModified: 0,
     previouslyDeleted: 0,
     restored: 0,
+    cuts: { added: 0, updated: 0, removed: 0, keptModified: 0, previouslyDeleted: 0, restored: 0 },
   };
   const versions = new Set<string>();
+  const cutVersions = new Set<string>();
   const tombstones = tx.objectStore('tombstones');
   // Restoring deleted notes clears the collection's tombstones first (XCH-040 step 1).
   const restoring = new Set<string>();
@@ -375,12 +450,15 @@ export async function applyImport(
     }
   }
 
-  const apply = async <K extends 'definitions' | 'annotations'>(
-    kind: K,
-    items: readonly (K extends 'definitions' ? NotesFileDefinition : NotesFileAnnotation)[],
-    content: (item: K extends 'definitions' ? NotesFileDefinition : NotesFileAnnotation) => object,
+  type Item = NotesFileDefinition | NotesFileAnnotation | CutsFileCut;
+  const apply = async <T extends Item>(
+    kind: 'definitions' | 'annotations' | 'cuts',
+    items: readonly T[],
+    content: (item: T) => object,
+    counts: ImportCounts,
+    changed: Set<string>,
   ) => {
-    // Both stores share the same shape and indexes; one store type serves for either.
+    // The stores share the same indexes and origin; one store type serves for each.
     const store = tx.objectStore(kind as 'definitions');
     const local = new Map<string, DefinitionRecord | AnnotationRecord>();
     if (target.mode === 'update') {
@@ -397,18 +475,27 @@ export async function applyImport(
       }
       incoming.add(item.id);
       if (target.mode === 'update' && (await tombstones.get([collection.id, item.id]))) {
-        report.previouslyDeleted += 1;
+        counts.previouslyDeleted += 1;
         continue;
       }
       const existing = local.get(item.id);
       if (existing?.origin.kind === 'imported' && existing.origin.modified) {
-        report.keptModified += 1;
+        counts.keptModified += 1;
         continue;
       }
       const record = {
         id: existing?.id ?? crypto.randomUUID(),
         playId,
         ...content(item),
+        ...(kind === 'cuts'
+          ? {
+              name: await freeCutName(
+                (item as CutsFileCut).versionId,
+                (item as CutsFileCut).name.trim(),
+                existing?.id,
+              ),
+            }
+          : {}),
         origin: {
           kind: 'imported',
           collectionId: collection.id,
@@ -417,14 +504,14 @@ export async function applyImport(
         },
       } as unknown as DefinitionRecord;
       await store.put(record);
-      versions.add(item.versionId);
+      changed.add(item.versionId);
       if (existing) {
-        versions.add(existing.versionId);
-        report.updated += 1;
+        changed.add(existing.versionId);
+        counts.updated += 1;
       } else if (restoring.has(item.id)) {
-        report.restored += 1;
+        counts.restored += 1;
       } else {
-        report.added += 1;
+        counts.added += 1;
       }
     }
     // Notes no longer in the file: removed, unless changed locally (XCH-040 step 2).
@@ -432,9 +519,9 @@ export async function applyImport(
       if (incoming.has(sourceItemId) || record.origin.kind !== 'imported') {
         continue;
       }
-      versions.add(record.versionId);
+      changed.add(record.versionId);
       if (record.origin.modified) {
-        report.keptModified += 1;
+        counts.keptModified += 1;
         if (!record.origin.removedFromSource) {
           await store.put({
             ...record,
@@ -443,17 +530,40 @@ export async function applyImport(
         }
       } else {
         await store.delete(record.id);
-        report.removed += 1;
+        counts.removed += 1;
       }
     }
   };
 
-  await apply('definitions', notes.definitions, definitionContent);
-  await apply('annotations', notes.annotations, annotationContent);
+  /**
+   * Cut names are unique per version (CUT-021): an imported cut whose name is taken is named
+   * after its collection too.
+   */
+  const freeCutName = async (versionId: string, name: string, ownId: string | undefined) => {
+    const taken = new Set(
+      (await tx.objectStore('cuts').index('byVersion').getAll([playId, versionId]))
+        .filter((cut) => cut.id !== ownId)
+        .map((cut) => cut.name),
+    );
+    for (let n = 1; ; n += 1) {
+      const candidate =
+        n === 1 ? name : `${name} (${collection.name}${n === 2 ? '' : ` ${String(n - 1)}`})`;
+      if (!taken.has(candidate)) {
+        return candidate;
+      }
+    }
+  };
+
+  await apply('definitions', notes.definitions, definitionContent, report, versions);
+  await apply('annotations', notes.annotations, annotationContent, report, versions);
+  await apply('cuts', notes.cuts, cutContent, report.cuts, cutVersions);
   await tx.done;
 
   for (const versionId of versions) {
     notifyChange(playId, versionId);
+  }
+  for (const versionId of cutVersions) {
+    notifyCutsChange(playId, versionId);
   }
   notifyChange(playId, '');
   return report;

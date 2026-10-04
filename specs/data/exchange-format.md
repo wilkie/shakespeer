@@ -6,8 +6,9 @@ The file produced by export and accepted by import ([IOX](../behavior/import-exp
 
 ## File
 
-- **XCH-001** — The file is a ZIP archive containing `shakespeer-notes.json` at its root. Other
-  entries are ignored (reserved for future use, e.g. cuts, CUT-006).
+- **XCH-001** — The file is a ZIP archive containing `shakespeer-notes.json` at its root, and
+  `shakespeer-cuts.json` beside it when cuts are exported (XCH-005, CUT-052). Other entries are
+  ignored (reserved for future use).
 - **XCH-002** — `shakespeer-notes.json` is UTF-8 JSON with this shape:
 
   ```ts
@@ -48,6 +49,25 @@ The file produced by export and accepted by import ([IOX](../behavior/import-exp
   (XCH-040) match notes.
 - **XCH-004** — A JSON Schema for the file MUST be published in the repository
   (`packages/storage/schema/notes-file.v1.json`) and used for validation.
+- **XCH-005** — `shakespeer-cuts.json` is UTF-8 JSON for the same play, with this shape; its
+  JSON Schema is published as `packages/storage/schema/cuts-file.v1.json`:
+
+  ```ts
+  interface CutsFile {
+    format: 'shakespeer-cuts';
+    formatVersion: 1;
+    play: { id: string }; // must match the notes file's
+    cuts: {
+      id: string; // stable across exports, like note IDs (XCH-003)
+      versionId: string;
+      name: string;
+      createdAt: string;
+      updatedAt: string;
+      operations: CutOperation[]; // CUT-050
+    }[];
+  }
+  ```
+
 - **XCH-010** — Format changes that older apps cannot read increase `formatVersion`. The app MUST
   read every earlier `formatVersion` it has ever written.
 
@@ -62,7 +82,8 @@ The file produced by export and accepted by import ([IOX](../behavior/import-exp
   - the play exists in the corpus.
     Then, item by item (skipped items are counted in the summary, IOX-012): version IDs must exist;
     unknown colors become yellow; link URLs other than http/https are dropped; strings are limited
-    in length (meaning 5,000 characters, notes 100,000).
+    in length (meaning 5,000 characters, notes 100,000, a cut's added or replacement text 5,000).
+    The two files share the 50 MB limit.
 
 ## Applying an import
 
@@ -81,6 +102,10 @@ The file produced by export and accepted by import ([IOX](../behavior/import-exp
   4. update the collection's `updatedAt` and `fileName`;
   5. report counts: added, updated, removed, kept because changed locally, previously deleted
      (skipped), and restored.
+- **XCH-043** — Cuts are imported into the same collection by the same rules (XCH-039 –
+  XCH-042), counted separately in the report. Cut names are unique per version (CUT-021): an
+  imported cut whose name is taken gets its collection's name added, e.g. "Study cut (Class
+  notes)".
 - **XCH-041** — Deleting an imported note records a tombstone (STO-014), so updates do not
   restore it.
 - **XCH-042** — Own notes are never touched by an import.

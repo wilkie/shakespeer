@@ -116,7 +116,7 @@ export function CollectionsDialog({
                 ) : (
                   <ListItemText
                     primary={collection.name}
-                    secondary={`Imported ${dateFormat.format(new Date(collection.importedAt))} · ${plural(collection.definitions, 'definition')}, ${plural(collection.annotations, 'annotation')}`}
+                    secondary={`Imported ${dateFormat.format(new Date(collection.importedAt))} · ${plural(collection.definitions, 'definition')}, ${plural(collection.annotations, 'annotation')}${collection.cuts > 0 ? `, ${plural(collection.cuts, 'cut')}` : ''}`}
                   />
                 )}
               </ListItem>
