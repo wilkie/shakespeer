@@ -89,8 +89,8 @@ right ([MAP](scene-map.md)) and the notes panel on the left ([PNL](side-panel.md
   the modern version.
 - **RDR-042** — Notes belong to one version (ANC-001). When a version is displayed, only its
   notes are shown. The version switcher SHOULD show how many notes each version has.
-- **RDR-043** — _Later:_ inline variant marks and a side-by-side comparison view. Not part of
-  the first release; the corpus already carries the data (CRP-060).
+- **RDR-043** — Inline variant marks and a side-by-side comparison view, as in
+  [VAR](variants.md).
 
 ## Responsive behavior
 

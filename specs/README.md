@@ -19,6 +19,7 @@ disagree, one of them is a bug. Behavior changes start as spec changes, reviewed
 | [behavior/import-export.md](behavior/import-export.md)   | IOX    | Exporting and importing notes                                 |
 | [behavior/attribution.md](behavior/attribution.md)       | ATR    | Showing sources and licenses                                  |
 | [behavior/cuts.md](behavior/cuts.md)                     | CUT    | Cuts, text edits, added stage directions                      |
+| [behavior/variants.md](behavior/variants.md)             | VAR    | _Draft:_ variant marks and comparing versions                 |
 | **Data**                                                 |        | How the behavior is represented                               |
 | [data/corpus.md](data/corpus.md)                         | CRP    | Plays, versions, text structure, IDs, alignment, sources      |
 | [data/anchors.md](data/anchors.md)                       | ANC    | How notes point at text and survive corpus changes            |
