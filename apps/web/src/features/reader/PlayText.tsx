@@ -12,10 +12,11 @@ import type {
 } from '@shakespeer/corpus';
 import type { CSSProperties, ReactNode, Ref } from 'react';
 
+import type { DisplayCut, InsertedNode } from '@/features/cuts/display';
 import { ANNOTATION_PREFIX, TERM_PREFIX, type NoteIndex } from '@/features/notes/noteIndex';
 import { highlightVar } from '@/features/notes/palette';
 
-import { segmentText } from './segments';
+import { segmentText, type Segment } from './segments';
 import { sceneTitle } from './titles';
 
 export interface PlayTextProps {
@@ -27,7 +28,22 @@ export interface PlayTextProps {
   ref?: Ref<HTMLDivElement>;
   /** Rendered after the text (ATR-002). */
   footer?: ReactNode;
+  /** The current cut, if not Full play (CUT-040 – CUT-046). */
+  cut?: CutView | undefined;
 }
+
+/** How the current cut shows (CUT-040 – CUT-043). */
+export interface CutView {
+  display: DisplayCut;
+  /** Markers the reader has opened, by key (CUT-040). */
+  revealed: ReadonlySet<string>;
+  /** Show cut text everywhere (CUT-041). */
+  showCutText: boolean;
+  editing: boolean;
+}
+
+/** Decoration IDs for text a cut hides. */
+const CUT_PREFIX = 'x:';
 
 const MARK_CLASSES: Record<MarkType, string> = {
   italic: 'm-italic',
@@ -52,63 +68,184 @@ function highlightStyle(colors: readonly string[]): CSSProperties | undefined {
   return { backgroundImage: `linear-gradient(to bottom, ${stops.join(', ')})` };
 }
 
-function NodeText({ node, context }: { node: TextNode; context: BlockContext }) {
+/** One run of text with uniform marks and notes. */
+function SegmentView({
+  node,
+  segment,
+  context,
+}: {
+  node: TextNode;
+  segment: Segment;
+  context: BlockContext;
+}) {
   const { notes, revealTerms } = context;
-  const segments = segmentText(node.text, node.marks, notes.byNode.get(node.id));
+  const classes = segment.marks.map((mark) => MARK_CLASSES[mark]);
+  const content = segment.marks.includes('sup') ? <sup>{segment.text}</sup> : segment.text;
+  const ids = segment.ids.filter((id) => !id.startsWith(CUT_PREFIX));
+  if (ids.length === 0) {
+    return classes.length > 0 ? <span className={classes.join(' ')}>{content}</span> : content;
+  }
+  const terms = ids
+    .filter((id) => id.startsWith(TERM_PREFIX))
+    .map((id) => id.slice(TERM_PREFIX.length));
+  const annotations = ids
+    .filter((id) => id.startsWith(ANNOTATION_PREFIX))
+    .flatMap((id) => notes.annotation(id.slice(ANNOTATION_PREFIX.length)) ?? []);
+  if (terms.length > 0) {
+    classes.push('term');
+  }
+  if (annotations.length > 0) {
+    classes.push('hl');
+    // A marker ends highlights that carry notes, links or citations (ANN-022).
+    const ending = annotations.some(
+      (a) =>
+        a.anchor.end.nodeId === node.id &&
+        a.anchor.end.offset === segment.end &&
+        (a.notes.trim() !== '' || a.links.length > 0 || a.citations.length > 0),
+    );
+    if (ending) {
+      classes.push('hl-end');
+    }
+  }
+  const interactive = annotations.length > 0 || revealTerms;
+  // Notes are activated by delegated handlers on the text root (see ReaderPage).
+  return (
+    <span
+      className={classes.join(' ')}
+      style={highlightStyle(annotations.map((a) => highlightVar(a.color)))}
+      data-offset={segment.start}
+      {...(terms.length > 0 ? { 'data-terms': terms.join(' ') } : {})}
+      {...(annotations.length > 0
+        ? { 'data-annotations': annotations.map((a) => a.id).join(' ') }
+        : {})}
+      {...(interactive ? { role: 'button', tabIndex: 0 } : {})}
+    >
+      {content}
+    </span>
+  );
+}
+
+/** The reader's own or imported notes, not sourced glossary terms (CUT-044). */
+function isReaderNote(decorationId: string, context: BlockContext): boolean {
+  if (decorationId.startsWith(ANNOTATION_PREFIX)) {
+    return true;
+  }
+  return (
+    decorationId.startsWith(TERM_PREFIX) &&
+    (context.notes.term(decorationId.slice(TERM_PREFIX.length))?.definitions.length ?? 0) > 0
+  );
+}
+
+const revealedBy = (context: BlockContext, key: string) =>
+  context.forceReveal ||
+  (context.cut !== undefined && (context.cut.showCutText || context.cut.revealed.has(key)));
+
+/**
+ * Text a cut hides within a node (CUT-040, CUT-042): kept in the page but not displayed, so
+ * character offsets stay exact (ANC-020); a marker stands in for it, or the new wording of a
+ * replacement. Revealed, it is struck through.
+ */
+function CutRun({
+  node,
+  opId,
+  segments,
+  context,
+}: {
+  node: TextNode;
+  opId: string;
+  segments: readonly Segment[];
+  context: BlockContext;
+}) {
+  const cut = context.cut;
+  const start = segments[0]?.start ?? 0;
+  const type = cut?.display.hidden.get(node.id)?.find((r) => r.opId === opId)?.type ?? 'hide';
+  const key = `range:${node.id}:${String(start)}`;
+  const revealed = revealedBy(context, key);
+  const hasNotes = segments.some((segment) => segment.ids.some((id) => isReaderNote(id, context)));
+  const replacement =
+    type === 'replace'
+      ? cut?.display.replacements.get(node.id)?.find((r) => r.op.id === opId && r.offset === start)
+      : undefined;
+  const editing = cut?.editing ?? false;
+  return (
+    <>
+      {type === 'hide' && !context.forceReveal && (
+        <span
+          className="cut-marker cut-inline"
+          role="button"
+          tabIndex={0}
+          aria-expanded={revealed}
+          aria-label={revealed ? 'Hide cut text' : 'Show cut text'}
+          data-cut-reveal={key}
+          data-cut-ops={opId}
+        >
+          {hasNotes && <span className="cut-dot" />}
+        </span>
+      )}
+      <span
+        className={revealed ? 'cut-text' : 'cut-hidden'}
+        {...(editing && revealed ? { 'data-cut-ops': opId } : {})}
+      >
+        {segments.map((segment) => (
+          <SegmentView key={segment.start} node={node} segment={segment} context={context} />
+        ))}
+      </span>
+      {replacement && (
+        <span
+          className="cut-repl"
+          role="button"
+          tabIndex={0}
+          aria-label={`${replacement.op.text} (replaces “${replacement.op.anchor.quote.exact}”)`}
+          data-text={replacement.op.text}
+          data-original={replacement.op.anchor.quote.exact}
+          data-cut-ops={opId}
+          data-cut-kind="replace"
+        />
+      )}
+    </>
+  );
+}
+
+function NodeText({ node, context }: { node: TextNode; context: BlockContext }) {
+  const { notes, cut } = context;
+  const hidden = cut?.display.hidden.get(node.id) ?? [];
+  const decorations = [
+    ...(notes.byNode.get(node.id) ?? []),
+    ...hidden.map((range) => ({
+      start: range.start,
+      end: range.end,
+      id: CUT_PREFIX + range.opId,
+    })),
+  ];
+  const segments = segmentText(node.text, node.marks, decorations);
+  // Consecutive segments a cut hides form one run.
+  const runs: { opId: string | undefined; segments: Segment[] }[] = [];
+  for (const segment of segments) {
+    const opId = segment.ids.find((id) => id.startsWith(CUT_PREFIX))?.slice(CUT_PREFIX.length);
+    const last = runs.at(-1);
+    if (last?.opId === opId && last) {
+      last.segments.push(segment);
+    } else {
+      runs.push({ opId, segments: [segment] });
+    }
+  }
   return (
     <span className="node" data-node-id={node.id}>
-      {segments.map((segment) => {
-        const classes = segment.marks.map((mark) => MARK_CLASSES[mark]);
-        const content = segment.marks.includes('sup') ? <sup>{segment.text}</sup> : segment.text;
-        if (segment.ids.length === 0) {
-          return classes.length > 0 ? (
-            <span key={segment.start} className={classes.join(' ')}>
-              {content}
-            </span>
-          ) : (
-            content
-          );
-        }
-        const terms = segment.ids
-          .filter((id) => id.startsWith(TERM_PREFIX))
-          .map((id) => id.slice(TERM_PREFIX.length));
-        const annotations = segment.ids
-          .filter((id) => id.startsWith(ANNOTATION_PREFIX))
-          .flatMap((id) => notes.annotation(id.slice(ANNOTATION_PREFIX.length)) ?? []);
-        if (terms.length > 0) {
-          classes.push('term');
-        }
-        if (annotations.length > 0) {
-          classes.push('hl');
-          // A marker ends highlights that carry notes, links or citations (ANN-022).
-          const ending = annotations.some(
-            (a) =>
-              a.anchor.end.nodeId === node.id &&
-              a.anchor.end.offset === segment.end &&
-              (a.notes.trim() !== '' || a.links.length > 0 || a.citations.length > 0),
-          );
-          if (ending) {
-            classes.push('hl-end');
-          }
-        }
-        const interactive = annotations.length > 0 || revealTerms;
-        // Notes are activated by delegated handlers on the text root (see ReaderPage).
-        return (
-          <span
-            key={segment.start}
-            className={classes.join(' ')}
-            style={highlightStyle(annotations.map((a) => highlightVar(a.color)))}
-            data-offset={segment.start}
-            {...(terms.length > 0 ? { 'data-terms': terms.join(' ') } : {})}
-            {...(annotations.length > 0
-              ? { 'data-annotations': annotations.map((a) => a.id).join(' ') }
-              : {})}
-            {...(interactive ? { role: 'button', tabIndex: 0 } : {})}
-          >
-            {content}
-          </span>
-        );
-      })}
+      {runs.map((run) =>
+        run.opId === undefined ? (
+          run.segments.map((segment) => (
+            <SegmentView key={segment.start} node={node} segment={segment} context={context} />
+          ))
+        ) : (
+          <CutRun
+            key={run.segments[0]?.start}
+            node={node}
+            opId={run.opId}
+            segments={run.segments}
+            context={context}
+          />
+        ),
+      )}
     </span>
   );
 }
@@ -122,6 +259,9 @@ function lineNumberLabel(line: LineNode): string | undefined {
 interface BlockContext {
   notes: NoteIndex;
   revealTerms: boolean;
+  cut: CutView | undefined;
+  /** Inside revealed cut text: show everything, struck through, without markers. */
+  forceReveal: boolean;
   /** Text of earlier parts of each split verse line, for indentation (RDR-024). */
   ghosts: ReadonlyMap<string, string>;
 }
@@ -195,7 +335,7 @@ function VerseRow({ lines, context }: { lines: readonly LineNode[]; context: Blo
 }
 
 /** Groups a speech's nodes: verse rows and directions are blocks; prose lines flow together. */
-function speechBody(nodes: readonly TextNode[], context: BlockContext): ReactNode[] {
+function plainBody(nodes: readonly TextNode[], context: BlockContext): ReactNode[] {
   const body: ReactNode[] = [];
   let prose: LineNode[] = [];
   let verse: LineNode[] = [];
@@ -239,6 +379,145 @@ function speechBody(nodes: readonly TextNode[], context: BlockContext): ReactNod
   return body;
 }
 
+function nodesOf(block: Block): TextNode[] {
+  return block.type === 'speech' ? block.nodes : [block.node];
+}
+
+const isHidden = (node: TextNode, context: BlockContext) =>
+  !context.forceReveal && (context.cut?.display.hiddenNodes.has(node.id) ?? false);
+
+/** "12 lines cut", "1 stage direction cut" (CUT-040). */
+function cutLabel(nodes: readonly TextNode[]): string {
+  const lines = nodes.filter((node) => node.kind === 'line').length;
+  if (lines > 0) {
+    return `${String(lines)} ${lines === 1 ? 'line' : 'lines'} cut`;
+  }
+  return `${String(nodes.length)} ${nodes.length === 1 ? 'stage direction' : 'stage directions'} cut`;
+}
+
+/**
+ * A marker for whole nodes a cut hides (CUT-040), which reveals them in place; it shows a dot
+ * when notes are attached to them (CUT-044). `data-hides` lets the reader find hidden nodes.
+ */
+function HiddenRun({
+  revealKey,
+  label,
+  nodes,
+  context,
+  children,
+}: {
+  revealKey: string;
+  label: string;
+  nodes: readonly TextNode[];
+  context: BlockContext;
+  children: ReactNode;
+}) {
+  const ids = nodes.map((node) => node.id);
+  const ops = [
+    ...new Set(ids.flatMap((id) => context.cut?.display.hidden.get(id)?.map((r) => r.opId) ?? [])),
+  ];
+  const hasNotes = ids.some((id) =>
+    (context.notes.byNode.get(id) ?? []).some((decoration) => isReaderNote(decoration.id, context)),
+  );
+  const revealed = revealedBy(context, revealKey);
+  return (
+    <>
+      <div
+        className="cut-marker cut-block"
+        role="button"
+        tabIndex={0}
+        aria-expanded={revealed}
+        data-cut-reveal={revealKey}
+        data-cut-ops={ops.join(' ')}
+        data-hides={ids.join(' ')}
+      >
+        <span>
+          {label}
+          {hasNotes && <span className="cut-dot" aria-label="has notes" />}
+        </span>
+      </div>
+      {revealed && <div className="cut-revealed">{children}</div>}
+    </>
+  );
+}
+
+/** Text a cut adds (CUT-043). */
+function AddedText({ node, context }: { node: InsertedNode; context: BlockContext }) {
+  const editing = context.cut?.editing ?? false;
+  return (
+    <div
+      className={`sd cut-added${node.narration ? ' narration' : ''}`}
+      data-inserted-id={node.id}
+      data-cut-ops={node.opId}
+      data-cut-kind="insert"
+      {...(editing ? { role: 'button', tabIndex: 0 } : {})}
+    >
+      <span className="cut-added-label">+ Added</span>
+      {node.text}
+    </div>
+  );
+}
+
+function addedAfter(nodes: readonly TextNode[], context: BlockContext): ReactNode[] {
+  if (context.forceReveal) {
+    return []; // shown once, by whatever collapsed these nodes
+  }
+  return nodes.flatMap((node) =>
+    (context.cut?.display.inserts.get(node.id) ?? []).map((added) => (
+      <AddedText key={added.id} node={added} context={context} />
+    )),
+  );
+}
+
+/** A speech's body, with lines a cut hides collapsed and its added text (CUT-040, CUT-043). */
+function speechBody(nodes: readonly TextNode[], context: BlockContext): ReactNode[] {
+  const body: ReactNode[] = [];
+  let shown: TextNode[] = [];
+  let hidden: TextNode[] = [];
+  const flushShown = () => {
+    if (shown.length > 0) {
+      body.push(...plainBody(shown, context));
+      shown = [];
+    }
+  };
+  const flushHidden = () => {
+    const [first] = hidden;
+    if (first) {
+      const run = hidden;
+      body.push(
+        <HiddenRun
+          key={`cut-${first.id}`}
+          revealKey={`nodes:${first.id}`}
+          label={cutLabel(run)}
+          nodes={run}
+          context={context}
+        >
+          {plainBody(run, { ...context, forceReveal: true })}
+        </HiddenRun>,
+      );
+      hidden = [];
+    }
+  };
+  for (const node of nodes) {
+    if (isHidden(node, context)) {
+      flushShown();
+      hidden.push(node);
+    } else {
+      flushHidden();
+      shown.push(node);
+    }
+    const added = addedAfter([node], context);
+    if (added.length > 0) {
+      flushShown();
+      flushHidden();
+      body.push(...added);
+    }
+  }
+  flushShown();
+  flushHidden();
+  return body;
+}
+
 /** A direction printed after the speaker's name: ", within", ", aside to Sebastian" (RDR-022). */
 function headingQualifier(nodes: readonly TextNode[]): StageDirectionNode | undefined {
   const first = nodes[0];
@@ -250,11 +529,25 @@ function BlockView({ block, context }: { block: Block; context: BlockContext }) 
     return <StageDirection node={block.node} context={context} />;
   }
   const qualifier = headingQualifier(block.nodes);
+  const editing = (context.cut?.editing ?? false) && !context.forceReveal;
+  const first = block.nodes[0];
+  const last = block.nodes.at(-1);
   return (
     <div className="speech">
-      {(block.label || qualifier) && (
+      {(block.label !== '' || qualifier !== undefined || editing) && (
         <div className="speaker">
           {block.label}
+          {editing && first && last && (
+            <button
+              type="button"
+              className="cut-action"
+              data-cut-action="cut-speech"
+              data-from={first.id}
+              data-to={last.id}
+            >
+              Cut speech
+            </button>
+          )}
           {qualifier && (
             <span className="speaker-sd">
               <NodeText node={qualifier} context={context} />
@@ -265,6 +558,53 @@ function BlockView({ block, context }: { block: Block; context: BlockContext }) 
       {speechBody(qualifier ? block.nodes.slice(1) : block.nodes, context)}
     </div>
   );
+}
+
+/** A scene's blocks, with runs of blocks a cut hides entirely collapsed (CUT-040). */
+function sceneBody(blocks: readonly Block[], context: BlockContext): ReactNode[] {
+  const body: ReactNode[] = [];
+  let hidden: Block[] = [];
+  const flush = () => {
+    const nodes = hidden.flatMap(nodesOf);
+    const [first] = nodes;
+    if (first) {
+      const run = hidden;
+      body.push(
+        <HiddenRun
+          key={`cut-${first.id}`}
+          revealKey={`blocks:${first.id}`}
+          label={cutLabel(nodes)}
+          nodes={nodes}
+          context={context}
+        >
+          {run.map((block) => (
+            <BlockView
+              key={nodesOf(block)[0]?.id}
+              block={block}
+              context={{ ...context, forceReveal: true }}
+            />
+          ))}
+        </HiddenRun>,
+        ...addedAfter(nodes, context),
+      );
+    }
+    hidden = [];
+  };
+  blocks.forEach((block, i) => {
+    const nodes = nodesOf(block);
+    if (nodes.every((node) => isHidden(node, context))) {
+      hidden.push(block);
+      return;
+    }
+    flush();
+    body.push(<BlockView key={nodes[0]?.id ?? i} block={block} context={context} />);
+    // A speech adds its own (in speechBody).
+    if (block.type === 'sd') {
+      body.push(...addedAfter(nodes, context));
+    }
+  });
+  flush();
+  return body;
 }
 
 function SceneView({
@@ -280,6 +620,7 @@ function SceneView({
     (n, b) => n + (b.type === 'speech' ? b.nodes.length : 1),
     0,
   );
+  const sceneCut = context.cut?.display.cutScenes.has(scene.id) ?? false;
   return (
     <section
       className="scene"
@@ -295,13 +636,39 @@ function SceneView({
         {sceneTitle(scene, actN)}
         {scene.heading && <span className="printed-heading">{scene.heading}</span>}
       </h2>
-      {scene.blocks.map((block, i) => (
-        <BlockView
-          key={block.type === 'sd' ? block.node.id : (block.nodes[0]?.id ?? i)}
-          block={block}
-          context={context}
-        />
-      ))}
+      {context.cut?.editing && (
+        <div className="cut-scene-actions">
+          <button
+            type="button"
+            className="cut-action"
+            data-cut-action={sceneCut ? 'restore-scene' : 'cut-scene'}
+            data-scene={scene.id}
+          >
+            {sceneCut ? 'Restore scene' : 'Cut scene'}
+          </button>
+        </div>
+      )}
+      {sceneCut ? (
+        <>
+          <HiddenRun
+            revealKey={`scene:${scene.id}`}
+            label="Scene cut"
+            nodes={scene.blocks.flatMap(nodesOf)}
+            context={context}
+          >
+            {scene.blocks.map((block) => (
+              <BlockView
+                key={nodesOf(block)[0]?.id}
+                block={block}
+                context={{ ...context, forceReveal: true }}
+              />
+            ))}
+          </HiddenRun>
+          {addedAfter(scene.blocks.flatMap(nodesOf), context)}
+        </>
+      ) : (
+        sceneBody(scene.blocks, context)
+      )}
     </section>
   );
 }
@@ -440,14 +807,120 @@ const textStyles: SxProps<Theme> = (theme) => {
     '@media (forced-colors: active)': {
       '& .hl': { outline: '1px solid CanvasText', background: 'none' },
     },
+    // Cuts (CUT-040 – CUT-043).
+    '& .cut-hidden': { display: 'none' },
+    '& .cut-text, & .cut-revealed': {
+      textDecoration: 'line-through',
+      textDecorationColor: palette.text.secondary,
+      opacity: 0.6,
+    },
+    '& .cut-marker': { cursor: 'pointer', userSelect: 'none', color: palette.text.secondary },
+    '& .cut-inline::before': {
+      content: '"⋯"',
+      px: '0.2em',
+      mx: '0.1em',
+      borderRadius: '3px',
+      backgroundColor: palette.action.hover,
+    },
+    '& .cut-block': {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 1,
+      my: 0.75,
+      fontFamily: theme.typography.fontFamily,
+      fontSize: '0.75rem',
+      '&::before, &::after': {
+        content: '""',
+        flex: 1,
+        borderTop: '1px dashed',
+        borderColor: palette.divider,
+      },
+    },
+    '& .cut-dot': {
+      display: 'inline-block',
+      width: '0.4em',
+      height: '0.4em',
+      ml: '0.3em',
+      borderRadius: '50%',
+      verticalAlign: 'middle',
+      backgroundColor: palette.primary.main,
+    },
+    '& .cut-repl': {
+      position: 'relative',
+      outline: '1px dotted',
+      outlineColor: palette.text.secondary,
+      outlineOffset: '1px',
+      borderRadius: '2px',
+      '&::before': { content: 'attr(data-text)' },
+      '&:hover::after, &:focus-visible::after': {
+        content: '"Was: " attr(data-original)',
+        position: 'absolute',
+        left: 0,
+        top: '100%',
+        zIndex: 2,
+        mt: 0.5,
+        px: 1,
+        py: 0.5,
+        borderRadius: 1,
+        backgroundColor: theme.palette.grey[800],
+        color: theme.palette.common.white,
+        fontFamily: theme.typography.fontFamily,
+        fontSize: '0.8rem',
+        fontStyle: 'normal',
+        textIndent: 0,
+        whiteSpace: 'pre',
+        pointerEvents: 'none',
+      },
+    },
+    '& .cut-added': { color: palette.text.primary },
+    '& .cut-added.narration': { pl: '4em', fontStyle: 'normal' },
+    '& .cut-added-label': {
+      mr: 0.75,
+      fontFamily: theme.typography.fontFamily,
+      fontStyle: 'normal',
+      fontSize: '0.7rem',
+      fontWeight: 600,
+      textTransform: 'uppercase',
+      letterSpacing: '0.06em',
+      color: palette.primary.main,
+      userSelect: 'none',
+    },
+    '& .cut-action': {
+      ml: 1,
+      px: 1,
+      py: 0.25,
+      border: '1px solid',
+      borderColor: palette.divider,
+      borderRadius: 1,
+      background: 'none',
+      color: palette.primary.main,
+      font: 'inherit',
+      fontFamily: theme.typography.fontFamily,
+      fontSize: '0.75rem',
+      fontVariant: 'normal',
+      letterSpacing: 'normal',
+      cursor: 'pointer',
+      '&:hover': { backgroundColor: palette.action.hover },
+    },
+    '& .cut-scene-actions': { mt: -1.5, mb: 1.5, '& .cut-action': { ml: 0 } },
+    '& .cut-marker:focus-visible, & .cut-repl:focus-visible, & .cut-added:focus-visible': {
+      outline: `2px solid ${palette.primary.main}`,
+      outlineOffset: '1px',
+    },
     '& .hl:focus-visible': { outline: `2px solid ${palette.primary.main}`, outlineOffset: '1px' },
     '& .term:focus-visible': { outline: `2px solid ${palette.primary.main}`, outlineOffset: '1px' },
   };
 };
 
 /** The whole version as one continuous document (RDR-020 – RDR-028). */
-export function PlayText({ doc, notes, revealTerms, ref, footer }: PlayTextProps) {
-  const context: BlockContext = { notes, revealTerms, ghosts: splitLineGhosts(doc) };
+export function PlayText({ doc, notes, revealTerms, ref, footer, cut }: PlayTextProps) {
+  const context: BlockContext = {
+    notes,
+    revealTerms,
+    cut,
+    forceReveal: false,
+    ghosts: splitLineGhosts(doc),
+  };
   return (
     <Box ref={ref} className={revealTerms ? 'reveal-terms' : undefined} sx={textStyles}>
       {doc.divisions.map((act) =>

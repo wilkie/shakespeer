@@ -1,5 +1,9 @@
 import Bookmark from '@mui/icons-material/BorderColor';
+import AddComment from '@mui/icons-material/PlaylistAdd';
+import ContentCut from '@mui/icons-material/ContentCut';
+import EditNote from '@mui/icons-material/EditNote';
 import MenuBook from '@mui/icons-material/MenuBookOutlined';
+import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import { useEffect, useRef, useState, type RefObject } from 'react';
@@ -21,12 +25,15 @@ interface MenuState {
 const GAP = 8;
 const MENU_HEIGHT = 40;
 const MENU_WIDTH = 300;
+/** With the cut actions of edit mode. */
+const WIDE_MENU_WIDTH = 560;
 
 /** Where the menu goes for a selection, in viewport coordinates (SELX-008, SELX-009). */
 function placement(
   range: Range,
   touch: boolean,
   topLimit: number,
+  width: number,
 ): { top: number; left: number } | undefined {
   const rects = [...range.getClientRects()].filter((r) => r.width > 0 || r.height > 0);
   const whole = range.getBoundingClientRect();
@@ -34,7 +41,11 @@ function placement(
   if (whole.bottom < topLimit || whole.top > window.innerHeight) {
     return undefined; // Scrolled away (SELX-010).
   }
-  const clampLeft = (x: number) => Math.max(GAP, Math.min(x, window.innerWidth - MENU_WIDTH - GAP));
+  const clampLeft = (x: number) =>
+    Math.max(
+      GAP,
+      Math.min(x, window.innerWidth - Math.min(width, window.innerWidth - 2 * GAP) - GAP),
+    );
   if (touch) {
     // Below the selection, clear of the platform's own callout above it.
     return {
@@ -45,7 +56,7 @@ function placement(
   const above = last.top - MENU_HEIGHT - GAP;
   return {
     top: above >= topLimit ? above : last.bottom + GAP,
-    left: clampLeft(last.right - MENU_WIDTH / 2),
+    left: clampLeft(last.right - width / 2),
   };
 }
 
@@ -56,20 +67,39 @@ export interface SelectionMenuProps {
   topOffset: () => number;
   onDefine: (range: SelectedRange) => void;
   onAnnotate: (range: SelectedRange) => void;
+  /** In a cut's edit mode, its actions on the selection (CUT-031). */
+  cutActions?: CutActions | undefined;
+}
+
+export interface CutActions {
+  onCut: (range: SelectedRange) => void;
+  onReplace: (range: SelectedRange) => void;
+  onInsert: (range: SelectedRange) => void;
+  /** Replacing is not offered where text is cut (CUT-034). */
+  canReplace: (range: SelectedRange) => boolean;
 }
 
 /**
  * The selection menu (SELX-002, SELX-008 – SELX-011): appears for a non-empty selection in the
  * play text, offering Add definition and Add annotation.
  */
-export function SelectionMenu({ root, topOffset, onDefine, onAnnotate }: SelectionMenuProps) {
+export function SelectionMenu({
+  root,
+  topOffset,
+  onDefine,
+  onAnnotate,
+  cutActions,
+}: SelectionMenuProps) {
   const [menu, setMenu] = useState<MenuState | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const pointer = useRef<{ type: string; down: boolean }>({ type: 'mouse', down: false });
   const dismissed = useRef(false);
   const topOffsetRef = useRef(topOffset);
+  const widthRef = useRef(MENU_WIDTH);
+  const wide = cutActions !== undefined;
   useEffect(() => {
     topOffsetRef.current = topOffset;
+    widthRef.current = wide ? WIDE_MENU_WIDTH : MENU_WIDTH;
   });
 
   useEffect(() => {
@@ -87,7 +117,12 @@ export function SelectionMenu({ root, topOffset, onDefine, onAnnotate }: Selecti
         return;
       }
       const positions = rangePositions(element, range);
-      const place = placement(range, pointer.current.type === 'touch', topOffsetRef.current());
+      const place = placement(
+        range,
+        pointer.current.type === 'touch',
+        topOffsetRef.current(),
+        widthRef.current,
+      );
       setMenu(positions && place ? { range: positions, ...place } : null);
     };
     const onSelectionChange = () => {
@@ -165,6 +200,8 @@ export function SelectionMenu({ root, topOffset, onDefine, onAnnotate }: Selecti
         left: menu.left,
         zIndex: (theme) => theme.zIndex.modal - 1,
         display: 'flex',
+        flexWrap: 'wrap',
+        maxWidth: 'calc(100vw - 16px)',
         gap: 0.5,
         p: 0.5,
       }}
@@ -187,6 +224,40 @@ export function SelectionMenu({ root, topOffset, onDefine, onAnnotate }: Selecti
       >
         Add annotation
       </Button>
+      {cutActions && (
+        <>
+          <Divider orientation="vertical" flexItem />
+          <Button
+            size="small"
+            startIcon={<ContentCut />}
+            onClick={() => {
+              act(cutActions.onCut);
+            }}
+          >
+            Cut
+          </Button>
+          {cutActions.canReplace(menu.range) && (
+            <Button
+              size="small"
+              startIcon={<EditNote />}
+              onClick={() => {
+                act(cutActions.onReplace);
+              }}
+            >
+              Replace…
+            </Button>
+          )}
+          <Button
+            size="small"
+            startIcon={<AddComment />}
+            onClick={() => {
+              act(cutActions.onInsert);
+            }}
+          >
+            Insert after…
+          </Button>
+        </>
+      )}
     </Paper>
   );
 }

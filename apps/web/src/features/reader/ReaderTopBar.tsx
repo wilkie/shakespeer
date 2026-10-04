@@ -1,6 +1,8 @@
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import ChevronLeft from '@mui/icons-material/ChevronLeft';
 import ChevronRight from '@mui/icons-material/ChevronRight';
+import ContentCut from '@mui/icons-material/ContentCut';
+import Undo from '@mui/icons-material/Undo';
 import MoreVert from '@mui/icons-material/MoreVert';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -58,7 +60,28 @@ export interface ReaderTopBarProps {
   onMenuOpenChange: (open: boolean) => void;
   /** On phones, previous/next scene controls live in the top bar (MAP-051). */
   compactScenes: CompactSceneControl | undefined;
+  /** The version's cuts and the current one; undefined is Full play (CUT-020). */
+  cuts: readonly { id: string; name: string }[];
+  currentCut: { id: string; name: string } | undefined;
+  onCut: (cutId: string | undefined) => void;
+  onNewCut: () => void;
+  onManageCuts: () => void;
+  /** Edit mode for the current cut, with undo (CUT-030). */
+  editingCut: boolean;
+  onEditCut: (editing: boolean) => void;
+  canUndo: boolean;
+  onUndo: () => void;
+  showCutText: boolean;
+  onShowCutText: (value: boolean) => void;
 }
+
+const subtleButton = {
+  p: 0,
+  minWidth: 0,
+  textTransform: 'none',
+  color: 'text.secondary',
+  fontWeight: 400,
+} as const;
 
 function SceneRow({
   control,
@@ -167,8 +190,24 @@ export function ReaderTopBar({
   onAbout,
   onMenuOpenChange,
   compactScenes,
+  cuts,
+  currentCut,
+  onCut,
+  onNewCut,
+  onManageCuts,
+  editingCut,
+  onEditCut,
+  canUndo,
+  onUndo,
+  showCutText,
+  onShowCutText,
 }: ReaderTopBarProps) {
   const [versionAnchor, setVersionAnchor] = useState<HTMLElement | null>(null);
+  const [cutAnchor, setCutAnchor] = useState<HTMLElement | null>(null);
+  const setCutMenu = (element: HTMLElement | null) => {
+    setCutAnchor(element);
+    onMenuOpenChange(element !== null);
+  };
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
   const setMenu = (element: HTMLElement | null) => {
     setMenuAnchor(element);
@@ -203,24 +242,71 @@ export function ReaderTopBar({
           <Typography variant="h6" component="h1" noWrap sx={{ lineHeight: 1.2 }}>
             {play.title}
           </Typography>
-          <Button
-            size="small"
-            color="inherit"
-            aria-haspopup="menu"
-            aria-label={`Version: ${version.name}. Change version`}
-            onClick={(event) => {
-              setVersionMenu(event.currentTarget);
-            }}
-            sx={{
-              p: 0,
-              minWidth: 0,
-              textTransform: 'none',
-              color: 'text.secondary',
-              fontWeight: 400,
-            }}
-          >
-            {version.name} ▾
-          </Button>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', columnGap: 2 }}>
+            <Button
+              size="small"
+              color="inherit"
+              aria-haspopup="menu"
+              aria-label={`Version: ${version.name}. Change version`}
+              onClick={(event) => {
+                setVersionMenu(event.currentTarget);
+              }}
+              sx={subtleButton}
+            >
+              {version.name} ▾
+            </Button>
+            <Button
+              size="small"
+              color="inherit"
+              aria-haspopup="menu"
+              aria-label={`Cut: ${currentCut?.name ?? 'Full play'}. Change cut`}
+              onClick={(event) => {
+                setCutMenu(event.currentTarget);
+              }}
+              sx={subtleButton}
+            >
+              {currentCut?.name ?? 'Full play'} ▾
+            </Button>
+            <Menu
+              anchorEl={cutAnchor}
+              open={cutAnchor !== null}
+              onClose={() => {
+                setCutMenu(null);
+              }}
+            >
+              {[{ id: undefined, name: 'Full play' }, ...cuts].map((option) => (
+                <MenuItem
+                  key={option.id ?? ''}
+                  selected={option.id === currentCut?.id}
+                  onClick={() => {
+                    setCutMenu(null);
+                    if (option.id !== currentCut?.id) {
+                      onCut(option.id);
+                    }
+                  }}
+                >
+                  <ListItemText primary={option.name} />
+                </MenuItem>
+              ))}
+              <Divider />
+              <MenuItem
+                onClick={() => {
+                  setCutMenu(null);
+                  onNewCut();
+                }}
+              >
+                <ListItemText primary="New cut…" />
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  setCutMenu(null);
+                  onManageCuts();
+                }}
+              >
+                <ListItemText primary="Manage cuts…" />
+              </MenuItem>
+            </Menu>
+          </Box>
           <Menu
             anchorEl={versionAnchor}
             open={versionAnchor !== null}
@@ -252,6 +338,29 @@ export function ReaderTopBar({
             ))}
           </Menu>
         </Box>
+        {currentCut && editingCut && (
+          <Tooltip title="Undo">
+            <span>
+              <IconButton aria-label="Undo" disabled={!canUndo} onClick={onUndo}>
+                <Undo />
+              </IconButton>
+            </span>
+          </Tooltip>
+        )}
+        {currentCut && (
+          <Tooltip title={editingCut ? 'Stop editing the cut' : 'Edit cut'}>
+            <IconButton
+              aria-label="Edit cut"
+              aria-pressed={editingCut}
+              color={editingCut ? 'primary' : 'default'}
+              onClick={() => {
+                onEditCut(!editingCut);
+              }}
+            >
+              <ContentCut />
+            </IconButton>
+          </Tooltip>
+        )}
         <IconButton
           aria-label="More actions"
           aria-haspopup="menu"
@@ -307,6 +416,25 @@ export function ReaderTopBar({
             </ListItemIcon>
             <ListItemText primary="Show annotation marks on map" />
           </MenuItem>
+          {currentCut && (
+            <MenuItem
+              role="menuitemcheckbox"
+              aria-checked={showCutText}
+              onClick={() => {
+                onShowCutText(!showCutText);
+              }}
+            >
+              <ListItemIcon>
+                <Switch
+                  size="small"
+                  checked={showCutText}
+                  tabIndex={-1}
+                  slotProps={{ input: { 'aria-hidden': true } }}
+                />
+              </ListItemIcon>
+              <ListItemText primary="Show cut text" />
+            </MenuItem>
+          )}
           {definitionSources.length > 0 && <Divider />}
           {definitionSources.length > 0 && (
             <ListSubheader sx={{ lineHeight: 2.5, bgcolor: 'transparent' }}>

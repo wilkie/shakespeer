@@ -27,6 +27,8 @@ export interface SceneMapProps {
   /** Annotations to mark along the bar, or none when marks are off (MAP-040, MAP-044). */
   annotations: readonly AnnotationRecord[];
   onMark: (annotations: readonly AnnotationRecord[]) => void;
+  /** Scenes the current cut hides entirely, drawn as thin hatched segments (CUT-045). */
+  cutScenes?: ReadonlySet<string> | undefined;
 }
 
 /** One stripe per color present, in palette order (MAP-042), in the stronger mark tones. */
@@ -97,6 +99,7 @@ export function SceneMap({
   onScrub,
   annotations,
   onMark,
+  cutScenes,
 }: SceneMapProps) {
   const barRef = useRef<HTMLDivElement>(null);
   const drag = useRef<{ startY: number; moved: boolean } | null>(null);
@@ -234,10 +237,11 @@ export function SceneMap({
         {index.scenes.map((scene, i) => {
           const actBoundary = i > 0 && index.scenes[i - 1]?.actN !== scene.actN;
           const title = sceneTitle(scene.scene, scene.actN);
+          const isCut = cutScenes?.has(scene.scene.id) ?? false;
           return (
             <Box
               key={scene.scene.id}
-              aria-label={title}
+              aria-label={isCut ? `${title} (cut)` : title}
               aria-current={i === currentScene ? 'location' : undefined}
               sx={{
                 flexGrow: Math.max(1, scene.end - scene.start),
@@ -248,6 +252,17 @@ export function SceneMap({
                 bgcolor: i === currentScene ? 'primary.main' : 'action.selected',
                 opacity: i === currentScene ? 0.55 : 1,
                 borderRadius: '2px',
+                ...(isCut
+                  ? {
+                      flexGrow: 0,
+                      flexBasis: 4,
+                      minHeight: 4,
+                      bgcolor: 'transparent',
+                      backgroundImage:
+                        'repeating-linear-gradient(135deg, currentColor 0 1px, transparent 1px 3px)',
+                      color: 'text.disabled',
+                    }
+                  : {}),
               }}
             />
           );

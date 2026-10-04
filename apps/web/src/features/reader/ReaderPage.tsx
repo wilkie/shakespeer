@@ -3,6 +3,9 @@ import VisibilityOutlined from '@mui/icons-material/VisibilityOutlined';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import Fab from '@mui/material/Fab';
+import ListItemText from '@mui/material/ListItemText';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
@@ -20,7 +23,23 @@ import { useLoaderData, useLocation, useNavigate } from 'react-router';
 import { getDatabase, getSettings } from '@/lib/storage';
 import { useSetting } from '@/lib/useSetting';
 
-import { fragmentFor, resolveFragment } from './fragment';
+import {
+  CutTextDialog,
+  ManageCutsDialog,
+  NewCutDialog,
+  type CutTextRequest,
+} from '@/features/cuts/CutDialogs';
+import {
+  canReplace,
+  editOperationText,
+  hideSpan,
+  insertAfter,
+  nodeSpan,
+  removeOperation,
+  replaceSpan,
+  restoreNodes,
+} from '@/features/cuts/operations';
+import { editableOperations, useCut } from '@/features/cuts/useCut';
 import { CollectionsDialog } from '@/features/exchange/CollectionsDialog';
 import { ExportDialog } from '@/features/exchange/ExportDialog';
 import { ImportDialog } from '@/features/exchange/ImportDialog';
@@ -33,7 +52,8 @@ import { UnattachedDialog } from '@/features/notes/UnattachedDialog';
 import { useNoteCounts } from '@/features/notes/useNoteCounts';
 import { useVersionNotes } from '@/features/notes/useVersionNotes';
 
-import { makeAnchor, snapToWords } from './anchors';
+import { makeAnchor, snapToWords, textBetween, type Position } from './anchors';
+import { fragmentFor, resolveFragment } from './fragment';
 import { NotesPanel, type NotesPanelProps } from './NotesPanel';
 import { PlayText } from './PlayText';
 import { ReaderTopBar } from './ReaderTopBar';
@@ -42,7 +62,7 @@ import type { ReaderData } from './routes';
 import { SceneMap } from './SceneMap';
 import { AboutThisText, SourceDialog } from './SourceInfo';
 import { rangePositions, textSelection } from './selection';
-import { SelectionMenu, type SelectedRange } from './SelectionMenu';
+import { SelectionMenu, type CutActions, type SelectedRange } from './SelectionMenu';
 import { useCurrentLine } from './useCurrentLine';
 import { useNotesPanel } from './useNotesPanel';
 import { mapThroughAlignment } from './version-map';
@@ -59,9 +79,28 @@ function prefersReducedMotion(): boolean {
 }
 
 function nodeElement(nodeId: string): Element | null {
-  // Node IDs are plain ASCII without quotes, so they need no escaping.
-  return document.querySelector(`[data-node-id="${nodeId}"]`);
+  // Node IDs are plain ASCII without quotes, so they need no escaping. A node a cut hides is
+  // found by its marker (CUT-040), an added one by its own ID (CUT-051).
+  return (
+    document.querySelector(`[data-node-id="${nodeId}"]`) ??
+    document.querySelector(`[data-hides~="${nodeId}"]`) ??
+    document.querySelector(`[data-inserted-id="${nodeId}"]`)
+  );
 }
+
+/** A change a reader activated in a cut's edit mode (CUT-033). */
+interface ChangeMenu {
+  element: HTMLElement;
+  opIds: string[];
+  revealKey: string | undefined;
+  kind: string | undefined;
+}
+
+/** What a text dialog's wording is for. */
+type TextTarget =
+  | { kind: 'replace'; start: Position; end: Position }
+  | { kind: 'insert'; after: string }
+  | { kind: 'edit'; opId: string };
 
 function scrollToElement(element: Element | null, smooth: boolean) {
   if (!element || typeof element.scrollIntoView !== 'function') {
@@ -144,6 +183,42 @@ export function ReaderPage() {
 
   const index = createVersionIndex(doc);
   const stored = useVersionNotes(play.id, version.id, index);
+  const cut = useCut(play.id, version.id, index);
+  // What is displayed: the scene map, navigation and current line follow the cut (CUT-045).
+  const shown = cut.display?.index ?? index;
+  const [showCutText, setShowCutText] = useSetting('cuts.showCutText', false);
+  const [revealed, setRevealed] = useState<{ cutId: string | undefined; keys: Set<string> }>({
+    cutId: undefined,
+    keys: new Set(),
+  });
+  const revealedKeys = revealed.cutId === cut.current?.id ? revealed.keys : new Set<string>();
+  const toggleReveal = (key: string, open?: boolean) => {
+    const keys = new Set(revealedKeys);
+    if (open ?? !keys.has(key)) {
+      keys.add(key);
+    } else {
+      keys.delete(key);
+    }
+    setRevealed({ cutId: cut.current?.id, keys });
+  };
+  /** Reveals the cut text holding a node, so its notes can be shown (CUT-044). */
+  const revealNode = (nodeId: string) => {
+    const keys = new Set(revealedKeys);
+    const marker = document.querySelector<HTMLElement>(`[data-hides~="${nodeId}"]`);
+    if (marker?.dataset['cutReveal']) {
+      keys.add(marker.dataset['cutReveal']);
+    }
+    for (const range of cut.display?.hidden.get(nodeId) ?? []) {
+      keys.add(`range:${nodeId}:${String(range.start)}`);
+    }
+    setRevealed({ cutId: cut.current?.id, keys });
+  };
+  const [changeMenu, setChangeMenu] = useState<ChangeMenu | null>(null);
+  const [textDialog, setTextDialog] = useState<{
+    request: CutTextRequest;
+    target: TextTarget;
+  } | null>(null);
+  const [cutDialog, setCutDialog] = useState<'new' | 'manage' | null>(null);
   // Sources switched off show none of their definitions (DEF-012).
   const [enabledSources, setEnabledSources] = useSetting('definitions.enabledSources', {});
   const shownSources = definitions.filter((file) => enabledSources[file.sourceId] !== false);
@@ -183,8 +258,8 @@ export function ReaderPage() {
 
   const topOffset = () => Math.max(0, topBarRef.current?.getBoundingClientRect().bottom ?? 0);
   const lines = useCurrentLine(textRef, topOffset);
-  const currentIndex = lines.top === undefined ? undefined : index.indexOf(lines.top);
-  const bottomIndex = lines.bottom === undefined ? undefined : index.indexOf(lines.bottom);
+  const currentIndex = lines.top === undefined ? undefined : shown.indexOf(lines.top);
+  const bottomIndex = lines.bottom === undefined ? undefined : shown.indexOf(lines.bottom);
 
   // Publish the top bar's height for scroll margins and sticky offsets.
   useEffect(() => {
@@ -247,7 +322,7 @@ export function ReaderPage() {
     }
     const nodeId = lines.top;
     const fragmentTimer = window.setTimeout(() => {
-      const fragment = fragmentFor(index, nodeId);
+      const fragment = fragmentFor(shown, nodeId);
       if (fragment) {
         window.history.replaceState(window.history.state, '', `#${fragment}`);
       }
@@ -259,7 +334,7 @@ export function ReaderPage() {
       window.clearTimeout(fragmentTimer);
       window.clearTimeout(saveTimer);
     };
-  }, [lines.top, index, play.id, version.id]);
+  }, [lines.top, shown, play.id, version.id]);
 
   /** Keeps the activated text in view beside or above the panel (PNL-002, PNL-003). */
   const revealInPanel = (element: Element | null, editing: boolean) => {
@@ -305,6 +380,85 @@ export function ReaderPage() {
     revealInPanel(nodeElement(anchor.start.nodeId), true);
   };
 
+  // Editing the current cut (CUT-030 – CUT-034).
+  const operations = cut.display ? editableOperations(cut.display) : [];
+  const snapped = ({ start, end }: SelectedRange) => snapToWords(index, start, end);
+  const cutActions: CutActions | undefined = cut.editing
+    ? {
+        onCut: (range) => {
+          const span = snapped(range);
+          if (span) {
+            cut.apply(hideSpan(index, operations, span.start, span.end));
+          }
+        },
+        canReplace: (range) => {
+          const span = snapped(range);
+          return span !== undefined && canReplace(index, operations, span.start, span.end);
+        },
+        onReplace: (range) => {
+          const span = snapped(range);
+          if (span) {
+            setTextDialog({
+              request: {
+                kind: 'replace',
+                original: textBetween(index, span.start, span.end) ?? '',
+                text: '',
+              },
+              target: { kind: 'replace', ...span },
+            });
+          }
+        },
+        onInsert: (range) => {
+          const span = snapped(range);
+          setTextDialog({
+            request: { kind: 'insert', text: '', insertKind: 'sd', editing: false },
+            target: { kind: 'insert', after: span?.end.nodeId ?? range.end.nodeId },
+          });
+        },
+      }
+    : undefined;
+
+  /** Scene and speech actions in edit mode (CUT-032). */
+  const cutAction = (element: HTMLElement) => {
+    const { cutAction: action, scene: sceneId, from, to } = element.dataset;
+    const scene = index.scenes.find((s) => s.scene.id === sceneId);
+    if (action === 'cut-scene' || action === 'restore-scene') {
+      if (!scene) {
+        return;
+      }
+      if (action === 'restore-scene') {
+        cut.apply(restoreNodes(index, operations, scene.start, scene.end - 1));
+        return;
+      }
+    }
+    const first = action === 'cut-speech' ? index.indexOf(from ?? '') : scene?.start;
+    const last = action === 'cut-speech' ? index.indexOf(to ?? '') : (scene?.end ?? 0) - 1;
+    const span =
+      first === undefined || last === undefined ? undefined : nodeSpan(index, first, last);
+    if (span) {
+      cut.apply(hideSpan(index, operations, span.start, span.end));
+    }
+  };
+
+  /** Activating a cut's marker or change (CUT-033, CUT-040). */
+  const activateCut = (element: HTMLElement) => {
+    if (element.dataset['cutAction']) {
+      cutAction(element);
+      return;
+    }
+    const revealKey = element.dataset['cutReveal'];
+    if (cut.editing) {
+      setChangeMenu({
+        element,
+        opIds: (element.dataset['cutOps'] ?? '').split(' ').filter(Boolean),
+        revealKey,
+        kind: element.dataset['cutKind'],
+      });
+    } else if (revealKey) {
+      toggleReveal(revealKey);
+    }
+  };
+
   // Delegated activation of terms and highlights (DEF-030, ANN-020): one listener, not thousands.
   useEffect(() => {
     const root = textRef.current;
@@ -313,16 +467,42 @@ export function ReaderPage() {
     }
     const target = (event: Event) =>
       (event.target as Element).closest<HTMLElement>('[data-terms], [data-annotations]');
+    const cutTarget = (event: Event) => {
+      const element = (event.target as Element).closest<HTMLElement>(
+        '[data-cut-action], [data-cut-reveal], [data-cut-ops]',
+      );
+      // Outside edit mode only markers act; added and replaced text are just read.
+      return element && (cut.editing || element.dataset['cutReveal']) ? element : null;
+    };
     const onClick = (event: MouseEvent) => {
-      const element = target(event);
       // Don't treat the end of a text selection as a click.
-      if (element && (window.getSelection()?.isCollapsed ?? true)) {
+      if (!(window.getSelection()?.isCollapsed ?? true)) {
+        return;
+      }
+      const cutElement = cutTarget(event);
+      if (cutElement) {
+        activateCut(cutElement);
+        return;
+      }
+      const element = target(event);
+      if (element) {
         openNotes(element);
       }
     };
     const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Enter' && event.key !== ' ') {
+        return;
+      }
+      const cutElement = cutTarget(event);
+      if (cutElement) {
+        if (!cutElement.dataset['cutAction']) {
+          event.preventDefault();
+          activateCut(cutElement);
+        }
+        return;
+      }
       const element = target(event);
-      if (element && (event.key === 'Enter' || event.key === ' ')) {
+      if (element) {
         event.preventDefault();
         openNotes(element);
       }
@@ -365,7 +545,7 @@ export function ReaderPage() {
   });
 
   const goToScene = (sceneIndex: number) => {
-    const scene = index.scenes[sceneIndex];
+    const scene = shown.scenes[sceneIndex];
     if (!scene) {
       return;
     }
@@ -374,7 +554,7 @@ export function ReaderPage() {
   };
 
   const scrub = (nodeIndex: number) => {
-    const node = index.nodes[nodeIndex];
+    const node = shown.nodes[nodeIndex];
     if (node) {
       scrollToElement(nodeElement(node.id), false);
     }
@@ -399,11 +579,11 @@ export function ReaderPage() {
     void navigate(`/plays/${play.id}/${target.id}`, { state });
   };
 
-  const navigation = sceneNavigation(index, currentIndex);
+  const navigation = sceneNavigation(shown, currentIndex);
   const currentScene =
     currentIndex === undefined
-      ? index.scenes[0]
-      : index.scenes.find((s) => currentIndex >= s.start && currentIndex < s.end);
+      ? shown.scenes[0]
+      : shown.scenes.find((s) => currentIndex >= s.start && currentIndex < s.end);
   const revealTerms = showUnderlines || peek;
   const panelProps: Omit<NotesPanelProps, 'variant'> = {
     terms: panel.terms,
@@ -480,11 +660,11 @@ export function ReaderPage() {
         compactScenes={
           isPhone
             ? {
-                index,
+                index: shown,
                 current: currentScene,
                 previous:
-                  navigation.previous === undefined ? undefined : index.scenes[navigation.previous],
-                next: navigation.next === undefined ? undefined : index.scenes[navigation.next],
+                  navigation.previous === undefined ? undefined : shown.scenes[navigation.previous],
+                next: navigation.next === undefined ? undefined : shown.scenes[navigation.next],
                 onScene: goToScene,
                 onPrevious: () => {
                   if (navigation.previous !== undefined) {
@@ -499,6 +679,23 @@ export function ReaderPage() {
               }
             : undefined
         }
+        cuts={cut.cuts}
+        currentCut={cut.current}
+        onCut={(cutId) => {
+          cut.select(cutId);
+        }}
+        onNewCut={() => {
+          setCutDialog('new');
+        }}
+        onManageCuts={() => {
+          setCutDialog('manage');
+        }}
+        editingCut={cut.editing}
+        onEditCut={cut.setEditing}
+        canUndo={cut.canUndo}
+        onUndo={cut.undo}
+        showCutText={showCutText}
+        onShowCutText={setShowCutText}
       />
       <Box
         sx={{
@@ -516,6 +713,14 @@ export function ReaderPage() {
             notes={notes}
             revealTerms={revealTerms}
             footer={<AboutThisText sourceIds={version.sourceIds} />}
+            cut={
+              cut.display && {
+                display: cut.display,
+                revealed: revealedKeys,
+                showCutText,
+                editing: cut.editing,
+              }
+            }
           />
         </Box>
       </Box>
@@ -533,7 +738,8 @@ export function ReaderPage() {
         }}
       >
         <SceneMap
-          index={index}
+          index={shown}
+          cutScenes={cut.display?.cutScenes}
           currentIndex={currentIndex}
           bottomIndex={bottomIndex}
           compact={isPhone}
@@ -546,6 +752,7 @@ export function ReaderPage() {
             if (!first) {
               return;
             }
+            revealNode(first.anchor.start.nodeId);
             const element = nodeElement(first.anchor.start.nodeId);
             scrollToElement(element, false);
             opener.current = null;
@@ -575,6 +782,98 @@ export function ReaderPage() {
         }}
         onAnnotate={(range) => {
           fromSelection(range, 'annotate');
+        }}
+        cutActions={cutActions}
+      />
+      <Menu
+        anchorEl={changeMenu?.element}
+        open={changeMenu !== null}
+        onClose={() => {
+          setChangeMenu(null);
+        }}
+      >
+        {changeMenu?.revealKey && (
+          <MenuItem
+            onClick={() => {
+              setChangeMenu(null);
+              toggleReveal(changeMenu.revealKey ?? '');
+            }}
+          >
+            <ListItemText
+              primary={
+                showCutText || revealedKeys.has(changeMenu.revealKey) ? 'Hide text' : 'Show text'
+              }
+            />
+          </MenuItem>
+        )}
+        {changeMenu &&
+          (changeMenu.kind === 'replace' || changeMenu.kind === 'insert') &&
+          changeMenu.opIds[0] && (
+            <MenuItem
+              onClick={() => {
+                const op = operations.find((o) => o.id === changeMenu.opIds[0]);
+                setChangeMenu(null);
+                if (op?.type === 'replace') {
+                  setTextDialog({
+                    request: { kind: 'replace', original: op.anchor.quote.exact, text: op.text },
+                    target: { kind: 'edit', opId: op.id },
+                  });
+                } else if (op?.type === 'insert') {
+                  setTextDialog({
+                    request: { kind: 'insert', text: op.text, insertKind: op.kind, editing: true },
+                    target: { kind: 'edit', opId: op.id },
+                  });
+                }
+              }}
+            >
+              <ListItemText primary="Edit…" />
+            </MenuItem>
+          )}
+        <MenuItem
+          onClick={() => {
+            const ids = changeMenu?.opIds ?? [];
+            setChangeMenu(null);
+            cut.apply(ids.reduce((ops, id) => removeOperation(ops, id), operations));
+          }}
+        >
+          <ListItemText primary="Restore" />
+        </MenuItem>
+      </Menu>
+      <CutTextDialog
+        request={textDialog?.request ?? null}
+        onClose={() => {
+          setTextDialog(null);
+        }}
+        onSave={(text, insertKind) => {
+          const target = textDialog?.target;
+          setTextDialog(null);
+          if (target?.kind === 'replace') {
+            cut.apply(replaceSpan(index, operations, target.start, target.end, text));
+          } else if (target?.kind === 'insert') {
+            cut.apply(insertAfter(operations, target.after, insertKind, text));
+          } else if (target?.kind === 'edit') {
+            cut.apply(editOperationText(operations, target.opId, text));
+          }
+        }}
+      />
+      <NewCutDialog
+        open={cutDialog === 'new'}
+        playId={play.id}
+        versionId={version.id}
+        onClose={() => {
+          setCutDialog(null);
+        }}
+        onCreated={(created) => {
+          setCutDialog(null);
+          cut.select(created.id, { edit: true });
+        }}
+      />
+      <ManageCutsDialog
+        open={cutDialog === 'manage'}
+        cuts={cut.cuts}
+        index={index}
+        onClose={() => {
+          setCutDialog(null);
         }}
       />
       <SourceDialog
