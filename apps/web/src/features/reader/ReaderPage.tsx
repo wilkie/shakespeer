@@ -41,6 +41,7 @@ import {
 } from '@/features/cuts/operations';
 import { editableOperations, useCut } from '@/features/cuts/useCut';
 import { variantMarks } from '@/features/variants/marks';
+import { useCompare } from '@/features/variants/useCompare';
 import { CollectionsDialog } from '@/features/exchange/CollectionsDialog';
 import { ExportDialog } from '@/features/exchange/ExportDialog';
 import { ImportDialog } from '@/features/exchange/ImportDialog';
@@ -197,8 +198,12 @@ export function ReaderPage() {
   );
   /** Variants whose mark is hovered or focused, outlined in the text (VAR-001). */
   const [outlined, setOutlined] = useState<string[]>([]);
+  // Comparing with another version shows both in full (VAR-020, VAR-025).
+  const compare = useCompare(play, version, index, alignment);
+  const comparing = compare.version !== undefined;
+  const display = comparing ? undefined : cut.display;
   // What is displayed: the scene map, navigation and current line follow the cut (CUT-045).
-  const shown = cut.display?.index ?? index;
+  const shown = display?.index ?? index;
   const [showCutText, setShowCutText] = useSetting('cuts.showCutText', false);
   const [revealed, setRevealed] = useState<{ cutId: string | undefined; keys: Set<string> }>({
     cutId: undefined,
@@ -410,40 +415,41 @@ export function ReaderPage() {
   // Editing the current cut (CUT-030 – CUT-034).
   const operations = cut.display ? editableOperations(cut.display) : [];
   const snapped = ({ start, end }: SelectedRange) => snapToWords(index, start, end);
-  const cutActions: CutActions | undefined = cut.editing
-    ? {
-        onCut: (range) => {
-          const span = snapped(range);
-          if (span) {
-            cut.apply(hideSpan(index, operations, span.start, span.end));
-          }
-        },
-        canReplace: (range) => {
-          const span = snapped(range);
-          return span !== undefined && canReplace(index, operations, span.start, span.end);
-        },
-        onReplace: (range) => {
-          const span = snapped(range);
-          if (span) {
+  const cutActions: CutActions | undefined =
+    cut.editing && !comparing
+      ? {
+          onCut: (range) => {
+            const span = snapped(range);
+            if (span) {
+              cut.apply(hideSpan(index, operations, span.start, span.end));
+            }
+          },
+          canReplace: (range) => {
+            const span = snapped(range);
+            return span !== undefined && canReplace(index, operations, span.start, span.end);
+          },
+          onReplace: (range) => {
+            const span = snapped(range);
+            if (span) {
+              setTextDialog({
+                request: {
+                  kind: 'replace',
+                  original: textBetween(index, span.start, span.end) ?? '',
+                  text: '',
+                },
+                target: { kind: 'replace', ...span },
+              });
+            }
+          },
+          onInsert: (range) => {
+            const span = snapped(range);
             setTextDialog({
-              request: {
-                kind: 'replace',
-                original: textBetween(index, span.start, span.end) ?? '',
-                text: '',
-              },
-              target: { kind: 'replace', ...span },
+              request: { kind: 'insert', text: '', insertKind: 'sd', editing: false },
+              target: { kind: 'insert', after: span?.end.nodeId ?? range.end.nodeId },
             });
-          }
-        },
-        onInsert: (range) => {
-          const span = snapped(range);
-          setTextDialog({
-            request: { kind: 'insert', text: '', insertKind: 'sd', editing: false },
-            target: { kind: 'insert', after: span?.end.nodeId ?? range.end.nodeId },
-          });
-        },
-      }
-    : undefined;
+          },
+        }
+      : undefined;
 
   /** Scene and speech actions in edit mode (CUT-032). */
   const cutAction = (element: HTMLElement) => {
@@ -573,6 +579,37 @@ export function ReaderPage() {
       element.focus();
     }
   };
+
+  // Starting or ending a comparison changes the page's layout: keep the current line (VAR-020).
+  const comparedShown = compare.rows !== undefined;
+  const keepLine = useEffectEvent(() => {
+    if (lines.top) {
+      scrollToElement(nodeElement(lines.top), false);
+    }
+  });
+  useEffect(() => {
+    keepLine();
+  }, [comparedShown]);
+
+  // Escape outside dialogs and menus ends the comparison, once the panel is closed (VAR-020).
+  useEffect(() => {
+    if (!comparing || panel.isOpen) {
+      return;
+    }
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (
+        event.key === 'Escape' &&
+        !event.defaultPrevented &&
+        !(event.target as Element).closest('[role="dialog"], [role="listbox"], [role="menu"]')
+      ) {
+        compare.select(undefined);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  });
 
   useEffect(() => {
     if (!panel.isOpen) {
@@ -766,6 +803,10 @@ export function ReaderPage() {
         showCutText={showCutText}
         onShowCutText={setShowCutText}
         hasVariants={variants.length > 0}
+        compareWith={compare.version}
+        onCompare={compare.select}
+        exactSpelling={compare.exact}
+        onExactSpelling={compare.setExact}
         showVariantMarks={showVariantMarks}
         onShowVariantMarks={setShowVariantMarks}
       />
@@ -786,9 +827,20 @@ export function ReaderPage() {
             revealTerms={revealTerms}
             footer={<AboutThisText sourceIds={version.sourceIds} />}
             variants={showVariantMarks ? marks : undefined}
+            compare={
+              compare.version && compare.rows && compare.right
+                ? {
+                    rows: compare.rows,
+                    left: index,
+                    right: compare.right,
+                    rightShortName: compare.version.shortName,
+                    exact: compare.exact,
+                  }
+                : undefined
+            }
             cut={
-              cut.display && {
-                display: cut.display,
+              display && {
+                display,
                 revealed: revealedKeys,
                 showCutText,
                 editing: cut.editing,
@@ -812,7 +864,7 @@ export function ReaderPage() {
       >
         <SceneMap
           index={shown}
-          cutScenes={cut.display?.cutScenes}
+          cutScenes={display?.cutScenes}
           currentIndex={currentIndex}
           bottomIndex={bottomIndex}
           compact={isPhone}

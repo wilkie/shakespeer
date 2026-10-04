@@ -1,6 +1,7 @@
 import ArrowBack from '@mui/icons-material/ArrowBack';
 import ChevronLeft from '@mui/icons-material/ChevronLeft';
 import ChevronRight from '@mui/icons-material/ChevronRight';
+import Close from '@mui/icons-material/Close';
 import ContentCut from '@mui/icons-material/ContentCut';
 import Undo from '@mui/icons-material/Undo';
 import MoreVert from '@mui/icons-material/MoreVert';
@@ -77,6 +78,11 @@ export interface ReaderTopBarProps {
   hasVariants: boolean;
   showVariantMarks: boolean;
   onShowVariantMarks: (value: boolean) => void;
+  /** The version being compared with, if any (VAR-020). */
+  compareWith: VersionInfo | undefined;
+  onCompare: (versionId: string | undefined) => void;
+  exactSpelling: boolean;
+  onExactSpelling: (value: boolean) => void;
 }
 
 const subtleButton = {
@@ -208,6 +214,10 @@ export function ReaderTopBar({
   hasVariants,
   showVariantMarks,
   onShowVariantMarks,
+  compareWith,
+  onCompare,
+  exactSpelling,
+  onExactSpelling,
 }: ReaderTopBarProps) {
   const [versionAnchor, setVersionAnchor] = useState<HTMLElement | null>(null);
   const [cutAnchor, setCutAnchor] = useState<HTMLElement | null>(null);
@@ -262,57 +272,77 @@ export function ReaderTopBar({
             >
               {version.name} ▾
             </Button>
-            <Button
-              size="small"
-              color="inherit"
-              aria-haspopup="menu"
-              aria-label={`Cut: ${currentCut?.name ?? 'Full play'}. Change cut`}
-              onClick={(event) => {
-                setCutMenu(event.currentTarget);
-              }}
-              sx={subtleButton}
-            >
-              {currentCut?.name ?? 'Full play'} ▾
-            </Button>
-            <Menu
-              anchorEl={cutAnchor}
-              open={cutAnchor !== null}
-              onClose={() => {
-                setCutMenu(null);
-              }}
-            >
-              {[{ id: undefined, name: 'Full play' }, ...cuts].map((option) => (
-                <MenuItem
-                  key={option.id ?? ''}
-                  selected={option.id === currentCut?.id}
+            {compareWith ? (
+              <Box component="span" sx={{ display: 'inline-flex', alignItems: 'center' }}>
+                <Typography component="span" variant="body2" color="text.secondary">
+                  Compared with {compareWith.name}
+                </Typography>
+                <IconButton
+                  size="small"
+                  aria-label="End comparison"
                   onClick={() => {
+                    onCompare(undefined);
+                  }}
+                  sx={{ p: 0.25, ml: 0.25 }}
+                >
+                  <Close fontSize="inherit" />
+                </IconButton>
+              </Box>
+            ) : (
+              <>
+                <Button
+                  size="small"
+                  color="inherit"
+                  aria-haspopup="menu"
+                  aria-label={`Cut: ${currentCut?.name ?? 'Full play'}. Change cut`}
+                  onClick={(event) => {
+                    setCutMenu(event.currentTarget);
+                  }}
+                  sx={subtleButton}
+                >
+                  {currentCut?.name ?? 'Full play'} ▾
+                </Button>
+                <Menu
+                  anchorEl={cutAnchor}
+                  open={cutAnchor !== null}
+                  onClose={() => {
                     setCutMenu(null);
-                    if (option.id !== currentCut?.id) {
-                      onCut(option.id);
-                    }
                   }}
                 >
-                  <ListItemText primary={option.name} />
-                </MenuItem>
-              ))}
-              <Divider />
-              <MenuItem
-                onClick={() => {
-                  setCutMenu(null);
-                  onNewCut();
-                }}
-              >
-                <ListItemText primary="New cut…" />
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  setCutMenu(null);
-                  onManageCuts();
-                }}
-              >
-                <ListItemText primary="Manage cuts…" />
-              </MenuItem>
-            </Menu>
+                  {[{ id: undefined, name: 'Full play' }, ...cuts].map((option) => (
+                    <MenuItem
+                      key={option.id ?? ''}
+                      selected={option.id === currentCut?.id}
+                      onClick={() => {
+                        setCutMenu(null);
+                        if (option.id !== currentCut?.id) {
+                          onCut(option.id);
+                        }
+                      }}
+                    >
+                      <ListItemText primary={option.name} />
+                    </MenuItem>
+                  ))}
+                  <Divider />
+                  <MenuItem
+                    onClick={() => {
+                      setCutMenu(null);
+                      onNewCut();
+                    }}
+                  >
+                    <ListItemText primary="New cut…" />
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      setCutMenu(null);
+                      onManageCuts();
+                    }}
+                  >
+                    <ListItemText primary="Manage cuts…" />
+                  </MenuItem>
+                </Menu>
+              </>
+            )}
           </Box>
           <Menu
             anchorEl={versionAnchor}
@@ -345,7 +375,7 @@ export function ReaderTopBar({
             ))}
           </Menu>
         </Box>
-        {currentCut && editingCut && (
+        {currentCut && editingCut && !compareWith && (
           <Tooltip title="Undo">
             <span>
               <IconButton aria-label="Undo" disabled={!canUndo} onClick={onUndo}>
@@ -354,7 +384,7 @@ export function ReaderTopBar({
             </span>
           </Tooltip>
         )}
-        {currentCut && (
+        {currentCut && !compareWith && (
           <Tooltip title={editingCut ? 'Stop editing the cut' : 'Edit cut'}>
             <IconButton
               aria-label="Edit cut"
@@ -442,7 +472,26 @@ export function ReaderTopBar({
               <ListItemText primary="Show variant marks" />
             </MenuItem>
           )}
-          {currentCut && (
+          {compareWith && (
+            <MenuItem
+              role="menuitemcheckbox"
+              aria-checked={exactSpelling}
+              onClick={() => {
+                onExactSpelling(!exactSpelling);
+              }}
+            >
+              <ListItemIcon>
+                <Switch
+                  size="small"
+                  checked={exactSpelling}
+                  tabIndex={-1}
+                  slotProps={{ input: { 'aria-hidden': true } }}
+                />
+              </ListItemIcon>
+              <ListItemText primary="Show spelling differences" />
+            </MenuItem>
+          )}
+          {currentCut && !compareWith && (
             <MenuItem
               role="menuitemcheckbox"
               aria-checked={showCutText}
@@ -487,6 +536,26 @@ export function ReaderTopBar({
               <ListItemText primary={source.name} />
             </MenuItem>
           ))}
+          {play.versions.length > 1 && <Divider />}
+          {play.versions.length > 1 && (
+            <ListSubheader sx={{ lineHeight: 2.5, bgcolor: 'transparent' }}>
+              Compare with…
+            </ListSubheader>
+          )}
+          {play.versions
+            .filter((option) => option.id !== version.id)
+            .map((option) => (
+              <MenuItem
+                key={option.id}
+                selected={option.id === compareWith?.id}
+                onClick={() => {
+                  setMenu(null);
+                  onCompare(option.id);
+                }}
+              >
+                <ListItemText inset primary={option.name} />
+              </MenuItem>
+            ))}
           <Divider />
           {(
             [

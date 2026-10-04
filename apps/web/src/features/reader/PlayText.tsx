@@ -4,6 +4,7 @@ import type { SxProps } from '@mui/material/styles';
 import type {
   Block,
   LineNode,
+  VersionIndex,
   MarkType,
   Scene,
   StageDirectionNode,
@@ -13,11 +14,12 @@ import type {
 import type { CSSProperties, ReactNode, Ref } from 'react';
 
 import type { DisplayCut, InsertedNode } from '@/features/cuts/display';
+import { diffWords, type CompareRow } from '@/features/variants/compare';
 import { VARIANT_PREFIX, type VariantMarks } from '@/features/variants/marks';
 import { ANNOTATION_PREFIX, TERM_PREFIX, type NoteIndex } from '@/features/notes/noteIndex';
 import { highlightVar } from '@/features/notes/palette';
 
-import { segmentText, type Segment } from './segments';
+import { segmentText, type Decoration, type Segment } from './segments';
 import { sceneTitle } from './titles';
 
 export interface PlayTextProps {
@@ -33,7 +35,22 @@ export interface PlayTextProps {
   cut?: CutView | undefined;
   /** Where the play's variants show in this version, or none when marks are off (VAR-001). */
   variants?: VariantMarks | undefined;
+  /** Comparing with another version, row by row (VAR-021). */
+  compare?: CompareView | undefined;
 }
+
+/** The comparison view's rows and the two versions (VAR-021 – VAR-023). */
+export interface CompareView {
+  rows: readonly CompareRow[];
+  left: VersionIndex;
+  right: VersionIndex;
+  rightShortName: string;
+  /** Show spelling differences (VAR-023). */
+  exact: boolean;
+}
+
+/** Decoration IDs for words that differ from the compared version (VAR-023). */
+const DIFF_PREFIX = 'd:';
 
 /** How the current cut shows (CUT-040 – CUT-043). */
 export interface CutView {
@@ -85,8 +102,12 @@ function SegmentView({
   const classes = segment.marks.map((mark) => MARK_CLASSES[mark]);
   const content = segment.marks.includes('sup') ? <sup>{segment.text}</sup> : segment.text;
   const ids = segment.ids.filter(
-    (id) => !id.startsWith(CUT_PREFIX) && !id.startsWith(VARIANT_PREFIX),
+    (id) =>
+      !id.startsWith(CUT_PREFIX) && !id.startsWith(VARIANT_PREFIX) && !id.startsWith(DIFF_PREFIX),
   );
+  if (segment.ids.some((id) => id.startsWith(DIFF_PREFIX))) {
+    classes.push('diff');
+  }
   const variantIds = segment.ids
     .filter((id) => id.startsWith(VARIANT_PREFIX))
     .map((id) => id.slice(VARIANT_PREFIX.length));
@@ -229,6 +250,7 @@ function NodeText({ node, context }: { node: TextNode; context: BlockContext }) 
   const decorations = [
     ...(notes.byNode.get(node.id) ?? []),
     ...(context.variants?.decorations.get(node.id) ?? []),
+    ...(context.diffs?.get(node.id) ?? []),
     ...hidden.map((range) => ({
       start: range.start,
       end: range.end,
@@ -283,6 +305,8 @@ interface BlockContext {
   /** Text of earlier parts of each split verse line, for indentation (RDR-024). */
   ghosts: ReadonlyMap<string, string>;
   variants: VariantMarks | undefined;
+  /** Words that differ from the compared version, per node (VAR-023). */
+  diffs?: ReadonlyMap<string, readonly Decoration[]>;
 }
 
 /** The margin mark of variants whose reading starts in a node (VAR-001). */
@@ -759,6 +783,189 @@ function splitLineGhosts(doc: VersionDocument): Map<string, string> {
   return ghosts;
 }
 
+/** Splits differing ranges of a row's joined text back to its nodes. */
+function rangesByNode(
+  ids: readonly string[],
+  index: VersionIndex,
+  ranges: readonly { start: number; end: number }[],
+): Map<string, Decoration[]> {
+  const byNode = new Map<string, Decoration[]>();
+  let offset = 0;
+  for (const id of ids) {
+    const length = index.node(id)?.text.length ?? 0;
+    for (const range of ranges) {
+      const start = Math.max(range.start - offset, 0);
+      const end = Math.min(range.end - offset, length);
+      if (end > start) {
+        byNode.set(id, [...(byNode.get(id) ?? []), { start, end, id: `${DIFF_PREFIX}${id}` }]);
+      }
+    }
+    offset += length + 1;
+  }
+  return byNode;
+}
+
+const joined = (ids: readonly string[], index: VersionIndex) =>
+  ids.map((id) => index.node(id)?.text ?? '').join('\n');
+
+/** Whether a node opens its speech, so its speaker heading goes above it. */
+function opensSpeech(index: VersionIndex, id: string): string | undefined {
+  const speech = index.speechOf(id);
+  return speech?.nodes[0]?.id === id && speech.label !== '' ? speech.label : undefined;
+}
+
+/** The compared version's text in a row: read-only, without notes or marks (VAR-024). */
+function ComparedText({
+  ids,
+  compare,
+  diffs,
+}: {
+  ids: readonly string[];
+  compare: CompareView;
+  diffs: ReadonlyMap<string, readonly Decoration[]>;
+}) {
+  return ids.map((id) => {
+    const node = compare.right.node(id);
+    if (!node) {
+      return null;
+    }
+    const speaker = opensSpeech(compare.right, id);
+    const segments = segmentText(node.text, node.marks, diffs.get(id));
+    return (
+      <div key={id} className={node.kind === 'sd' ? 'sd' : 'cmp-line'}>
+        {speaker && <div className="speaker">{speaker}</div>}
+        {segments.map((segment) => {
+          const classes = segment.marks.map((mark) => MARK_CLASSES[mark]);
+          if (segment.ids.length > 0) {
+            classes.push('diff');
+          }
+          return classes.length > 0 ? (
+            <span key={segment.start} className={classes.join(' ')}>
+              {segment.text}
+            </span>
+          ) : (
+            segment.text
+          );
+        })}
+      </div>
+    );
+  });
+}
+
+/** The current version's text in a row: the ordinary reader (VAR-024). */
+function CurrentText({
+  ids,
+  compare,
+  context,
+}: {
+  ids: readonly string[];
+  compare: CompareView;
+  context: BlockContext;
+}) {
+  return ids.map((id) => {
+    const node = compare.left.node(id);
+    if (!node) {
+      return null;
+    }
+    const speaker = opensSpeech(compare.left, id);
+    return (
+      <div key={id}>
+        {speaker && <div className="speaker">{speaker}</div>}
+        {node.kind === 'sd' ? (
+          <StageDirection node={node} context={context} />
+        ) : (
+          <div className={node.form === 'verse' ? 'verse-row' : 'prose-run'}>
+            <Line node={node} context={context} />
+          </div>
+        )}
+      </div>
+    );
+  });
+}
+
+/** One scene of the comparison: its heading, then corresponding text side by side (VAR-021). */
+function CompareSceneView({
+  scene,
+  actN,
+  rows,
+  compare,
+  context,
+}: {
+  scene: Scene;
+  actN: number | null;
+  rows: readonly CompareRow[];
+  compare: CompareView;
+  context: BlockContext;
+}) {
+  const diffs = new Map<string, Decoration[]>();
+  const rightDiffs = new Map<string, Decoration[]>();
+  for (const row of rows) {
+    if (row.left.length === 0 || row.right.length === 0) {
+      continue;
+    }
+    const { left, right } = diffWords(
+      joined(row.left, compare.left),
+      joined(row.right, compare.right),
+      compare.exact,
+    );
+    for (const [id, list] of rangesByNode(row.left, compare.left, left)) {
+      diffs.set(id, list);
+    }
+    for (const [id, list] of rangesByNode(row.right, compare.right, right)) {
+      rightDiffs.set(id, list);
+    }
+  }
+  const rowContext: BlockContext = { ...context, diffs };
+  return (
+    <section className="scene" data-scene-id={scene.id} aria-label={sceneTitle(scene, actN)}>
+      <h2
+        className={`scene-heading${scene.editorial ? ' editorial' : ''}`}
+        id={`scene-${scene.id}`}
+      >
+        {sceneTitle(scene, actN)}
+        {scene.heading && <span className="printed-heading">{scene.heading}</span>}
+      </h2>
+      {rows.map((row, i) => {
+        const movedFrom = row.rightMoved
+          ? compare.right.sceneAt(compare.right.indexOf(row.right[0] ?? '') ?? -1)?.scene.id
+          : undefined;
+        return (
+          <div key={row.left[0] ?? row.right[0] ?? i} className="cmp-row">
+            <div className="cmp-left">
+              <CurrentText ids={row.left} compare={compare} context={rowContext} />
+            </div>
+            <div className="cmp-right">
+              {row.right.length > 0 && (
+                <span className="cmp-version">{compare.rightShortName}</span>
+              )}
+              {movedFrom && (
+                <span className="cmp-moved">
+                  In {compare.rightShortName}: {movedFrom}
+                </span>
+              )}
+              <ComparedText ids={row.right} compare={compare} diffs={rightDiffs} />
+            </div>
+          </div>
+        );
+      })}
+    </section>
+  );
+}
+
+/** Rows grouped by the current version's scenes; rows of compared text only join the scene before. */
+function rowsByScene(compare: CompareView): Map<string, CompareRow[]> {
+  const byScene = new Map<string, CompareRow[]>();
+  let current = compare.left.scenes[0]?.scene.id ?? '';
+  for (const row of compare.rows) {
+    const first = row.left[0];
+    if (first !== undefined) {
+      current = compare.left.sceneAt(compare.left.indexOf(first) ?? 0)?.scene.id ?? current;
+    }
+    byScene.set(current, [...(byScene.get(current) ?? []), row]);
+  }
+  return byScene;
+}
+
 const textStyles: SxProps<Theme> = (theme) => {
   // CSS variables are enabled in the theme, so colors follow the color scheme without re-rendering.
   const palette = (theme.vars ?? theme).palette;
@@ -860,6 +1067,42 @@ const textStyles: SxProps<Theme> = (theme) => {
     },
     '@media (forced-colors: active)': {
       '& .hl': { outline: '1px solid CanvasText', background: 'none' },
+    },
+    // Comparison (VAR-021 – VAR-023).
+    '&.comparing': { maxWidth: '86rem' },
+    '& .cmp-row': {
+      display: 'grid',
+      gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+      columnGap: 4,
+      py: 0.5,
+      borderBottom: '1px solid',
+      borderColor: palette.divider,
+    },
+    '& .cmp-right': {
+      position: 'relative',
+      fontSize: { xs: '0.9em', md: '1em' },
+      color: { xs: palette.text.secondary, md: palette.text.primary },
+    },
+    '& .cmp-version': {
+      display: { xs: 'inline-block', md: 'none' },
+      mr: 1,
+      fontFamily: theme.typography.fontFamily,
+      fontSize: '0.7rem',
+      fontWeight: 600,
+      color: palette.secondary.main,
+      userSelect: 'none',
+    },
+    '& .cmp-moved': {
+      display: 'block',
+      fontFamily: theme.typography.fontFamily,
+      fontSize: '0.7rem',
+      color: palette.secondary.main,
+      userSelect: 'none',
+    },
+    '& .diff': {
+      backgroundColor: 'rgba(237, 108, 2, 0.18)',
+      borderRadius: '2px',
+      boxDecorationBreak: 'clone',
     },
     // Variants (VAR-001, VAR-002).
     // Like line numbers, the mark is placed against the row or paragraph; with no top it stays
@@ -1006,7 +1249,16 @@ const textStyles: SxProps<Theme> = (theme) => {
 };
 
 /** The whole version as one continuous document (RDR-020 – RDR-028). */
-export function PlayText({ doc, notes, revealTerms, ref, footer, cut, variants }: PlayTextProps) {
+export function PlayText({
+  doc,
+  notes,
+  revealTerms,
+  ref,
+  footer,
+  cut,
+  variants,
+  compare,
+}: PlayTextProps) {
   const context: BlockContext = {
     notes,
     revealTerms,
@@ -1015,12 +1267,25 @@ export function PlayText({ doc, notes, revealTerms, ref, footer, cut, variants }
     ghosts: splitLineGhosts(doc),
     variants,
   };
+  const byScene = compare ? rowsByScene(compare) : undefined;
+  const classes = [revealTerms && 'reveal-terms', compare && 'comparing'].filter(Boolean);
   return (
-    <Box ref={ref} className={revealTerms ? 'reveal-terms' : undefined} sx={textStyles}>
+    <Box ref={ref} className={classes.length > 0 ? classes.join(' ') : undefined} sx={textStyles}>
       {doc.divisions.map((act) =>
-        act.scenes.map((scene) => (
-          <SceneView key={scene.id} scene={scene} actN={act.n} context={context} />
-        )),
+        act.scenes.map((scene) =>
+          compare && byScene ? (
+            <CompareSceneView
+              key={scene.id}
+              scene={scene}
+              actN={act.n}
+              rows={byScene.get(scene.id) ?? []}
+              compare={compare}
+              context={context}
+            />
+          ) : (
+            <SceneView key={scene.id} scene={scene} actN={act.n} context={context} />
+          ),
+        ),
       )}
       {footer}
     </Box>
