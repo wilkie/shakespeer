@@ -1,4 +1,4 @@
-import type { TextAnchor, VersionIndex } from '@shakespeer/corpus';
+import type { TextAnchor, Variant, VersionIndex } from '@shakespeer/corpus';
 import {
   deleteNote,
   restoreSnapshot,
@@ -22,6 +22,8 @@ import type { PanelTerm, SaveStatus } from './NotesPanel';
 interface PanelState {
   terms: { key: string; anchor: TextAnchor }[];
   annotationIds: string[];
+  /** Variants at the activated point, listed after the notes (VAR-004, VAR-005). */
+  variants: Variant[];
   /** Annotations created here, shown until the stored copy arrives. */
   created: AnnotationRecord[];
   /** New definitions not yet saved (DEF-021). */
@@ -119,8 +121,12 @@ export function useNotesPanel(
     setPanel(next);
   };
 
-  /** Opens every note covering an activated point (PNL-010). */
-  const openAt = (termKeys: readonly string[], annotationIds: readonly string[]) => {
+  /** Opens every note covering an activated point (PNL-010), and any variants there (VAR-005). */
+  const openAt = (
+    termKeys: readonly string[],
+    annotationIds: readonly string[],
+    variants: readonly Variant[] = [],
+  ) => {
     const terms = termKeys.flatMap((key) => {
       const group = notes.term(key);
       return group ? [{ key, anchor: group.anchor }] : [];
@@ -128,12 +134,13 @@ export function useNotesPanel(
     const annotations = annotationIds
       .flatMap((id) => notes.annotation(id) ?? [])
       .sort((a, b) => comparePositions(index, a.anchor.start, b.anchor.start) ?? 0);
-    if (terms.length === 0 && annotations.length === 0) {
+    if (terms.length === 0 && annotations.length === 0 && variants.length === 0) {
       return false;
     }
     open({
       terms,
       annotationIds: annotations.map((a) => a.id),
+      variants: [...variants],
       created: [],
       drafts: [],
       editing: false,
@@ -163,6 +170,7 @@ export function useNotesPanel(
     open({
       terms: [{ key, anchor: draft.anchor }],
       annotationIds: [],
+      variants: [],
       created: [],
       drafts: [draft],
       editing: true,
@@ -193,6 +201,7 @@ export function useNotesPanel(
       {
         terms: [],
         annotationIds: [record.id],
+        variants: [],
         created: [record],
         drafts: [],
         editing: true,
@@ -319,6 +328,7 @@ export function useNotesPanel(
     isOpen: panel !== null,
     terms,
     annotations,
+    variants: panel?.variants ?? [],
     editing: panel?.editing ?? false,
     focusId: panel?.focusId,
     status,

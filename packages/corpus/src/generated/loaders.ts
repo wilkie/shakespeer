@@ -34,6 +34,13 @@ export const alignmentLoaders: Readonly<Partial<Record<string, Loader>>> = {
     import('../../plays/troilus-and-cressida/alignment/f1-1623.json', { with: { type: 'json' } }),
 };
 
+export const variantLoaders: Readonly<Partial<Record<string, Loader>>> = {
+  hamlet: () => import('../../plays/hamlet/variants.json', { with: { type: 'json' } }),
+  'the-tempest': () => import('../../plays/the-tempest/variants.json', { with: { type: 'json' } }),
+  'troilus-and-cressida': () =>
+    import('../../plays/troilus-and-cressida/variants.json', { with: { type: 'json' } }),
+};
+
 export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[]>>> = {
   'hamlet/folger': [
     () =>

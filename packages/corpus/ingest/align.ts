@@ -8,32 +8,14 @@
  * `variant`; nodes with no matched words are `orig-only` / `modern-only`.
  */
 import type { AlignmentEntry, Scene, TextNode, VersionDocument } from '../src/schema.ts';
+import { wordKey } from '../src/words.ts';
 import { modernCounterparts, placed, type Placed } from './scenes.ts';
+
+export { wordKey };
 
 interface Token {
   key: string;
   nodeIndex: number;
-}
-
-/**
- * A spelling-insensitive key for an early modern or modern word: u/v, i/j and y/i are
- * interchangeable, doubled letters and a final e are dropped ("heere" ~ "here", "haue" ~ "have").
- */
-export function wordKey(word: string): string {
-  return word
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/\p{M}/gu, '')
-    .replaceAll('ſ', 's')
-    .replaceAll('v', 'u')
-    .replaceAll('j', 'i')
-    .replaceAll('y', 'i')
-    .replace(/[^a-z]/g, '')
-    .replaceAll('ck', 'c') // "musicke" ~ "music"
-    .replace(/(.)\1+/g, '$1')
-    .replace(/(.)e$/, '$1')
-    .replace(/(..)ed$/, '$1d') // "stopped" ~ "stopp'd"
-    .replace(/([pkcsx])t$/, '$1d'); // "stopt" ~ "stopped", "kist" ~ "kissed"
 }
 
 function words(text: string): string[] {

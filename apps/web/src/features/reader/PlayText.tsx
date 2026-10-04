@@ -13,6 +13,7 @@ import type {
 import type { CSSProperties, ReactNode, Ref } from 'react';
 
 import type { DisplayCut, InsertedNode } from '@/features/cuts/display';
+import { VARIANT_PREFIX, type VariantMarks } from '@/features/variants/marks';
 import { ANNOTATION_PREFIX, TERM_PREFIX, type NoteIndex } from '@/features/notes/noteIndex';
 import { highlightVar } from '@/features/notes/palette';
 
@@ -30,6 +31,8 @@ export interface PlayTextProps {
   footer?: ReactNode;
   /** The current cut, if not Full play (CUT-040 – CUT-046). */
   cut?: CutView | undefined;
+  /** Where the play's variants show in this version, or none when marks are off (VAR-001). */
+  variants?: VariantMarks | undefined;
 }
 
 /** How the current cut shows (CUT-040 – CUT-043). */
@@ -81,9 +84,22 @@ function SegmentView({
   const { notes, revealTerms } = context;
   const classes = segment.marks.map((mark) => MARK_CLASSES[mark]);
   const content = segment.marks.includes('sup') ? <sup>{segment.text}</sup> : segment.text;
-  const ids = segment.ids.filter((id) => !id.startsWith(CUT_PREFIX));
+  const ids = segment.ids.filter(
+    (id) => !id.startsWith(CUT_PREFIX) && !id.startsWith(VARIANT_PREFIX),
+  );
+  const variantIds = segment.ids
+    .filter((id) => id.startsWith(VARIANT_PREFIX))
+    .map((id) => id.slice(VARIANT_PREFIX.length));
+  // Variant readings carry their IDs, for the outline and the panel (VAR-001, VAR-005).
+  const variantAttributes = variantIds.length > 0 ? { 'data-variants': variantIds.join(' ') } : {};
   if (ids.length === 0) {
-    return classes.length > 0 ? <span className={classes.join(' ')}>{content}</span> : content;
+    return classes.length > 0 || variantIds.length > 0 ? (
+      <span className={classes.length > 0 ? classes.join(' ') : undefined} {...variantAttributes}>
+        {content}
+      </span>
+    ) : (
+      content
+    );
   }
   const terms = ids
     .filter((id) => id.startsWith(TERM_PREFIX))
@@ -114,6 +130,7 @@ function SegmentView({
       className={classes.join(' ')}
       style={highlightStyle(annotations.map((a) => highlightVar(a.color)))}
       data-offset={segment.start}
+      {...variantAttributes}
       {...(terms.length > 0 ? { 'data-terms': terms.join(' ') } : {})}
       {...(annotations.length > 0
         ? { 'data-annotations': annotations.map((a) => a.id).join(' ') }
@@ -211,6 +228,7 @@ function NodeText({ node, context }: { node: TextNode; context: BlockContext }) 
   const hidden = cut?.display.hidden.get(node.id) ?? [];
   const decorations = [
     ...(notes.byNode.get(node.id) ?? []),
+    ...(context.variants?.decorations.get(node.id) ?? []),
     ...hidden.map((range) => ({
       start: range.start,
       end: range.end,
@@ -264,11 +282,33 @@ interface BlockContext {
   forceReveal: boolean;
   /** Text of earlier parts of each split verse line, for indentation (RDR-024). */
   ghosts: ReadonlyMap<string, string>;
+  variants: VariantMarks | undefined;
+}
+
+/** The margin mark of variants whose reading starts in a node (VAR-001). */
+function VariantMark({ nodeId, context }: { nodeId: string; context: BlockContext }) {
+  const ids = context.variants?.starts.get(nodeId);
+  if (!ids || context.forceReveal) {
+    return null;
+  }
+  const titles = ids.map((id) => context.variants?.variant(id)?.title ?? id);
+  return (
+    <span
+      className="var-mark"
+      role="button"
+      tabIndex={0}
+      aria-label={
+        ids.length === 1 ? `Variant: ${titles[0] ?? ''}` : `${String(ids.length)} variants`
+      }
+      data-variant-ids={ids.join(' ')}
+    />
+  );
 }
 
 function StageDirection({ node, context }: { node: StageDirectionNode; context: BlockContext }) {
   return (
     <div className={`sd${node.sdType === 'label' ? ' sd-label' : ''}`}>
+      <VariantMark nodeId={node.id} context={context} />
       <NodeText node={node} context={context} />
     </div>
   );
@@ -298,6 +338,7 @@ function Line({
           {ghost}
         </span>
       )}
+      <VariantMark nodeId={node.id} context={context} />
       <NodeText node={node} context={context} />
     </span>
   );
@@ -462,11 +503,23 @@ function addedAfter(nodes: readonly TextNode[], context: BlockContext): ReactNod
   if (context.forceReveal) {
     return []; // shown once, by whatever collapsed these nodes
   }
-  return nodes.flatMap((node) =>
-    (context.cut?.display.inserts.get(node.id) ?? []).map((added) => (
+  return nodes.flatMap((node) => [
+    // Passages this version lacks come straight after the text before them (VAR-002).
+    ...(context.variants?.absent.get(node.id) ?? []).map((mark) => (
+      <div
+        key={`absent-${mark.variantIds.join('-')}`}
+        className="var-absent"
+        role="button"
+        tabIndex={0}
+        data-variant-ids={mark.variantIds.join(' ')}
+      >
+        <span>{mark.label}</span>
+      </div>
+    )),
+    ...(context.cut?.display.inserts.get(node.id) ?? []).map((added) => (
       <AddedText key={added.id} node={added} context={context} />
     )),
-  );
+  ]);
 }
 
 /** A speech's body, with lines a cut hides collapsed and its added text (CUT-040, CUT-043). */
@@ -774,6 +827,7 @@ const textStyles: SxProps<Theme> = (theme) => {
     },
     '& .ghost': { visibility: 'hidden', userSelect: 'none' },
     '& .sd': {
+      position: 'relative',
       fontStyle: 'italic',
       color: palette.text.secondary,
       pl: '2em',
@@ -806,6 +860,45 @@ const textStyles: SxProps<Theme> = (theme) => {
     },
     '@media (forced-colors: active)': {
       '& .hl': { outline: '1px solid CanvasText', background: 'none' },
+    },
+    // Variants (VAR-001, VAR-002).
+    // Like line numbers, the mark is placed against the row or paragraph; with no top it stays
+    // level with its own line.
+    '& .var-mark': {
+      position: 'absolute',
+      left: '-0.9em',
+      width: '0.8em',
+      textAlign: 'center',
+      textIndent: 0,
+      fontSize: '0.8em',
+      lineHeight: '1.6rem',
+      fontStyle: 'normal',
+      color: palette.secondary.main,
+      cursor: 'pointer',
+      userSelect: 'none',
+      '&::before': { content: '"◇"' },
+      '&:focus-visible': { outline: `2px solid ${palette.primary.main}`, borderRadius: '2px' },
+    },
+    '& .var-absent': {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 1,
+      my: 0.5,
+      fontFamily: theme.typography.fontFamily,
+      fontSize: '0.75rem',
+      fontStyle: 'normal',
+      color: palette.secondary.main,
+      cursor: 'pointer',
+      userSelect: 'none',
+      '&::before': { content: '"◇"' },
+      '&::after': {
+        content: '""',
+        flex: 1,
+        borderTop: '1px dotted',
+        borderColor: palette.secondary.main,
+        opacity: 0.6,
+      },
+      '&:focus-visible': { outline: `2px solid ${palette.primary.main}`, outlineOffset: '2px' },
     },
     // Cuts (CUT-040 – CUT-043).
     '& .cut-hidden': { display: 'none' },
@@ -913,13 +1006,14 @@ const textStyles: SxProps<Theme> = (theme) => {
 };
 
 /** The whole version as one continuous document (RDR-020 – RDR-028). */
-export function PlayText({ doc, notes, revealTerms, ref, footer, cut }: PlayTextProps) {
+export function PlayText({ doc, notes, revealTerms, ref, footer, cut, variants }: PlayTextProps) {
   const context: BlockContext = {
     notes,
     revealTerms,
     cut,
     forceReveal: false,
     ghosts: splitLineGhosts(doc),
+    variants,
   };
   return (
     <Box ref={ref} className={revealTerms ? 'reveal-terms' : undefined} sx={textStyles}>

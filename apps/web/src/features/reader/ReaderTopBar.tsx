@@ -73,6 +73,10 @@ export interface ReaderTopBarProps {
   onUndo: () => void;
   showCutText: boolean;
   onShowCutText: (value: boolean) => void;
+  /** Whether the play has curated variants, which can be marked (VAR-003). */
+  hasVariants: boolean;
+  showVariantMarks: boolean;
+  onShowVariantMarks: (value: boolean) => void;
 }
 
 const subtleButton = {
@@ -201,6 +205,9 @@ export function ReaderTopBar({
   onUndo,
   showCutText,
   onShowCutText,
+  hasVariants,
+  showVariantMarks,
+  onShowVariantMarks,
 }: ReaderTopBarProps) {
   const [versionAnchor, setVersionAnchor] = useState<HTMLElement | null>(null);
   const [cutAnchor, setCutAnchor] = useState<HTMLElement | null>(null);
@@ -416,6 +423,25 @@ export function ReaderTopBar({
             </ListItemIcon>
             <ListItemText primary="Show annotation marks on map" />
           </MenuItem>
+          {hasVariants && (
+            <MenuItem
+              role="menuitemcheckbox"
+              aria-checked={showVariantMarks}
+              onClick={() => {
+                onShowVariantMarks(!showVariantMarks);
+              }}
+            >
+              <ListItemIcon>
+                <Switch
+                  size="small"
+                  checked={showVariantMarks}
+                  tabIndex={-1}
+                  slotProps={{ input: { 'aria-hidden': true } }}
+                />
+              </ListItemIcon>
+              <ListItemText primary="Show variant marks" />
+            </MenuItem>
+          )}
           {currentCut && (
             <MenuItem
               role="menuitemcheckbox"

@@ -1,10 +1,14 @@
 import {
   getPlay,
   getVersionInfo,
+  loadAlignment,
   loadSourcedDefinitions,
+  loadVariants,
   loadVersion,
+  type AlignmentFile,
   type PlayInfo,
   type SourcedDefinitionsFile,
+  type Variant,
   type VersionDocument,
   type VersionInfo,
 } from '@shakespeer/corpus';
@@ -29,6 +33,10 @@ export interface ReaderData {
   version: VersionInfo;
   doc: VersionDocument;
   definitions: SourcedDefinitionsFile[];
+  /** The play's curated variants (VAR-001). */
+  variants: Variant[];
+  /** For an original version, its alignment to the modern one (VAR-002). */
+  alignment: AlignmentFile | undefined;
 }
 
 /** Loads a version and its sourced definitions; unknown IDs are a 404 (RDR-001). */
@@ -39,9 +47,11 @@ export async function readerLoader({ params }: LoaderFunctionArgs): Promise<Read
     // eslint-disable-next-line @typescript-eslint/only-throw-error -- React Router's error responses
     throw data('Not found', { status: 404 });
   }
-  const [doc, definitions] = await Promise.all([
+  const [doc, definitions, variants, alignment] = await Promise.all([
     loadVersion(play.id, version.id),
     loadSourcedDefinitions(play.id, version.id),
+    loadVariants(play.id),
+    version.kind === 'original' ? loadAlignment(play.id, version.id) : undefined,
   ]);
-  return { play, version, doc, definitions };
+  return { play, version, doc, definitions, variants: variants.variants, alignment };
 }

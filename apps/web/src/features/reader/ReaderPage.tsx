@@ -40,6 +40,7 @@ import {
   restoreNodes,
 } from '@/features/cuts/operations';
 import { editableOperations, useCut } from '@/features/cuts/useCut';
+import { variantMarks } from '@/features/variants/marks';
 import { CollectionsDialog } from '@/features/exchange/CollectionsDialog';
 import { ExportDialog } from '@/features/exchange/ExportDialog';
 import { ImportDialog } from '@/features/exchange/ImportDialog';
@@ -174,7 +175,7 @@ function RevealButton({
 }
 
 export function ReaderPage() {
-  const { play, version, doc, definitions } = useLoaderData<ReaderData>();
+  const { play, version, doc, definitions, variants, alignment } = useLoaderData<ReaderData>();
   const navigate = useNavigate();
   const location = useLocation();
   const theme = useTheme();
@@ -184,6 +185,18 @@ export function ReaderPage() {
   const index = createVersionIndex(doc);
   const stored = useVersionNotes(play.id, version.id, index);
   const cut = useCut(play.id, version.id, index);
+  // Where the play's variants show in this version (VAR-001 – VAR-003).
+  const [showVariantMarks, setShowVariantMarks] = useSetting('variants.showMarks', true);
+  const marks = variantMarks(
+    index,
+    variants,
+    version,
+    play.versions,
+    alignment,
+    play.modernVersionId,
+  );
+  /** Variants whose mark is hovered or focused, outlined in the text (VAR-001). */
+  const [outlined, setOutlined] = useState<string[]>([]);
   // What is displayed: the scene map, navigation and current line follow the cut (CUT-045).
   const shown = cut.display?.index ?? index;
   const [showCutText, setShowCutText] = useSetting('cuts.showCutText', false);
@@ -358,7 +371,21 @@ export function ReaderPage() {
   /** Opens every note at an activated piece of text (PNL-010). */
   const openNotes = (element: HTMLElement) => {
     const ids = (name: string) => (element.dataset[name] ?? '').split(' ').filter(Boolean);
-    if (panel.openAt(ids('terms'), ids('annotations'))) {
+    const atPoint = showVariantMarks
+      ? ids('variants').flatMap((id) => marks.variant(id) ?? [])
+      : [];
+    if (panel.openAt(ids('terms'), ids('annotations'), atPoint)) {
+      opener.current = element;
+      revealInPanel(element, false);
+    }
+  };
+
+  /** Opens the variants of a mark (VAR-004). */
+  const openVariants = (element: HTMLElement) => {
+    const found = (element.dataset['variantIds'] ?? '')
+      .split(' ')
+      .flatMap((id) => marks.variant(id) ?? []);
+    if (panel.openAt([], [], found)) {
       opener.current = element;
       revealInPanel(element, false);
     }
@@ -474,6 +501,14 @@ export function ReaderPage() {
       // Outside edit mode only markers act; added and replaced text are just read.
       return element && (cut.editing || element.dataset['cutReveal']) ? element : null;
     };
+    const variantTarget = (event: Event) =>
+      (event.target as Element).closest<HTMLElement>('[data-variant-ids]');
+    const onOver = (event: Event) => {
+      const ids = (variantTarget(event)?.dataset['variantIds'] ?? '').split(' ').filter(Boolean);
+      if (ids.join(' ') !== outlined.join(' ')) {
+        setOutlined(ids);
+      }
+    };
     const onClick = (event: MouseEvent) => {
       // Don't treat the end of a text selection as a click.
       if (!(window.getSelection()?.isCollapsed ?? true)) {
@@ -482,6 +517,11 @@ export function ReaderPage() {
       const cutElement = cutTarget(event);
       if (cutElement) {
         activateCut(cutElement);
+        return;
+      }
+      const mark = variantTarget(event);
+      if (mark) {
+        openVariants(mark);
         return;
       }
       const element = target(event);
@@ -501,6 +541,12 @@ export function ReaderPage() {
         }
         return;
       }
+      const mark = variantTarget(event);
+      if (mark) {
+        event.preventDefault();
+        openVariants(mark);
+        return;
+      }
       const element = target(event);
       if (element) {
         event.preventDefault();
@@ -509,9 +555,13 @@ export function ReaderPage() {
     };
     root.addEventListener('click', onClick);
     root.addEventListener('keydown', onKeyDown);
+    root.addEventListener('pointerover', onOver);
+    root.addEventListener('focusin', onOver);
     return () => {
       root.removeEventListener('click', onClick);
       root.removeEventListener('keydown', onKeyDown);
+      root.removeEventListener('pointerover', onOver);
+      root.removeEventListener('focusin', onOver);
     };
   });
 
@@ -603,12 +653,31 @@ export function ReaderPage() {
     onDeleteDefinition: panel.deleteDefinition,
     onSaveAnnotation: panel.saveAnnotation,
     onDeleteAnnotation: panel.deleteAnnotation,
+    variants: panel.variants,
+    versionId: version.id,
+    versions: play.versions,
+    onOpenReading: (reading) => {
+      // Open in <version>, at the reading (VAR-004).
+      const state: NavigationState = reading.start ? { nodeId: reading.start.nodeId } : {};
+      panel.close();
+      void navigate(`/plays/${play.id}/${reading.versionId}`, { state });
+    },
   };
 
   return (
     <CollectionNamesContext value={collectionNames}>
       <title>{`${play.title} (${version.shortName}) · Shakespeer`}</title>
       <HighlightVariables />
+      {showVariantMarks && outlined.length > 0 && (
+        <style>
+          {outlined
+            .map(
+              (id) =>
+                `[data-variants~="${id}"] { outline: 1px dashed var(--mui-palette-secondary-main); outline-offset: 1px; }`,
+            )
+            .join('\n')}
+        </style>
+      )}
       <ReaderTopBar
         ref={topBarRef}
         play={play}
@@ -696,6 +765,9 @@ export function ReaderPage() {
         onUndo={cut.undo}
         showCutText={showCutText}
         onShowCutText={setShowCutText}
+        hasVariants={variants.length > 0}
+        showVariantMarks={showVariantMarks}
+        onShowVariantMarks={setShowVariantMarks}
       />
       <Box
         sx={{
@@ -713,6 +785,7 @@ export function ReaderPage() {
             notes={notes}
             revealTerms={revealTerms}
             footer={<AboutThisText sourceIds={version.sourceIds} />}
+            variants={showVariantMarks ? marks : undefined}
             cut={
               cut.display && {
                 display: cut.display,

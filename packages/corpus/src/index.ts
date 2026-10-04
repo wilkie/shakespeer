@@ -4,7 +4,12 @@
  */
 import playIndexData from '../plays.json' with { type: 'json' };
 import sourcesData from '../sources.json' with { type: 'json' };
-import { alignmentLoaders, definitionLoaders, versionLoaders } from './generated/loaders';
+import {
+  alignmentLoaders,
+  definitionLoaders,
+  variantLoaders,
+  versionLoaders,
+} from './generated/loaders';
 import type {
   AlignmentFile,
   PlayIndex,
@@ -12,12 +17,14 @@ import type {
   Source,
   SourcedDefinitionsFile,
   SourcesFile,
+  VariantsFile,
   VersionDocument,
   VersionInfo,
 } from './schema';
 
 export type * from './schema';
 export { createVersionIndex, type IndexedScene, type VersionIndex } from './version-index';
+export { wordKey, wordSpans } from './words';
 
 const playIndex = playIndexData as PlayIndex;
 const sources = (sourcesData as SourcesFile).sources;
@@ -71,4 +78,12 @@ export async function loadSourcedDefinitions(
   const loaders = definitionLoaders[`${playId}/${versionId}`] ?? [];
   const files = await Promise.all(loaders.map((load) => load()));
   return files.map((file) => file.default as SourcedDefinitionsFile);
+}
+
+/** A play's curated variants (CRP-060); none for a play without any. */
+export async function loadVariants(playId: string): Promise<VariantsFile> {
+  const load = variantLoaders[playId];
+  return load
+    ? ((await load()).default as VariantsFile)
+    : { schemaVersion: 1, playId, variants: [] };
 }

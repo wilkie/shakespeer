@@ -1,6 +1,6 @@
 # Variants and comparison
 
-Status: Draft
+Status: Approved
 
 How the reader sees where the versions of a play differ: marks on the curated variants
 ([CRP-060](../data/corpus.md)) in the text, and a comparison view that shows two versions side
@@ -54,7 +54,7 @@ by side, row by row, through alignment ([CRP-050](../data/corpus.md)). This deta
 - **VAR-026** — Comparing is offered only between versions of the same play, and is unavailable
   for a play with a single version.
 
-## Open questions
+## Decisions
 
-1. Should variant marks also be offered for _Troilus_ and _The Tempest_? Neither has curated
-   variants yet (CRP-061 seeds only _Hamlet_); proposed: not until variants are curated for them.
+1. Variant marks appear in every play with seeded variants: all three plays have them from the
+   Folger markup (_Hamlet_ 502, _Troilus and Cressida_ 518, _The Tempest_ 171).

@@ -17,6 +17,8 @@ export interface Settings extends Record<string, unknown> {
   /** The cut last used per version; empty for Full play (CUT-022). */
   [key: `reader.lastCut.${string}`]: string;
   'cuts.showCutText': boolean;
+  /** Variant marks in the text (VAR-003). */
+  'variants.showMarks': boolean;
   [key: `export.lastName.${string}`]: string;
 }
 

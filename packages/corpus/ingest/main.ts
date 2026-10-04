@@ -419,6 +419,13 @@ function loadersModule(index: PlayIndex): string {
     ...alignmentLines,
     '};',
     '',
+    'export const variantLoaders: Readonly<Partial<Record<string, Loader>>> = {',
+    ...index.plays.map(
+      (play) =>
+        `  '${play.id}': () =>\n    import('../../plays/${play.id}/variants.json', { with: { type: 'json' } }),`,
+    ),
+    '};',
+    '',
     'export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[]>>> = {',
     ...definitionLines,
     '};',

@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import type { TextAnchor } from '@shakespeer/corpus';
+import type { TextAnchor, Variant, VariantReading, VersionInfo } from '@shakespeer/corpus';
 import type { AnnotationRecord, DefinitionRecord } from '@shakespeer/storage';
 import { useState, type ReactNode } from 'react';
 
@@ -16,6 +16,7 @@ import { AnnotationEntry } from '@/features/notes/AnnotationEntry';
 import type { TermGroup } from '@/features/notes/noteIndex';
 import { truncate } from '@/features/notes/format';
 import { TermEntry } from '@/features/notes/TermEntry';
+import { VariantEntry } from '@/features/variants/VariantEntry';
 
 export interface PanelTerm {
   key: string;
@@ -29,6 +30,11 @@ export type SaveStatus = 'idle' | 'saving' | 'saved' | 'error';
 export interface NotesPanelProps {
   terms: readonly PanelTerm[];
   annotations: readonly AnnotationRecord[];
+  /** Variants at the activated point (VAR-004). */
+  variants: readonly Variant[];
+  /** The version shown, whose reading of a variant comes first. */
+  versionId: string;
+  versions: readonly VersionInfo[];
   editing: boolean;
   /** The field to focus when the panel opens in edit mode (SELX-006, SELX-007). */
   focusId: string | undefined;
@@ -44,6 +50,8 @@ export interface NotesPanelProps {
   onDeleteDefinition: (record: DefinitionRecord) => void;
   onSaveAnnotation: (record: AnnotationRecord) => void;
   onDeleteAnnotation: (record: AnnotationRecord) => void;
+  /** Open in <version>: switches to another version at its reading (VAR-004). */
+  onOpenReading: (reading: VariantReading) => void;
 }
 
 const STATUS_TEXT: Record<SaveStatus, string> = {
@@ -106,7 +114,7 @@ function Header({
 }
 
 function Body(props: NotesPanelProps) {
-  const { terms, annotations, editing, focusId } = props;
+  const { terms, annotations, variants, editing, focusId } = props;
   const entries: { key: string; label: string; content: ReactNode }[] = [
     ...terms.map((term) => ({
       key: `t:${term.key}`,
@@ -137,6 +145,19 @@ function Body(props: NotesPanelProps) {
           focusNotes={record.id === focusId}
           onSave={props.onSaveAnnotation}
           onDelete={props.onDeleteAnnotation}
+        />
+      ),
+    })),
+    ...variants.map((variant) => ({
+      key: `v:${variant.id}`,
+      label: `Variant: ${truncate(variant.title, 50)}`,
+      content: (
+        <VariantEntry
+          variant={variant}
+          versionId={props.versionId}
+          versions={props.versions}
+          onSource={props.onSource}
+          onOpenReading={props.onOpenReading}
         />
       ),
     })),
