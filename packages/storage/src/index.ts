@@ -1,4 +1,13 @@
 export { DEFAULT_DB_NAME, openDatabase, type OpenDatabaseOptions } from './database';
+export {
+  CutNameTakenError,
+  deleteCut,
+  getCut,
+  listCuts,
+  saveCut,
+  subscribeCuts,
+  type CutsChange,
+} from './cuts';
 export { createKeyValueStore, type KeyValueStore } from './kv';
 export {
   countNotes,
@@ -52,6 +61,8 @@ export {
   type Citation,
   type CitationName,
   type CollectionRecord,
+  type CutOperation,
+  type CutRecord,
   type DefinitionRecord,
   type HighlightColor,
   type Link,

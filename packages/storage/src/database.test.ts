@@ -11,6 +11,7 @@ describe('openDatabase', () => {
     expect([...db.objectStoreNames].sort()).toStrictEqual([
       'annotations',
       'collections',
+      'cuts',
       'definitions',
       'kv',
       'positions',

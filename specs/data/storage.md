@@ -68,11 +68,14 @@ All IDs are UUIDs from `crypto.randomUUID()`. Timestamps are ISO 8601 strings in
 - **STO-014** — `tombstones`: `[collectionId, sourceItemId]` pairs for imported notes the reader
   deleted, so updates do not bring them back (XCH-041). A collection's tombstones are deleted
   with the collection.
+- **STO-017** — `cuts`: own and imported cuts (CUT-050), indexed like the note stores
+  (STO-012). A deleted imported cut leaves a tombstone like a note (STO-014).
 - **STO-015** — `positions`: reading position per `[playId, versionId]`: `nodeId`, `updatedAt`
   (RDR-033).
 - **STO-016** — `kv`: settings, with these keys: `reader.lastVersion.<playId>` (RDR-041),
   `map.showAnnotationMarks` (MAP-044), `annotations.lastColor` (ANN-011),
-  `definitions.enabledSources` (DEF-012; a map of source ID to on or off, where sources not listed are on, so newly added sources start on), `definitions.showUnderlines` (DEF-034), `export.lastName.<playId>` (IOX-002).
+  `definitions.enabledSources` (DEF-012; a map of source ID to on or off, where sources not listed are on, so newly added sources start on), `definitions.showUnderlines` (DEF-034), `export.lastName.<playId>` (IOX-002),
+  `reader.lastCut.<playId>.<versionId>` (CUT-022), `cuts.showCutText` (CUT-041).
 
 ## Origin
 

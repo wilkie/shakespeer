@@ -35,6 +35,12 @@ export interface ShakespeerSchema extends DBSchema {
     value: { collectionId: string; sourceItemId: string };
     indexes: { byCollection: string };
   };
+  /** Own and imported cuts (STO-017, CUT-050). */
+  cuts: {
+    key: string;
+    value: CutRecord;
+    indexes: { byVersion: [string, string]; byCollection: string };
+  };
   /** Reading position per play version (STO-015). */
   positions: {
     key: [playId: string, versionId: string];
@@ -110,6 +116,24 @@ export interface AnnotationRecord extends NoteBase {
   citations: Citation[];
 }
 
+/** One change a cut makes to its version (CUT-050). */
+export type CutOperation =
+  | { id: string; type: 'hide'; anchor: TextAnchor }
+  | { id: string; type: 'replace'; anchor: TextAnchor; text: string }
+  | { id: string; type: 'insert'; after: string; kind: 'sd' | 'narration'; text: string };
+
+/** A named arrangement of a version (CUT-050). */
+export interface CutRecord {
+  id: string;
+  playId: string;
+  versionId: string;
+  name: string;
+  origin: Origin;
+  createdAt: string;
+  updatedAt: string;
+  operations: CutOperation[];
+}
+
 export interface CollectionRecord {
   id: string;
   playId: string;
@@ -160,6 +184,12 @@ export const migrations: readonly Migration[] = [
       keyPath: ['collectionId', 'sourceItemId'],
     });
     tombstones.createIndex('byCollection', 'collectionId');
+  },
+  // v4: cuts
+  (db) => {
+    const cuts = db.createObjectStore('cuts', { keyPath: 'id' });
+    cuts.createIndex('byVersion', ['playId', 'versionId']);
+    cuts.createIndex('byCollection', 'origin.collectionId');
   },
 ];
 

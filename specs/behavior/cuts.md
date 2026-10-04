@@ -1,7 +1,6 @@
 # Cuts and text edits
 
-Status: Approved (direction and constraints, CUT-001 – CUT-013). Detailed requirements
-(CUT-020 onward): Proposed.
+Status: Approved
 
 A **cut** is a named arrangement of a version for performance or teaching: lines or whole scenes
 hidden, words changed, stage directions or narration added. Readers choose among cuts the way
@@ -35,7 +34,7 @@ These hold now so cuts can be added without migrating existing notes:
   from a "displayed document" abstraction, not directly from the corpus, so a cut can hide
   scenes and change lengths.
 
-## Detailed requirements (Proposed)
+## Detailed requirements
 
 ### Choosing and managing cuts
 
