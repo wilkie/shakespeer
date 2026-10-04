@@ -38,6 +38,10 @@
     "tcp-troilus-q1": {
       "url": "https://raw.githubusercontent.com/textcreationpartnership/A12021/7ff804dfdfe379e1e943f9c4d6ea199e95b49132/A12021.xml",
       "sha256": "160b38c7bcaed72a2486dc68aad8e600ba44c5f0a782f1d241ecced6e447683d"
+    },
+    "sqa-hamlet-q2": {
+      "path": "sources/ham-1604-22276x-fol-c01.xml",
+      "sha256": "fa9f61c783ab759d45f966fd9fb366db3c8affd7fc3bed2cc50a3ea832ae16ed"
     }
   }
 }

@@ -27,6 +27,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -63,6 +67,18 @@
       "offset": 38
      },
      "text": "He smot the sleaded pollax on the yce,"
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00077",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00077",
+      "offset": 38
+     },
+     "text": "He smot the sleaded pollax on the ice."
     },
     {
      "versionId": "f1-1623",
@@ -103,6 +119,18 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00109",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00109",
+      "offset": 38
+     },
+     "text": "And carriage of the article desseigne,"
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00108",
@@ -141,6 +169,18 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00136",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00136",
+      "offset": 42
+     },
+     "text": "And euen the like precurse of feare euents"
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -177,6 +217,18 @@
       "offset": 88
      },
      "text": "Enter King, Queene, Hamlet, Leartes, Corambis, and the two Ambassadors, with Attendants."
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00196",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00196",
+      "offset": 128
+     },
+     "text": "Florish. Enter Claudius, King of Denmarke, Gertrad the Queene, Counsaile: as Polonius, and his Sonne Laertes, Hamlet, Cum Alijs."
     },
     {
      "versionId": "f1-1623",
@@ -225,6 +277,18 @@
      "text": "Enter King, Queene, Hamlet, Leartes, Corambis, and the two Ambassadors, with Attendants."
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00196",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00196",
+      "offset": 128
+     },
+     "text": "Florish. Enter Claudius, King of Denmarke, Gertrad the Queene, Counsaile: as Polonius, and his Sonne Laertes, Hamlet, Cum Alijs."
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00174",
@@ -263,6 +327,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -290,6 +358,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -331,6 +403,18 @@
      "text": "Nor all together mixt with outward semblance,\nIs equall to the sorrow of my heart,"
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00280",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00280",
+      "offset": 50
+     },
+     "text": "Together with all formes, moodes, chapes of griefe"
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00259",
@@ -366,6 +450,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -405,6 +493,18 @@
       "offset": 29
      },
      "text": "Where as they had deliuered forme of the thing.\nEach part made true and good,"
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00413",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00413",
+      "offset": 39
+     },
+     "text": "Whereas they had deliuered both in time"
     },
     {
      "versionId": "f1-1623",
@@ -453,6 +553,18 @@
      "text": "I wil watch to night, perchance t'wil walke againe."
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00455",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00455",
+      "offset": 20
+     },
+     "text": "I will watch to nigh"
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00439",
@@ -491,6 +603,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -519,6 +635,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00499",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00499",
+      "offset": 41
+     },
+     "text": "The safty and health of this whole state,"
     },
     {
      "versionId": "f1-1623",
@@ -559,6 +687,18 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00591",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00591",
+      "offset": 39
+     },
+     "text": "Wrong it thus) you'l tender me a foole."
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00574",
@@ -595,6 +735,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00612",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00612",
+      "offset": 41
+     },
+     "text": "Breathing like sanctified and pious bonds"
     },
     {
      "versionId": "f1-1623",
@@ -635,6 +787,18 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00640",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00640",
+      "offset": 39
+     },
+     "text": "This heauy headed reueale east and west"
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -663,6 +827,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00650",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00650",
+      "offset": 40
+     },
+     "text": "By their ore‐grow'th of some complextion"
     },
     {
      "versionId": "f1-1623",
@@ -695,6 +871,18 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00659",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00659",
+      "offset": 44
+     },
+     "text": "From that particuler fault: the dram of •al•"
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -722,6 +910,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -755,6 +947,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -782,6 +978,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -815,6 +1015,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -842,6 +1046,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -883,6 +1091,18 @@
      "text": "Enter King and Queene, Rossencraft, and Gilderstone."
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-01068",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-01068",
+      "offset": 61
+     },
+     "text": "Florish. Enter King and Queene, Rosencraus and Guyldensterne."
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01020",
@@ -921,6 +1141,18 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-01111",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-01111",
+      "offset": 22
+     },
+     "text": "Exeunt Ros. and Guyld."
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -948,6 +1180,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -989,6 +1225,10 @@
      "text": "Enter the Ambassadors."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -1019,6 +1259,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -1046,6 +1290,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -1087,6 +1335,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -1114,6 +1366,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -1147,6 +1403,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -1174,6 +1434,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -1207,6 +1471,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -1234,6 +1502,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -1267,6 +1539,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -1294,6 +1570,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -1327,6 +1607,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -1354,6 +1638,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -1387,6 +1675,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -1414,6 +1706,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -1447,6 +1743,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -1474,6 +1774,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -1505,6 +1809,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-01353",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-01357",
+      "offset": 53
+     },
+     "text": "He that playes the King shal be welcome, his Maiestie shal\nhaue tribute on me, the aduenterous Knight shall vse his foyle and\ntarget, the Louer shall not sigh gratis, the humorus Man shall end\nhis part in peace, and the Lady shall say her minde freely: or the\nblack verse shall hault for't. What players are they?"
     },
     {
      "versionId": "f1-1623",
@@ -1542,6 +1858,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -1591,6 +1911,10 @@
      "text": "Came to them, are turned to priuate playes,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01286",
@@ -1626,6 +1950,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -1667,6 +1995,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -1695,6 +2027,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-01480",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-01480",
+      "offset": 51
+     },
+     "text": "Breake all the spokes, and follies from her wheele,"
     },
     {
      "versionId": "f1-1623",
@@ -1743,6 +2087,18 @@
      "text": "Mobled Queene is good, faith very good."
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-01488",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-01488",
+      "offset": 12
+     },
+     "text": "That's good."
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01372",
@@ -1781,6 +2137,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -1811,6 +2171,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -1838,6 +2202,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -1877,6 +2245,18 @@
       "offset": 55
      },
      "text": "Why this is braue, that I the sonne of my deare father,"
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-01561",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-01561",
+      "offset": 38
+     },
+     "text": "That I the sonne of a deere murthered,"
     },
     {
      "versionId": "f1-1623",
@@ -1925,6 +2305,18 @@
      "text": "exit."
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-01616",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-01616",
+      "offset": 19
+     },
+     "text": "Exeunt Ros. & Guyl."
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -1952,6 +2344,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -1985,6 +2381,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -2012,6 +2412,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -2045,6 +2449,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -2073,6 +2481,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-01750",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-01750",
+      "offset": 24
+     },
+     "text": "Enter King and Polonius."
     },
     {
      "versionId": "f1-1623",
@@ -2121,6 +2541,10 @@
      "text": "Enter King, Queene, Corambis, and other Lords."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -2148,6 +2572,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -2181,6 +2609,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -2208,6 +2640,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -2241,6 +2677,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -2268,6 +2708,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -2309,6 +2753,18 @@
      "text": "Enter the Duke and Dutchesse."
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-01921",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-01921",
+      "offset": 22
+     },
+     "text": "Enter King and Queene."
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01737",
@@ -2347,6 +2803,18 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-01988",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-01988",
+      "offset": 41
+     },
+     "text": "And Anchors cheere in prison be my scope,"
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -2374,6 +2842,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -2407,6 +2879,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -2437,6 +2913,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -2464,6 +2944,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -2505,6 +2989,10 @@
      "text": "exit Horatio."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -2535,6 +3023,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -2562,6 +3054,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -2603,6 +3099,10 @@
      "text": "hee kneeles. enter• Hamlet"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -2630,6 +3130,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -2663,6 +3167,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -2690,6 +3198,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -2723,6 +3235,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -2750,6 +3266,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -2783,6 +3303,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -2810,6 +3334,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -2843,6 +3371,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -2870,6 +3402,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -2903,6 +3439,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -2930,6 +3470,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -2963,6 +3507,18 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-02442",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-02442",
+      "offset": 40
+     },
+     "text": "And either the deuill, or throwe him out"
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -2990,6 +3546,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -3031,6 +3591,18 @@
      "text": "Exit Hamlet with the dead body."
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-02493",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-02493",
+      "offset": 5
+     },
+     "text": "Exit."
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02250",
@@ -3066,6 +3638,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -3107,6 +3683,18 @@
      "text": "For Hamlets welfare and his happinesse:"
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-02536",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-02536",
+      "offset": 25
+     },
+     "text": "And whats vntimely doone,"
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02295",
@@ -3143,6 +3731,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-02590",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-02590",
+      "offset": 11
+     },
+     "text": "They enter."
     },
     {
      "versionId": "f1-1623",
@@ -3183,6 +3783,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -3210,6 +3814,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -3251,6 +3859,10 @@
      "text": "exeunt all but the king."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -3278,6 +3890,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -3319,6 +3935,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -3346,6 +3966,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -3379,6 +4003,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -3406,6 +4034,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -3439,6 +4071,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -3469,6 +4105,18 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-02743",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-02743",
+      "offset": 11
+     },
+     "text": "shee sings."
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -3496,6 +4144,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -3529,6 +4181,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -3556,6 +4212,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -3589,6 +4249,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -3616,6 +4280,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -3649,6 +4317,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -3676,6 +4348,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -3709,6 +4385,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -3736,6 +4416,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -3769,6 +4453,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -3796,6 +4484,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -3829,6 +4521,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -3856,6 +4552,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -3897,6 +4597,18 @@
      "text": "My lord, I like it well:"
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03101",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03101",
+      "offset": 50
+     },
+     "text": "And then this should is like a spend thirfts sigh,"
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -3933,6 +4645,18 @@
       "offset": 26
      },
      "text": "enter Clowne and an other."
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03180",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03180",
+      "offset": 18
+     },
+     "text": "Enter two Clownes."
     },
     {
      "versionId": "f1-1623",
@@ -3981,6 +4705,10 @@
      "text": "Enter Hamlet and Horatio."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02833",
@@ -4019,6 +4747,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -4046,6 +4778,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -4079,6 +4815,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -4109,6 +4849,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -4136,6 +4880,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -4177,6 +4925,10 @@
      "text": "Enter King and Queene, Leartes, and other lordes, with a Priest after the coffin."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -4204,6 +4956,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -4237,6 +4993,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -4264,6 +5024,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -4297,6 +5061,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -4324,6 +5092,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -4357,6 +5129,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -4384,6 +5160,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -4417,6 +5197,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -4444,6 +5228,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -4475,6 +5263,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03478",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03478",
+      "offset": 41
+     },
+     "text": "Being thus benetted round with villaines,"
     },
     {
      "versionId": "f1-1623",
@@ -4513,6 +5313,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03493",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03493",
+      "offset": 43
+     },
+     "text": "And many such like, as sir of great charge,"
     },
     {
      "versionId": "f1-1623",
@@ -4561,6 +5373,10 @@
      "text": "For by my selfe me thinkes I feele his griefe,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03091",
@@ -4599,6 +5415,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -4626,6 +5446,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -4659,6 +5483,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -4686,6 +5514,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -4719,6 +5551,18 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03540",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03544",
+      "offset": 10
+     },
+     "text": "Nay good my Lord for my ease in good • • • • •faith. Sir here is newly\ncom to Court Laertes, belieue me an absolu••te• • • •gentleman, full of most excellent differences, of very soft society, and great showing: indeede\nto speake sellingly of him, hee is the card or kalender of gentry:\nfor you shall find in him the continent of what part a Gentleman\nwould see."
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -4747,6 +5591,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03540",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03544",
+      "offset": 10
+     },
+     "text": "Nay good my Lord for my ease in good • • • • •faith. Sir here is newly\ncom to Court Laertes, belieue me an absolu••te• • • •gentleman, full of most excellent differences, of very soft society, and great showing: indeede\nto speake sellingly of him, hee is the card or kalender of gentry:\nfor you shall find in him the continent of what part a Gentleman\nwould see."
     },
     {
      "versionId": "f1-1623",
@@ -4779,6 +5635,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -4807,6 +5667,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03568",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03569",
+      "offset": 43
+     },
+     "text": "I meane sir for this weapon, but in the imputation laide on\nhim, by them in his meed, hee's vnfellowed."
     },
     {
      "versionId": "f1-1623",
@@ -4855,6 +5727,18 @@
      "text": "And howe's the wager? I vnderstand you now."
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03584",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03585",
+      "offset": 40
+     },
+     "text": "and three liberall conceited carriages, that's the French bet against\nthe Danish, why is this all you call it?"
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03116",
@@ -4893,6 +5777,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -4921,6 +5809,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03603",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03608",
+      "offset": 42
+     },
+     "text": "A did sir with his dugge before a suckt it, thus has he and\nmany more of the same breede that I know the drossy age dotes on,\nonly got the tune of the time, and out of an habit of incounter, a\nkind of histy colection, which carries them through and through\nthe most prophane and trennowed opinions, and doe but blowe\nthem to their triall, the bubbles are out."
     },
     {
      "versionId": "f1-1623",
@@ -4958,6 +5858,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -4999,6 +5903,18 @@
      "text": "Enter King, Queene, Leartes, Lordes."
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03636",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03636",
+      "offset": 123
+     },
+     "text": "A table prepard, Trumpets, Drums and officers with Cushions, King, Queene, and all the state, Foiles, daggers, and Laertes."
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03133",
@@ -5037,6 +5953,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -5064,6 +5984,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -5097,6 +6021,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -5124,6 +6052,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -5165,6 +6097,10 @@
      "text": "Shee drinkes."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -5192,6 +6128,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -5225,6 +6165,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -5255,6 +6199,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -5282,6 +6230,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -5321,6 +6273,10 @@
       "offset": 110
      },
      "text": "They catch one anothers Rapiers, and both are wounded, Leartes falles downe, the Queene falles downe and dies."
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -5369,6 +6325,10 @@
      "text": "They catch one anothers Rapiers, and both are wounded, Leartes falles downe, the Queene falles downe and dies."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -5396,6 +6356,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -5429,6 +6393,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -5456,6 +6424,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -5497,6 +6469,10 @@
      "text": "The king dies."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -5527,6 +6503,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -5554,6 +6534,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -5595,6 +6579,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -5631,6 +6619,18 @@
       "offset": 84
      },
      "text": "Enter Uoltemar and the Ambassadors from England. enter Fortenbrasse with his traine."
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03791",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03791",
+      "offset": 41
+     },
+     "text": "Enter Fortenbrasse, with the Embassadors."
     },
     {
      "versionId": "f1-1623",
@@ -5679,6 +6679,10 @@
      "text": "O farewell honest souldier, who hath releeued you?"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00019",
@@ -5723,6 +6727,10 @@
       "offset": 48
      },
      "text": "Most like, it horrors mee with feare and wonder."
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -5771,6 +6779,10 @@
      "text": "And why such dayly cost of brazen Cannon"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00086",
@@ -5815,6 +6827,10 @@
       "offset": 40
      },
      "text": "And why such dayly cost of brazen Cannon"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -5863,6 +6879,10 @@
      "text": "Did slay this Fortenbrasse,\nWho by a seale compact well ratified, by law\nAnd heraldrie, did forfeit with his life all those\nHis lands which he stoode seazed of by the conqueror,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00102",
@@ -5907,6 +6927,10 @@
       "offset": 22
      },
      "text": "Was gaged by our King:"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -5955,6 +6979,10 @@
      "text": "For which they say you Spirites oft walke in death, speake to me, stay and speake, speake, stoppe it Marcellus."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00132",
@@ -5993,6 +7021,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -6020,6 +7052,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -6061,6 +7097,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00254",
@@ -6099,6 +7139,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00260",
@@ -6134,6 +7178,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -6183,6 +7231,10 @@
      "text": "O God, within two months; no not two • married,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00313",
@@ -6218,6 +7270,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -6259,6 +7315,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00318",
@@ -6294,6 +7354,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -6335,6 +7399,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00330",
@@ -6370,6 +7438,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -6419,6 +7491,10 @@
      "text": "I thinke it was to see my mothers wedding•"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00363",
@@ -6465,6 +7541,10 @@
      "text": "Till then, sit still my soule, foule deeds will ris"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00456",
@@ -6500,6 +7580,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -6541,6 +7625,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00473",
@@ -6576,6 +7664,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -6625,6 +7717,10 @@
      "text": "Your selfe, like to a carelesse libertine"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00510",
@@ -6671,6 +7767,10 @@
      "text": "Are of a most select and generall chiefe in that:"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00537",
@@ -6706,6 +7806,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -6747,6 +7851,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00539",
@@ -6782,6 +7890,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -6831,6 +7943,10 @@
      "text": "Springes to catch woodcocks,\nWhat, do not I know when the blood doth burne,\nHow prodigall the tongue lends the heart vowes,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00580",
@@ -6875,6 +7991,10 @@
       "offset": 34
      },
      "text": "I shall obay my lord in all I may."
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -6923,6 +8043,10 @@
      "text": "\"Refuse his tokens, both of them are keyes\nTo vnlocke Chastitie vnto Desire;\nCome in Ofelia, such men often proue,\n\"Great in their wordes, but little in their loue."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00594",
@@ -6958,6 +8082,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -7007,6 +8135,10 @@
      "text": "The ayre bites shrewd; it is an eager and\nAn nipping winde, what houre i'st?"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00605",
@@ -7045,6 +8177,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00643",
@@ -7080,6 +8216,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -7129,6 +8269,10 @@
      "text": "So Lust, though to a radiant angle linckt,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00742",
@@ -7173,6 +8317,10 @@
       "offset": 44
      },
      "text": "Would fate it selfe from a celestiall bedde,"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -7221,6 +8369,10 @@
      "text": "And turnes the thinne and wholesome blood\nLike eager dropings into milke."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00754",
@@ -7256,6 +8408,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -7295,6 +8451,10 @@
       "offset": 39
      },
      "text": "And shall I couple hell; remember thee?"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -7343,6 +8503,10 @@
      "text": "Ill, lo, lo, so, ho, so, come boy, come."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00805",
@@ -7387,6 +8551,10 @@
       "offset": 21
      },
      "text": "I by heauen, my lord."
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -7435,6 +8603,10 @@
      "text": "Enter Corambis, and Montano."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00889",
@@ -7481,6 +8653,10 @@
      "text": "I faith not a whit, no not a whit,\nNow happely hee closeth with you in the consequence,\nAs you may bridle it not disparage him a iote."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00920",
@@ -7516,6 +8692,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -7557,6 +8737,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00945",
@@ -7595,6 +8779,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-00951",
@@ -7630,6 +8818,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -7679,6 +8871,10 @@
      "text": "Enter the Ambassadors."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -7717,6 +8913,10 @@
      "text": "Now my Lord, touching the yong Prince Hamlet,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01119",
@@ -7752,6 +8952,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -7801,6 +9005,10 @@
      "text": "As of a true friend and a most louing subiect."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01157",
@@ -7845,6 +9053,10 @@
       "offset": 51
      },
      "text": "Shee as my childe obediently obey'd me.\nNow since which time, seeing his loue thus cross'd,"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -7893,6 +9105,10 @@
      "text": "Then into a sadnesse, from that vnto a madnesse,\nAnd so by continuance, and weakenesse of the braine\nInto this frensie, which now possesseth him:"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01169",
@@ -7939,6 +9155,10 @@
      "text": "Thinke you t'is so?"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01172",
@@ -7977,6 +9197,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01194",
@@ -8012,6 +9236,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -8061,6 +9289,10 @@
      "text": "My lord I will take my leaue of you."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01225",
@@ -8107,6 +9339,10 @@
      "text": "You can take nothing from me sir,\nI will more willingly part with all,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01233",
@@ -8142,6 +9378,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -8183,6 +9423,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01243",
@@ -8221,6 +9465,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01243",
@@ -8256,6 +9504,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -8305,6 +9557,10 @@
      "text": "What, Gilderstone, and Rossencraft,\nWelcome kinde Schoole-fellowes to Elsanoure.\nWe thanke your Grace, and would be very glad\nYou were as when we were at Wittenberg.\nI thanke you, but is this visitation free of"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01250",
@@ -8340,6 +9596,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -8389,6 +9649,10 @@
      "text": "No nor Man that is so glorious a creature."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01274",
@@ -8435,6 +9699,10 @@
      "text": "Contents not me, no nor woman too, though you laugh."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01274",
@@ -8473,6 +9741,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01278",
@@ -8508,6 +9780,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -8557,6 +9833,10 @@
      "text": "How then?\nYfaith my Lord, noueltie carries it away,\nFor the principall publike audience that\nCame to them, are turned to priuate playes,\nAnd to the humour of children.\nI doe not greatly wonder of it,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01284",
@@ -8592,6 +9872,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -8641,6 +9925,10 @@
      "text": "The ventrous Knight shall vse his foyle and target,\nThe louer shall sigh gratis,\nThe clowne shall make them laugh\nThat are tickled in the lungs, or the blanke verse shall halt for't,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01295",
@@ -8685,6 +9973,10 @@
       "offset": 53
      },
      "text": "The best Actors in Christendome,\nEither for Comedy, Tragedy, Historie, Pastorall,\nPastorall, Historicall, Historicall, Comicall,\nComicall historicall, Pastorall, Tragedy historicall:"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -8733,6 +10025,10 @@
      "text": "What my olde friend, thy face is vallanced\nSince I saw thee last, com'st thou to beard me in Denmarke?"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01322",
@@ -8777,6 +10073,10 @@
       "offset": 47
      },
      "text": "My yong lady and mistris, burlady but your\nLadiship is growne by the altitude of a chopine higher than you were:\nPray God sir your voyce, like a peece of vncurrant\nGolde, be not crack't in the ring: come on maisters,\nWeele euen too't, like French Falconers,\nFlie at any thing we see, come, a taste of your"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -8825,6 +10125,10 @@
      "text": "My yong lady and mistris, burlady but your\nLadiship is growne by the altitude of a chopine higher than you were:\nPray God sir your voyce, like a peece of vncurrant\nGolde, be not crack't in the ring: come on maisters,\nWeele euen too't, like French Falconers,\nFlie at any thing we see, come, a taste of your"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01322",
@@ -8869,6 +10173,10 @@
       "offset": 56
      },
      "text": "But called it an honest methode, as wholesome as sweete."
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -8917,6 +10225,10 @@
      "text": "Come, a speech in it I chiefly remember\nWas Aeneas tale to Dido,\nAnd then especially where he talkes of Princes slaughter,\nIf it liue in thy memory beginne at this line,\nLet me see."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01324",
@@ -8963,6 +10275,10 @@
      "text": "Pyrrus at Pryam driues, but all in rage,\nStrikes wide, but with the whiffe and winde\nOf his fell sword, th'unnerued father falles."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01345",
@@ -8998,6 +10314,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -9047,6 +10367,10 @@
      "text": "Mobled Queene is good, faith very good."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01372",
@@ -9091,6 +10415,10 @@
       "offset": 58
      },
      "text": "And a kercher on that head, where late the diademe stoode,"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -9139,6 +10467,10 @@
      "text": "Mincing her husbandes limbs,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01383",
@@ -9183,6 +10515,10 @@
       "offset": 51
      },
      "text": "O farre better man, vse euery man after his deserts,\nThen who should scape whipping?\nVse them after your owne honor and dignitie,\nThe lesse they deserue, the greater credit's yours."
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -9231,6 +10567,10 @@
      "text": "And could'st not thou for a neede study me\nSome dozen or sixteene lines,\nWhich I would set downe and insert?"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01396",
@@ -9275,6 +10615,10 @@
       "offset": 44
      },
      "text": "Why these Players here draw water from eyes:"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -9323,6 +10667,10 @@
      "text": "For Hecuba, why what is Hecuba to him, or he to Hecuba?"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01412",
@@ -9367,6 +10715,10 @@
       "offset": 44
      },
      "text": "What would he do and if he had my losse?\nHis father murdred, and a Crowne bereft him,"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -9415,6 +10767,10 @@
      "text": "Or by this I should a fatted all the region kites"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01432",
@@ -9453,6 +10809,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01435",
@@ -9488,6 +10848,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -9537,6 +10901,10 @@
      "text": "This spirit that I haue seene may be the Diuell,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01452",
@@ -9581,6 +10949,10 @@
       "offset": 48
      },
      "text": "This spirit that I haue seene may be the Diuell,"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -9629,6 +11001,10 @@
      "text": "Enter Hamlet."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01460",
@@ -9664,6 +11040,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -9713,6 +11093,10 @@
      "text": "And here Ofelia, reade you on this booke,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01495",
@@ -9748,6 +11132,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -9789,6 +11177,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01511",
@@ -9824,6 +11216,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -9873,6 +11269,10 @@
      "text": "I that, O this conscience makes cowardes of vs all,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01551",
@@ -9911,6 +11311,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01553",
@@ -9946,6 +11350,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -9995,6 +11403,10 @@
      "text": "That if you be faire and honest,\nYour beauty should admit no discourse to your honesty."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01576",
@@ -10039,6 +11451,10 @@
       "offset": 25
      },
      "text": "But now too true I finde,"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -10087,6 +11503,10 @@
      "text": "Go to a Nunnery goe, why shouldst thou\nBe a breeder of sinners? I am myselfe indifferent honest,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01582",
@@ -10131,6 +11551,10 @@
       "offset": 37
      },
      "text": "But I could accuse my selfe of such crimes\nIt had beene better my mother had ne're borne me,\nO I am very prowde, ambitious, disdainefull,\nWith more sinnes at my becke, then I haue thoughts\nTo put them in, what should such fellowes as I\nDo, crawling between heauen and earth?\nTo a Nunnery goe, we are arrant knaues all,\nBeleeue none of vs, to a Nunnery goe."
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -10179,6 +11603,10 @@
      "text": "Nay, I haue heard of your paintings too,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01588",
@@ -10223,6 +11651,10 @@
       "offset": 56
      },
      "text": "God hath giuen you one face,\nAnd you make your selues another,\nYou fig, and you amble, and you nickname Gods creatures,"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -10271,6 +11703,10 @@
      "text": "Making your wantonnesse, your ignorance,\nA pox, t'is scuruy, Ile no more of it,\nIt hath made me madde: Ile no more marriages,\nAll that are married but one, shall liue,\nThe rest shall keepe as they are, to a Nunnery goe,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01588",
@@ -10306,6 +11742,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -10347,6 +11787,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01597",
@@ -10382,6 +11826,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -10423,6 +11871,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01635",
@@ -10458,6 +11910,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -10507,6 +11963,10 @@
      "text": "There be fellowes that I haue seene play,\nAnd heard others commend them, and that highly too,\nThat hauing neither the gate of Christian, Pagan,\nNor Turke, haue so strutted and bellowed,\nThat you would a thought, some of Natures journeymen\nHad made men, and not made them well,\nThey imitated humanitie, so abhominable:"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01635",
@@ -10542,6 +12002,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -10583,6 +12047,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01638",
@@ -10618,6 +12086,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -10667,6 +12139,10 @@
      "text": "That shall appeare in him, but I shall note it."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01688",
@@ -10702,6 +12178,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -10751,6 +12231,10 @@
      "text": "Enter King, Queene, Corambis, and other Lords."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -10789,6 +12273,10 @@
      "text": "Enter King, Queene, Corambis, and other Lords."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -10825,6 +12313,10 @@
       "offset": 59
      },
      "text": "Vpon your lap, what do you thinke I meant contrary matters?"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -10873,6 +12365,10 @@
      "text": "Enter in a Dumbe Shew, the King and the Queene, he sits downe in an Arbor, she leaues him: Then enters Lucianus with poyson in a Viall, and powres it in his eares, and goes away: Then the Queene commeth and findes him dead: and goes away with the other."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01721",
@@ -10917,6 +12413,10 @@
       "offset": 253
      },
      "text": "Enter in a Dumbe Shew, the King and the Queene, he sits downe in an Arbor, she leaues him: Then enters Lucianus with poyson in a Viall, and powres it in his eares, and goes away: Then the Queene commeth and findes him dead: and goes away with the other."
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -10965,6 +12465,10 @@
      "text": "Enter in a Dumbe Shew, the King and the Queene, he sits downe in an Arbor, she leaues him: Then enters Lucianus with poyson in a Viall, and powres it in his eares, and goes away: Then the Queene commeth and findes him dead: and goes away with the other."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01721",
@@ -11009,6 +12513,10 @@
       "offset": 253
      },
      "text": "Enter in a Dumbe Shew, the King and the Queene, he sits downe in an Arbor, she leaues him: Then enters Lucianus with poyson in a Viall, and powres it in his eares, and goes away: Then the Queene commeth and findes him dead: and goes away with the other."
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -11057,6 +12565,10 @@
      "text": "This is myching Mallico, that meanes my chiefe."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01724",
@@ -11103,6 +12615,10 @@
      "text": "you shall heare anone, this fellow will tell you all."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01726",
@@ -11141,6 +12657,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01739",
@@ -11176,6 +12696,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -11225,6 +12749,10 @@
      "text": "When death takes you, let life from me depart."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01752",
@@ -11260,6 +12788,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -11301,6 +12833,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -11337,6 +12873,10 @@
       "offset": 48
      },
      "text": "So you must take your husband, begin. Murdred\nBegin, a poxe, leaue thy damnable faces and begin,\nCome, the croking rauen doth bellow for reuenge."
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -11385,6 +12925,10 @@
      "text": "Confederate season, else no creature seeing:"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01832",
@@ -11429,6 +12973,10 @@
       "offset": 50
      },
      "text": "With Hecates bane thrise blasted, thrise infected,"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -11477,6 +13025,10 @@
      "text": "One wholesome life vsurps immediately."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01836",
@@ -11512,6 +13064,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -11561,6 +13117,10 @@
      "text": "What, frighted with false fires?"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01840",
@@ -11605,6 +13165,10 @@
       "offset": 27
      },
      "text": "The king is mooued my lord."
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -11653,6 +13217,10 @@
      "text": "We are very glad to see your grace so pleasant,\nMy good lord, let vs againe intreate"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01876",
@@ -11697,6 +13265,10 @@
       "offset": 58
      },
      "text": "To know of you the ground and cause of your distemperature"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -11745,6 +13317,10 @@
      "text": "And with a little breath from your lips,\nIt will giue most delicate musick."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01904",
@@ -11789,6 +13365,10 @@
       "offset": 38
      },
      "text": "And diue into the secreet of my soule."
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -11837,6 +13417,10 @@
      "text": "Zownds do you thinke Iam easier to be pla'yd\nOn, then a pipe? call mee what Instrument\nYou will, though you can frett mee, yet you can not\nPlay vpon mee, besides, to be demanded by a spunge."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01906",
@@ -11875,6 +13459,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01922",
@@ -11910,6 +13498,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -11959,6 +13551,10 @@
      "text": "I will speake daggers• those sharpe wordes being spent,\nTo doe her wrong my soule shall ne're consent."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01929",
@@ -11997,6 +13593,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01954",
@@ -12032,6 +13632,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -12081,6 +13685,10 @@
      "text": "Pay me the murder of a brother and a king,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01958",
@@ -12119,6 +13727,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-01989",
@@ -12154,6 +13766,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -12203,6 +13819,10 @@
      "text": "I so, come forth and worke thy last,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02013",
@@ -12247,6 +13867,10 @@
       "offset": 40
      },
      "text": "And thus hee dies: and so am I reuenged:"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -12295,6 +13919,10 @@
      "text": "No, not so: he tooke my father sleeping, his sins brim full,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02018",
@@ -12339,6 +13967,10 @@
       "offset": 60
      },
      "text": "No, not so: he tooke my father sleeping, his sins brim full,"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -12387,6 +14019,10 @@
      "text": "Enter Queene and Corambis."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02039",
@@ -12431,6 +14067,10 @@
       "offset": 18
      },
      "text": "How i'st with you mother?\nHow i'st with you?"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -12479,6 +14119,10 @@
      "text": "I'le tell you, but first weele make all safe."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02047",
@@ -12514,6 +14158,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -12555,6 +14203,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -12582,6 +14234,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -12631,6 +14287,10 @@
      "text": "For a king of clowts, of very shreads."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02129",
@@ -12669,6 +14329,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02130",
@@ -12704,6 +14368,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -12753,6 +14421,10 @@
      "text": "Why appetite with you is in the waine,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02140",
@@ -12788,6 +14460,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -12829,6 +14505,10 @@
      "text": "I neuer knew of this most horride murder:"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02191",
@@ -12867,6 +14547,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02207",
@@ -12902,6 +14586,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -12951,6 +14639,10 @@
      "text": "Exit Hamlet with the dead body."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02250",
@@ -12986,6 +14678,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -13027,6 +14723,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02292",
@@ -13062,6 +14762,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -13103,6 +14807,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02300",
@@ -13138,6 +14846,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -13179,6 +14891,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02305",
@@ -13214,6 +14930,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -13255,6 +14975,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02318",
@@ -13290,6 +15014,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -13339,6 +15067,10 @@
      "text": "My mother I say: you married my mother,\nMy mother is your wife, man and wife is one flesh,\nAnd so (my mother) farewel: for England hoe."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02364",
@@ -13374,6 +15106,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -13423,6 +15159,10 @@
      "text": "enter King and Queene."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02394",
@@ -13469,6 +15209,10 @@
      "text": "God grant it may, heau'ns keep my Hamlet safe:"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02403",
@@ -13504,6 +15248,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -13545,6 +15293,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -13581,6 +15333,10 @@
       "offset": 42
      },
      "text": "And will he not come againe?\nNo, no, hee's gone, and we cast away mone,"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -13629,6 +15385,10 @@
      "text": "God a mercy on his soule."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02468",
@@ -13673,6 +15433,10 @@
       "offset": 42
      },
      "text": "A pretty wretch! this is a change indeede:"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -13721,6 +15485,10 @@
      "text": "To day we laugh and liue, to morrow dead."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02489",
@@ -13767,6 +15535,10 @@
      "text": "Being the chiefest piller of our state:"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02529",
@@ -13802,6 +15574,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -13841,6 +15617,10 @@
       "offset": 42
      },
      "text": "Should be as mortall as an olde mans sawe?"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -13889,6 +15669,10 @@
      "text": "Here, here is rew for you,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02558",
@@ -13927,6 +15711,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02562",
@@ -13962,6 +15750,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -14011,6 +15803,10 @@
      "text": "All in the morning betime,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02580",
@@ -14057,6 +15853,10 @@
      "text": "And dupt the chamber doore,\nLet in the maide, that out a maide\nNeuer departed more.\nNay I pray marke now,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02583",
@@ -14092,6 +15892,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -14131,6 +15935,10 @@
       "offset": 17
      },
      "text": "God bwy you Loue."
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -14179,6 +15987,10 @@
      "text": "He will relate the circumstance at full.\nThen I perceiue there's treason in his lookes\nThat seem'd to sugar o're his villanie:\nBut I will soothe and please him for a time,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02617",
@@ -14214,6 +16026,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -14263,6 +16079,10 @@
      "text": "O faile not, good Horatio, and withall, commend me"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02619",
@@ -14307,6 +16127,10 @@
       "offset": 47
      },
      "text": "He is arriv'de, obserue the king, and you shall\nQuickely finde, Hamlet being here,\nThings fell not to his minde.\nBut what became of Gilderstone and Rossencraft?"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -14355,6 +16179,10 @@
      "text": "And in the Packet there writ down that doome"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02621",
@@ -14401,6 +16229,10 @@
      "text": "To be perform'd on them poynted for him:"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02622",
@@ -14436,6 +16268,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -14485,6 +16321,10 @@
      "text": "Hamlet from England! is it possible?"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02642",
@@ -14520,6 +16360,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -14569,6 +16413,10 @@
      "text": "What chance is this? they are gone, and he come home."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02666",
@@ -14604,6 +16452,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -14645,6 +16497,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02674",
@@ -14680,6 +16536,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -14721,6 +16581,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02674",
@@ -14756,6 +16620,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -14805,6 +16673,10 @@
      "text": "That I shall liue to tell him, thus he dies."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02681",
@@ -14840,6 +16712,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -14889,6 +16765,10 @@
      "text": "I haue heard him often with a greedy wish,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02700",
@@ -14924,6 +16804,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -14973,6 +16857,10 @@
      "text": "Such a report of singularitie,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02743",
@@ -15017,6 +16905,10 @@
       "offset": 31
      },
      "text": "And lest that all should misse,"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -15065,6 +16957,10 @@
      "text": "Sitting vpon a willow by a brooke,\nThe enuious sprig broke, into the brooke she fell,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02774",
@@ -15111,6 +17007,10 @@
      "text": "Yea but it was against her will.\nNo, I deny that, for looke you sir, I stand here,\nIf the water come to me, I drowne not my selfe:"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02811",
@@ -15146,6 +17046,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -15195,6 +17099,10 @@
      "text": "Goe fetch me a stope of drinke, but before thou"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02820",
@@ -15241,6 +17149,10 @@
      "text": "Of a Mason, a Shipwright, or a Carpenter?"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02824",
@@ -15279,6 +17191,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02831",
@@ -15314,6 +17230,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -15363,6 +17283,10 @@
      "text": "A pick-axe and a spade, a spade,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02850",
@@ -15398,6 +17322,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -15447,6 +17375,10 @@
      "text": "Me thinkes he should indite that fellow\nOf an action of Batterie, for knocking\nHim about the pate with's shouel: now where is your\nQuirkes and quillets now, your vouchers and"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02856",
@@ -15491,6 +17423,10 @@
       "offset": 44
      },
      "text": "Double vouchers, your leases and free-holde,"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -15539,6 +17475,10 @@
      "text": "Double vouchers, your leases and free-holde,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02856",
@@ -15577,6 +17517,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02862",
@@ -15612,6 +17556,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -15661,6 +17609,10 @@
      "text": "Comes so neere the heele of the courtier,\nThat hee gawles his kibe, I prethee tell mee one thing,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02875",
@@ -15705,6 +17657,10 @@
       "offset": 45
      },
      "text": "I faith sir, if hee be not rotten before\nHe be laide in, as we haue many pocky corses,"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -15753,6 +17709,10 @@
      "text": "Why do not you know him? this was one Yorickes scull.\nWas this? I prethee let me see it, alas poore Yoricke I knew him Horatio,\nA fellow of infinite mirth, he hath caried mee twenty times vpon his backe, here hung those lippes that I haue Kissed a hundred times, and to see, now they abhorre me: Wheres your iests now Yoricke? your flashes of meriment: now go to my Ladies chamber, and bid her paint her selfe an inch thicke, to this she must come Yoricke. Horatio, I prethee tell me one thing, doost thou thinke that, Alexander looked thus?"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02899",
@@ -15797,6 +17757,10 @@
       "offset": 413
      },
      "text": "Why do not you know him? this was one Yorickes scull.\nWas this? I prethee let me see it, alas poore Yoricke I knew him Horatio,\nA fellow of infinite mirth, he hath caried mee twenty times vpon his backe, here hung those lippes that I haue Kissed a hundred times, and to see, now they abhorre me: Wheres your iests now Yoricke? your flashes of meriment: now go to my Ladies chamber, and bid her paint her selfe an inch thicke, to this she must come Yoricke. Horatio, I prethee tell me one thing, doost thou thinke that, Alexander looked thus?"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -15845,6 +17809,10 @@
      "text": "No, why might not imagination worke, as thus of Alexander, Alexander died, Alexander was buried, Alexander became earth, of earth we make clay, and Alexander being but clay, why might not time bring to passe, that he might stoppe the boung hole of a beere barrell?"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02907",
@@ -15880,6 +17848,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -15929,6 +17901,10 @@
      "text": "Enter King and Queene, Leartes, and other lordes, with a Priest after the coffin."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -15956,6 +17932,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -15994,6 +17974,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -16043,6 +18027,10 @@
      "text": "Leartes leapes into the graue."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02951",
@@ -16087,6 +18075,10 @@
       "offset": 39
      },
      "text": "For there is something in me dangerous,"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -16135,6 +18127,10 @@
      "text": "Wilt drinke vp vessels, eate a crocadile? Ile doot:\nCom'st thou here to whine?"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-02981",
@@ -16179,6 +18175,10 @@
       "offset": 48
      },
      "text": "Forbeare Leartes, now is hee mad, as is the sea,"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -16227,6 +18227,10 @@
      "text": "For presently we meane to send to him,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03005",
@@ -16273,6 +18277,10 @@
      "text": "beleeue mee, it greeues mee much Horatio,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03013",
@@ -16308,6 +18316,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -16349,6 +18361,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03064",
@@ -16384,6 +18400,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -16433,6 +18453,10 @@
      "text": "beleeue mee, it greeues mee much Horatio,\nThat to Leartes I forgot my selfe:\nFor by my selfe me thinkes I feele his griefe,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03081",
@@ -16479,6 +18503,10 @@
      "text": "Enter a Bragart Gentleman."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03095",
@@ -16517,6 +18545,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03097",
@@ -16552,6 +18584,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -16601,6 +18637,10 @@
      "text": "It is indeede very rawish colde.\nT'is hot me thinkes."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03106",
@@ -16645,6 +18685,10 @@
       "offset": 20
      },
      "text": "It is indeede very rawish colde.\nT'is hot me thinkes."
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -16693,6 +18737,10 @@
      "text": "Six Barbary horse, against six french rapiers,\nWith all their acoutrements too, a the carriages:\nIn good faith they are very curiously wrought."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03113",
@@ -16731,6 +18779,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03115",
@@ -16766,6 +18818,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -16815,6 +18871,10 @@
      "text": "And howe's the wager? I vnderstand you now."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03116",
@@ -16861,6 +18921,10 @@
      "text": "Goe tell his maiestie, I wil attend him.\nI shall deliuer your most sweet answer.\nexit.\nYou may sir, none better, for y'are spiced,"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03121",
@@ -16896,6 +18960,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -16945,6 +19013,10 @@
      "text": "Else he had a bad nose could not smell a foole."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03126",
@@ -16991,6 +19063,10 @@
      "text": "Else he had a bad nose could not smell a foole."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03126",
@@ -17026,6 +19102,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -17067,6 +19147,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03128",
@@ -17102,6 +19186,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -17151,6 +19239,10 @@
      "text": "Why then it is not to come, theres a predestiuate prouidence in the fall of a sparrow: heere comes the King."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03132",
@@ -17186,6 +19278,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -17235,6 +19331,10 @@
      "text": "Why then it is not to come, theres a predestiuate prouidence in the fall of a sparrow: heere comes the King."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03132",
@@ -17279,6 +19379,10 @@
       "offset": 36
      },
      "text": "Enter King, Queene, Leartes, Lordes."
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -17327,6 +19431,10 @@
      "text": "Enter King, Queene, Leartes, Lordes."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03133",
@@ -17362,6 +19470,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -17411,6 +19523,10 @@
      "text": "Till by some elder maisters of our time"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03160",
@@ -17455,6 +19571,10 @@
       "offset": 39
      },
      "text": "Till by some elder maisters of our time"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -17503,6 +19623,10 @@
      "text": "Giue them the foyles."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03165",
@@ -17541,6 +19665,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -17568,6 +19696,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -17617,6 +19749,10 @@
      "text": "Heere they play:"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03201",
@@ -17652,6 +19788,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -17701,6 +19841,10 @@
      "text": "I! say you so? haue at you,\nIle hit you now my Lord:"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03232",
@@ -17736,6 +19880,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -17785,6 +19933,10 @@
      "text": "They catch one anothers Rapiers, and both are wounded, Leartes falles downe, the Queene falles downe and dies."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03237",
@@ -17829,6 +19981,10 @@
       "offset": 53
      },
      "text": "Hamlet, thou hast not in thee halfe an houre of life,"
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -17877,6 +20033,10 @@
      "text": "The fatall Instrument is in thy hand."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03257",
@@ -17912,6 +20072,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -17961,6 +20125,10 @@
      "text": "Then venome to thy venome, die damn'd villaine:"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03267",
@@ -18005,6 +20173,10 @@
       "offset": 38
      },
      "text": "Come drinke, here lies thy vnion here."
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -18053,6 +20225,10 @@
      "text": "The king dies."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03271",
@@ -18099,6 +20275,10 @@
      "text": "Leartes dies."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03277",
@@ -18134,6 +20314,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -18175,6 +20359,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -18211,6 +20399,10 @@
       "offset": 10
      },
      "text": "Ham. dies."
+    },
+    {
+     "versionId": "q2-1604",
+     "text": ""
     },
     {
      "versionId": "f1-1623",
@@ -18259,6 +20451,10 @@
      "text": "Enter Uoltemar and the Ambassadors from England. enter Fortenbrasse with his traine."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03315",
@@ -18305,6 +20501,10 @@
      "text": "And let the State of the world be there:"
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03336",
@@ -18340,6 +20540,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -18381,6 +20585,10 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "start": {
       "nodeId": "ham-f1-03351",
@@ -18416,6 +20624,10 @@
     },
     {
      "versionId": "q1-1603",
+     "text": ""
+    },
+    {
+     "versionId": "q2-1604",
      "text": ""
     },
     {
@@ -18465,6 +20677,18 @@
      "text": "Chiefe head and ground of this our watch."
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00123",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00140",
+      "offset": 35
+     },
+     "text": "I thinke it be no other, but enso;\nWell may it sort that this portentous figure\nComes armed through our watch so like the King\nThat was and is the question of these warres.\nA moth it is to trouble the mindes eye:\nIn the most high and palmy state of Rome,\nA little ere the mightiest Iulius fell\nThe graues stood tennatlesse, and the sheeted dead\nDid squeake and gibber in the Roman streets\nAs starres with traines of fier, and dewes of blood\nDisasters in the sunne; and the moist starre,\nVpon whose influence Neptunes Empier stands,\nWas sicke almost to doomesday with eclipse.\nAnd euen the like precurse of feare euents\nAs harbindgers preceading still the fates\nAnd prologue to the Omen comming on\nHaue heauen and earth together demonstrated\nVnto our Climatures and countrymen."
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -18503,6 +20727,18 @@
      "text": "He hath, my lord, wrung from me aforced graunt,\nAnd I beseech you grant your Highnesse leaue."
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00255",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00257",
+      "offset": 38
+     },
+     "text": "Hath my Lord wroung from me my slowe leaue\nBy laboursome petition, and at last\nVpon his will I seald my hard consent,"
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -18531,6 +20767,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00640",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00661",
+      "offset": 20
+     },
+     "text": "This heauy headed reueale east and west\nMakes vs tradust, and taxed of other nations,\nThey clip vs drunkards, and with Swinish phrase\nSoyle our addition, and indeede it takes\nFrom our atchieuements, though perform'd at height\nThe pith and marrow of our attribute,\nSo oft it chaunces in particuler men,\nThat for some vicious mole of nature in them\nAs in their birth wherein they are not guilty,\n(Since nature cannot choose his origin)\nBy their ore‐grow'th of some complextion\nOft breaking downe the pales and •orts of reason,\nOr by some habit, that too much ore‐leauens\nThe forme of plausiue manners, that these men\nCarrying I say the stamp of one defect\nBeing Natures liuery, or Fortunes starre,\nHis vertues els be they as pure as grace,\nAs infinite as man may vndergoe,\nShall in the generall censure take corruption\nFrom that particuler fault: the dram of •al•\nDoth all the noble substance of a doubt\nTo his owne scandle."
     },
     {
      "versionId": "f1-1623",
@@ -18571,6 +20819,18 @@
      "text": "Still am I called, go on, ile follow thee.\nMy Lord, you shall not go.\nWhy what should be the feare?\nI do not set my life at a pinnes fee,\nAnd for my soule, what can it do to that?"
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-00704",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-00707",
+      "offset": 27
+     },
+     "text": "The very place puts toyes of desperation\nWithout more motiue, into euery braine\nThat lookes so many fadoms to the sea\nAnd heares it rore beneath."
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -18607,6 +20867,18 @@
       "offset": 42
      },
      "text": "That you will labour but to wring from him"
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-01085",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-01085",
+      "offset": 47
+     },
+     "text": "Whether ought to vs vnknowne afflicts him thus,"
     },
     {
      "versionId": "f1-1623",
@@ -18647,6 +20919,18 @@
      "text": "But called it an honest methode, as wholesome as sweete.\nCome, a speech in it I chiefly remember\nWas Aeneas tale to Dido,\nAnd then especially where he talkes of Princes slaughter,\nIf it liue in thy memory beginne at this line,\nLet me see."
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-01432",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-01437",
+      "offset": 63
+     },
+     "text": "were no sallets in the lines, to make the matter sauory, nor no\nmatter in the phrase that might indite the author of affection,\nbut cald it an honest method, as wholesome as sweete, & by very\nmuch, more handsome then fine: one speech in't I chiefely loued,\nt'was Aeneas talke to Dido, & there about of it especially when he\nspeakes of Priams slaughter, if it liue in your memory begin at"
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -18675,6 +20959,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-01934",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-01934",
+      "offset": 44
+     },
+     "text": "For women feare too much, euen as they loue,"
     },
     {
      "versionId": "f1-1623",
@@ -18707,6 +21003,18 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-01939",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-01940",
+      "offset": 56
+     },
+     "text": "Where loue is great, the litlest doubts are feare,\nWhere little feares grow great, great loue growes there."
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -18735,6 +21043,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-01987",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-01988",
+      "offset": 41
+     },
+     "text": "To desperation turne my trust and hope,\nAnd Anchors cheere in prison be my scope,"
     },
     {
      "versionId": "f1-1623",
@@ -18775,6 +21095,18 @@
      "text": "And this same haue you left to change with this.\nWhat Diuell thus hath cosoned you at hob-man blinde?"
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-02336",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-02341",
+      "offset": 47
+     },
+     "text": "Would step from this to this, sence sure youe haue\nEls could you not haue motion, but sure that sence\nIs appoplext, for madnesse would not erre\nNor sence to extacie was nere so thral'd\nBut it reseru'd some quantity of choise\nTo serue in such a difference, what deuill wast"
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -18811,6 +21143,18 @@
       "offset": 41
      },
      "text": "A! haue you eyes and can you looke on him"
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-02343",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-02346",
+      "offset": 46
+     },
+     "text": "Eyes without feeling, feeling without sight,\nEares without hands, or eyes, smelling sance all,\nOr but a sickly part of one true sence\nCould not so mope: ô shame where is thy blush?"
     },
     {
      "versionId": "f1-1623",
@@ -18851,6 +21195,18 @@
      "text": "Forbeare the adulterous bed to night,"
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-02434",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-02438",
+      "offset": 39
+     },
+     "text": "That monster custome, who all sence doth eate\nOf habits deuill, is angell yet in this\nThat to the vse of actions faire and good,\nHe likewise giues a frock or Liuery\nThat aptly is put on to refraine night,"
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -18889,6 +21245,18 @@
      "text": "Forbeare the adulterous bed to night,"
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-02440",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-02443",
+      "offset": 45
+     },
+     "text": "To the next abstinence, the next more easie:\nFor vse almost can change the stamp of nature,\nAnd either the deuill, or throwe him out\nWith wonderous potency: once more good night,"
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -18917,6 +21285,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-02453",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-02453",
+      "offset": 24
+     },
+     "text": "One word more good Lady."
     },
     {
      "versionId": "f1-1623",
@@ -18957,6 +21337,18 @@
      "text": "That knowes our thoughts, and lookes into our hearts,\nI will conceale, consent, and doe my best,\nWhat stratagem soe're thou shalt deuise.\nIt is enough, mother good night:"
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-02477",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-02485",
+      "offset": 43
+     },
+     "text": "Ther's letters seald, and my two Schoolefellowes,\nWhom I will trust as I will Adders fang'd,\nThey beare the mandat, they must sweep my way\nAnd marshall me to knauery: let it worke,\nFor tis the sport to haue the enginer\nHoist with his owne petar, an't shall goe hard\nBut I will delue one yard belowe their mines,\nAnd blowe them at the Moone: ô tis most sweete\nWhen in one line two crafts directly meete,"
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -18985,6 +21377,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-02498",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-02498",
+      "offset": 39
+     },
+     "text": "Bestow this place on vs a little while."
     },
     {
      "versionId": "f1-1623",
@@ -19025,6 +21429,18 @@
      "text": "For Hamlets welfare and his happinesse:\nHapply the aire and climate of the Country"
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-02537",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-02540",
+      "offset": 41
+     },
+     "text": "Whose whisper ore the worlds dyameter,\nAs leuell as the Cannon to his blanck,\nTransports his poysned shot, may misse our Name,\nAnd hit the woundlesse ayre, ô come away,"
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -19061,6 +21477,18 @@
       "offset": 13
      },
      "text": "Looke you, a man may fish with that worme\nThat hath eaten of a King,\nAnd a Beggar eate that fish,\nWhich that worme hath caught.\nWhat of this?"
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-02599",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-02601",
+      "offset": 47
+     },
+     "text": "Alas, alas.\nA man may fish with the worme that hath eate of a King, &\neate of the fish that hath fedde of that worme."
     },
     {
      "versionId": "f1-1623",
@@ -19101,6 +21529,10 @@
      "text": "Tell him that Fortenbrasse nephew to old Norway,\nCraues a free passe and conduct ouer his land,\nAccording to the Articles agreed on:\nYou know our Randevous, goe march away."
     },
     {
+     "versionId": "q2-1604",
+     "text": ""
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -19129,6 +21561,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03013",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03013",
+      "offset": 25
+     },
+     "text": "Of him that brought them."
     },
     {
      "versionId": "f1-1623",
@@ -19169,6 +21613,18 @@
      "text": "My will, not all the world.\nNay but Leartes, marke the plot I haue layde,\nI haue heard him often with a greedy wish,"
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03041",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03056",
+      "offset": 47
+     },
+     "text": "My Lord I will be rul'd,\nThe rather if you could deuise it so\nThat I might be the organ.\nIt falls right,\nYou haue beene talkt of since your trauaile much,\nAnd that in Hamlets hearing, for a qualitie\nWherein they say you shine, your summe of parts\nDid not together plucke such enuie from him\nAs did that one, and that in my regard\nOf the vnworthiest siedge.\nWhat part is that my Lord?\nA very ribaud in the cap of youth,\nYet needfull to, for youth no lesse becomes\nThe light and carelesse liuery that it weares\nThen setled age, his sables, and his weedes\nImporting health and grauenes; two months since"
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -19205,6 +21661,18 @@
       "offset": 53
      },
      "text": "Shalbe on Hamlets side, and you shall giue the oddes,"
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03077",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03079",
+      "offset": 42
+     },
+     "text": "If one could match you; the Scrimures of their nation\nHe swore had neither motion, guard, nor eye,\nIf you opposd them; sir this report of his"
     },
     {
      "versionId": "f1-1623",
@@ -19245,6 +21713,18 @@
      "text": "And not the deerest friend that Hamlet lov'de\nWill euer haue Leartes in suspect.\nMy lord, I like it well:\nBut say lord Hamlet should refuse this match."
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03093",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03102",
+      "offset": 51
+     },
+     "text": "There liues within the very flame of loue\nA kind of weeke or snufe that will abate it,\nAnd nothing is at a like goodnes still,\nFor goodnes growing to a plurisie,\nDies in his owne too much, that we would doe\nWe should doe when we would: for this would changes,\nAnd hath abatements and delayes as many,\nAs there are tongues, are hands, are accedents,\nAnd then this should is like a spend thirfts sigh,\nThat hurts by easing; but to the quick of th'vlcer,"
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -19273,6 +21753,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03540",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03564",
+      "offset": 27
+     },
+     "text": "Nay good my Lord for my ease in good • • • • •faith. Sir here is newly\ncom to Court Laertes, belieue me an absolu••te• • • •gentleman, full of most excellent differences, of very soft society, and great showing: indeede\nto speake sellingly of him, hee is the card or kalender of gentry:\nfor you shall find in him the continent of what part a Gentleman\nwould see.\nSir, his definement suffers no perdition in you, though I\nknow to deuide him inuentorially, would dosie th'arithmaticke of\nmemory, and yet but yaw neither in respect of his quick saile, but\nin the veritie of extolment, I take him to be a soule of great article,\n& his infusion of such dearth and rarenesse, as to make true dixion\nof him, his semblable is his mirrour, & who els would trace him, his\nvmbrage, nothing more.\nYour Lordship speakes most infallibly of him.\nThe concernancy sir, why doe we wrap the gentleman in\nour more rawer breath?\nSir.\nIst not possible to vnderstand in another tongue, you will\ntoo't sir really.\nWhat imports the nomination of this gentleman.\nOf Laertes.\nHis purse is empty already, all's golden words are spent.\nOf him sir.\nI know you are not ignorant.\nI would you did sir, yet in faith if you did, it would not\nmuch approoue me, well sir."
     },
     {
      "versionId": "f1-1623",
@@ -19305,6 +21797,18 @@
      "text": ""
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03540",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03564",
+      "offset": 27
+     },
+     "text": "Nay good my Lord for my ease in good • • • • •faith. Sir here is newly\ncom to Court Laertes, belieue me an absolu••te• • • •gentleman, full of most excellent differences, of very soft society, and great showing: indeede\nto speake sellingly of him, hee is the card or kalender of gentry:\nfor you shall find in him the continent of what part a Gentleman\nwould see.\nSir, his definement suffers no perdition in you, though I\nknow to deuide him inuentorially, would dosie th'arithmaticke of\nmemory, and yet but yaw neither in respect of his quick saile, but\nin the veritie of extolment, I take him to be a soule of great article,\n& his infusion of such dearth and rarenesse, as to make true dixion\nof him, his semblable is his mirrour, & who els would trace him, his\nvmbrage, nothing more.\nYour Lordship speakes most infallibly of him.\nThe concernancy sir, why doe we wrap the gentleman in\nour more rawer breath?\nSir.\nIst not possible to vnderstand in another tongue, you will\ntoo't sir really.\nWhat imports the nomination of this gentleman.\nOf Laertes.\nHis purse is empty already, all's golden words are spent.\nOf him sir.\nI know you are not ignorant.\nI would you did sir, yet in faith if you did, it would not\nmuch approoue me, well sir."
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -19333,6 +21837,18 @@
     {
      "versionId": "q1-1603",
      "text": ""
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03566",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03569",
+      "offset": 43
+     },
+     "text": "I dare not confesse that, least I should compare with\nhim in excellence, but to know a man wel, were to knowe himselfe.\nI meane sir for this weapon, but in the imputation laide on\nhim, by them in his meed, hee's vnfellowed."
     },
     {
      "versionId": "f1-1623",
@@ -19373,6 +21889,18 @@
      "text": "The worde had beene more cosin german to the phrase, if he could haue carried the canon by his side,"
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03579",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03579",
+      "offset": 62
+     },
+     "text": "• •I knew•you must be edified by the margent ere you had done."
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -19411,6 +21939,18 @@
      "text": "The worde had beene more cosin german to the phrase, if he could haue carried the canon by his side,"
     },
     {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03579",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03579",
+      "offset": 62
+     },
+     "text": "• •I knew•you must be edified by the margent ere you had done."
+    },
+    {
      "versionId": "f1-1623",
      "text": ""
     }
@@ -19447,6 +21987,18 @@
       "offset": 26
      },
      "text": "He will disclose himselfe without inquirie.\nBeleeue me Horatio, my hart is on the sodaine\nVery sore, all here about."
+    },
+    {
+     "versionId": "q2-1604",
+     "start": {
+      "nodeId": "ham-q2-03609",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ham-q2-03621",
+      "offset": 23
+     },
+     "text": "Enter a Lord.\nMy Lord, his Maiestie commended h••im• • • •to you by young\nOstricke, who brings backe to him that you att•••end• • •him in the hall\nhe sends to know if your pleasure hold to play • • • •with Laertes, or that\nyou will take longer time?\nI am constant to my purposes, they foll••ow• •the King's•••••pleasure,\nif his fitnes speakes, mine is ready: now o•r•whensoeuer••••prouided\nI be so able as now.\nThe King, and Queene, and all are comming downe.\nIn happy time.\nThe Queene desires you to vse some gentle entertainment\nto Laertes, before you fall to play.\nShee well instructs me."
     },
     {
      "versionId": "f1-1623",

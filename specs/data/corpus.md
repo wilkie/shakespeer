@@ -8,18 +8,19 @@ registry. The corpus lives in the repository and is read-only at runtime.
 
 ## Contents of the first release
 
-| Play                   | ID                     | Versions                                                                                                            |
-| ---------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| _Hamlet_               | `hamlet`               | `folger`, `q1-1603` (First Quarto), `q2-1604` (Second Quarto; pending a source, see below), `f1-1623` (First Folio) |
-| _Troilus and Cressida_ | `troilus-and-cressida` | `folger`, `q1-1609` (Quarto), `f1-1623` (First Folio)                                                               |
-| _The Tempest_          | `the-tempest`          | `folger`, `f1-1623` (First Folio; the only early printing)                                                          |
+| Play                   | ID                     | Versions                                                                               |
+| ---------------------- | ---------------------- | -------------------------------------------------------------------------------------- |
+| _Hamlet_               | `hamlet`               | `folger`, `q1-1603` (First Quarto), `q2-1604` (Second Quarto), `f1-1623` (First Folio) |
+| _Troilus and Cressida_ | `troilus-and-cressida` | `folger`, `q1-1609` (Quarto), `f1-1623` (First Folio)                                  |
+| _The Tempest_          | `the-tempest`          | `folger`, `f1-1623` (First Folio; the only early printing)                             |
 
-| Source                                                               | Used for                                   | License                                                                                                                                                                                                       | Verified                                                                                                                                                                    |
-| -------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Folger Shakespeare, TEI XML (one zip per play from folger.edu)       | `folger` versions; variant seeds (CRP-061) | CC BY-NC 3.0 Unported (stated in each file)                                                                                                                                                                   | Yes                                                                                                                                                                         |
-| EEBO-TCP transcriptions (Text Creation Partnership, on GitHub)       | quarto and folio versions                  | CC0 1.0 (stated in each file)                                                                                                                                                                                 | Yes: First Folio (`A11954`), Q1 _Hamlet_ (`A11959`), 1609 _Troilus_ (`A12021`). Q2 _Hamlet_ (STC 22276) is not in EEBO-TCP; another openly licensed transcription is needed |
-| Schmidt, _Shakespeare-Lexicon_, 3rd ed. rev. Sarrazin (1902), 2 vols | sourced definitions                        | Public domain; Internet Archive scans with OCR (`shakespearelexic0001alex_j8y5`, `shakespearelexic0002alex_w8r0`)                                                                                             | OCR needs cleanup (CRP-073)                                                                                                                                                 |
-| Onions, _A Shakespeare Glossary_, 2nd ed. (1919)                     | sourced definitions                        | Public domain in the US (published 1919; Onions died 1965, so in copyright in the UK and EU until 2036); Internet Archive scans with OCR (`shakespeareglos00onio`), chosen over the 1911 scan for cleaner OCR | OCR needs cleanup (CRP-073)                                                                                                                                                 |
+| Source                                                                                                  | Used for                                   | License                                                                                                                                                                                                       | Verified                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Folger Shakespeare, TEI XML (one zip per play from folger.edu)                                          | `folger` versions; variant seeds (CRP-061) | CC BY-NC 3.0 Unported (stated in each file)                                                                                                                                                                   | Yes                                                                                                                        |
+| EEBO-TCP transcriptions (Text Creation Partnership, on GitHub)                                          | quarto and folio versions                  | CC0 1.0 (stated in each file)                                                                                                                                                                                 | Yes: First Folio (`A11954`), Q1 _Hamlet_ (`A11959`), 1609 _Troilus_ (`A12021`). Q2 _Hamlet_ (STC 22276) is not in EEBO-TCP |
+| Shakespeare Quartos Archive, TEI XML (Oxford Digital Library with the Folger Shakespeare Library, 2009) | Q2 _Hamlet_                                | CC BY-NC 3.0 United States ("Available for non-commercial use", stated in the file)                                                                                                                           | Yes: the Folger copy (Folger STC 22276). quartos.org no longer serves downloads, so the file is committed (CRP-002)        |
+| Schmidt, _Shakespeare-Lexicon_, 3rd ed. rev. Sarrazin (1902), 2 vols                                    | sourced definitions                        | Public domain; Internet Archive scans with OCR (`shakespearelexic0001alex_j8y5`, `shakespearelexic0002alex_w8r0`)                                                                                             | OCR needs cleanup (CRP-073)                                                                                                |
+| Onions, _A Shakespeare Glossary_, 2nd ed. (1919)                                                        | sourced definitions                        | Public domain in the US (published 1919; Onions died 1965, so in copyright in the UK and EU until 2036); Internet Archive scans with OCR (`shakespeareglos00onio`), chosen over the 1911 scan for cleaner OCR | OCR needs cleanup (CRP-073)                                                                                                |
 
 What the Folger TEI provides (checked on _Hamlet_ and _The Tempest_): every line is a
 `milestone` with a permanent ID (`ftln-0001`, the Folger Through Line Number), its act.scene.line
@@ -51,6 +52,11 @@ the Second Quarto (29).
     cache (`packages/corpus/.cache/`), verifies their hashes, and regenerates all output;
   - an ingest run needs only the network and the committed files; it MUST NOT depend on
     anything that was done by hand outside the repository.
+
+  The one exception is a source with no working download (the Quartos Archive's Q2 _Hamlet_),
+  which is committed unchanged under `packages/corpus/sources/` and pinned by path and SHA-256,
+  as its license allows.
+
 - **CRP-006** — Ingestion MUST NOT call a language model or any other non-deterministic service.
   Any machine-assisted work (such as LLM-proposed OCR corrections, CRP-073) happens in a
   separate, optional step whose accepted results are committed as curation files (CRP-004);
@@ -107,7 +113,9 @@ the Second Quarto (29).
 - **CRP-030** — Original versions MUST preserve the printed spelling, punctuation, capitalization,
   u/v and i/j usage, abbreviations and tildes. Long s is shown as "s". Line-end hyphenation within a
   word is joined. Where a transcription does not record prose line breaks (EEBO-TCP does not), each
-  prose paragraph is one `line` text node with `form: "prose"`. Running heads, catchwords and
+  prose paragraph is one `line` text node with `form: "prose"`; where it does (the Quartos
+  Archive), each printed prose line is one, with a word broken across lines kept whole on the
+  first. Running heads, catchwords and
   signatures are omitted from the text; page breaks are kept as `pageBreaks` (`{ nodeId, offset,
 label }`, e.g. `"sig. G4v"`) for citation.
 - **CRP-031** — Where an original lacks act or scene divisions, ingestion MUST supply
@@ -115,10 +123,13 @@ label }`, e.g. `"sig. G4v"`) for citation.
   `editorial: true`. Printed divisions are flagged `editorial: false`.
   A version whose scenes come in another order (Q1 _Hamlet_) is divided by matching its text to
   the modern scenes; where it returns to a scene, the later part's ID takes a letter (`2.2b`).
-  Reviewed scene starts can replace the automatic ones (CRP-004).
+  Reviewed scene starts can replace the automatic ones (CRP-004). Divisions a transcription
+  supplies itself (the Quartos Archive's) are used as editorial divisions.
 - **CRP-032** — Illegible or missing characters in a transcription (including EEBO-TCP's "▪"
   for unreadable punctuation) are represented by "•" in `text` with a `gap` mark, so they remain
-  countable and visible. Superscript letters in abbreviations keep their letters with a `sup`
+  countable and visible; a missing word whose length is unknown is one "•". Where a copy's
+  damaged text was supplied by a later hand (the Quartos Archive records this), the supplied
+  text is kept; a later reader's corrections and page numbers are not. Superscript letters in abbreviations keep their letters with a `sup`
   mark; combining abbreviation strokes are kept as combining characters.
 - **CRP-033** — Speeches in original versions keep the printed speaker abbreviation as `label`
   and are linked to the modern version's characters through `characters[].modernId`.

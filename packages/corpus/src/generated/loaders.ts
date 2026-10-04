@@ -5,6 +5,7 @@ type Loader = () => Promise<{ default: unknown }>;
 export const versionLoaders: Readonly<Partial<Record<string, Loader>>> = {
   'hamlet/folger': () => import('../../plays/hamlet/folger.json', { with: { type: 'json' } }),
   'hamlet/q1-1603': () => import('../../plays/hamlet/q1-1603.json', { with: { type: 'json' } }),
+  'hamlet/q2-1604': () => import('../../plays/hamlet/q2-1604.json', { with: { type: 'json' } }),
   'hamlet/f1-1623': () => import('../../plays/hamlet/f1-1623.json', { with: { type: 'json' } }),
   'the-tempest/folger': () =>
     import('../../plays/the-tempest/folger.json', { with: { type: 'json' } }),
@@ -21,6 +22,8 @@ export const versionLoaders: Readonly<Partial<Record<string, Loader>>> = {
 export const alignmentLoaders: Readonly<Partial<Record<string, Loader>>> = {
   'hamlet/q1-1603': () =>
     import('../../plays/hamlet/alignment/q1-1603.json', { with: { type: 'json' } }),
+  'hamlet/q2-1604': () =>
+    import('../../plays/hamlet/alignment/q2-1604.json', { with: { type: 'json' } }),
   'hamlet/f1-1623': () =>
     import('../../plays/hamlet/alignment/f1-1623.json', { with: { type: 'json' } }),
   'the-tempest/f1-1623': () =>

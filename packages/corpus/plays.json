@@ -32,6 +32,16 @@
           ]
         },
         {
+          "id": "q2-1604",
+          "name": "Second Quarto (1604)",
+          "shortName": "Q2",
+          "kind": "original",
+          "printed": 1604,
+          "sourceIds": [
+            "quartos-archive"
+          ]
+        },
+        {
           "id": "f1-1623",
           "name": "First Folio (1623)",
           "shortName": "F1",

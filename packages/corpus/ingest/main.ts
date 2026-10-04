@@ -21,9 +21,11 @@ import {
   VariantsFileSchema,
   SourcesFileSchema,
   VersionDocumentSchema,
+  type Act,
   type AlignmentEntry,
   type AlignmentFile,
   type Character,
+  type PageBreak,
   type PlayIndex,
   type TextNode,
   type VersionDocument,
@@ -39,6 +41,7 @@ import { parseEntries, type Entry } from './glossaries/schmidt.ts';
 import { fetchLocked, type LockFile } from './lib/fetch.ts';
 import { IdMap } from './lib/ids.ts';
 import { computeRevision, textNodes } from './lib/revision.ts';
+import { convertSqaPlay } from './sqa.ts';
 import { convertTcpPlay } from './tcp.ts';
 import { seedVariants, type OriginalVersion } from './variants.ts';
 
@@ -53,7 +56,11 @@ const { values: args } = parseArgs({
 });
 
 const lock = JSON.parse(await readFile(LOCK_PATH, 'utf8')) as LockFile;
-const fetchOptions = { cacheDir: join(ROOT, '.cache'), updateLock: args['update-lock'] };
+const fetchOptions = {
+  cacheDir: join(ROOT, '.cache'),
+  rootDir: ROOT,
+  updateLock: args['update-lock'],
+};
 const decoded = new Map<string, string>();
 
 async function source(lockKey: string): Promise<string> {
@@ -247,7 +254,17 @@ async function ingestPlay(play: PlayConfig): Promise<Map<string, VersionDocument
       const path = join(import.meta.dirname, 'ids', `${playId}-${version.id}.json`);
       const ids = await IdMap.load(path, version.source.idPrefix);
       idMaps.push({ path, ids });
-      const { divisions, pageBreaks } = convertTcpPlay(xml, { title: version.source.title, ids });
+      let converted: { divisions: Act[]; pageBreaks: PageBreak[] };
+      if (version.source.kind === 'sqa') {
+        const sqa = convertSqaPlay(xml, { ids });
+        if (sqa.misprintedSignatures.length > 0) {
+          console.warn(`  misprinted signatures: ${sqa.misprintedSignatures.join(', ')}`);
+        }
+        converted = sqa;
+      } else {
+        converted = convertTcpPlay(xml, { title: version.source.title, ids });
+      }
+      const { divisions, pageBreaks } = converted;
       doc = {
         schemaVersion: 1,
         playId,

@@ -8,7 +8,13 @@ import { join } from 'node:path';
 import { unzipSync } from 'fflate';
 
 export interface LockedFile {
-  url: string;
+  /** Where to download the file. */
+  url?: string;
+  /**
+   * A source committed to the repository because it cannot be downloaded (CRP-002), relative to
+   * the corpus package.
+   */
+  path?: string;
   /** SHA-256 of the downloaded file. Empty until first pinned with `--update-lock`. */
   sha256: string;
   /** For zip archives: the member to extract. */
@@ -21,6 +27,8 @@ export interface LockFile {
 
 export interface FetchOptions {
   cacheDir: string;
+  /** The directory `path` entries are relative to. */
+  rootDir: string;
   /** Record hashes for files that have none yet, instead of failing. */
   updateLock: boolean;
 }
@@ -41,18 +49,25 @@ async function download(url: string): Promise<Uint8Array> {
 export async function fetchLocked(
   key: string,
   file: LockedFile,
-  { cacheDir, updateLock }: FetchOptions,
+  { cacheDir, rootDir, updateLock }: FetchOptions,
 ): Promise<Uint8Array> {
   await mkdir(cacheDir, { recursive: true });
   const cachePath = join(cacheDir, `${key}${file.member ? '.zip' : ''}`);
 
   let data: Uint8Array;
-  try {
-    data = new Uint8Array(await readFile(cachePath));
-  } catch {
-    console.warn(`  downloading ${key} from ${file.url}`);
-    data = await download(file.url);
-    await writeFile(cachePath, data);
+  if (file.path) {
+    data = new Uint8Array(await readFile(join(rootDir, file.path)));
+  } else if (file.url) {
+    const url = file.url;
+    try {
+      data = new Uint8Array(await readFile(cachePath));
+    } catch {
+      console.warn(`  downloading ${key} from ${url}`);
+      data = await download(url);
+      await writeFile(cachePath, data);
+    }
+  } else {
+    throw new Error(`${key} has neither a url nor a path`);
   }
 
   const hash = sha256(data);

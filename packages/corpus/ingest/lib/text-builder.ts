@@ -13,6 +13,11 @@ export class TextBuilder {
     return this.#text.length;
   }
 
+  /** The text so far, untrimmed. */
+  get text(): string {
+    return this.#text;
+  }
+
   get isEmpty(): boolean {
     return this.#text.trim() === '';
   }

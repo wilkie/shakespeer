@@ -33,6 +33,21 @@ export const SOURCES: Source[] = [
       'Transcription by the Text Creation Partnership (EEBO-TCP Phase I), dedicated to the public domain under CC0 1.0.',
   },
   {
+    id: 'quartos-archive',
+    name: 'Shakespeare Quartos Archive',
+    shortName: 'Quartos Archive',
+    description:
+      'Page-by-page TEI transcriptions of individual copies of the early quartos. Used here for the Folger Shakespeare Library copy of the 1604 Second Quarto of Hamlet (STC 22276), transcribed by the Oxford Digital Library, Bodleian Library, with the Folger Shakespeare Library.',
+    url: 'https://www.quartos.org/',
+    license: {
+      name: 'CC BY-NC 3.0 United States',
+      url: 'https://creativecommons.org/licenses/by-nc/3.0/us/',
+      commercialUse: false,
+    },
+    attribution:
+      'The tragedy of Hamlet Prince of Denmarke: an electronic edition (Shakespeare Quartos Archive, 2009), created by the Oxford Digital Library, Bodleian Library, University of Oxford, from the Folger Shakespeare Library copy (Folger STC 22276), with funding from the National Endowment for the Humanities and the Joint Information Systems Committee. Available for non-commercial use under a Creative Commons Attribution-NonCommercial 3.0 license.',
+  },
+  {
     id: 'schmidt-1902',
     name: 'Schmidt, Shakespeare-Lexicon (3rd edition, 1902)',
     shortName: 'Schmidt',
@@ -109,7 +124,16 @@ export interface TcpSource {
   order?: 'free';
 }
 
-export type VersionConfig = PlayInfo['versions'][number] & { source: FolgerSource | TcpSource };
+/** A Shakespeare Quartos Archive transcription. */
+export interface SqaSource {
+  kind: 'sqa';
+  lockKey: string;
+  idPrefix: string;
+}
+
+export type VersionConfig = PlayInfo['versions'][number] & {
+  source: FolgerSource | TcpSource | SqaSource;
+};
 
 export interface PlayConfig {
   info: Omit<PlayInfo, 'versions'>;
@@ -169,6 +193,15 @@ export const PLAYS: PlayConfig[] = [
         idPrefix: 'ham-q1',
         order: 'free',
       }),
+      {
+        id: 'q2-1604',
+        name: 'Second Quarto (1604)',
+        shortName: 'Q2',
+        kind: 'original',
+        printed: 1604,
+        sourceIds: ['quartos-archive'],
+        source: { kind: 'sqa', lockKey: 'sqa-hamlet-q2', idPrefix: 'ham-q2' },
+      },
       firstFolio(/HAMLET/, 'ham-f1'),
     ],
   },
