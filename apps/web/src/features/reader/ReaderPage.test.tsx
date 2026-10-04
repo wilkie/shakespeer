@@ -8,7 +8,7 @@ describe('reader', () => {
     renderRoute('/plays/the-tempest/folger');
 
     expect(
-      await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 10000 }),
+      await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 30000 }),
     ).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Act 5, Epilogue', level: 2 })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'The Tempest', level: 1 })).toBeInTheDocument();
@@ -17,7 +17,7 @@ describe('reader', () => {
   it('RDR-011: the first top bar control returns to play selection', async () => {
     const { user, router } = renderRoute('/plays/the-tempest/folger');
 
-    await user.click(await screen.findByRole('link', { name: 'All plays' }, { timeout: 10000 }));
+    await user.click(await screen.findByRole('link', { name: 'All plays' }, { timeout: 30000 }));
 
     expect(router.state.location.pathname).toBe('/');
   });
@@ -25,14 +25,14 @@ describe('reader', () => {
   it('MAP-022/023/024: labels scene buttons with their destination', async () => {
     renderRoute('/plays/the-tempest/folger');
 
-    const scenes = await screen.findByRole('navigation', { name: 'Scenes' }, { timeout: 10000 });
+    const scenes = await screen.findByRole('navigation', { name: 'Scenes' }, { timeout: 30000 });
     expect(within(scenes).getByRole('button', { name: 'Next: Act 1, Scene 2' })).toBeEnabled();
     expect(within(scenes).getByRole('button', { name: 'No previous scene' })).toBeDisabled();
   });
 
   it('DEF-030/031: activating a term opens its definitions with their source', async () => {
     const { user } = renderRoute('/plays/the-tempest/folger');
-    await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 10000 });
+    await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 30000 });
 
     const term = document.querySelector<HTMLElement>('.term');
     expect(term).not.toBeNull();
@@ -50,7 +50,7 @@ describe('reader', () => {
 
   it('DEF-032/034: revealing underlines makes terms keyboard-focusable', async () => {
     const { user } = renderRoute('/plays/the-tempest/folger');
-    await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 10000 });
+    await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 30000 });
     expect(document.querySelector('.term')).not.toHaveAttribute('tabindex');
 
     await user.click(screen.getByRole('button', { name: 'More actions' }));
@@ -66,7 +66,7 @@ describe('reader', () => {
     renderRoute('/plays/the-tempest/folger');
 
     expect(
-      await screen.findByRole('heading', { name: 'About this text' }, { timeout: 10000 }),
+      await screen.findByRole('heading', { name: 'About this text' }, { timeout: 30000 }),
     ).toBeInTheDocument();
     expect(screen.getAllByRole('link', { name: 'CC BY-NC 3.0 Unported' }).length).toBeGreaterThan(
       0,

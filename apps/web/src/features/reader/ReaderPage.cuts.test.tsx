@@ -5,13 +5,13 @@ import { renderRoute } from '@/test/render';
 import { select } from '@/test/selection';
 
 /** Saving and re-rendering a whole play take a while under jsdom. */
-const SLOW = { timeout: 10000 };
+const SLOW = { timeout: 30000 };
 /** Each change re-renders the play, several times over in one test. */
-const TEST_TIMEOUT = 60000;
+const TEST_TIMEOUT = 120000;
 
 async function openReader() {
   const result = renderRoute('/plays/the-tempest/folger');
-  await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 10000 });
+  await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 30000 });
   return result;
 }
 

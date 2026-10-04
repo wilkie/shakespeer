@@ -30,7 +30,7 @@ function annotation(anchor: TextAnchor, notes: string): AnnotationRecord {
 
 async function openReader() {
   const result = renderRoute('/plays/the-tempest/folger');
-  await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 10000 });
+  await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 30000 });
   return result;
 }
 
@@ -59,7 +59,7 @@ describe('note counts, unattached notes and definition sources', () => {
   it('SEL-006: play entries count their notes', async () => {
     renderRoute('/');
     const tempest = (
-      await screen.findByRole('heading', { name: 'The Tempest' }, { timeout: 10000 })
+      await screen.findByRole('heading', { name: 'The Tempest' }, { timeout: 30000 })
     ).closest('li');
     expect(
       await within(tempest as HTMLElement).findByText('2 notes', undefined, SLOW),

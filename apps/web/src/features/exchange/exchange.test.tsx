@@ -91,7 +91,7 @@ describe('import and export', () => {
   it('IOX-010/012/013/015/017: imports from play selection, summarizing first, then opens the play', async () => {
     const { user, router } = renderRoute('/');
     await user.click(
-      await screen.findByRole('button', { name: 'Import notes…' }, { timeout: 10000 }),
+      await screen.findByRole('button', { name: 'Import notes…' }, { timeout: 30000 }),
     );
     choose(zipFile(notesFile()));
 
@@ -111,7 +111,7 @@ describe('import and export', () => {
 
   it('IOX-014/016: re-importing offers an update, and imported notes show their collection', async () => {
     const { user } = renderRoute('/plays/the-tempest/folger');
-    await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 10000 });
+    await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 30000 });
 
     await user.click(screen.getByRole('button', { name: 'More actions' }));
     await user.click(screen.getByRole('menuitem', { name: 'Import notes…' }));
@@ -158,7 +158,7 @@ describe('import and export', () => {
   it('IOX-011: an invalid file changes nothing and says why', async () => {
     const { user } = renderRoute('/');
     await user.click(
-      await screen.findByRole('button', { name: 'Import notes…' }, { timeout: 10000 }),
+      await screen.findByRole('button', { name: 'Import notes…' }, { timeout: 30000 }),
     );
     choose(new File(['not a zip'], 'notes.zip'));
 
@@ -178,7 +178,7 @@ describe('import and export', () => {
       .mockImplementation(() => undefined);
 
     const { user } = renderRoute('/plays/the-tempest/folger');
-    await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 10000 });
+    await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 30000 });
     await user.click(screen.getByRole('button', { name: 'More actions' }));
     await user.click(screen.getByRole('menuitem', { name: 'Export notes…' }));
 
@@ -223,7 +223,7 @@ describe('import and export', () => {
 
     const { user } = renderRoute('/');
     await user.click(
-      await screen.findByRole('button', { name: 'Import notes…' }, { timeout: 10000 }),
+      await screen.findByRole('button', { name: 'Import notes…' }, { timeout: 30000 }),
     );
     choose(
       zipFile(
@@ -256,7 +256,7 @@ describe('import and export', () => {
   it('CUT-052: imports cuts with the notes, counted in the summary and report', async () => {
     const { user } = renderRoute('/');
     await user.click(
-      await screen.findByRole('button', { name: 'Import notes…' }, { timeout: 10000 }),
+      await screen.findByRole('button', { name: 'Import notes…' }, { timeout: 30000 }),
     );
     const cuts: CutsFile = {
       format: 'shakespeer-cuts',

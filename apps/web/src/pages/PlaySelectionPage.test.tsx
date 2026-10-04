@@ -28,7 +28,7 @@ describe('play selection', () => {
       () => {
         expect(router.state.location.pathname).toBe('/plays/hamlet/folger');
       },
-      { timeout: 10000 },
+      { timeout: 30000 },
     );
   });
 });

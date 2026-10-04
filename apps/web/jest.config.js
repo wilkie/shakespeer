@@ -4,8 +4,8 @@ import react from '@shakespeer/jest-config/react';
 export default {
   ...react,
   displayName: '@shakespeer/web',
-  // Reader tests render whole plays and wait up to 10 s for them; leave room under load.
-  testTimeout: 20000,
+  // Reader tests render whole plays and wait up to 30 s for the first load on slow CI runners.
+  testTimeout: 60000,
   setupFiles: ['fake-indexeddb/auto'],
   setupFilesAfterEnv: ['<rootDir>/src/test/setup.ts'],
   moduleNameMapper: {

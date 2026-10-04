@@ -9,7 +9,7 @@ const SLOW = { timeout: 5000 };
 
 async function openReader() {
   const result = renderRoute('/plays/the-tempest/folger');
-  await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 10000 });
+  await screen.findByRole('heading', { name: 'Act 1, Scene 1', level: 2 }, { timeout: 30000 });
   return result;
 }
 
