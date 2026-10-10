@@ -12,7 +12,7 @@ catalog:
   '@fontsource-variable/roboto': ^5.3.0
   '@mui/icons-material': ^9.4.0
   '@mui/material': ^9.4.0
-  idb: ^8.0.3
+  idb: ^8.0.4
   react: ^19.3.0
   react-dom: ^19.3.0
   react-markdown: ^10.1.0
@@ -22,13 +22,13 @@ catalog:
 
   # Build
   '@xmldom/xmldom': ^0.9.12
-  '@babel/core': ^8.0.6
+  '@babel/core': ^8.0.7
   '@rolldown/plugin-babel': ^0.2.4
-  '@vitejs/plugin-react': ^6.1.1
+  '@vitejs/plugin-react': ^6.1.2
   babel-plugin-react-compiler: ^1.0.0
   turbo: ^2.11.7
   typescript: ~6.0.3
-  vite: ^8.3.2
+  vite: ^8.3.3
 
   # Lint / format
   '@eslint/js': ^10.0.1
@@ -42,7 +42,7 @@ catalog:
   husky: ^9.1.7
   lint-staged: ^17.6.0
   prettier: ^3.9.9
-  typescript-eslint: ^8.71.0
+  typescript-eslint: ^8.71.1
 
   # Test
   '@jest/globals': ^30.5.2
