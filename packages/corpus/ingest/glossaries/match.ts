@@ -27,6 +27,8 @@ export interface GlossCitation {
 
 export interface MatchReport {
   matched: number;
+  /** Of those matched, found by their quotation away from the cited place. */
+  recovered: number;
   /** Not found near the cited line, or the quotation disagrees. */
   unmatched: { citation: GlossCitation; reason: string }[];
 }
@@ -94,6 +96,35 @@ function anchorFor(line: LineNode, word: Word, revision: string): TextAnchor {
     },
     revision,
   };
+}
+
+/**
+ * A citation whose scene or line number is unusable (misread in the scan) is recovered only by
+ * its quotation: enough of its words around a single line, anywhere in the given scenes.
+ */
+function recoverByQuote(
+  item: Omit<Resolved, 'scene' | 'sceneKey'>,
+  scenes: Map<string, SceneLines>,
+  keys: readonly string[],
+): { sceneKey: string; scene: SceneLines; candidate: Candidate } | undefined {
+  if (item.quoteKeys.size < 3) {
+    return undefined;
+  }
+  const needed = Math.max(3, Math.ceil(item.quoteKeys.size * 0.6));
+  const found: { sceneKey: string; scene: SceneLines; candidate: Candidate }[] = [];
+  for (const sceneKey of keys) {
+    const scene = scenes.get(sceneKey);
+    if (!scene) {
+      continue;
+    }
+    for (const candidate of candidatesIn({ ...item, scene, sceneKey }, -Infinity, Infinity)) {
+      if (candidate.overlap >= needed) {
+        found.push({ sceneKey, scene, candidate });
+      }
+    }
+  }
+  const lines = new Set(found.map((f) => `${f.sceneKey}:${String(f.candidate.index)}`));
+  return lines.size === 1 ? found[0] : undefined;
 }
 
 /** Lines on each side of the predicted line that a citation may match. */
@@ -190,10 +221,48 @@ export function matchCitations(
   sourceId: string,
   citations: GlossCitation[],
   prior?: SceneOffsets,
+  options: { recover?: boolean } = {},
 ): { terms: SourcedTerm[]; report: MatchReport; offsets: SceneOffsets } {
   const scenes = sceneLines(doc);
+  const allScenes = [...scenes.keys()];
   const terms = new Map<string, SourcedTerm>();
-  const report: MatchReport = { matched: 0, unmatched: [] };
+  const report: MatchReport = { matched: 0, recovered: 0, unmatched: [] };
+  const recover = options.recover ?? false;
+
+  const accept = (citation: GlossCitation, line: LineNode, word: Word) => {
+    const anchor = anchorFor(line, word, doc.revision);
+    const id = `${sourceId}:${line.id}:${String(word.start)}`;
+    const term = terms.get(id) ?? { id, anchor, headword: citation.headword, definitions: [] };
+    if (!term.definitions.some((d) => d.meaning === citation.definition.meaning)) {
+      term.definitions.push(citation.definition);
+    }
+    terms.set(id, term);
+    report.matched += 1;
+  };
+  /** Tries the scenes in order, each list on its own, stopping at the first unique match. */
+  const recovered = (
+    citation: GlossCitation,
+    headword: string,
+    quoteKeys: Set<string>,
+    ...tries: string[][]
+  ) => {
+    if (!recover) {
+      return false;
+    }
+    for (const keys of tries) {
+      const found = recoverByQuote({ citation, headword, quoteKeys }, scenes, keys);
+      if (found) {
+        accept(
+          citation,
+          found.scene.lines[found.candidate.index] as LineNode,
+          found.candidate.word,
+        );
+        report.recovered += 1;
+        return true;
+      }
+    }
+    return false;
+  };
 
   const resolved: Resolved[] = [];
   for (const citation of citations) {
@@ -211,17 +280,21 @@ export function matchCitations(
       const options = scenesOfAct(scenes, citation.act);
       sceneKey = options.length === 1 ? options[0] : undefined;
     }
-    const scene = sceneKey ? scenes.get(sceneKey) : undefined;
-    if (!scene || !sceneKey) {
-      report.unmatched.push({ citation, reason: 'no such scene' });
-      continue;
-    }
     // Quotation words other than the headword (Schmidt abbreviates it to "b." or "—").
     const quoteKeys = new Set(
       words(citation.quote)
         .map((w) => w.key)
         .filter((key) => key.length > 2 && !isFormOf(key, headword)),
     );
+    const scene = sceneKey ? scenes.get(sceneKey) : undefined;
+    if (!scene || !sceneKey) {
+      // A misread act or scene number: the quotation alone may still place it.
+      const inAct = citation.act !== null ? scenesOfAct(scenes, citation.act) : [];
+      if (!recovered(citation, headword, quoteKeys, inAct, allScenes)) {
+        report.unmatched.push({ citation, reason: 'no such scene' });
+      }
+      continue;
+    }
     resolved.push({ citation, headword, scene, sceneKey, quoteKeys });
   }
 
@@ -242,7 +315,10 @@ export function matchCitations(
       distance: Math.abs(c.folgerLine - predicted),
     }));
     if (candidates.length === 0) {
-      report.unmatched.push({ citation, reason: 'headword not found near cited line' });
+      // A misread line or scene number: the quotation alone may still place it.
+      if (!recovered(citation, item.headword, quoteKeys, [item.sceneKey], allScenes)) {
+        report.unmatched.push({ citation, reason: 'headword not found near cited line' });
+      }
       continue;
     }
 
@@ -254,7 +330,9 @@ export function matchCitations(
       agreeing.sort((a, b) => b.overlap - a.overlap || a.distance - b.distance);
       const [best, second] = agreeing;
       if (!best) {
-        report.unmatched.push({ citation, reason: 'quotation disagrees' });
+        if (!recovered(citation, item.headword, quoteKeys, [item.sceneKey], allScenes)) {
+          report.unmatched.push({ citation, reason: 'quotation disagrees' });
+        }
         continue;
       }
       if (
@@ -282,15 +360,7 @@ export function matchCitations(
       }
     }
 
-    const line = scene.lines[chosen.index] as LineNode;
-    const anchor = anchorFor(line, chosen.word, doc.revision);
-    const id = `${sourceId}:${line.id}:${String(chosen.word.start)}`;
-    const term = terms.get(id) ?? { id, anchor, headword: citation.headword, definitions: [] };
-    if (!term.definitions.some((d) => d.meaning === citation.definition.meaning)) {
-      term.definitions.push(citation.definition);
-    }
-    terms.set(id, term);
-    report.matched += 1;
+    accept(citation, scene.lines[chosen.index] as LineNode, chosen.word);
   }
 
   const ordered = [...terms.values()].sort((a, b) =>
