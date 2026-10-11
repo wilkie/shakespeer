@@ -5,26 +5,27 @@ disagree, one of them is a bug. Behavior changes start as spec changes, reviewed
 
 ## Layout
 
-| Spec                                                     | Prefix | Covers                                                        |
-| -------------------------------------------------------- | ------ | ------------------------------------------------------------- |
-| [glossary.md](glossary.md)                               | —      | Shared vocabulary. Every spec uses these terms exactly.       |
-| **Behavior**                                             |        | What a reader sees and does                                   |
-| [behavior/play-selection.md](behavior/play-selection.md) | SEL    | The entry page: choosing a play                               |
-| [behavior/reader.md](behavior/reader.md)                 | RDR    | The play page: layout, top bar, scrolling, position, versions |
-| [behavior/scene-map.md](behavior/scene-map.md)           | MAP    | The right-hand scene map and previous/next scene buttons      |
-| [behavior/text-selection.md](behavior/text-selection.md) | SELX   | Selecting text and the selection menu                         |
-| [behavior/side-panel.md](behavior/side-panel.md)         | PNL    | The notes panel: viewing, editing, saving, deleting           |
-| [behavior/definitions.md](behavior/definitions.md)       | DEF    | Definitions of words and phrases                              |
-| [behavior/annotations.md](behavior/annotations.md)       | ANN    | Highlights with notes, links and citations                    |
-| [behavior/import-export.md](behavior/import-export.md)   | IOX    | Exporting and importing notes                                 |
-| [behavior/attribution.md](behavior/attribution.md)       | ATR    | Showing sources and licenses                                  |
-| [behavior/cuts.md](behavior/cuts.md)                     | CUT    | Cuts, text edits, added stage directions                      |
-| [behavior/variants.md](behavior/variants.md)             | VAR    | Variant marks and comparing versions                          |
-| **Data**                                                 |        | How the behavior is represented                               |
-| [data/corpus.md](data/corpus.md)                         | CRP    | Plays, versions, text structure, IDs, alignment, sources      |
-| [data/anchors.md](data/anchors.md)                       | ANC    | How notes point at text and survive corpus changes            |
-| [data/storage.md](data/storage.md)                       | STO    | IndexedDB stores, records and the app's data API              |
-| [data/exchange-format.md](data/exchange-format.md)       | XCH    | The export/import file format and import algorithm            |
+| Spec                                                           | Prefix | Covers                                                        |
+| -------------------------------------------------------------- | ------ | ------------------------------------------------------------- |
+| [glossary.md](glossary.md)                                     | —      | Shared vocabulary. Every spec uses these terms exactly.       |
+| **Behavior**                                                   |        | What a reader sees and does                                   |
+| [behavior/play-selection.md](behavior/play-selection.md)       | SEL    | The entry page: choosing a play                               |
+| [behavior/reader.md](behavior/reader.md)                       | RDR    | The play page: layout, top bar, scrolling, position, versions |
+| [behavior/scene-map.md](behavior/scene-map.md)                 | MAP    | The right-hand scene map and previous/next scene buttons      |
+| [behavior/text-selection.md](behavior/text-selection.md)       | SELX   | Selecting text and the selection menu                         |
+| [behavior/side-panel.md](behavior/side-panel.md)               | PNL    | The notes panel: viewing, editing, saving, deleting           |
+| [behavior/definitions.md](behavior/definitions.md)             | DEF    | Definitions of words and phrases                              |
+| [behavior/annotations.md](behavior/annotations.md)             | ANN    | Highlights with notes, links and citations                    |
+| [behavior/import-export.md](behavior/import-export.md)         | IOX    | Exporting and importing notes                                 |
+| [behavior/attribution.md](behavior/attribution.md)             | ATR    | Showing sources and licenses                                  |
+| [behavior/cuts.md](behavior/cuts.md)                           | CUT    | Cuts, text edits, added stage directions                      |
+| [behavior/variants.md](behavior/variants.md)                   | VAR    | Variant marks and comparing versions                          |
+| **Data**                                                       |        | How the behavior is represented                               |
+| [data/corpus.md](data/corpus.md)                               | CRP    | Plays, versions, text structure, IDs, alignment, sources      |
+| [data/anchors.md](data/anchors.md)                             | ANC    | How notes point at text and survive corpus changes            |
+| [data/storage.md](data/storage.md)                             | STO    | IndexedDB stores, records and the app's data API              |
+| [data/exchange-format.md](data/exchange-format.md)             | XCH    | The export/import file format and import algorithm            |
+| [data/generated-definitions.md](data/generated-definitions.md) | GEN    | _Draft:_ definitions written by a language model              |
 
 ## Conventions
 
