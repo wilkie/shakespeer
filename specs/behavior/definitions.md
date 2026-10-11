@@ -24,8 +24,8 @@ period senses, wordplay), so a definition never spreads to other occurrences of 
   a definition source.)
 - **DEF-013** — _Removed._ (Was: a link to Shakespeare's Words; dropped as that work is
   copyrighted.)
-- **DEF-014** — _Planned:_ generated definitions (CRP-074) appear as one more source, always
-  labeled as generated, and can be switched off like any source.
+- **DEF-014** — Generated definitions (CRP-074, [GEN](../data/generated-definitions.md)) appear
+  as one more source, always labeled as generated, and can be switched off like any source.
 - **DEF-011** — Sourced definitions MUST be read-only and MUST NOT be deletable.
 - **DEF-012** — Each source of sourced definitions MUST be individually switchable on or off in
   the reader's overflow menu ("Definition sources"). All are on by default; the setting is

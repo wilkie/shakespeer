@@ -1,6 +1,6 @@
 # Generated definitions
 
-Status: Draft
+Status: Approved
 
 Definitions written by a language model for words a modern reader is likely to stumble on, where
 the public-domain glossaries ([CRP-070](corpus.md)) give none. This details
@@ -64,13 +64,9 @@ meaning, partOfSpeech?, status }` where `status` is `auto`, `reviewed` or `rejec
 - **GEN-032** — "Generated" appears under Definition sources (DEF-012) and can be switched off
   like any source.
 
-## Open questions
+## Decisions
 
-1. **Who runs the generation step?** Proposed: the script of GEN-010, run by the maintainer with
-   an API key. The alternative is for Claude to write the curation files directly in a coding
-   session; the file format (GEN-013) is the same either way.
-2. **On or off by default?** Proposed: on, like the other sources, since they are labelled and
-   reviewed by sample.
-3. **License of the generated text.** Proposed: CC0 1.0, stated in its `sources.json` entry.
-4. **Phrases.** Proposed: single words only at first; multi-word idioms ("the primrose path")
-   later, from a curated list.
+1. The generation step is the script of GEN-010, run by the maintainer with an API key.
+2. Generated definitions are on by default, like the other sources.
+3. The generated text is licensed CC0 1.0, stated in its `sources.json` entry.
+4. Single words only at first; multi-word idioms later, from a curated list.

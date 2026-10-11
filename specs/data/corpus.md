@@ -193,10 +193,10 @@ label }`, e.g. `"sig. G4v"`) for citation.
   reviewed curation files (CRP-004). Matching a citation to the headword in the corpus text
   (CRP-071) is the acceptance test for each cleaned citation. Machine assistance (including an LLM)
   MAY propose OCR corrections, but only corrections that pass that test or human review are kept.
-- **CRP-074** — _Planned:_ generated definitions. Definitions written offline by a language model
-  for words and phrases in context, committed as their own source, labeled "Generated" with the
-  model and date, switchable like any source (DEF-012), and never mixed into another source's
-  entries. Details to be specified after the public-domain glossaries ship.
+- **CRP-074** — Generated definitions: definitions written offline by a language model for
+  words in context, committed as their own source, labelled "Generated" with the model and date,
+  switchable like any source (DEF-012), never mixed into another source's entries. Detailed in
+  [GEN](generated-definitions.md).
 - **CRP-072** — Sourced definitions for original versions MAY be derived from the modern
   version's through alignment where the aligned line contains the same word; otherwise original
   versions have none.
