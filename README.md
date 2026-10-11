@@ -66,6 +66,20 @@ downloads the sources into a git-ignored cache, verifies their hashes, converts 
 and writes the committed JSON. Source files are never committed. Reviewed corrections live in
 `packages/corpus/curation/`. See [specs/data/corpus.md](specs/data/corpus.md).
 
+Generated definitions are written by a separate step that calls the Claude API, run by hand with
+`ANTHROPIC_API_KEY` set:
+
+```sh
+pnpm --filter @shakespeer/corpus generate-definitions --play hamlet --dry-run  # candidates, first request
+pnpm --filter @shakespeer/corpus generate-definitions --play hamlet --words 20 # a trial run
+pnpm --filter @shakespeer/corpus generate-definitions --play hamlet            # the rest
+pnpm --filter @shakespeer/corpus generate-definitions --play hamlet --sample   # the review sample
+```
+
+It writes `packages/corpus/curation/<playId>/generated/folger.json`. Mark each sampled entry
+`reviewed` or `rejected` there, then run ingest: a play's set ships once its sample is reviewed
+with at most 10% rejected. See [specs/data/generated-definitions.md](specs/data/generated-definitions.md).
+
 ## Specifications
 
 Behavior and data are specified in [specs/](specs/README.md).

@@ -8,7 +8,8 @@
  * `sources.json`, `plays.json`, `plays/<playId>/…`, `schema/*.json` and `src/generated/loaders.ts`.
  * Runs are deterministic and never call a language model or other non-deterministic service.
  */
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { parseArgs } from 'node:util';
 
@@ -27,6 +28,7 @@ import {
   type Character,
   type PageBreak,
   type PlayIndex,
+  type Source,
   type TextNode,
   type VersionDocument,
 } from '../src/schema.ts';
@@ -35,6 +37,13 @@ import { GLOSSARIES, PLAYS, SOURCES, type GlossaryConfig, type PlayConfig } from
 import { applyAlignmentCuration, loadCuration, type Curation } from './curation.ts';
 import { supplyEditorialDivisions } from './divisions.ts';
 import { convertFolger, type ConvertedVersion } from './folger.ts';
+import {
+  GENERATED_SOURCE_ID,
+  checkGenerated,
+  generatedFilePath,
+  loadGeneratedFile,
+  type GeneratedFile,
+} from './generated/file.ts';
 import { matchCitations, type GlossCitation, type SceneOffsets } from './glossaries/match.ts';
 import { parseOnions } from './glossaries/onions.ts';
 import { parseEntries, type Entry } from './glossaries/schmidt.ts';
@@ -379,7 +388,11 @@ function loadersModule(index: PlayIndex): string {
     play.versions.flatMap((version) => {
       const sources = GLOSSARIES.filter(
         (g) => g.playAbbreviations[play.id] && version.id === play.modernVersionId,
-      );
+      ).map((g) => g.sourceId);
+      // Generated definitions come last (GEN-031).
+      if (existsSync(generatedOutputPath(play.id, version.id))) {
+        sources.push(GENERATED_SOURCE_ID);
+      }
       if (sources.length === 0) {
         return [];
       }
@@ -387,7 +400,7 @@ function loadersModule(index: PlayIndex): string {
         `  '${play.id}/${version.id}': [`,
         ...sources.map(
           (g) =>
-            `    () =>\n      import('../../plays/${play.id}/definitions/${version.id}/${g.sourceId}.json', {\n        with: { type: 'json' },\n      }),`,
+            `    () =>\n      import('../../plays/${play.id}/definitions/${version.id}/${g}.json', {\n        with: { type: 'json' },\n      }),`,
         ),
         '  ],',
       ];
@@ -536,6 +549,92 @@ for (const glossary of GLOSSARIES) {
   await ingestGlossary(glossary);
 }
 
+function generatedOutputPath(playId: string, versionId: string): string {
+  return join(ROOT, 'plays', playId, 'definitions', versionId, `${GENERATED_SOURCE_ID}.json`);
+}
+
+/** Checks and ships a play's generated definitions (GEN-020 – GEN-022, GEN-030). */
+async function ingestGenerated(playId: string, doc: VersionDocument): Promise<void> {
+  const output = generatedOutputPath(playId, doc.versionId);
+  const file = await loadGeneratedFile(generatedFilePath(ROOT, playId, doc.versionId));
+  if (!file) {
+    await rm(output, { force: true });
+    return;
+  }
+  const { terms, report } = checkGenerated(doc, file);
+  const { auto, reviewed, rejected } = report.counts;
+  console.warn(
+    `  ${playId}: ${String(auto)} auto, ${String(reviewed)} reviewed, ${String(rejected)} rejected; ` +
+      `sample ${String(report.sample.size)} (${String(report.sample.rejected)} rejected)`,
+  );
+  const reasons = new Map<string, number>();
+  for (const { reason } of report.dropped) {
+    reasons.set(reason, (reasons.get(reason) ?? 0) + 1);
+  }
+  if (reasons.size > 0) {
+    console.warn(
+      `  dropped ${[...reasons].map(([reason, n]) => `${String(n)} ${reason}`).join(', ')}`,
+    );
+  }
+  if (report.withheld) {
+    console.warn(`  not shipped: ${report.withheld}`);
+    await rm(output, { force: true });
+    return;
+  }
+  console.warn(`  shipped ${String(terms.length)} terms`);
+  await writeJson(
+    output,
+    SourcedDefinitionsFileSchema.parse({
+      schemaVersion: 1,
+      playId,
+      versionId: doc.versionId,
+      sourceId: GENERATED_SOURCE_ID,
+      terms,
+    }),
+    0,
+  );
+}
+
+console.warn(GENERATED_SOURCE_ID);
+for (const [playId, doc] of modernDocs) {
+  await ingestGenerated(playId, doc);
+}
+
+/**
+ * The source entry for generated definitions, naming the models and dates of the sets that
+ * ship (GEN-030); none if no play ships any.
+ */
+async function generatedSource(): Promise<Source | undefined> {
+  const files: GeneratedFile[] = [];
+  for (const play of PLAYS) {
+    const versionId = play.info.modernVersionId;
+    if (existsSync(generatedOutputPath(play.info.id, versionId))) {
+      const file = await loadGeneratedFile(generatedFilePath(ROOT, play.info.id, versionId));
+      if (file) {
+        files.push(file);
+      }
+    }
+  }
+  if (files.length === 0) {
+    return undefined;
+  }
+  const made = [...new Set(files.map((f) => `${f.model}, ${f.generatedAt}`))].sort().join('; ');
+  return {
+    id: GENERATED_SOURCE_ID,
+    name: 'Generated definitions',
+    shortName: 'Generated',
+    description: `Definitions written by a language model (${made}) for words the glossaries do not define here, from the passage around each one. A sample was checked by hand; the rest were not, so they may be wrong.`,
+    url: 'https://github.com/wilkie/shakespeer/blob/main/specs/data/generated-definitions.md',
+    license: {
+      name: 'CC0 1.0 Universal',
+      url: 'https://creativecommons.org/publicdomain/zero/1.0/',
+      commercialUse: true,
+    },
+    attribution: `Generated with ${made} for Shakespeer. Dedicated to the public domain under CC0 1.0.`,
+  };
+}
+const generated = await generatedSource();
+
 const index: PlayIndex = PlayIndexSchema.parse({
   schemaVersion: 1,
   plays: PLAYS.map((play) => ({
@@ -546,7 +645,10 @@ const index: PlayIndex = PlayIndexSchema.parse({
 await writeJson(join(ROOT, 'plays.json'), index, 2);
 await writeJson(
   join(ROOT, 'sources.json'),
-  SourcesFileSchema.parse({ schemaVersion: 1, sources: SOURCES }),
+  SourcesFileSchema.parse({
+    schemaVersion: 1,
+    sources: generated ? [...SOURCES, generated] : SOURCES,
+  }),
   2,
 );
 await writeFile(join(ROOT, 'src', 'generated', 'loaders.ts'), loadersModule(index));

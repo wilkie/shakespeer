@@ -11,6 +11,9 @@ packages in `packages/`. See README.md for layout and conventions.
 - `pnpm --filter @shakespeer/corpus ingest` — regenerate the corpus from pinned sources
   (`--update-lock` to pin a new source). Never hand-edit generated corpus JSON; fix the
   converter or add a curation file in `packages/corpus/curation/`.
+- `pnpm --filter @shakespeer/corpus generate-definitions --play <playId>` — write generated
+  definitions with the Claude API (needs `ANTHROPIC_API_KEY`; `--dry-run` needs none). Never run
+  by ingest or CI.
 - `pnpm --filter @shakespeer/storage schema` — regenerate the notes-file JSON Schema
   (`packages/storage/schema/notes-file.v1.json`) after changing `src/notes-file.ts`.
 

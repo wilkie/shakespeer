@@ -42,6 +42,10 @@
     "sqa-hamlet-q2": {
       "path": "sources/ham-1604-22276x-fol-c01.xml",
       "sha256": "fa9f61c783ab759d45f966fd9fb366db3c8affd7fc3bed2cc50a3ea832ae16ed"
+    },
+    "scowl-2020.12.07": {
+      "url": "https://downloads.sourceforge.net/project/wordlist/SCOWL/2020.12.07/scowl-2020.12.07.tar.gz",
+      "sha256": "5587667caa20c4891390c2d42dbb4d5c4c3f41bee77af1457ece3ba23fb859cc"
     }
   }
 }

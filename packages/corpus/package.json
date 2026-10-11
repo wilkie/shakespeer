@@ -11,6 +11,7 @@
   },
   "scripts": {
     "ingest": "node ingest/main.ts",
+    "generate-definitions": "node ingest/generate-definitions.ts",
     "lint": "eslint . --cache --max-warnings=0",
     "typecheck": "tsc --noEmit",
     "test": "node --experimental-vm-modules --disable-warning=ExperimentalWarning ./node_modules/jest/bin/jest.js",
@@ -22,6 +23,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "catalog:",
     "@jest/globals": "catalog:",
     "@shakespeer/eslint-config": "workspace:*",
     "@shakespeer/jest-config": "workspace:*",

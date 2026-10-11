@@ -25,6 +25,7 @@ import type {
 export type * from './schema';
 export { createVersionIndex, type IndexedScene, type VersionIndex } from './version-index';
 export { wordKey, wordSpans } from './words';
+export { GENERATED_SOURCE_ID } from './schema';
 
 const playIndex = playIndexData as PlayIndex;
 const sources = (sourcesData as SourcesFile).sources;

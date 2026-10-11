@@ -11,3 +11,4 @@ packages/corpus/plays.json
 packages/corpus/sources.json
 packages/corpus/ingest/ids
 packages/corpus/ingest/sources.lock.json
+packages/corpus/curation/*/generated

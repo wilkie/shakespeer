@@ -258,6 +258,9 @@ export const SourcedTermSchema = z.object({
 });
 export type SourcedTerm = z.infer<typeof SourcedTermSchema>;
 
+/** The source ID of definitions written by a language model (GEN-030). */
+export const GENERATED_SOURCE_ID = 'generated';
+
 export const SourcedDefinitionsFileSchema = z.object({
   schemaVersion: z.literal(1),
   playId: id,

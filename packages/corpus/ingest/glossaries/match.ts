@@ -85,7 +85,11 @@ function isFormOf(word: string, headword: string): boolean {
   return word === headword || (word.startsWith(headword) && word.length - headword.length <= 3);
 }
 
-function anchorFor(line: LineNode, word: Word, revision: string): TextAnchor {
+export function anchorFor(
+  line: Pick<LineNode, 'id' | 'text'>,
+  word: { start: number; end: number },
+  revision: string,
+): TextAnchor {
   return {
     start: { nodeId: line.id, offset: word.start },
     end: { nodeId: line.id, offset: word.end },

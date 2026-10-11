@@ -14,11 +14,15 @@ is ever called by the app or by the ingest run ([CRP-006](corpus.md)).
   per occurrence (DEF-001):
   - words not in a pinned list of common modern English (SCOWL, size 50, pinned in
     `sources.lock.json` like any source), compared by lower-cased form and its obvious
-    inflections; and
-  - occurrences of any headword either glossary defines elsewhere in the play.
+    inflections, with accents and elisions spelled out ("armèd" is "armed", "wat'ry" is
+    "watery"); and
+  - occurrences of any headword Onions defines elsewhere in the play. (Onions lists only words
+    whose sense needs explaining; Schmidt glosses nearly every word, so its headwords would
+    make nearly every word a candidate.)
 - **GEN-002** — Excluded from candidates: occurrences that already have a sourced definition;
-  character names and the play's other proper names (capitalized words not at the start of a
-  line that are not glossary headwords); words in stage directions; numbers.
+  character names and the play's other proper names (words that appear capitalized other than
+  at the start of a line or sentence, never appear in lower case, and are not glossary
+  headwords); words in stage directions; numbers; single letters.
 - **GEN-003** — Generation is for the modern version only. Original versions get none until
   definitions can be carried across alignment (CRP-072).
 
@@ -30,15 +34,18 @@ is ever called by the app or by the ingest run ([CRP-006](corpus.md)).
   its results as a curation file. Re-running it only fills in candidates without an entry, so
   reviewed entries are never overwritten.
 - **GEN-011** — The model is asked about one candidate word at a time, with every occurrence of
-  it in the play and two lines of context on each side. For each occurrence it gives the sense
-  there as a short meaning (at most 25 words) and an optional part of speech, or says that no
-  definition is needed (the modern sense applies). Occurrences in the same sense MAY share a
-  meaning.
+  it in the play (in batches of at most 40 for frequent words) and two lines of context on each
+  side. For each occurrence it gives the sense there as a short meaning (at most 25 words) and
+  an optional part of speech, or says that no definition is needed (the modern sense applies).
+  Occurrences in the same sense MAY share a meaning.
 - **GEN-012** — The request MUST NOT include any glossary's definitions, so generated text is
   never a paraphrase of a source's entries (Onions is in copyright outside the US).
 - **GEN-013** — The curation file is `curation/<playId>/generated/<versionId>.json`:
-  `{ model, generatedAt, promptVersion, entries }`, each entry `{ nodeId, start, end, word,
-meaning, partOfSpeech?, status }` where `status` is `auto`, `reviewed` or `rejected`.
+  `{ model, generatedAt, promptVersion, entries, notNeeded }`, each entry
+  `{ nodeId, start, end, word, meaning, partOfSpeech?, status }` where `status` is `auto`,
+  `reviewed` or `rejected`. `notNeeded` lists the occurrences `{ nodeId, start, end, word }`
+  the model said need no definition, so a re-run does not ask about them again. A file is made
+  with one model and prompt version; the script refuses to add to it with another.
 
 ## Checks and review
 
@@ -47,9 +54,11 @@ meaning, partOfSpeech?, status }` where `status` is `auto`, `reviewed` or `rejec
   the word itself as its only content. Rejected entries are never shipped.
 - **GEN-021** — Before a play's generated definitions ship for the first time, a person MUST
   review a random sample of at least 100 entries (chosen by a fixed seed, so the sample is
-  reproducible), marking each `reviewed` or `rejected`. If more than 10% of the sample is
-  rejected, that play's set does not ship until the prompt or model is changed and a new sample
-  passes.
+  reproducible: entries ranked by a hash of the seed and their position, the first 100 taken,
+  or all entries if fewer), marking each `reviewed` or `rejected`. The script lists the sample
+  (`--sample`). If more than 10% of the sample is rejected, that play's set does not ship until
+  the prompt or model is changed and a new sample passes. Entries added later that enter the
+  sample are reviewed the same way before the set ships again.
 - **GEN-022** — Ingest MUST report, per play, how many entries are `auto`, `reviewed` and
   `rejected`.
 

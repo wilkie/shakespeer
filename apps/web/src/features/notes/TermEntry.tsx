@@ -8,7 +8,12 @@ import MenuItem from '@mui/material/MenuItem';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { getSource, type PartOfSpeech, type TextAnchor } from '@shakespeer/corpus';
+import {
+  GENERATED_SOURCE_ID,
+  getSource,
+  type PartOfSpeech,
+  type TextAnchor,
+} from '@shakespeer/corpus';
 import type { DefinitionRecord } from '@shakespeer/storage';
 import { useState } from 'react';
 
@@ -166,7 +171,8 @@ export interface TermEntryProps {
 }
 
 /**
- * A term and its definitions: own, then imported, then sourced by source (DEF-031). In edit mode
+ * A term and its definitions: own, then imported, then sourced by source, generated last
+ * (DEF-031, GEN-031). In edit mode
  * own and imported definitions are editable, and new ones can be added; sourced definitions never
  * are (DEF-011).
  */
@@ -186,7 +192,10 @@ export function TermEntry({
   const own = definitions.filter((d) => d.origin.kind === 'own');
   const imported = definitions.filter((d) => d.origin.kind === 'imported');
   const pendingDrafts = drafts.filter((draft) => !definitions.some((d) => d.id === draft.id));
-  const sourced = group?.sourced ?? [];
+  const sourced = [...(group?.sourced ?? [])].sort(
+    (a, b) =>
+      Number(a.sourceId === GENERATED_SOURCE_ID) - Number(b.sourceId === GENERATED_SOURCE_ID),
+  );
 
   return (
     <Box component="article" sx={{ py: 1 }}>
@@ -250,8 +259,12 @@ export function TermEntry({
                 onSource(sourceId);
               }}
             >
-              {getSource(sourceId)?.shortName ?? sourceId}
+              {sourceId === GENERATED_SOURCE_ID
+                ? 'Generated'
+                : (getSource(sourceId)?.shortName ?? sourceId)}
             </Link>
+            {/* Written by a language model, so said plainly (GEN-031). */}
+            {sourceId === GENERATED_SOURCE_ID && ' · may be wrong'}
           </Typography>
         </Box>
       ))}
