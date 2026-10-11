@@ -227,7 +227,8 @@ export function matchCitations(
   const allScenes = [...scenes.keys()];
   const terms = new Map<string, SourcedTerm>();
   const report: MatchReport = { matched: 0, recovered: 0, unmatched: [] };
-  const recover = options.recover ?? false;
+  // Recovery by quotation (CRP-071a) is on unless turned off.
+  const recover = options.recover ?? true;
 
   const accept = (citation: GlossCitation, line: LineNode, word: Word) => {
     const anchor = anchorFor(line, word, doc.revision);

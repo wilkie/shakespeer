@@ -95,7 +95,42 @@ describe('matchCitations', () => {
   });
 
   it('reports citations to scenes that do not exist', () => {
-    const { report } = matchCitations(doc, 'schmidt-1902', [citation({ act: 2, scene: 9 })]);
+    const { report } = matchCitations(doc, 'schmidt-1902', [
+      citation({ act: 2, scene: 9, quote: '' }),
+    ]);
+
+    expect(report.unmatched.map((u) => u.reason)).toStrictEqual(['no such scene']);
+  });
+
+  it('CRP-071a: recovers a misread scene number by its quotation alone', () => {
+    // "II. 4" for III. 1.
+    const { terms, report } = matchCitations(doc, 'schmidt-1902', [citation({ act: 2, scene: 4 })]);
+
+    expect(report).toMatchObject({ matched: 1, recovered: 1, unmatched: [] });
+    expect(terms.map((t) => t.id)).toStrictEqual(['schmidt-1902:ftln-0081:12']);
+  });
+
+  it('CRP-071a: recovers nothing without a quotation that singles out one line', () => {
+    const { report } = matchCitations(doc, 'schmidt-1902', [
+      citation({ act: 2, scene: 4, quote: 'a bare b' }),
+      citation({ line: 400, quote: '' }),
+    ]);
+
+    expect(report.recovered).toBe(0);
+    expect(report.unmatched.map((u) => u.reason)).toStrictEqual([
+      'no such scene',
+      'headword not found near cited line',
+    ]);
+  });
+
+  it('CRP-071a: recovery can be turned off', () => {
+    const { report } = matchCitations(
+      doc,
+      'schmidt-1902',
+      [citation({ act: 2, scene: 4 })],
+      undefined,
+      { recover: false },
+    );
 
     expect(report.unmatched.map((u) => u.reason)).toStrictEqual(['no such scene']);
   });

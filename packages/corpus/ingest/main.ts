@@ -510,7 +510,7 @@ async function ingestGlossary(glossary: GlossaryConfig): Promise<void> {
       reasons.set(reason, (reasons.get(reason) ?? 0) + 1);
     }
     console.warn(
-      `  ${playId}: ${String(report.matched)} citations matched to ${String(terms.length)} terms; skipped ${[
+      `  ${playId}: ${String(report.matched)} citations matched to ${String(terms.length)} terms (${String(report.recovered)} recovered by quotation); skipped ${[
         ...reasons,
       ]
         .map(([reason, count]) => `${String(count)} ${reason}`)

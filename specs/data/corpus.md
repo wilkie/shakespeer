@@ -180,6 +180,12 @@ label }`, e.g. `"sig. G4v"`) for citation.
   inflection and spelling) within a small window around the cited line in the modern version, and
   attach the matching sense there. Ambiguous or unmatched citations MUST be skipped and logged,
   never guessed: precision over coverage.
+- **CRP-071a** — A citation whose cited place yields no match (no such act or scene, the
+  headword not found near the cited line, or the quotation disagreeing there) MAY be recovered by
+  its quotation alone, searching the cited scene, then the cited act, then the whole play. A match
+  is accepted only when the quotation has at least three informative words, at least 60% of them
+  occur around the line, and exactly one line in the searched scenes qualifies. Ingestion MUST
+  report recovered citations separately.
 - **CRP-073** — Glossary text MUST be recovered from the scans' OCR by a reproducible pipeline in
   `ingest/`: use an OCR text layer whose reading order keeps the two columns apart (or rebuild it
   from word coordinates in hOCR or DjVu XML); split entries by headword; parse senses and citations
