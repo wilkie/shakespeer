@@ -21,6 +21,11 @@ const CurationSchema = z.object({
   scenes: z
     .array(z.object({ from: z.string(), scene: z.string(), note: z.string().optional() }))
     .optional(),
+  /**
+   * Printed scenes numbered differently from the modern scene they begin, by printed key, e.g.
+   * { "5.4": "5.5" } (CRP-031). They keep their printed headings.
+   */
+  sceneNumbers: z.record(z.string(), z.string()).optional(),
   /** Alignment entries that replace whatever the aligner produced for the same nodes. */
   alignment: z
     .array(

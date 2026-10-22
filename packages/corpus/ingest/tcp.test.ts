@@ -213,3 +213,37 @@ describe('convertTcpPlay on an undivided quarto', () => {
     ]);
   });
 });
+
+describe('convertTcpPlay on a quarto holding a single play', () => {
+  it('CRP-031: reads acts printed directly in the body, the title heading the first', () => {
+    const xml = `<TEI xmlns="http://www.tei-c.org/ns/1.0"><text>
+      <front><div type="title_page"><p>The Tragœdy of Othello</p></div></front>
+      <body>
+        <div n="1" type="act"><head>The Tragedy of Othello the Moore of Venice.</head>
+          <sp><speaker>Rod.</speaker><l>Tush, neuer tell me</l></sp>
+        </div>
+        <div n="2" type="act"><head>Actus 2.</head><head>Scoena 1.</head>
+          <sp><speaker>Mon.</speaker><l>What from the Cape can you discerne at Sea?</l></sp>
+        </div>
+      </body></text></TEI>`;
+    const { divisions } = convertTcpPlay(xml, { title: /Othello/, ids: IdMap.empty('oth-q1') });
+    expect(divisions.map((act) => [act.n, act.scenes.map((s) => s.id)])).toStrictEqual([
+      [1, ['1.1']],
+      [2, ['2.1']],
+    ]);
+  });
+
+  it('CRP-031: takes the only play when it prints no heading, if no title is given', () => {
+    const xml = `<TEI xmlns="http://www.tei-c.org/ns/1.0"><text>
+      <front><div type="title_page"><p>The Tragedie of King Richard the second.</p></div></front>
+      <body><div type="text">
+        <stage>Enter King Richard, Iohn of Gaunt.</stage>
+        <sp><speaker>King.</speaker><l>Old Iohn of Gaunt, time-honoured Lancaster,</l></sp>
+      </div></body></text></TEI>`;
+    const { divisions } = convertTcpPlay(xml, { ids: IdMap.empty('r2-q1') });
+    expect(divisions[0]?.scenes[0]?.blocks).toHaveLength(2);
+    expect(() => convertTcpPlay(xml, { title: /Richard/, ids: IdMap.empty('r2-q1') })).toThrow(
+      /No play matching/,
+    );
+  });
+});

@@ -271,7 +271,10 @@ async function ingestPlay(play: PlayConfig): Promise<Map<string, VersionDocument
         }
         converted = sqa;
       } else {
-        converted = convertTcpPlay(xml, { title: version.source.title, ids });
+        converted = convertTcpPlay(xml, {
+          ...(version.source.title ? { title: version.source.title } : {}),
+          ids,
+        });
       }
       const { divisions, pageBreaks } = converted;
       doc = {
@@ -301,6 +304,7 @@ async function ingestPlay(play: PlayConfig): Promise<Map<string, VersionDocument
           ? { order: version.source.order }
           : {}),
         ...(curation.scenes ? { scenes: curation.scenes } : {}),
+        ...(curation.sceneNumbers ? { sceneNumbers: curation.sceneNumbers } : {}),
       });
       if (added.length > 0) {
         console.warn(`  ${version.id}: ${String(added.length)} editorial scenes (CRP-031)`);

@@ -126,6 +126,90 @@
           ]
         }
       ]
+    },
+    {
+      "id": "richard-ii",
+      "title": "Richard II",
+      "shortTitle": "Richard II",
+      "genre": "history",
+      "composed": {
+        "from": 1595,
+        "to": 1595
+      },
+      "modernVersionId": "folger",
+      "versions": [
+        {
+          "id": "folger",
+          "name": "Folger edition",
+          "shortName": "Folger",
+          "kind": "modern",
+          "sourceIds": [
+            "folger"
+          ]
+        },
+        {
+          "id": "q1-1597",
+          "name": "First Quarto (1597)",
+          "shortName": "Q1",
+          "kind": "original",
+          "printed": 1597,
+          "sourceIds": [
+            "eebo-tcp"
+          ]
+        },
+        {
+          "id": "f1-1623",
+          "name": "First Folio (1623)",
+          "shortName": "F1",
+          "kind": "original",
+          "printed": 1623,
+          "sourceIds": [
+            "eebo-tcp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "othello",
+      "title": "Othello",
+      "shortTitle": "Othello",
+      "genre": "tragedy",
+      "composed": {
+        "from": 1603,
+        "to": 1604
+      },
+      "modernVersionId": "folger",
+      "versions": [
+        {
+          "id": "folger",
+          "name": "Folger edition",
+          "shortName": "Folger",
+          "kind": "modern",
+          "sourceIds": [
+            "folger"
+          ]
+        },
+        {
+          "id": "q1-1622",
+          "name": "First Quarto (1622)",
+          "shortName": "Q1",
+          "kind": "original",
+          "printed": 1622,
+          "sourceIds": [
+            "eebo-tcp"
+          ]
+        },
+        {
+          "id": "f1-1623",
+          "name": "First Folio (1623)",
+          "shortName": "F1",
+          "kind": "original",
+          "printed": 1623,
+          "sourceIds": [
+            "eebo-tcp"
+          ]
+        }
+      ]
     }
   ]
 }

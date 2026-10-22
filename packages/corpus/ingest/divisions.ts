@@ -185,11 +185,16 @@ export interface EditorialReport {
 export function supplyEditorialDivisions(
   orig: VersionDocument,
   modern: VersionDocument,
-  options: { order?: 'modern' | 'free'; scenes?: readonly { from: string; scene: string }[] } = {},
+  options: {
+    order?: 'modern' | 'free';
+    scenes?: readonly { from: string; scene: string }[];
+    sceneNumbers?: Readonly<Record<string, string>>;
+  } = {},
 ): EditorialReport {
   if (options.order === 'free') {
     return supplyReordered(orig, modern, options.scenes);
   }
+  renumber(orig, options.sceneNumbers ?? {});
   const origScenes = placed(orig);
   const modernScenes = placed(modern);
   const firsts = modernCounterparts(origScenes, modernScenes, `${orig.playId} ${orig.versionId}`);
@@ -233,6 +238,30 @@ export function supplyEditorialDivisions(
 
   orig.divisions = regroup(orig, result);
   return { added };
+}
+
+/** Gives printed scenes the modern numbers a reviewed mapping assigns them (CRP-031). */
+function renumber(orig: VersionDocument, numbers: Readonly<Record<string, string>>): void {
+  const unused = new Set(Object.keys(numbers));
+  for (const p of placed(orig)) {
+    const key = sceneKey(p);
+    const target = numbers[key];
+    if (target === undefined) {
+      continue;
+    }
+    unused.delete(key);
+    const [act, n] = target.split('.').map(Number);
+    if (p.scene.kind !== 'scene' || act !== p.actN || !Number.isInteger(n)) {
+      throw new Error(`${orig.playId} ${orig.versionId}: cannot renumber ${key} as ${target}`);
+    }
+    p.scene.n = n as number;
+    p.scene.id = target;
+  }
+  if (unused.size > 0) {
+    throw new Error(
+      `${orig.playId} ${orig.versionId}: no printed scene ${[...unused].join(', ')} to renumber`,
+    );
+  }
 }
 
 // ---------------------------------------------------------------------------------------------

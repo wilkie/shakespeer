@@ -24,8 +24,8 @@ import { TextBuilder } from './lib/text-builder.ts';
 import { attr, childNodes, children, isElement, parseXml, plainText } from './lib/xml.ts';
 
 export interface TcpPlayOptions {
-  /** Matches the play's `<head>`, e.g. /TEMPEST/. */
-  title: RegExp;
+  /** Matches the play's `<head>`, e.g. /TEMPEST/; omitted for a file holding a single play. */
+  title?: RegExp;
   ids: IdMap;
 }
 
@@ -327,14 +327,24 @@ function sceneBlocks(div: Element, context: Context): Block[] {
   return blocks;
 }
 
-function findPlay(root: Element, title: RegExp): Element {
+function findPlay(root: Element, title: RegExp | undefined): Element {
   const body = children(root, 'text')[0]
     ? children(children(root, 'text')[0] as Element, 'body')[0]
     : undefined;
   // A collection's plays are "play" divisions; a single-play quarto is one "text" division.
-  const plays = body
+  const divisions = body
     ? children(body, 'div').filter((div) => ['play', 'text'].includes(attr(div, 'type') ?? ''))
     : [];
+  // A quarto may also hold its acts directly in the body (Othello, 1622).
+  const plays = divisions.length > 0 ? divisions : body ? [body] : [];
+  if (!title) {
+    // A single play, which may print no heading at all (Richard II, 1597).
+    const [only] = plays;
+    if (plays.length !== 1 || !only) {
+      throw new Error(`Expected a single play, found ${String(plays.length)}`);
+    }
+    return only;
+  }
   // The title heads the play, or (Troilus, whose prologue was printed first) its first act.
   const play = plays.find((div) =>
     [...children(div, 'head'), ...children(div, 'div').flatMap((child) => children(child, 'head'))]

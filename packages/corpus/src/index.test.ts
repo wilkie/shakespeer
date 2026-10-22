@@ -13,11 +13,13 @@ import {
 } from './index';
 
 describe('corpus API', () => {
-  it('lists the first-release plays', () => {
+  it('CRP-010: lists the plays', () => {
     expect(listPlays().map((play) => play.id)).toStrictEqual([
       'hamlet',
       'the-tempest',
       'troilus-and-cressida',
+      'richard-ii',
+      'othello',
     ]);
     expect(getPlay('the-tempest')?.title).toBe('The Tempest');
     expect(getVersionInfo('the-tempest', 'f1-1623')?.kind).toBe('original');

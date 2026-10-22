@@ -46,6 +46,24 @@
     "scowl-2020.12.07": {
       "url": "https://downloads.sourceforge.net/project/wordlist/SCOWL/2020.12.07/scowl-2020.12.07.tar.gz",
       "sha256": "5587667caa20c4891390c2d42dbb4d5c4c3f41bee77af1457ece3ba23fb859cc"
+    },
+    "folger-richard-ii": {
+      "url": "https://folger-main-site-assets.s3.amazonaws.com/uploads/2022/11/richard-ii_XML_FolgerShakespeare.zip",
+      "sha256": "17c566aac50a46faa1d7564384cdc669d2f811b22e40b392ad21cba1c2e015fa",
+      "member": "richard-ii_XML_FolgerShakespeare/R2.xml"
+    },
+    "folger-othello": {
+      "url": "https://folger-main-site-assets.s3.amazonaws.com/uploads/2022/11/othello_XML_FolgerShakespeare.zip",
+      "sha256": "c8c5610d3f519ca2410784705ff2b67ff39970d97a9fac954b597eee9f357e30",
+      "member": "othello_XML_FolgerShakespeare/Oth.xml"
+    },
+    "tcp-richard-ii-q1": {
+      "url": "https://raw.githubusercontent.com/textcreationpartnership/A11994/dbeba2a65bf649d7c47a92cccb979cd7872a27f3/A11994.xml",
+      "sha256": "9a19982999451c97c8d75490974c89063cfaf378a19d8de5908a155da89577b6"
+    },
+    "tcp-othello-q1": {
+      "url": "https://raw.githubusercontent.com/textcreationpartnership/A11992/12d8a9dd8ccc113b8e7daeba8a42c7019ad2856b/A11992.xml",
+      "sha256": "8b16b18b582d37bf5db8bef9db501b853d2417c9c37ac962ba610c6935735be9"
     }
   }
 }

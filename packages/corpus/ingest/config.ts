@@ -97,13 +97,25 @@ export const GLOSSARIES: GlossaryConfig[] = [
       { lockKey: 'schmidt-1902-v1', start: /\n\nA\.\s*\n/ },
       { lockKey: 'schmidt-1902-v2', start: /\n\nM\.\s*\n/, end: 'I. Grammatical Observations' },
     ],
-    playAbbreviations: { hamlet: 'Hml', 'the-tempest': 'Tp', 'troilus-and-cressida': 'Troil' },
+    playAbbreviations: {
+      hamlet: 'Hml',
+      'the-tempest': 'Tp',
+      'troilus-and-cressida': 'Troil',
+      'richard-ii': 'R2',
+      othello: 'Oth',
+    },
   },
   {
     sourceId: 'onions-1919',
     format: 'onions',
     volumes: [{ lockKey: 'onions-1919', start: /\n\s*a1?\s*:/, end: 'ADDENDA' }],
-    playAbbreviations: { hamlet: 'Ham', 'the-tempest': 'Tp', 'troilus-and-cressida': 'Troil' },
+    playAbbreviations: {
+      hamlet: 'Ham',
+      'the-tempest': 'Tp',
+      'troilus-and-cressida': 'Troil',
+      'richard-ii': 'R2',
+      othello: 'Oth',
+    },
   },
 ];
 
@@ -116,8 +128,8 @@ export interface FolgerSource {
 export interface TcpSource {
   kind: 'tcp';
   lockKey: string;
-  /** Matches the play's heading in the TCP file. */
-  title: RegExp;
+  /** Matches the play's heading in the TCP file; omitted for a file holding a single play. */
+  title?: RegExp;
   /** Prefix for IDs allocated to this version's nodes. */
   idPrefix: string;
   /** "free": scenes come in another order than the modern version's (Q1 Hamlet, CRP-051). */
@@ -233,6 +245,44 @@ export const PLAYS: PlayConfig[] = [
         idPrefix: 'tro-q1',
       }),
       firstFolio(/Troylus and Cre/, 'tro-f1'),
+    ],
+  },
+  {
+    info: {
+      id: 'richard-ii',
+      title: 'Richard II',
+      shortTitle: 'Richard II',
+      genre: 'history',
+      composed: { from: 1595, to: 1595 },
+      modernVersionId: 'folger',
+    },
+    versions: [
+      folgerVersion('folger-richard-ii'),
+      // An undivided text without a heading: the file holds only this play.
+      quarto('q1-1597', 'First Quarto (1597)', 'Q1', 1597, {
+        lockKey: 'tcp-richard-ii-q1',
+        idPrefix: 'r2-q1',
+      }),
+      firstFolio(/Richard the Second/, 'r2-f1'),
+    ],
+  },
+  {
+    info: {
+      id: 'othello',
+      title: 'Othello',
+      shortTitle: 'Othello',
+      genre: 'tragedy',
+      composed: { from: 1603, to: 1604 },
+      modernVersionId: 'folger',
+    },
+    versions: [
+      folgerVersion('folger-othello'),
+      quarto('q1-1622', 'First Quarto (1622)', 'Q1', 1622, {
+        lockKey: 'tcp-othello-q1',
+        title: /Othello/,
+        idPrefix: 'oth-q1',
+      }),
+      firstFolio(/Othello/, 'oth-f1'),
     ],
   },
 ];

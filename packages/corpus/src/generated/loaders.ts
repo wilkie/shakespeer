@@ -17,6 +17,15 @@ export const versionLoaders: Readonly<Partial<Record<string, Loader>>> = {
     import('../../plays/troilus-and-cressida/q1-1609.json', { with: { type: 'json' } }),
   'troilus-and-cressida/f1-1623': () =>
     import('../../plays/troilus-and-cressida/f1-1623.json', { with: { type: 'json' } }),
+  'richard-ii/folger': () =>
+    import('../../plays/richard-ii/folger.json', { with: { type: 'json' } }),
+  'richard-ii/q1-1597': () =>
+    import('../../plays/richard-ii/q1-1597.json', { with: { type: 'json' } }),
+  'richard-ii/f1-1623': () =>
+    import('../../plays/richard-ii/f1-1623.json', { with: { type: 'json' } }),
+  'othello/folger': () => import('../../plays/othello/folger.json', { with: { type: 'json' } }),
+  'othello/q1-1622': () => import('../../plays/othello/q1-1622.json', { with: { type: 'json' } }),
+  'othello/f1-1623': () => import('../../plays/othello/f1-1623.json', { with: { type: 'json' } }),
 };
 
 export const alignmentLoaders: Readonly<Partial<Record<string, Loader>>> = {
@@ -32,6 +41,14 @@ export const alignmentLoaders: Readonly<Partial<Record<string, Loader>>> = {
     import('../../plays/troilus-and-cressida/alignment/q1-1609.json', { with: { type: 'json' } }),
   'troilus-and-cressida/f1-1623': () =>
     import('../../plays/troilus-and-cressida/alignment/f1-1623.json', { with: { type: 'json' } }),
+  'richard-ii/q1-1597': () =>
+    import('../../plays/richard-ii/alignment/q1-1597.json', { with: { type: 'json' } }),
+  'richard-ii/f1-1623': () =>
+    import('../../plays/richard-ii/alignment/f1-1623.json', { with: { type: 'json' } }),
+  'othello/q1-1622': () =>
+    import('../../plays/othello/alignment/q1-1622.json', { with: { type: 'json' } }),
+  'othello/f1-1623': () =>
+    import('../../plays/othello/alignment/f1-1623.json', { with: { type: 'json' } }),
 };
 
 export const variantLoaders: Readonly<Partial<Record<string, Loader>>> = {
@@ -39,6 +56,8 @@ export const variantLoaders: Readonly<Partial<Record<string, Loader>>> = {
   'the-tempest': () => import('../../plays/the-tempest/variants.json', { with: { type: 'json' } }),
   'troilus-and-cressida': () =>
     import('../../plays/troilus-and-cressida/variants.json', { with: { type: 'json' } }),
+  'richard-ii': () => import('../../plays/richard-ii/variants.json', { with: { type: 'json' } }),
+  othello: () => import('../../plays/othello/variants.json', { with: { type: 'json' } }),
 };
 
 export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[]>>> = {
@@ -81,6 +100,26 @@ export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[
       }),
     () =>
       import('../../plays/troilus-and-cressida/definitions/folger/generated.json', {
+        with: { type: 'json' },
+      }),
+  ],
+  'richard-ii/folger': [
+    () =>
+      import('../../plays/richard-ii/definitions/folger/schmidt-1902.json', {
+        with: { type: 'json' },
+      }),
+    () =>
+      import('../../plays/richard-ii/definitions/folger/onions-1919.json', {
+        with: { type: 'json' },
+      }),
+  ],
+  'othello/folger': [
+    () =>
+      import('../../plays/othello/definitions/folger/schmidt-1902.json', {
+        with: { type: 'json' },
+      }),
+    () =>
+      import('../../plays/othello/definitions/folger/onions-1919.json', {
         with: { type: 'json' },
       }),
   ],

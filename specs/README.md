@@ -47,6 +47,7 @@ disagree, one of them is a bug. Behavior changes start as spec changes, reviewed
 
 ## Scope of the first release
 
-Three plays: _Hamlet_, _Troilus and Cressida_, _The Tempest_. Each is available as the Folger
+Three plays: _Hamlet_, _Troilus and Cressida_, _The Tempest_; since joined by _Richard II_ and
+_Othello_ ([corpus](data/corpus.md)). Each is available as the Folger
 edition and in the original printings (quartos and First Folio), with notes, definitions,
 import/export, full phone support, and cuts and text edits ([CUT](behavior/cuts.md)).

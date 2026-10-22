@@ -1,0 +1,7676 @@
+{
+ "schemaVersion": 1,
+ "playId": "richard-ii",
+ "variants": [
+  {
+   "id": "folger-ptr-0003",
+   "title": "Editorial emendation: “An Attendant exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0015.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0015.1",
+      "offset": 19
+     },
+     "text": "An Attendant exits."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0004",
+   "title": "Editorial emendation: “throwing down a gage”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0071.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0071.0",
+      "offset": 22
+     },
+     "text": "throwing down a gage"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0005",
+   "title": "Editorial emendation: “picking up the gage”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0080.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0080.0",
+      "offset": 21
+     },
+     "text": "picking up the gage"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0006",
+   "title": "Editorial emendation: “my” (1.1.122)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0122",
+      "offset": 7
+     },
+     "end": {
+      "nodeId": "ftln-0122",
+      "offset": 9
+     },
+     "text": "my"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00120",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00120",
+      "offset": 34
+     },
+     "text": "Now by scepters awe I make a vowe,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00120",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00120",
+      "offset": 37
+     },
+     "text": "Now by my Scepters awe, I make a vow,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0007",
+   "title": "Editorial emendation: “He throws down a gage.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0151.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0151.1",
+      "offset": 22
+     },
+     "text": "He throws down a gage."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0008",
+   "title": "Editorial emendation: “Bolingbroke picks up the gage.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0155.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0155.1",
+      "offset": 30
+     },
+     "text": "Bolingbroke picks up the gage."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0009",
+   "title": "Editorial emendation: “gentlemen,” (1.1.156)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0156",
+      "offset": 14
+     },
+     "end": {
+      "nodeId": "ftln-0156",
+      "offset": 24
+     },
+     "text": "gentlemen,"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00154",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00154",
+      "offset": 38
+     },
+     "text": "Wrath kindled gentleman be ruled by •,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00154",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00154",
+      "offset": 39
+     },
+     "text": "Wrath-kindled Gentlemen be rul'd by me:"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0010",
+   "title": "Editorial emendation: “Mowbray kneels.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0170.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0170.1",
+      "offset": 15
+     },
+     "text": "Mowbray kneels."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0011",
+   "title": "Editorial emendation: “standing”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0181.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0181.0",
+      "offset": 10
+     },
+     "text": "standing"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0012",
+   "title": "Editorial emendation: “to Bolingbroke”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0192.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0192.0",
+      "offset": 16
+     },
+     "text": "to Bolingbroke"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0013",
+   "title": "Editorial emendation: “parle,” (1.1.198)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0198",
+      "offset": 19
+     },
+     "end": {
+      "nodeId": "ftln-0198",
+      "offset": 25
+     },
+     "text": "parle,"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00195",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00195",
+      "offset": 47
+     },
+     "text": "Or sound so base a parlee, my teeth shall teare"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00197",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00197",
+      "offset": 46
+     },
+     "text": "Or sound so base a parle: my teeth shall teare"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0014",
+   "title": "Editorial emendation: “They”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0211.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0211.1",
+      "offset": 4
+     },
+     "text": "They"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00209",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00209",
+      "offset": 5
+     },
+     "text": "Exit."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0016",
+   "title": "Editorial emendation: “sit” (1.2.49)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0260",
+      "offset": 3
+     },
+     "end": {
+      "nodeId": "ftln-0260",
+      "offset": 6
+     },
+     "text": "sit"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00257",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00257",
+      "offset": 46
+     },
+     "text": "O set my husbands wronges on Herefords speare,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00260",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00260",
+      "offset": 44
+     },
+     "text": "O sit my husbands wrongs on Herfords speare,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0017",
+   "title": "Editorial emendation: “it” (1.2.60)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0271",
+      "offset": 40
+     },
+     "end": {
+      "nodeId": "ftln-0271",
+      "offset": 42
+     },
+     "text": "it"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00268",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00268",
+      "offset": 48
+     },
+     "text": "Yet •ne word •ore, grie•e boundeth where is fa•,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00271",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00271",
+      "offset": 50
+     },
+     "text": "Yet one word more: Greefe boundeth where it falls,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0019",
+   "title": "Editorial emendation: “of”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0287.2",
+      "offset": 32
+     },
+     "end": {
+      "nodeId": "stg-0287.2",
+      "offset": 34
+     },
+     "text": "of"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00286",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00286",
+      "offset": 41
+     },
+     "text": "Enter Lord Marshall and the Duke Aumerle."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00289",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00289",
+      "offset": 28
+     },
+     "text": "Enter Marshall, and Aumerle."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0020",
+   "title": "Editorial emendation: “and Officers;”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0293.1",
+      "offset": 55
+     },
+     "end": {
+      "nodeId": "stg-0293.1",
+      "offset": 68
+     },
+     "text": "and Officers;"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00293",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00293",
+      "offset": 121
+     },
+     "text": "The trumpets sound and the King enters with his n•bles, when they are set, enter the Duke of Norfolke in armes defendant."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00297",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00297",
+      "offset": 86
+     },
+     "text": "Enter King, Gaunt, Bushy, Bagot, Greene, & others: Then Mowbray in Armor, and Harrold."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0021",
+   "title": "Editorial emendation: “Mowbray,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0293.1",
+      "offset": 94
+     },
+     "end": {
+      "nodeId": "stg-0293.1",
+      "offset": 102
+     },
+     "text": "Mowbray,"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00293",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00293",
+      "offset": 121
+     },
+     "text": "The trumpets sound and the King enters with his n•bles, when they are set, enter the Duke of Norfolke in armes defendant."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00297",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00297",
+      "offset": 86
+     },
+     "text": "Enter King, Gaunt, Bushy, Bagot, Greene, & others: Then Mowbray in Armor, and Harrold."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0022",
+   "title": "Editorial emendation: “with a Herald.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0293.1",
+      "offset": 143
+     },
+     "end": {
+      "nodeId": "stg-0293.1",
+      "offset": 157
+     },
+     "text": "with a Herald."
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00293",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00293",
+      "offset": 121
+     },
+     "text": "The trumpets sound and the King enters with his n•bles, when they are set, enter the Duke of Norfolke in armes defendant."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00297",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00297",
+      "offset": 86
+     },
+     "text": "Enter King, Gaunt, Bushy, Bagot, Greene, & others: Then Mowbray in Armor, and Harrold."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0023",
+   "title": "Editorial emendation: “to Mowbray”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0298.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0298.0",
+      "offset": 12
+     },
+     "text": "to Mowbray"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0024",
+   "title": "Editorial emendation: “Bolingbroke,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0312.1",
+      "offset": 26
+     },
+     "end": {
+      "nodeId": "stg-0312.1",
+      "offset": 38
+     },
+     "text": "Bolingbroke,"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00313",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00313",
+      "offset": 63
+     },
+     "text": "The trumpets sound. Enter Duke of Hereford appellant in armour."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00317",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00317",
+      "offset": 35
+     },
+     "text": "Tucket. Enter Hereford, and Harold."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0025",
+   "title": "Editorial emendation: “with a Herald.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0312.1",
+      "offset": 78
+     },
+     "end": {
+      "nodeId": "stg-0312.1",
+      "offset": 92
+     },
+     "text": "with a Herald."
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00313",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00313",
+      "offset": 63
+     },
+     "text": "The trumpets sound. Enter Duke of Hereford appellant in armour."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00317",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00317",
+      "offset": 35
+     },
+     "text": "Tucket. Enter Hereford, and Harold."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0026",
+   "title": "Editorial emendation: “to Bolingbroke”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0318.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0318.0",
+      "offset": 16
+     },
+     "text": "to Bolingbroke"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0027",
+   "title": "Editorial emendation: “to King Richard”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0339.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0339.0",
+      "offset": 17
+     },
+     "text": "to King Richard"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0028",
+   "title": "Editorial emendation: “coming down”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0341.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0341.0",
+      "offset": 13
+     },
+     "text": "coming down"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0029",
+   "title": "Editorial emendation: “He embraces Bolingbroke.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0341.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0341.1",
+      "offset": 24
+     },
+     "text": "He embraces Bolingbroke."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0030",
+   "title": "Editorial emendation: “He presents a lance to Bolingbroke.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0388.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0388.1",
+      "offset": 35
+     },
+     "text": "He presents a lance to Bolingbroke."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0031",
+   "title": "Editorial emendation: “to an Officer”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0390.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0390.0",
+      "offset": 15
+     },
+     "text": "to an Officer"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0032",
+   "title": "Editorial emendation: “An Officer presents a lance to Mowbray.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0390.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0390.1",
+      "offset": 39
+     },
+     "text": "An Officer presents a lance to Mowbray."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0034",
+   "title": "Editorial emendation: “Trumpets sound. Richard throws down his warder.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0404.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0404.1",
+      "offset": 47
+     },
+     "text": "Trumpets sound. Richard throws down his warder."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0035",
+   "title": "Editorial emendation: “To his council.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0408",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0408",
+      "offset": 15
+     },
+     "text": "To his council."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0036",
+   "title": "Editorial emendation: “Trumpets sound while Richard consults with Gaunt and other …”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0410.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0410.1",
+      "offset": 66
+     },
+     "text": "Trumpets sound while Richard consults with Gaunt and other Nobles."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0037",
+   "title": "Editorial emendation: “To Bolingbroke and Mowbray.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0411",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0411",
+      "offset": 27
+     },
+     "text": "To Bolingbroke and Mowbray."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0038",
+   "title": "Editorial emendation: “then” (1.3.174)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0461",
+      "offset": 21
+     },
+     "end": {
+      "nodeId": "ftln-0461",
+      "offset": 25
+     },
+     "text": "then"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00460",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00460",
+      "offset": 43
+     },
+     "text": "What is thy sentence but speechlesse death?"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00461",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00461",
+      "offset": 49
+     },
+     "text": "What is thy sentence then, but speechlesse death,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0039",
+   "title": "Editorial emendation: “He begins to exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0467.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0467.1",
+      "offset": 18
+     },
+     "text": "He begins to exit."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0040",
+   "title": "Editorial emendation: “To Mowbray and Bolingbroke.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0469",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0469",
+      "offset": 27
+     },
+     "text": "To Mowbray and Bolingbroke."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0041",
+   "title": "Editorial emendation: “They place their right hands on the hilts of Richard’s swor…”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0470.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0470.1",
+      "offset": 61
+     },
+     "text": "They place their right hands on the hilts of Richard’s sword."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0042",
+   "title": "Editorial emendation: “They step back.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0483.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0483.1",
+      "offset": 15
+     },
+     "text": "They step back."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0043",
+   "title": "Editorial emendation: “to Gaunt”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0499.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0499.0",
+      "offset": 10
+     },
+     "text": "to Gaunt"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0044",
+   "title": "Editorial emendation: “To Bolingbroke.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0502",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0502",
+      "offset": 15
+     },
+     "text": "To Bolingbroke."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0045",
+   "title": "Editorial emendation: “night;” (1.3.228)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0515",
+      "offset": 38
+     },
+     "end": {
+      "nodeId": "ftln-0515",
+      "offset": 44
+     },
+     "text": "night;"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00511",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00511",
+      "offset": 46
+     },
+     "text": "Shall be extint with age and endlesse nightes,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00512",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00512",
+      "offset": 46
+     },
+     "text": "Shall be extinct with age, and endlesse night:"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0046",
+   "title": "Editorial emendation: “to Bolingbroke”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0540.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0540.0",
+      "offset": 16
+     },
+     "text": "to Bolingbroke"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0047",
+   "title": "Editorial emendation: “Flourish. King Richard”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0541.1b",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0541.1b",
+      "offset": 22
+     },
+     "text": "Flourish. King Richard"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00536",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00536",
+      "offset": 9
+     },
+     "text": "Flourish."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0048",
+   "title": "Editorial emendation: “with his Attendants.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0541.1b",
+      "offset": 29
+     },
+     "end": {
+      "nodeId": "stg-0541.1b",
+      "offset": 49
+     },
+     "text": "with his Attendants."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00536",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00536",
+      "offset": 9
+     },
+     "text": "Flourish."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0049",
+   "title": "Editorial emendation: “to Bolingbroke”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0542.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0542.0",
+      "offset": 16
+     },
+     "text": "to Bolingbroke"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0050",
+   "title": "Editorial emendation: “to Bolingbroke”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0544.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0544.0",
+      "offset": 16
+     },
+     "text": "to Bolingbroke"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0051",
+   "title": "Editorial emendation: “to Bolingbroke”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0546.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0546.0",
+      "offset": 16
+     },
+     "text": "to Bolingbroke"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0053",
+   "title": "Editorial emendation: “Green and Bagot,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0603.2",
+      "offset": 20
+     },
+     "end": {
+      "nodeId": "stg-0603.2",
+      "offset": 36
+     },
+     "text": "Green and Bagot,"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00601",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00601",
+      "offset": 76
+     },
+     "text": "Enter the King with Bushie, &c at one dore, and the Lord Aumarlc at another."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00572",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00572",
+      "offset": 39
+     },
+     "text": "Enter King, Aumerle, Greene, and Bagot."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0054",
+   "title": "Editorial emendation: “cousin,” (1.4.21)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0624",
+      "offset": 10
+     },
+     "end": {
+      "nodeId": "ftln-0624",
+      "offset": 17
+     },
+     "text": "cousin,"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00620",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00620",
+      "offset": 40
+     },
+     "text": "He is our Coosens Coosin, but tis doubt,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00590",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00590",
+      "offset": 39
+     },
+     "text": "He is our Cosin (Cosin) but 'tis doubt,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0055",
+   "title": "Editorial emendation: “Bagot here and Green,” (1.4.24)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0627",
+      "offset": 19
+     },
+     "end": {
+      "nodeId": "ftln-0627",
+      "offset": 40
+     },
+     "text": "Bagot here and Green,"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00623",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00623",
+      "offset": 21
+     },
+     "text": "Our selfe and Bushie,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00593",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00593",
+      "offset": 44
+     },
+     "text": "Our selfe, and Bushy: heere Bagot and Greene"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0056",
+   "title": "Editorial emendation: “Enter Bushy. Bushy, what news?” (1.4.54)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0656.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ftln-0657",
+      "offset": 17
+     },
+     "text": "Enter Bushy.\nBushy, what news?"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00653",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00653",
+      "offset": 24
+     },
+     "text": "Enter Bushie with newes."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00623",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00624",
+      "offset": 11
+     },
+     "text": "Enter Bushy.\nwhat newes?"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0060",
+   "title": "Editorial emendation: “and Attendants.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0669.2",
+      "offset": 49
+     },
+     "end": {
+      "nodeId": "stg-0669.2",
+      "offset": 64
+     },
+     "text": "and Attendants."
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00666",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00666",
+      "offset": 53
+     },
+     "text": "Enter Iohn of Gaunt sicke, with the duke of Yorke &c."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00637",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00637",
+      "offset": 30
+     },
+     "text": "Enter Gaunt, sicke with Yorke."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0061",
+   "title": "Editorial emendation: “fond;” (2.1.21)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0690",
+      "offset": 40
+     },
+     "end": {
+      "nodeId": "ftln-0690",
+      "offset": 45
+     },
+     "text": "fond;"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00684",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00684",
+      "offset": 44
+     },
+     "text": "As praises of wh•se taste the wise are found"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00655",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00655",
+      "offset": 45
+     },
+     "text": "As praises of his state: then there are sound"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0062",
+   "title": "Editorial emendation: “a” (2.1.53)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0722",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "ftln-0722",
+      "offset": 7
+     },
+     "text": "a"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00714",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00714",
+      "offset": 33
+     },
+     "text": "Or as moate defensiue to a house,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00685",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00685",
+      "offset": 35
+     },
+     "text": "Or as a Moate defensiue to a house,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0063",
+   "title": "Editorial emendation: “Aumerle, Bushy, Green, Bagot, Ross, Willoughby,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0743.1",
+      "offset": 22
+     },
+     "end": {
+      "nodeId": "stg-0743.1",
+      "offset": 69
+     },
+     "text": "Aumerle, Bushy, Green, Bagot, Ross, Willoughby,"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00706",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00706",
+      "offset": 71
+     },
+     "text": "Enter King, Queene, Aumerle, Bushy, Greene, Bagot, Ros, and Willoughby."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0064",
+   "title": "Editorial emendation: “reined” (2.1.76)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0745",
+      "offset": 26
+     },
+     "end": {
+      "nodeId": "ftln-0745",
+      "offset": 32
+     },
+     "text": "reined"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00736",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00736",
+      "offset": 50
+     },
+     "text": "For young hot colts being ragde, do rage the more."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00708",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00708",
+      "offset": 51
+     },
+     "text": "For young hot Colts, being rag'd, do rage the more."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0065",
+   "title": "Editorial emendation: “to Gaunt”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0746.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0746.0",
+      "offset": 10
+     },
+     "text": "to Gaunt"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0066",
+   "title": "Editorial emendation: “to Gaunt”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0747.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0747.0",
+      "offset": 10
+     },
+     "text": "to Gaunt"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0067",
+   "title": "Editorial emendation: “encagèd” (2.1.108)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0777",
+      "offset": 8
+     },
+     "end": {
+      "nodeId": "ftln-0777",
+      "offset": 15
+     },
+     "text": "encagèd"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00769",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00769",
+      "offset": 36
+     },
+     "text": "And yet inraged in so small a verge,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00740",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00740",
+      "offset": 36
+     },
+     "text": "And yet incaged in so small a Verge,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0068",
+   "title": "Editorial emendation: “brother” (2.1.131)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0800",
+      "offset": 20
+     },
+     "end": {
+      "nodeId": "ftln-0800",
+      "offset": 27
+     },
+     "text": "brother"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00792",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00792",
+      "offset": 42
+     },
+     "text": "Oh spare me not my brothers Edwards sonne,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00763",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00763",
+      "offset": 43
+     },
+     "text": "Oh spare me not, my brothers Edwards sonne,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0069",
+   "title": "Editorial emendation: “carried off by Attendants.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0814.1",
+      "offset": 10
+     },
+     "end": {
+      "nodeId": "stg-0814.1",
+      "offset": 36
+     },
+     "text": "carried off by Attendants."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0070",
+   "title": "Editorial emendation: “Enter Northumberland.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0822.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0822.1",
+      "offset": 21
+     },
+     "text": "Enter Northumberland."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00787",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00787",
+      "offset": 21
+     },
+     "text": "Enter Northumberland."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0071",
+   "title": "Editorial emendation: “the” (2.1.185)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0854",
+      "offset": 18
+     },
+     "end": {
+      "nodeId": "ftln-0854",
+      "offset": 21
+     },
+     "text": "the"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00847",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00847",
+      "offset": 40
+     },
+     "text": "Accomplisht with a number of thy howers;"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00819",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00819",
+      "offset": 43
+     },
+     "text": "Accomplish'd with the number of thy how•rs:"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0072",
+   "title": "Editorial emendation: “with others;”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0901.1",
+      "offset": 20
+     },
+     "end": {
+      "nodeId": "stg-0901.1",
+      "offset": 32
+     },
+     "text": "with others;"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00895",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00895",
+      "offset": 36
+     },
+     "text": "Exeunt King and Queene: Manet North."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00869",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00869",
+      "offset": 32
+     },
+     "text": "Manet North• Willoughby, & Ross."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0073",
+   "title": "Editorial emendation: “Willoughby, and Ross”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0901.1",
+      "offset": 49
+     },
+     "end": {
+      "nodeId": "stg-0901.1",
+      "offset": 69
+     },
+     "text": "Willoughby, and Ross"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00895",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00895",
+      "offset": 36
+     },
+     "text": "Exeunt King and Queene: Manet North."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00869",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00869",
+      "offset": 32
+     },
+     "text": "Manet North• Willoughby, & Ross."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0074",
+   "title": "Editorial emendation: “to Ross”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0910.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0910.0",
+      "offset": 9
+     },
+     "text": "to Ross"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0075",
+   "title": "Editorial emendation: “Blanc,” (2.1.287)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0956",
+      "offset": 31
+     },
+     "end": {
+      "nodeId": "ftln-0956",
+      "offset": 37
+     },
+     "text": "Blanc,"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00949",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00949",
+      "offset": 35
+     },
+     "text": "Then thus, I haue from le Port Blan"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00923",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00923",
+      "offset": 35
+     },
+     "text": "Then thus: I haue from Port le Blan"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0077",
+   "title": "Editorial emendation: “and”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0980.2",
+      "offset": 24
+     },
+     "end": {
+      "nodeId": "stg-0980.2",
+      "offset": 27
+     },
+     "text": "and"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-00973",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-00973",
+      "offset": 32
+     },
+     "text": "Enter the Queene, Bushie, Bagot."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00947",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00947",
+      "offset": 31
+     },
+     "text": "Enter Queene, Bushy, and Bagot."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0078",
+   "title": "Editorial emendation: “Enter Green.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1021.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1021.1",
+      "offset": 12
+     },
+     "text": "Enter Green."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-00988",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-00988",
+      "offset": 13
+     },
+     "text": "Enter Greene."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0079",
+   "title": "Editorial emendation: “Enter York.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1056.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1056.1",
+      "offset": 11
+     },
+     "text": "Enter York."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01022",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01022",
+      "offset": 11
+     },
+     "text": "Enter Yorke"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0080",
+   "title": "Editorial emendation: “Enter a Servingman.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1069.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1069.1",
+      "offset": 19
+     },
+     "text": "Enter a Servingman."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01035",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01035",
+      "offset": 16
+     },
+     "text": "Enter a seruant."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0081",
+   "title": "Editorial emendation: “Servingman exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1093.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1093.1",
+      "offset": 17
+     },
+     "text": "Servingman exits."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0082",
+   "title": "Editorial emendation: “To Queen.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1102",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1102",
+      "offset": 9
+     },
+     "text": "To Queen."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0083",
+   "title": "Editorial emendation: “of York and”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1109.1",
+      "offset": 5
+     },
+     "end": {
+      "nodeId": "stg-1109.1",
+      "offset": 16
+     },
+     "text": "of York and"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01094",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01094",
+      "offset": 34
+     },
+     "text": "Exeunt Duke• Qu. man• Bush. Green,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01071",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01071",
+      "offset": 4
+     },
+     "text": "Exit"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0084",
+   "title": "Editorial emendation: “and Bagot”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1109.1",
+      "offset": 43
+     },
+     "end": {
+      "nodeId": "stg-1109.1",
+      "offset": 52
+     },
+     "text": "and Bagot"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01094",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01094",
+      "offset": 34
+     },
+     "text": "Exeunt Duke• Qu. man• Bush. Green,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01071",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01071",
+      "offset": 4
+     },
+     "text": "Exit"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0085",
+   "title": "Editorial emendation: “They exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1137.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1137.1",
+      "offset": 10
+     },
+     "text": "They exit."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01099",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01099",
+      "offset": 4
+     },
+     "text": "Exit"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0087",
+   "title": "Editorial emendation: “Bolingbroke, Duke of”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1137.2",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "stg-1137.2",
+      "offset": 26
+     },
+     "text": "Bolingbroke, Duke of"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01122",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01122",
+      "offset": 31
+     },
+     "text": "Enter Hereford, Northumberland."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01100",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01100",
+      "offset": 47
+     },
+     "text": "Enter the Duke of Hereford, and Northumberland."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0088",
+   "title": "Editorial emendation: “and”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1137.2",
+      "offset": 37
+     },
+     "end": {
+      "nodeId": "stg-1137.2",
+      "offset": 40
+     },
+     "text": "and"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01122",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01122",
+      "offset": 31
+     },
+     "text": "Enter Hereford, Northumberland."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01100",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01100",
+      "offset": 47
+     },
+     "text": "Enter the Duke of Hereford, and Northumberland."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0089",
+   "title": "Editorial emendation: “Hereford,” (2.3.38)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1175",
+      "offset": 28
+     },
+     "end": {
+      "nodeId": "ftln-1175",
+      "offset": 37
+     },
+     "text": "Hereford,"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01160",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01160",
+      "offset": 42
+     },
+     "text": "Haue you forgot the Duke of Herefords boy?"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01138",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01138",
+      "offset": 43
+     },
+     "text": "Haue you forgot the Duke of Hereford (Boy.)"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0090",
+   "title": "Editorial emendation: “to Bolingbroke”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1180.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1180.0",
+      "offset": 16
+     },
+     "text": "to Bolingbroke"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0091",
+   "title": "Editorial emendation: “Gives Percy his hand.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1189.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1189.1",
+      "offset": 21
+     },
+     "text": "Gives Percy his hand."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0092",
+   "title": "Editorial emendation: “to Percy”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1190.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1190.0",
+      "offset": 10
+     },
+     "text": "to Percy"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0093",
+   "title": "Editorial emendation: “Enter Ross and Willoughby.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1196.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1196.1",
+      "offset": 26
+     },
+     "text": "Enter Ross and Willoughby."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01159",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01159",
+      "offset": 27
+     },
+     "text": "Enter Rosse a•d Willoughby."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0094",
+   "title": "Editorial emendation: “Enter Berkeley.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1207.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1207.1",
+      "offset": 15
+     },
+     "text": "Enter Berkeley."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01171",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01171",
+      "offset": 14
+     },
+     "text": "Enter Barkely."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0095",
+   "title": "Editorial emendation: “to Bolingbroke”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1209.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1209.0",
+      "offset": 16
+     },
+     "text": "to Bolingbroke"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0096",
+   "title": "Editorial emendation: “Enter York.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1220.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1220.1",
+      "offset": 11
+     },
+     "text": "Enter York."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01185",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01185",
+      "offset": 12
+     },
+     "text": "Enter Yorke."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0097",
+   "title": "Editorial emendation: “He kneels.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1222",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1222",
+      "offset": 10
+     },
+     "text": "He kneels."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0098",
+   "title": "Editorial emendation: “standing”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1226",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1226",
+      "offset": 10
+     },
+     "text": "standing"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0099",
+   "title": "Editorial emendation: “to York”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1278.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1278.0",
+      "offset": 9
+     },
+     "text": "to York"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0100",
+   "title": "Editorial emendation: “to York”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1279.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1279.0",
+      "offset": 9
+     },
+     "text": "to York"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0101",
+   "title": "Editorial emendation: “to York”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1280.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1280.0",
+      "offset": 9
+     },
+     "text": "to York"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0103",
+   "title": "Editorial emendation: “He exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1329.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1329.1",
+      "offset": 9
+     },
+     "text": "He exits."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0104",
+   "title": "Editorial emendation: “He exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1336.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1336.1",
+      "offset": 9
+     },
+     "text": "He exits."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0107",
+   "title": "Editorial emendation: “Bolingbroke,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1336.2",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "stg-1336.2",
+      "offset": 18
+     },
+     "text": "Bolingbroke,"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01321",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01321",
+      "offset": 75
+     },
+     "text": "Enter Duke of Hereford, Yorke, Northumberland, Bushie and Greene prisoners."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01304",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01304",
+      "offset": 104
+     },
+     "text": "Enter Bullingbrooke, Yorke, Northumberland, Rosse, Percie, Willoughby, with Bushie and Greene Prisoners."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0108",
+   "title": "Editorial emendation: “with other Lords, and”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1336.2",
+      "offset": 59
+     },
+     "end": {
+      "nodeId": "stg-1336.2",
+      "offset": 80
+     },
+     "text": "with other Lords, and"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01321",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01321",
+      "offset": 75
+     },
+     "text": "Enter Duke of Hereford, Yorke, Northumberland, Bushie and Greene prisoners."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01304",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01304",
+      "offset": 104
+     },
+     "text": "Enter Bullingbrooke, Yorke, Northumberland, Rosse, Percie, Willoughby, with Bushie and Greene Prisoners."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0109",
+   "title": "Editorial emendation: “Northumberland exits with Bushy and Green.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1373.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1373.1",
+      "offset": 42
+     },
+     "text": "Northumberland exits with Bushy and Green."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0110",
+   "title": "Editorial emendation: “To York.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1374",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1374",
+      "offset": 8
+     },
+     "text": "To York."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0112",
+   "title": "Editorial emendation: “Drums. Flourish and colors.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1383.2",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1383.2",
+      "offset": 27
+     },
+     "text": "Drums. Flourish and colors."
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01367",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01367",
+      "offset": 37
+     },
+     "text": "Enter the King• Aumerle, Carleil, &c."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01350",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01351",
+      "offset": 47
+     },
+     "text": "Drums: Flourish, and Colours.\nEnter Richard, Aumerle, Carlile, and Souldiers."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0113",
+   "title": "Editorial emendation: “and Soldiers.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1383.2",
+      "offset": 63
+     },
+     "end": {
+      "nodeId": "stg-1383.2",
+      "offset": 76
+     },
+     "text": "and Soldiers."
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01367",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01367",
+      "offset": 37
+     },
+     "text": "Enter the King• Aumerle, Carleil, &c."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01350",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01351",
+      "offset": 47
+     },
+     "text": "Drums: Flourish, and Colours.\nEnter Richard, Aumerle, Carlile, and Souldiers."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0114",
+   "title": "Editorial emendation: “He kneels.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1388",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1388",
+      "offset": 10
+     },
+     "text": "He kneels."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0115",
+   "title": "Editorial emendation: “To Aumerle.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1593",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1593",
+      "offset": 11
+     },
+     "text": "To Aumerle."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0116",
+   "title": "Editorial emendation: “They exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1609.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1609.1",
+      "offset": 10
+     },
+     "text": "They exit."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0118",
+   "title": "Editorial emendation: “with Drum and Colors”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1609.2",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "stg-1609.2",
+      "offset": 26
+     },
+     "text": "with Drum and Colors"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01590",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01590",
+      "offset": 25
+     },
+     "text": "Enter Bull. Yorke, North."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01570",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01570",
+      "offset": 78
+     },
+     "text": "Enter with Drum and Colours, Bullingbrooke, Yorke, Northumberland, Attendants."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0119",
+   "title": "Editorial emendation: “with Soldiers and Attendants.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1609.2",
+      "offset": 62
+     },
+     "end": {
+      "nodeId": "stg-1609.2",
+      "offset": 91
+     },
+     "text": "with Soldiers and Attendants."
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01590",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01590",
+      "offset": 25
+     },
+     "text": "Enter Bull. Yorke, North."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01570",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01570",
+      "offset": 78
+     },
+     "text": "Enter with Drum and Colours, Bullingbrooke, Yorke, Northumberland, Attendants."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0120",
+   "title": "Editorial emendation: “to Northumberland”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1641",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1641",
+      "offset": 19
+     },
+     "text": "to Northumberland"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0121",
+   "title": "Editorial emendation: “lord,” (3.3.32)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1641",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "ftln-1641",
+      "offset": 11
+     },
+     "text": "lord,"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01622",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01622",
+      "offset": 12
+     },
+     "text": "Noble Lords,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01602",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01602",
+      "offset": 11
+     },
+     "text": "Noble Lord,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0122",
+   "title": "Editorial emendation: “Northumberland and Trumpets approach the battlements.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1661.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1661.1",
+      "offset": 53
+     },
+     "text": "Northumberland and Trumpets approach the battlements."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0123",
+   "title": "Editorial emendation: “Bolingbroke’s Soldiers march,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1672.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1672.1",
+      "offset": 29
+     },
+     "text": "Bolingbroke’s Soldiers march,"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01652",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01652",
+      "offset": 51
+     },
+     "text": "The trumpets sound, Richard appeareth on the walls."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0124",
+   "title": "Editorial emendation: “with Aumerle.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1672.2",
+      "offset": 31
+     },
+     "end": {
+      "nodeId": "stg-1672.2",
+      "offset": 44
+     },
+     "text": "with Aumerle."
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01652",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01652",
+      "offset": 51
+     },
+     "text": "The trumpets sound, Richard appeareth on the walls."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01632",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01632",
+      "offset": 117
+     },
+     "text": "Parle without, and answere within: then a Flourish. Enter on the Walls, Richard, Carlile, Aumerle, Scroop, Salisbury."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0125",
+   "title": "Editorial emendation: “to Northumberland, below”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1683.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1683.0",
+      "offset": 26
+     },
+     "text": "to Northumberland, below"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0126",
+   "title": "Editorial emendation: “a prince and” (3.3.121)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1730",
+      "offset": 25
+     },
+     "end": {
+      "nodeId": "ftln-1730",
+      "offset": 37
+     },
+     "text": "a prince and"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01710",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01710",
+      "offset": 41
+     },
+     "text": "This sweares he, as he is princesse iust,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01690",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01690",
+      "offset": 44
+     },
+     "text": "This sweares he, as he is a Prince, is iust,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0127",
+   "title": "Editorial emendation: “Northumberland returns to Bolingbroke.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1737.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1737.1",
+      "offset": 38
+     },
+     "text": "Northumberland returns to Bolingbroke."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0128",
+   "title": "Editorial emendation: “To Aumerle.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1738",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1738",
+      "offset": 11
+     },
+     "text": "To Aumerle."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0129",
+   "title": "Editorial emendation: “Northumberland approaches the battlements.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1785.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1785.1",
+      "offset": 42
+     },
+     "text": "Northumberland approaches the battlements."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0130",
+   "title": "Editorial emendation: “Richard exits above and Northumberland returns to Bolingbro…”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1800.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1800.1",
+      "offset": 62
+     },
+     "text": "Richard exits above and Northumberland returns to Bolingbroke."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0131",
+   "title": "Editorial emendation: “Richard enters below.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1804.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1804.1",
+      "offset": 21
+     },
+     "text": "Richard enters below."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0132",
+   "title": "Editorial emendation: “indicating his crown,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1813",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1813",
+      "offset": 21
+     },
+     "text": "indicating his crown,"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0133",
+   "title": "Editorial emendation: “standing”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1815.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1815.0",
+      "offset": 10
+     },
+     "text": "standing"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0134",
+   "title": "Editorial emendation: “They exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1829.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1829.1",
+      "offset": 10
+     },
+     "text": "They exit."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0136",
+   "title": "Editorial emendation: “Ladies-in-waiting.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1829.2",
+      "offset": 25
+     },
+     "end": {
+      "nodeId": "stg-1829.2",
+      "offset": 43
+     },
+     "text": "Ladies-in-waiting."
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01804",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01804",
+      "offset": 36
+     },
+     "text": "Enter the Queene with her attendants"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01788",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01788",
+      "offset": 33
+     },
+     "text": "Enter the Queene, and two Ladies."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0137",
+   "title": "Editorial emendation: “joy?” (3.4.11)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1840",
+      "offset": 16
+     },
+     "end": {
+      "nodeId": "ftln-1840",
+      "offset": 20
+     },
+     "text": "joy?"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01815",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01815",
+      "offset": 23
+     },
+     "text": "Of sorrow or of griefe."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01799",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01799",
+      "offset": 24
+     },
+     "text": "Of Sorrow, or of Griefe?"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0138",
+   "title": "Editorial emendation: “a Gardener and two Servingmen.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1855.1",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "stg-1855.1",
+      "offset": 36
+     },
+     "text": "a Gardener and two Servingmen."
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01830",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01830",
+      "offset": 16
+     },
+     "text": "Enter Gardeners."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01814",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01814",
+      "offset": 35
+     },
+     "text": "Enter a Gardiner, and two Seruants."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0139",
+   "title": "Editorial emendation: “pins,” (3.4.29)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1858",
+      "offset": 30
+     },
+     "end": {
+      "nodeId": "ftln-1858",
+      "offset": 35
+     },
+     "text": "pins,"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01833",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01833",
+      "offset": 35
+     },
+     "text": "My wretch•dnes vnto a row of pines,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01817",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01817",
+      "offset": 40
+     },
+     "text": "My wretchednesse, vnto a Rowe of Pinnes,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0140",
+   "title": "Editorial emendation: “Queen and Ladies step aside.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1860.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1860.1",
+      "offset": 28
+     },
+     "text": "Queen and Ladies step aside."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0141",
+   "title": "Editorial emendation: “to one Servingman”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1861.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1861.0",
+      "offset": 19
+     },
+     "text": "to one Servingman"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0143",
+   "title": "Editorial emendation: “We” (3.4.63)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1892",
+      "offset": 19
+     },
+     "end": {
+      "nodeId": "ftln-1892",
+      "offset": 21
+     },
+     "text": "We"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01863",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01866",
+      "offset": 53
+     },
+     "text": "They are.\nAnd Bullingbrooke hath ceasde the wastefull king,\nOh what pitie is it that he had not so trimde,\nAnd drest his land a• we this garden at time of yeare"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01847",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01850",
+      "offset": 56
+     },
+     "text": "They are,\nAnd Bullingbrooke hath seiz'd the wastefull King.\nOh, what pitty is it, that he had not so trim'd\nAnd drest his Land, as we this Garden, at time of yeare,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0144",
+   "title": "Editorial emendation: “Stepping forward.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1907.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1907.1",
+      "offset": 17
+     },
+     "text": "Stepping forward."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0145",
+   "title": "Editorial emendation: “Cam’st” (3.4.87)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1916",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ftln-1916",
+      "offset": 6
+     },
+     "text": "Cam’st"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01889",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01889",
+      "offset": 50
+     },
+     "text": "Canst thou by this ill tidings speake thou wretch?"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01873",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01873",
+      "offset": 52
+     },
+     "text": "Cam'st thou by this ill-tydings? Speake thou wretch."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0146",
+   "title": "Editorial emendation: “with Ladies.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1937.1",
+      "offset": 10
+     },
+     "end": {
+      "nodeId": "stg-1937.1",
+      "offset": 22
+     },
+     "text": "with Ladies."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0149",
+   "title": "Editorial emendation: “Aumerle, Northumberland, Harry Percy, Fitzwater, Surrey, th…”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1943.2",
+      "offset": 33
+     },
+     "end": {
+      "nodeId": "stg-1943.2",
+      "offset": 174
+     },
+     "text": "Aumerle, Northumberland, Harry Percy, Fitzwater, Surrey, the Bishop of Carlisle, the Abbot of Westminster, and another Lord, Herald, Officers"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01919",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01919",
+      "offset": 49
+     },
+     "text": "Enter Bullingbrooke with the Lords to parliament."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01903",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01903",
+      "offset": 154
+     },
+     "text": "Enter as to the Parliament, Bullingbrooke, Aumerle, Northumberland Percie, Fitz-Water Surroy, Carlile, Abbot of Westminster. Herauld, Officers, and Bagot."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0150",
+   "title": "Editorial emendation: “Officers with”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1944.1",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "stg-1944.1",
+      "offset": 19
+     },
+     "text": "Officers with"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01921",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01921",
+      "offset": 12
+     },
+     "text": "Enter Bagot."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0151",
+   "title": "Editorial emendation: “Aumerle steps forward.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1950.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1950.1",
+      "offset": 22
+     },
+     "text": "Aumerle steps forward."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0152",
+   "title": "Editorial emendation: “him” (4.1.24)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1967",
+      "offset": 23
+     },
+     "end": {
+      "nodeId": "ftln-1967",
+      "offset": 26
+     },
+     "text": "him"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01942",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01942",
+      "offset": 43
+     },
+     "text": "On equall termes to giue them chasticement?"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01925",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01925",
+      "offset": 42
+     },
+     "text": "On equall termes to giue him chasticement?"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0153",
+   "title": "Editorial emendation: “He throws down a gage.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1969.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1969.1",
+      "offset": 22
+     },
+     "text": "He throws down a gage."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0154",
+   "title": "Editorial emendation: “throwing down a gage”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1978.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1978.0",
+      "offset": 22
+     },
+     "text": "throwing down a gage"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0155",
+   "title": "Editorial emendation: “taking up the gage”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1987.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1987.0",
+      "offset": 20
+     },
+     "text": "taking up the gage"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0156",
+   "title": "Editorial emendation: “He throws down a gage.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1992.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1992.1",
+      "offset": 22
+     },
+     "text": "He throws down a gage."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0157",
+   "title": "Editorial emendation: “taking up the gage”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1995.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1995.0",
+      "offset": 20
+     },
+     "text": "taking up the gage"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0158",
+   "title": "Editorial emendation: “throwing down a gage”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1998.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1998.0",
+      "offset": 22
+     },
+     "text": "throwing down a gage"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0159",
+   "title": "Editorial emendation: “sun” (4.1.58)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2001",
+      "offset": 5
+     },
+     "end": {
+      "nodeId": "ftln-2001",
+      "offset": 8
+     },
+     "text": "sun"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01975",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01975",
+      "offset": 45
+     },
+     "text": "From sinne to sinne: there is my honors pawne"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01955",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01957",
+      "offset": 27
+     },
+     "text": "My Lord Fitz-water:\nI do remember well, the very time\nAumerle, and you did talke."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0160",
+   "title": "Editorial emendation: “sun.” (4.1.58)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2001",
+      "offset": 12
+     },
+     "end": {
+      "nodeId": "ftln-2001",
+      "offset": 16
+     },
+     "text": "sun."
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01975",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01975",
+      "offset": 45
+     },
+     "text": "From sinne to sinne: there is my honors pawne"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01955",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01957",
+      "offset": 27
+     },
+     "text": "My Lord Fitz-water:\nI do remember well, the very time\nAumerle, and you did talke."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0161",
+   "title": "Editorial emendation: “taking up the gage”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2003.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2003.0",
+      "offset": 20
+     },
+     "text": "taking up the gage"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0162",
+   "title": "Editorial emendation: “He throws down a gage.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2016.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2016.1",
+      "offset": 22
+     },
+     "text": "He throws down a gage."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0163",
+   "title": "Editorial emendation: “taking up the gage”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2019.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2019.0",
+      "offset": 20
+     },
+     "text": "taking up the gage"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0164",
+   "title": "Editorial emendation: “my” (4.1.80)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2023",
+      "offset": 29
+     },
+     "end": {
+      "nodeId": "ftln-2023",
+      "offset": 31
+     },
+     "text": "my"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-01996",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-01996",
+      "offset": 43
+     },
+     "text": "And lies, and lies: there is bond of faith,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-01975",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-01975",
+      "offset": 46
+     },
+     "text": "And Lyes, and Lyes: there is my Bond of Faith,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0165",
+   "title": "Editorial emendation: “He throws down a gage.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2024.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2024.1",
+      "offset": 22
+     },
+     "text": "He throws down a gage."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0166",
+   "title": "Editorial emendation: “A Lord hands him a gage. Aumerle throws it down.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2030.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2030.2",
+      "offset": 23
+     },
+     "text": "A Lord hands him a gage.\nAumerle throws it down."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0167",
+   "title": "Editorial emendation: “May it please you, lords, to grant the commons’ suit? Fetch…” (4.1.160)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2103",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ftln-2276",
+      "offset": 42
+     },
+     "text": "May it please you, lords, to grant the commons’\nsuit?\nFetch hither Richard, that in common view\nHe may surrender. So we shall proceed\nWithout suspicion.\nI will be his conduct.\nHe exits.\nLords, you that here are under our arrest,\nProcure your sureties for your days of answer.\nLittle are we beholding to your love\nAnd little looked for at your helping hands.\nEnter Richard and York.\nAlack, why am I sent for to a king\nBefore I have shook off the regal thoughts\nWherewith I reigned? I hardly yet have learned\nTo insinuate, flatter, bow, and bend my knee.\nGive sorrow leave awhile to tutor me\nTo this submission. Yet I well remember\nThe favors of these men. Were they not mine?\nDid they not sometime cry “All hail” to me?\nSo Judas did to Christ, but He in twelve\nFound truth in all but one; I, in twelve thousand,\nnone.\nGod save the King! Will no man say “amen”?\nAm I both priest and clerk? Well, then, amen.\nGod save the King, although I be not he,\nAnd yet amen, if heaven do think him me.\nTo do what service am I sent for hither?\nTo do that office of thine own goodwill\nWhich tired majesty did make thee offer:\nThe resignation of thy state and crown\nTo Henry Bolingbroke.\nGive me the crown.—Here, cousin, seize the crown.\nHere, cousin.\nOn this side my hand, on that side thine.\nNow is this golden crown like a deep well\nThat owes two buckets, filling one another,\nThe emptier ever dancing in the air,\nThe other down, unseen, and full of water.\nThat bucket down and full of tears am I,\nDrinking my griefs, whilst you mount up on high.\nI thought you had been willing to resign.\nMy crown I am, but still my griefs are mine.\nYou may my glories and my state depose\nBut not my griefs; still am I king of those.\nPart of your cares you give me with your crown.\nYour cares set up do not pluck my cares down.\nMy care is loss of care, by old care done;\nYour care is gain of care, by new care won.\nThe cares I give I have, though given away.\nThey ’tend the crown, yet still with me they stay.\nAre you contented to resign the crown?\nAy, no; no, ay; for I must nothing be.\nTherefore no “no,” for I resign to thee.\nNow, mark me how I will undo myself.\nI give this heavy weight from off my head\nAnd this unwieldy scepter from my hand,\nThe pride of kingly sway from out my heart.\nWith mine own tears I wash away my balm,\nWith mine own hands I give away my crown,\nWith mine own tongue deny my sacred state,\nWith mine own breath release all duteous oaths.\nAll pomp and majesty I do forswear.\nMy manors, rents, revenues I forgo;\nMy acts, decrees, and statutes I deny.\nGod pardon all oaths that are broke to me.\nGod keep all vows unbroke are made to thee.\nMake me, that nothing have, with nothing grieved,\nAnd thou with all pleased that hast all achieved.\nLong mayst thou live in Richard’s seat to sit,\nAnd soon lie Richard in an earthy pit.\nGod save King Henry, unkinged Richard says,\nAnd send him many years of sunshine days.\nWhat more remains?\n, offering Richard a paper\nNo more, but that you read\nThese accusations and these grievous crimes\nCommitted by your person and your followers\nAgainst the state and profit of this land;\nThat, by confessing them, the souls of men\nMay deem that you are worthily deposed.\nMust I do so? And must I ravel out\nMy weaved-up follies? Gentle Northumberland,\nIf thy offenses were upon record,\nWould it not shame thee in so fair a troop\nTo read a lecture of them? If thou wouldst,\nThere shouldst thou find one heinous article\nContaining the deposing of a king\nAnd cracking the strong warrant of an oath,\nMarked with a blot, damned in the book of\nheaven.—\nNay, all of you that stand and look upon me\nWhilst that my wretchedness doth bait myself,\nThough some of you, with Pilate, wash your hands,\nShowing an outward pity, yet you Pilates\nHave here delivered me to my sour cross,\nAnd water cannot wash away your sin.\nMy lord, dispatch. Read o’er these articles.\nMine eyes are full of tears; I cannot see.\nAnd yet salt water blinds them not so much\nBut they can see a sort of traitors here.\nNay, if I turn mine eyes upon myself,\nI find myself a traitor with the rest,\nFor I have given here my soul’s consent\nT’ undeck the pompous body of a king,\nMade glory base and sovereignty a slave,\nProud majesty a subject, state a peasant.\nMy lord—\nNo lord of thine, thou haught insulting man,\nNor no man’s lord. I have no name, no title,\nNo, not that name was given me at the font,\nBut ’tis usurped. Alack the heavy day,\nThat I have worn so many winters out\nAnd know not now what name to call myself.\nO, that I were a mockery king of snow\nStanding before the sun of Bolingbroke,\nTo melt myself away in water drops.—\nGood king, great king, and yet not greatly good,\nAn if my word be sterling yet in England,\nLet it command a mirror hither straight,\nThat it may show me what a face I have\nSince it is bankrupt of his majesty.\nGo, some of you, and fetch a looking-glass.\nAn Attendant exits.\nRead o’er this paper while the glass doth come.\nFiend, thou torments me ere I come to hell!\nUrge it no more, my Lord Northumberland.\nThe commons will not then be satisfied.\nThey shall be satisfied. I’ll read enough\nWhen I do see the very book indeed\nWhere all my sins are writ, and that’s myself.\nEnter one with a glass.\nGive me that glass, and therein will I read.\nHe takes the mirror.\nNo deeper wrinkles yet? Hath sorrow struck\nSo many blows upon this face of mine\nAnd made no deeper wounds? O flatt’ring glass,\nLike to my followers in prosperity,\nThou dost beguile me. Was this face the face\nThat every day under his household roof\nDid keep ten thousand men? Was this the face\nThat like the sun did make beholders wink?\nIs this the face which faced so many follies,\nThat was at last outfaced by Bolingbroke?\nA brittle glory shineth in this face.\nAs brittle as the glory is the face,\nHe breaks the mirror.\nFor there it is, cracked in an hundred shivers.—\nMark, silent king, the moral of this sport:\nHow soon my sorrow hath destroyed my face.\nThe shadow of your sorrow hath destroyed\nThe shadow of your face.\nSay that again.\nThe shadow of my sorrow? Ha, let’s see.\n’Tis very true. My grief lies all within;\nAnd these external manners of laments\nAre merely shadows to the unseen grief\nThat swells with silence in the tortured soul.\nThere lies the substance. And I thank thee, king,\nFor thy great bounty, that not only giv’st\nMe cause to wail but teachest me the way\nHow to lament the cause. I’ll beg one boon\nAnd then be gone and trouble you no more.\nShall I obtain it?\nName it, fair cousin.\n“Fair cousin”? I am greater than a king,\nFor when I was a king, my flatterers\nWere then but subjects. Being now a subject,\nI have a king here to my flatterer.\nBeing so great, I have no need to beg.\nYet ask.\nAnd shall I have?\nYou shall.\nThen give me leave to go.\nWhither?\nWhither you will, so I were from your sights.\nGo, some of you, convey him to the Tower.\nO, good! “Convey”? Conveyers are you all,\nThat rise thus nimbly by a true king’s fall.\nRichard exits with Guards.\nOn Wednesday next, we solemnly set down\nOur coronation. Lords, prepare yourselves."
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-02075",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-02077",
+      "offset": 19
+     },
+     "text": "Let it be so, and loe on wednesday next,\nWe solemnly proclaime our Coronation,\nLords be ready all."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02054",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02226",
+      "offset": 43
+     },
+     "text": "May it please you, Lords, to grant the Commons Suit?\nFetch hither Richard, that in common view\nHe may surrender: so we shall proceede\nWithout suspition.\nI will be his Conduct.\nExit.\nLords, you that here are vnder our Arrest,\nProcure your Sureties for your Dayes of Answer:\nLittle are we beholding to your Loue,\nAnd little look'd for at your helping Hands.\nEnter Richard and Yorke.\nAlack, why am I sent for to a King,\nBefore I haue shooke off the Regall thoughts\nWherewith I reign'd? I hardly yet haue learn'd\nTo insinuate, flatter, bowe, and bend my Knee.\nGiue Sorrow leaue a while, to tuture me\nTo this submission. Yet I well remember\nThe fauors of these men: were they not mine?\nDid they not sometime cry, All hayle to me?\nSo Iudas did to Christ: but he in twelue,\nFound truth in all, but one; I, in twelve thousand, none.\nGod saue the King: will no man say, Amen?\nAm I both Priest, and Clarke? well then, Amen.\nGod saue the King, although I be not hee:\nAnd yet Amen, if Heauen doe thinke him mee.\nTo doe what seruice, am I sent for hither?\nTo doe that office of thine owne good will,\nWhich tyred Maiestie did make thee offer:\nThe Resignation of thy State and Crowne\nTo Henry Bullingbrooke.\nGiue me the Crown. Here Cousin, seize ye Crown:\nHere Cousin, on this side my Hand, on that side thine.\nNow is this Golden Crowne like a deepe Well,\nThat owes two Buckets, filling one another,\nThe emptier euer dancing in the ayre,\nThe other downe, vnseene, and full of Water:\nThat Bucket downe, and full of Teares am I,\nDrinking my Griefes, whil'st you mount vp on high.\nI thought you had been willing to resigne.\nMy Crowne I am, but still my Griefes are mine:\nYou may my Glories and my State depose,\nBut not my Griefes; still am I King of those.\nPart of your Cares you giue me with your Crowne.\nYour Cares set vp, do not pluck my Cares downe.\nMy Care, is losse of Care, by old Care done,\nYour Care, is gaine of Care, by new Care wonne:\nThe Cares I giue, I haue, though giuen away,\nThey 'tend the Crowne, yet still with me they stay:\nAre you contended to resigne the Crowne?\nI, no; no, I: for I must nothing bee:\nTherefore no, no, for I resigne to thee.\nNow, marke me how I will vndoe my selfe.\nI giue this heauie Weight from off my Head,\nAnd this vnwieldie Scepter from my Hand,\nThe pride of Kingly sway from out my Heart.\nWith mine owne Teares I wash away my Balme,\nWith mine owne Hands I giue away my Crowne,\nWith mine owne Tongue denie my Sacred State,\nWith mine owne Breath release all dutious Oathes;\nAll Pompe and Maiestie I doe forsweare:\nMy Manors, Rents, Reuenues, I forgoe;\nMy Acts, Decrees, and Statutes I denie:\nGod pardon all Oathes that are broke to mee,\nGod keepe all Vowes vnbroke are made to thee.\nMake me, that nothing haue, with nothing grieu'd,\nAnd thou with all pleas'd, that hast all atchieu'd.\nLong may'st thou liue in Richards Seat to sit,\nAnd soone lye Richard in an Earthie Pit.\nGod saue King Henry, vn-King'd Richard sayes,\nAnd send him many yeeres of Sunne-shine dayes.\nWhat more remaines?\nNo, more: but that you reade\nThese Accusations, and these grieuous Crymes,\nCommitted by your Person, and your followers,\nAgainst the State, and Profit of this Land:\nThat by confessing them, the Soules of men\nMay deeme, that you are worthily depos'd.\nMust I doe so? and must I rauell out\nMy weau'd-vp follyes? Gentle Northumberland,\nIf thy Offences were vpon Record,\nWould it not shame thee, in so faire a troupe,\nTo reade a Lecture of them? If thou would'st,\nThere should'st thou finde one heynous Article,\nContayning the deposing of a King,\nAnd cracking the strong Warrant of an Oath,\nMark'd with a Blot, damn'd in the Booke of Heauen.\nNay, all of you, that stand and looke vpon me,\nWhil'st that my wretchednesse doth bait my selfe,\nThough some of you, with Pilate, wash your hands,\nShewing an outward pittie: yet you Pilates\nHaue here deliuer'd me to my sowre Crosse,\nAnd Water cannot wash away your sinne.\nMy Lord dispatch, reade o're these Articles.\nMine Eyes are full of Teares, I cannot see:\nAnd yet salt-Water blindes them not so much,\nBut they can see a sort of Traytors here.\nNay, if I turne mine Eyes vpon my selfe,\nI finde my selfe a Traytor with the rest:\nFor I haue giuen here my Soules consent,\nT'vndeck the pompous Body of a King;\nMade Glory base; a Soueraigntie, a Slaue;\nProwd Maiestie, a Subiect; State, a Pesant.\nMy Lord.\nNo Lord of thine, thou haught-insulting man;\nNo, nor no mans Lord: I haue no Name, no Title;\nNo, not that Name was giuen me at the Font.\nBut 'tis vsurpt: alack the heauie day,\nThat I haue worne so many Winters out,\nAnd know not now, what Name to call my selfe.\nOh, that I were a Mockerie, King of Snow,\nStanding before the Sunne of Bullingbrooke,\nTo melt my selfe away in Water-drops.\nGood King, great King, and yet not greatly good,\nAnd if my word be Sterling yet in England,\nLet it command a Mirror hither straight,\nThat it may shew me what a Face I haue,\nSince it is Bankrupt of his Maiestie.\nGoe some of you, and fetch a Looking-Glasse.\nRead o're this Paper, while yc Glasse doth come.\nFiend, thou torments me, ere I come to Hell.\nVrge it no more, my Lord Northumberland.\nThe Commons will not then be satisfy'd.\nThey shall be satisfy'd: Ile reade enough,\nWhen I doe see the very Booke indeede,\nWhere all my sinnes are writ, and that's my selfe.\nEnter one with a Glasse.\nGiue me that Glasse, and therein will I reade.\nNo deeper wrinckles yet? hath Sorrow strucke\nSo many Blowes vpon this Face of mine,\nAnd made no deeper Wounds? Oh flatt'ring Glasse,\nLike to my followers in prosperitie,\nThou do'st beguile me. Was this Face, the Face\nThat euery day, vnder his House-hold Roofe,\nDid keepe ten thousand men? Was this the Face,\nThat like the Sunne, did make beholders winke?\nIs this the Face, which fac'd so many follyes,\nThat was at last out-fac'd by Bullingbrooke?\nA brittle Glory shineth in this Face,\nAs brittle as the Glory, is the Face,\nFor there it is, crackt in an hundred shiuers.\nMarke silent King, the Morall of this sport,\nHow soone my Sorrow hath destroy'd my Face.\nThe shadow of your Sorrow hath destroy'd\nThe shadow of your Face.\nSay that againe.\nThe shadow of my Sorrow: ha, let's see,\n'Tis very true, my Griefe lyes all within,\nAnd these externall manner of Laments,\nAre meerely shadowes, to the vnseene Griefe,\nThat swells with silence in the tortur'd Soule.\nThere lyes the substance: and I thanke thee King\nFor thy great bountie, that not onely giu'st\nMe cause to wayle, but teachest me the way\nHow to lament the cause. Ile begge one Boone,\nAnd then be gone, and trouble you no more.\nShall I obtaine it?\nName it, faire Cousin.\nFaire Cousin? I am greater then a King:\nFor when I was a King, my flatterers\nWere then but subiects; being now a subiect,\nI haue a King here to my flatterer:\nBeing so great, I haue no neede to begge.\nYet aske.\nAnd shall I haue?\nYou shall.\nThen giue me leaue to goe.\nWhither?\nWhither you will, so I were from your sights.\nGoe some of you, conuey him to the Tower.\nOh good: conuey: Conueyers are you all,\nThat rise thus nimbly by a true Kings fall.\nOn Wednesday next, we solemnly set downe\nOur Coronation: Lords, prepare your selues."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0168",
+   "title": "Editorial emendation: “The Abbot of”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2276.1",
+      "offset": 11
+     },
+     "end": {
+      "nodeId": "stg-2276.1",
+      "offset": 23
+     },
+     "text": "The Abbot of"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-02079",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-02079",
+      "offset": 29
+     },
+     "text": "Manent West. Caleil, Aumerle."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0169",
+   "title": "Editorial emendation: “the Bishop of”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2276.1",
+      "offset": 37
+     },
+     "end": {
+      "nodeId": "stg-2276.1",
+      "offset": 50
+     },
+     "text": "the Bishop of"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-02079",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-02079",
+      "offset": 29
+     },
+     "text": "Manent West. Caleil, Aumerle."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0172",
+   "title": "Editorial emendation: “and Guard.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2296.1",
+      "offset": 14
+     },
+     "end": {
+      "nodeId": "stg-2296.1",
+      "offset": 24
+     },
+     "text": "and Guard."
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-02101",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-02101",
+      "offset": 11
+     },
+     "text": "(Enter Ric."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02249",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02249",
+      "offset": 24
+     },
+     "text": "Enter Richard and Guard."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0173",
+   "title": "Editorial emendation: “To Queen.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2365",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2365",
+      "offset": 9
+     },
+     "text": "To Queen."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0174",
+   "title": "Editorial emendation: “to Northumberland”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2375.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2375.0",
+      "offset": 19
+     },
+     "text": "to Northumberland"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0176",
+   "title": "Editorial emendation: “They kiss.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2388.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2388.1",
+      "offset": 10
+     },
+     "text": "They kiss."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0177",
+   "title": "Editorial emendation: “They kiss.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2390.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2390.1",
+      "offset": 10
+     },
+     "text": "They kiss."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0179",
+   "title": "Editorial emendation: “Enter Aumerle.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2437.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2437.1",
+      "offset": 14
+     },
+     "text": "Enter Aumerle."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02390",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02390",
+      "offset": 14
+     },
+     "text": "Enter Aumerle."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0180",
+   "title": "Editorial emendation: “calling offstage”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2475.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2475.0",
+      "offset": 18
+     },
+     "text": "calling offstage"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0181",
+   "title": "Editorial emendation: “calling offstage”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2478.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2478.0",
+      "offset": 18
+     },
+     "text": "calling offstage"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0182",
+   "title": "Editorial emendation: “calling offstage”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2487.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2487.0",
+      "offset": 18
+     },
+     "text": "calling offstage"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0183",
+   "title": "Editorial emendation: “His man helps him on with his boots, then exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2490.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2490.1",
+      "offset": 48
+     },
+     "text": "His man helps him on with his boots, then exits."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0184",
+   "title": "Editorial emendation: “They exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2523.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2523.1",
+      "offset": 10
+     },
+     "text": "They exit."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02478",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02478",
+      "offset": 4
+     },
+     "text": "Exit"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0186",
+   "title": "Editorial emendation: “While” (5.3.10)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2533",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ftln-2533",
+      "offset": 5
+     },
+     "text": "While"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-02340",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-02340",
+      "offset": 40
+     },
+     "text": "Which he yong wanton and effeminate boy,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02489",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02489",
+      "offset": 41
+     },
+     "text": "Which he, yong wanton, and effeminate Boy"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0187",
+   "title": "Editorial emendation: “to his Nobles”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2551.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2551.0",
+      "offset": 15
+     },
+     "text": "to his Nobles"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0188",
+   "title": "Editorial emendation: “The Nobles exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2551.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2551.1",
+      "offset": 16
+     },
+     "text": "The Nobles exit."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0189",
+   "title": "Editorial emendation: “kneeling”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2553.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2553.0",
+      "offset": 10
+     },
+     "text": "kneeling"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0190",
+   "title": "Editorial emendation: “standing”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2559.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2559.0",
+      "offset": 10
+     },
+     "text": "standing"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0191",
+   "title": "Editorial emendation: “I” (5.3.36)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2559",
+      "offset": 24
+     },
+     "end": {
+      "nodeId": "ftln-2559",
+      "offset": 25
+     },
+     "text": "I"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-02365",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-02365",
+      "offset": 42
+     },
+     "text": "Then giue me leaue that May turne the key,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02516",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02516",
+      "offset": 45
+     },
+     "text": "Then giue me leaue, that I may turne the key,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0192",
+   "title": "Editorial emendation: “Aumerle locks the door.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2561",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2561",
+      "offset": 23
+     },
+     "text": "Aumerle locks the door."
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-02368",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-02368",
+      "offset": 49
+     },
+     "text": "The Duke of Yorke knokes at the doore and crieth."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0193",
+   "title": "Editorial emendation: “within”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2562.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2562.0",
+      "offset": 8
+     },
+     "text": "within"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02519",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02519",
+      "offset": 13
+     },
+     "text": "Yorke within."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0194",
+   "title": "Editorial emendation: “to Aumerle”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2564",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2564",
+      "offset": 12
+     },
+     "text": "to Aumerle"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0195",
+   "title": "Editorial emendation: “He draws his sword.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2564.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2564.1",
+      "offset": 19
+     },
+     "text": "He draws his sword."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0196",
+   "title": "Editorial emendation: “within”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2566.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2566.0",
+      "offset": 8
+     },
+     "text": "within"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0197",
+   "title": "Editorial emendation: “King Henry unlocks the door.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2568.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2568.1",
+      "offset": 28
+     },
+     "text": "King Henry unlocks the door."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0198",
+   "title": "Editorial emendation: “Enter York.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2568.2",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2568.2",
+      "offset": 11
+     },
+     "text": "Enter York."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02527",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02527",
+      "offset": 12
+     },
+     "text": "Enter Yorke."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0199",
+   "title": "Editorial emendation: “giving King Henry a paper”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2572.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2572.0",
+      "offset": 27
+     },
+     "text": "giving King Henry a paper"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0200",
+   "title": "Editorial emendation: “to King Henry”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2574.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2574.0",
+      "offset": 15
+     },
+     "text": "to King Henry"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0201",
+   "title": "Editorial emendation: “within”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2597.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2597.0",
+      "offset": 8
+     },
+     "text": "within"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02556",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02556",
+      "offset": 17
+     },
+     "text": "Dutchesse within."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0202",
+   "title": "Editorial emendation: “shrill-voiced” (5.3.75)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2598",
+      "offset": 5
+     },
+     "end": {
+      "nodeId": "ftln-2598",
+      "offset": 18
+     },
+     "text": "shrill-voiced"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-02405",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-02405",
+      "offset": 48
+     },
+     "text": "What shril voice suppliant makes this eger crie?"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02558",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02558",
+      "offset": 51
+     },
+     "text": "What shrill-voic'd Suppliant, makes this eager cry?"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0203",
+   "title": "Editorial emendation: “within”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2599.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2599.0",
+      "offset": 8
+     },
+     "text": "within"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0204",
+   "title": "Editorial emendation: “Aumerle opens the door.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2605.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2605.1",
+      "offset": 23
+     },
+     "text": "Aumerle opens the door."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0205",
+   "title": "Editorial emendation: “Duchess of York enters and kneels.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2605.2",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2605.2",
+      "offset": 34
+     },
+     "text": "Duchess of York enters and kneels."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0206",
+   "title": "Editorial emendation: “kneeling”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2621.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2621.0",
+      "offset": 10
+     },
+     "text": "kneeling"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0207",
+   "title": "Editorial emendation: “kneeling”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2622.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2622.0",
+      "offset": 10
+     },
+     "text": "kneeling"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0209",
+   "title": "Editorial emendation: “To King Henry.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2649",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2649",
+      "offset": 14
+     },
+     "text": "To King Henry."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0210",
+   "title": "Editorial emendation: “They all stand.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2666.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2666.1",
+      "offset": 15
+     },
+     "text": "They all stand."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0211",
+   "title": "Editorial emendation: “to Aumerle”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2676.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2676.0",
+      "offset": 12
+     },
+     "text": "to Aumerle"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0213",
+   "title": "Editorial emendation: “Enter”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2676.2",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2676.2",
+      "offset": 5
+     },
+     "text": "Enter"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-02481",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-02481",
+      "offset": 34
+     },
+     "text": "Exeunt. Mane• sir Pier• Exton, &c."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02635",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02635",
+      "offset": 25
+     },
+     "text": "Enter Exton and Seruants."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0214",
+   "title": "Editorial emendation: “Servants.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2676.2",
+      "offset": 27
+     },
+     "end": {
+      "nodeId": "stg-2676.2",
+      "offset": 36
+     },
+     "text": "Servants."
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-02481",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-02481",
+      "offset": 34
+     },
+     "text": "Exeunt. Mane• sir Pier• Exton, &c."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02635",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02635",
+      "offset": 25
+     },
+     "text": "Enter Exton and Seruants."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0215",
+   "title": "Editorial emendation: “They exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2688.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2688.1",
+      "offset": 10
+     },
+     "text": "They exit."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02648",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02648",
+      "offset": 5
+     },
+     "text": "Exit."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0217",
+   "title": "Editorial emendation: “sit” (5.5.27)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2715",
+      "offset": 31
+     },
+     "end": {
+      "nodeId": "ftln-2715",
+      "offset": 34
+     },
+     "text": "sit"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-02520",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-02520",
+      "offset": 42
+     },
+     "text": "That many haue, and others must set there."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02675",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02675",
+      "offset": 42
+     },
+     "text": "That many haue, and others must sit there;"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0218",
+   "title": "Editorial emendation: “the Keeper,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2784.1",
+      "offset": 11
+     },
+     "end": {
+      "nodeId": "stg-2784.1",
+      "offset": 22
+     },
+     "text": "the Keeper,"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-02591",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-02591",
+      "offset": 32
+     },
+     "text": "Enter one to Richard with mea•e."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02746",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02746",
+      "offset": 25
+     },
+     "text": "Enter Keeper with a Dish."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0219",
+   "title": "Editorial emendation: “to Groom”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2785.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2785.0",
+      "offset": 10
+     },
+     "text": "to Groom"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0220",
+   "title": "Editorial emendation: “to Groom”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2786.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2786.0",
+      "offset": 10
+     },
+     "text": "to Groom"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0221",
+   "title": "Editorial emendation: “attacking the Keeper”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2793.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2793.0",
+      "offset": 22
+     },
+     "text": "attacking the Keeper"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0222",
+   "title": "Editorial emendation: “Exton and his men”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2795.1",
+      "offset": 14
+     },
+     "end": {
+      "nodeId": "stg-2795.1",
+      "offset": 31
+     },
+     "text": "Exton and his men"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-02603",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-02603",
+      "offset": 22
+     },
+     "text": "The murderers rush in."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02758",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02758",
+      "offset": 25
+     },
+     "text": "Enter Exton and Seruants."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0223",
+   "title": "Editorial emendation: “Richard seizes a weapon from a Murderer and kills him with …”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2797.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2797.1",
+      "offset": 62
+     },
+     "text": "Richard seizes a weapon from a Murderer and kills him with it."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0224",
+   "title": "Editorial emendation: “He kills another Murderer.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2798.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2798.1",
+      "offset": 26
+     },
+     "text": "He kills another Murderer."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0225",
+   "title": "Editorial emendation: “He dies.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2804.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2804.1",
+      "offset": 8
+     },
+     "text": "He dies."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0226",
+   "title": "Editorial emendation: “They exit with the bodies.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2810.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2810.1",
+      "offset": 26
+     },
+     "text": "They exit with the bodies."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02774",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02774",
+      "offset": 5
+     },
+     "text": "Exit."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0228",
+   "title": "Editorial emendation: “King Henry,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2810.2",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "stg-2810.2",
+      "offset": 17
+     },
+     "text": "King Henry,"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-02619",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-02619",
+      "offset": 43
+     },
+     "text": "Enter Bullingbrooke with the duke of York•."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02776",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02776",
+      "offset": 58
+     },
+     "text": "Enter Bullingbrooke, Yorke, with other Lords & attendants."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0229",
+   "title": "Editorial emendation: “He gives King Henry a paper.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2820.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2820.1",
+      "offset": 28
+     },
+     "text": "He gives King Henry a paper."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0230",
+   "title": "Editorial emendation: “Harry”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2828.1",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "stg-2828.1",
+      "offset": 11
+     },
+     "text": "Harry"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-02640",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-02640",
+      "offset": 16
+     },
+     "text": "Enter H. Percie."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02797",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02797",
+      "offset": 24
+     },
+     "text": "Enter Percy and Carlile."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0231",
+   "title": "Editorial emendation: “with the Bishop of Carlisle.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2828.1",
+      "offset": 18
+     },
+     "end": {
+      "nodeId": "stg-2828.1",
+      "offset": 46
+     },
+     "text": "with the Bishop of Carlisle."
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-02640",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-02640",
+      "offset": 16
+     },
+     "text": "Enter H. Percie."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02797",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02797",
+      "offset": 24
+     },
+     "text": "Enter Percy and Carlile."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0232",
+   "title": "Editorial emendation: “and Servingmen”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2839.1",
+      "offset": 12
+     },
+     "end": {
+      "nodeId": "stg-2839.1",
+      "offset": 26
+     },
+     "text": "and Servingmen"
+    },
+    {
+     "versionId": "q1-1597",
+     "start": {
+      "nodeId": "r2-q1-02652",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-q1-02652",
+      "offset": 28
+     },
+     "text": "Enter •xton with the coffin."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02809",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02809",
+      "offset": 26
+     },
+     "text": "Enter Exton with a Coffin."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0233",
+   "title": "Editorial emendation: “Exton exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2854.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2854.1",
+      "offset": 12
+     },
+     "text": "Exton exits."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0234",
+   "title": "Editorial emendation: “Servingmen lift the coffin to carry it out.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2860.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2860.1",
+      "offset": 43
+     },
+     "text": "Servingmen lift the coffin to carry it out."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0235",
+   "title": "Editorial emendation: “They exit, following the coffin.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2862.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2862.1",
+      "offset": 32
+     },
+     "text": "They exit, following the coffin."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0236",
+   "title": "Editorial emendations to the text from the Folio: “offering Richard a paper”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2175.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-2175.0",
+      "offset": 26
+     },
+     "text": "offering Richard a paper"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0237",
+   "title": "Editorial emendations to the text from the Folio: “and” (4.1.262)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2205",
+      "offset": 16
+     },
+     "end": {
+      "nodeId": "ftln-2205",
+      "offset": 19
+     },
+     "text": "and"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02154",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02154",
+      "offset": 41
+     },
+     "text": "Made Glory base; a Soueraigntie, a Slaue;"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0238",
+   "title": "Editorial emendations to the text from the Folio: “An Attendant exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2222.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2222.1",
+      "offset": 19
+     },
+     "text": "An Attendant exits."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0239",
+   "title": "Editorial emendations to the text from the Folio: “He takes the mirror.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2230.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2230.1",
+      "offset": 20
+     },
+     "text": "He takes the mirror."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0240",
+   "title": "Editorial emendations to the text from the Folio: “He breaks the mirror.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2242.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2242.1",
+      "offset": 21
+     },
+     "text": "He breaks the mirror."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0241",
+   "title": "Editorial emendations to the text from the Folio: “manners” (4.1.308)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2251",
+      "offset": 19
+     },
+     "end": {
+      "nodeId": "ftln-2251",
+      "offset": 26
+     },
+     "text": "manners"
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "r2-f1-02201",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "r2-f1-02201",
+      "offset": 38
+     },
+     "text": "And these externall manner of Laments,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0242",
+   "title": "Editorial emendations to the text from the Folio: “Richard exits with Guards.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2274.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2274.1",
+      "offset": 26
+     },
+     "text": "Richard exits with Guards."
+    },
+    {
+     "versionId": "q1-1597",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  }
+ ]
+}

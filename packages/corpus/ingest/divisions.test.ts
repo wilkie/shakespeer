@@ -96,6 +96,55 @@ describe('supplyEditorialDivisions', () => {
     ]);
   });
 
+  it('CRP-031: renumbers printed scenes by a reviewed mapping, splitting the scene before', () => {
+    const modern = doc([
+      {
+        n: 1,
+        editorial: false,
+        scenes: [
+          scene(1, [sd('Enter A.'), speech(PASSAGES[0] ?? '')]),
+          scene(2, [sd('Enter B.'), speech(PASSAGES[1] ?? '')]),
+          scene(3, [sd('Enter C.'), speech(PASSAGES[2] ?? '')]),
+        ],
+      },
+    ]);
+    // Printed "Scena Secunda" is the modern third scene; the second is not divided off.
+    const orig = doc([
+      {
+        n: 1,
+        editorial: false,
+        scenes: [
+          {
+            ...scene(1, [
+              sd('Enter A.'),
+              speech(PASSAGES[0] ?? ''),
+              sd('Enter B.'),
+              speech(PASSAGES[1] ?? ''),
+            ]),
+            heading: 'Scena Prima.',
+          },
+          { ...scene(2, [sd('Enter C.'), speech(PASSAGES[2] ?? '')]), heading: 'Scena Secunda.' },
+        ],
+      },
+    ]);
+
+    expect(
+      supplyEditorialDivisions(orig, modern, { sceneNumbers: { '1.2': '1.3' } }).added,
+    ).toStrictEqual(['1.2']);
+    expect(
+      orig.divisions[0]?.scenes.map((s) => [s.id, s.n, s.editorial, s.heading ?? null]),
+    ).toStrictEqual([
+      ['x.1', 1, false, 'Scena Prima.'],
+      ['1.2', 2, true, null],
+      ['1.3', 3, false, 'Scena Secunda.'],
+    ]);
+    expect(() =>
+      supplyEditorialDivisions(doc([{ n: 1, editorial: false, scenes: [scene(1, [])] }]), modern, {
+        sceneNumbers: { '1.4': '1.3' },
+      }),
+    ).toThrow(/no printed scene 1.4/);
+  });
+
   it('leaves a fully divided version alone', () => {
     const orig = doc([{ n: 1, editorial: false, scenes: [scene(1, [speech(PASSAGES[0] ?? '')])] }]);
     const before = structuredClone(orig.divisions);
