@@ -144,3 +144,27 @@ export async function generateDefinitions({
   }
   return result;
 }
+
+export interface PruneResult {
+  file: GeneratedFile;
+  entries: number;
+  notNeeded: number;
+}
+
+/**
+ * Removes the `auto` entries and `notNeeded` occurrences that are no longer candidates, after
+ * the rules or the text change; reviewed and rejected entries stay (GEN-010).
+ */
+export function pruneGenerated(file: GeneratedFile, candidates: readonly Candidate[]): PruneResult {
+  const current = new Set(
+    candidates.flatMap((c) => c.occurrences.map((o) => `${key(o)}:${o.word}`)),
+  );
+  const isCandidate = (o: Occurrence) => current.has(`${key(o)}:${o.word}`);
+  const entries = file.entries.filter((e) => e.status !== 'auto' || isCandidate(e));
+  const notNeeded = file.notNeeded.filter(isCandidate);
+  return {
+    file: { ...file, entries, notNeeded },
+    entries: file.entries.length - entries.length,
+    notNeeded: file.notNeeded.length - notNeeded.length,
+  };
+}

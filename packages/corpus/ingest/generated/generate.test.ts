@@ -2,11 +2,11 @@ import { describe, expect, it } from '@jest/globals';
 
 import { selectCandidates, type Candidate } from './candidates.ts';
 import type { GeneratedFile } from './file.ts';
-import { common, doc, sourced } from './fixture.ts';
-import { generateDefinitions, type AskModel } from './generate.ts';
+import { common, commonest, doc, sourced } from './fixture.ts';
+import { generateDefinitions, pruneGenerated, type AskModel } from './generate.ts';
 import { BATCH_SIZE, PROMPT_VERSION, type ModelResponse } from './prompt.ts';
 
-const candidates = selectCandidates(doc, sourced, common);
+const candidates = selectCandidates(doc, sourced, common, commonest);
 
 /** A model that defines every occurrence of "yare" and says the rest need nothing. */
 function fakeModel() {
@@ -132,12 +132,11 @@ describe('generateDefinitions', () => {
     ]);
     expect(file.notNeeded.map((o) => o.word)).toEqual([
       'Still',
+      'Bermoothes',
       'Whither',
       'Whither',
-      'wilt',
-      'wast',
     ]);
-    expect(result).toMatchObject({ added: 3, notNeeded: 5, failed: 0 });
+    expect(result).toMatchObject({ added: 3, notNeeded: 4, failed: 0 });
   });
 
   it('GEN-010: a re-run asks only about what has no answer, and never changes reviewed entries', async () => {
@@ -146,11 +145,11 @@ describe('generateDefinitions', () => {
     file.entries = file.entries
       .slice(0, 1)
       .map((e) => ({ ...e, meaning: 'ready', status: 'reviewed' }));
-    file.notNeeded = file.notNeeded.filter((o) => o.word !== 'wast');
+    file.notNeeded = file.notNeeded.filter((o) => o.word !== 'Bermoothes');
 
     const { ask, requests } = fakeModel();
     const { saved } = await run(file, ask);
-    expect(requests.map((r) => /^Word: (.*)$/m.exec(r)?.[1])).toEqual(['yare', 'wast']);
+    expect(requests.map((r) => /^Word: (.*)$/m.exec(r)?.[1])).toEqual(['yare', 'bermoothes']);
     // Only the two occurrences of "yare" without an entry were asked about.
     expect(requests[0]?.match(/^Occurrence \d+/gm)).toHaveLength(2);
     const after = saved.at(-1) as GeneratedFile;
@@ -173,5 +172,30 @@ describe('generateDefinitions', () => {
       notNeeded: [],
     };
     await expect(run(existing, fakeModel().ask)).rejects.toThrow(/cannot be extended/);
+  });
+
+  it('GEN-010: --prune removes unreviewed answers for occurrences no longer candidates', () => {
+    const occurrence = (nodeId: string, start: number, word: string) => ({
+      nodeId,
+      start,
+      end: start + word.length,
+      word,
+    });
+    const file: GeneratedFile = {
+      model: 'claude-opus-5-5',
+      generatedAt: '2026-10-11',
+      promptVersion: 1,
+      entries: [
+        { ...occurrence('ftln-0001', 17, 'yare'), meaning: 'quick', status: 'auto' },
+        // "wilt" is a function word now: the unreviewed entry goes, the reviewed one stays.
+        { ...occurrence('ftln-0005', 28, 'wilt'), meaning: 'will', status: 'auto' },
+        { ...occurrence('ftln-0006', 12, 'wast'), meaning: 'were', status: 'reviewed' },
+      ],
+      notNeeded: [occurrence('ftln-0003', 0, 'Still'), occurrence('ftln-0004', 0, 'Thou')],
+    };
+    const pruned = pruneGenerated(file, candidates);
+    expect(pruned.file.entries.map((e) => e.word)).toEqual(['yare', 'wast']);
+    expect(pruned.file.notNeeded.map((o) => o.word)).toEqual(['Still']);
+    expect(pruned).toMatchObject({ entries: 1, notNeeded: 1 });
   });
 });

@@ -49,7 +49,7 @@ export const doc: VersionDocument = {
                 line(4, 'Thou art still a fool, I think.'),
                 line(5, 'Whither go’st thou? Whither wilt thou?'),
                 line(6, 'Ariel, thou wast my armèd slave.'),
-                line(7, 'Our master, sweet, in Act II.'),
+                line(7, 'Our master’s fool, Ariel’s, in Act II.'),
               ],
             },
           ],
@@ -59,12 +59,13 @@ export const doc: VersionDocument = {
   ],
 };
 
-/** Words the tests treat as common modern English. */
+/** Words the tests treat as common modern English, and the commonest of them. */
 export const common = new Set(
-  'good be and tend the master take in vex are far still thou art fool think go my arm slave our sweet act'.split(
+  'good be and tend the master take in vex are far still thou art fool think go my arm slave our act'.split(
     ' ',
   ),
 );
+export const commonest = new Set('good be and the master take in fool think go my'.split(' '));
 
 const term = (sourceId: string, nodeId: string, word: string): SourcedTerm => {
   const text = (doc.divisions[0]?.scenes[0]?.blocks ?? [])
@@ -98,5 +99,9 @@ export const sourced = [
     term('schmidt-1902', 'ftln-0002', 'topsail'),
     term('schmidt-1902', 'ftln-0001', 'master'),
   ]),
-  file('onions-1919', [term('onions-1919', 'ftln-0004', 'still')]),
+  // Onions headwords: "still" makes its other occurrence a candidate; "fool" is too common to.
+  file('onions-1919', [
+    term('onions-1919', 'ftln-0004', 'still'),
+    term('onions-1919', 'ftln-0004', 'fool'),
+  ]),
 ];

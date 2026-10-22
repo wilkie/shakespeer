@@ -16,13 +16,17 @@ is ever called by the app or by the ingest run ([CRP-006](corpus.md)).
     `sources.lock.json` like any source), compared by lower-cased form and its obvious
     inflections, with accents and elisions spelled out ("armèd" is "armed", "wat'ry" is
     "watery"); and
-  - occurrences of any headword Onions defines elsewhere in the play. (Onions lists only words
-    whose sense needs explaining; Schmidt glosses nearly every word, so its headwords would
-    make nearly every word a candidate.)
+  - occurrences of any headword Onions defines elsewhere in the play, unless the word is in
+    SCOWL's commonest list (size 10). (Onions lists only words whose sense needs explaining;
+    Schmidt glosses nearly every word, so its headwords would make nearly every word a
+    candidate. Onions also glosses the commonest words in idioms, "for that", "to-night", whose
+    other occurrences are ordinary.)
 - **GEN-002** — Excluded from candidates: occurrences that already have a sourced definition;
-  character names and the play's other proper names (words that appear capitalized other than
-  at the start of a line or sentence, never appear in lower case, and are not glossary
-  headwords); words in stage directions; numbers; single letters.
+  function words (articles, pronouns, prepositions, conjunctions, auxiliary and modal verbs, and
+  "ay", "nay", "yea"), whose unusual senses belong to phrases (Decision 4); the play's character
+  names, with or without a possessive "'s"; words in stage directions; numbers; single letters.
+  Other proper names (places, gods, people alluded to: Hyperion, the Bermoothes) are candidates
+  when they are uncommon like any word.
 - **GEN-003** — Generation is for the modern version only. Original versions get none until
   definitions can be carried across alignment (CRP-072).
 
@@ -32,12 +36,15 @@ is ever called by the app or by the ingest run ([CRP-006](corpus.md)).
   `pnpm --filter @shakespeer/corpus generate-definitions --play <playId>`. It calls a language
   model through its API (the key comes from the environment, never the repository) and writes
   its results as a curation file. Re-running it only fills in candidates without an entry, so
-  reviewed entries are never overwritten.
+  reviewed entries are never overwritten. With `--prune` it calls no model and removes from the
+  file the `auto` entries and `notNeeded` occurrences that are no longer candidates (after the
+  rules or the text change); `reviewed` and `rejected` entries are kept.
 - **GEN-011** — The model is asked about one candidate word at a time, with every occurrence of
   it in the play (in batches of at most 40 for frequent words) and two lines of context on each
   side. For each occurrence it gives the sense there as a short meaning (at most 25 words) and
   an optional part of speech, or says that no definition is needed (the modern sense applies).
-  Occurrences in the same sense MAY share a meaning.
+  For a proper name the meaning says briefly who or what it is. Occurrences in the same sense
+  MAY share a meaning.
 - **GEN-012** — The request MUST NOT include any glossary's definitions, so generated text is
   never a paraphrase of a source's entries (Onions is in copyright outside the US).
 - **GEN-013** — The curation file is `curation/<playId>/generated/<versionId>.json`:
@@ -78,4 +85,5 @@ is ever called by the app or by the ingest run ([CRP-006](corpus.md)).
 1. The generation step is the script of GEN-010, run by the maintainer with an API key.
 2. Generated definitions are on by default, like the other sources.
 3. The generated text is licensed CC0 1.0, stated in its `sources.json` entry.
-4. Single words only at first; multi-word idioms later, from a curated list.
+4. Single words only at first; multi-word idioms ("for that", "an't please you") later, from a
+   curated list, which Onions' phrase entries could seed.

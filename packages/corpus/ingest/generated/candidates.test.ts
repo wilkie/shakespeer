@@ -2,7 +2,7 @@ import { describe, expect, it } from '@jest/globals';
 import { gzipSync } from 'fflate';
 
 import { forms, scowlWords, selectCandidates } from './candidates.ts';
-import { common, doc, sourced } from './fixture.ts';
+import { common, commonest, doc, sourced } from './fixture.ts';
 
 /** A ustar archive of the given files, gzipped. */
 function tarGz(files: Record<string, Uint8Array>): Uint8Array {
@@ -54,30 +54,46 @@ describe('forms', () => {
 });
 
 describe('selectCandidates', () => {
-  const candidates = selectCandidates(doc, sourced, common);
+  const candidates = selectCandidates(doc, sourced, common, commonest);
   const words = candidates.map((c) => c.word);
 
   it('GEN-001: uncommon words, and other occurrences of Onions headwords, in order', () => {
-    expect(words).toEqual(['yare', 'still', 'whither', 'wilt', 'wast']);
+    expect(words).toEqual(['yare', 'still', 'bermoothes', 'whither']);
     expect(candidates[0]?.occurrences).toEqual([
       { nodeId: 'ftln-0001', start: 17, end: 21, word: 'yare' },
       { nodeId: 'ftln-0002', start: 0, end: 4, word: 'Yare' },
       { nodeId: 'ftln-0002', start: 6, end: 10, word: 'yare' },
     ]);
-    // Schmidt's headword "master" is common, so its other occurrence is not a candidate.
+    // "still" is defined by Onions in line 4, so line 3's occurrence is a candidate.
+    expect(candidates[1]?.occurrences).toEqual([
+      { nodeId: 'ftln-0003', start: 0, end: 5, word: 'Still' },
+    ]);
+    // Onions defines "fool" too, but it is among the commonest words: line 7's is ordinary.
+    expect(words).not.toContain('fool');
+    // Schmidt's headwords do not count: "master" is not a candidate in line 7.
     expect(words).not.toContain('master');
   });
 
-  it('GEN-002: leaves out defined occurrences, names, stage directions and single letters', () => {
-    // "still" is defined in line 4; only line 3's occurrence remains.
-    expect(candidates.find((c) => c.word === 'still')?.occurrences).toEqual([
-      { nodeId: 'ftln-0003', start: 0, end: 5, word: 'Still' },
-    ]);
-    // Defined by Schmidt; character names; a proper name; a numeral; "I"; a stage direction.
-    for (const word of ['topsail', 'gonzalo', 'ariel', 'bermoothes', 'ii', 'i', 'yarely']) {
+  it('GEN-002: leaves out defined occurrences, function words, character names and the rest', () => {
+    // Defined by Schmidt; function words, though uncommon; character names, also possessive;
+    // a numeral; "I"; a stage direction.
+    for (const word of [
+      'topsail',
+      'wilt',
+      'wast',
+      'thou',
+      'gonzalo',
+      'ariel',
+      "ariel's",
+      'ii',
+      'i',
+      'yarely',
+    ]) {
       expect(words).not.toContain(word);
     }
-    // A capital at the start of a sentence does not make a name.
-    expect(candidates.find((c) => c.word === 'whither')?.occurrences).toHaveLength(2);
+    // Other proper names are candidates like any uncommon word.
+    expect(candidates.find((c) => c.word === 'bermoothes')?.occurrences).toEqual([
+      { nodeId: 'ftln-0003', start: 17, end: 27, word: 'Bermoothes' },
+    ]);
   });
 });

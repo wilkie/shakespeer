@@ -74,6 +74,7 @@ pnpm --filter @shakespeer/corpus generate-definitions --play hamlet --dry-run  #
 pnpm --filter @shakespeer/corpus generate-definitions --play hamlet --words 20 # a trial run
 pnpm --filter @shakespeer/corpus generate-definitions --play hamlet            # the rest
 pnpm --filter @shakespeer/corpus generate-definitions --play hamlet --sample   # the review sample
+pnpm --filter @shakespeer/corpus generate-definitions --play hamlet --prune    # drop answers for words no longer candidates
 ```
 
 It writes `packages/corpus/curation/<playId>/generated/folger.json`. Mark each sampled entry

@@ -3,11 +3,12 @@
  * ingest (CRP-006); needs an Anthropic API key in the environment (ANTHROPIC_API_KEY).
  *
  *   pnpm --filter @shakespeer/corpus generate-definitions --play <playId>
- *       [--model <id>] [--words <n>] [--concurrency <n>] [--dry-run] [--sample]
+ *       [--model <id>] [--words <n>] [--concurrency <n>] [--dry-run] [--sample] [--prune]
  *
  * --words      ask about only the first n words still without an answer (a trial run)
  * --dry-run    list the candidates and print the first request, without calling the API
  * --sample     list the review sample (GEN-021) and its statuses, without calling the API
+ * --prune      remove unreviewed entries for words no longer candidates, without calling the API
  *
  * The results go to `curation/<playId>/generated/<versionId>.json`; run ingest afterwards.
  */
@@ -27,8 +28,9 @@ import {
   loadGeneratedFile,
   partitionEntries,
   reviewSample,
+  type GeneratedFile,
 } from './generated/file.ts';
-import { generateDefinitions, type AskModel } from './generated/generate.ts';
+import { generateDefinitions, pruneGenerated, type AskModel } from './generated/generate.ts';
 import {
   ResponseSchema,
   SYSTEM_PROMPT,
@@ -52,6 +54,7 @@ const { values: args } = parseArgs({
     concurrency: { type: 'string', default: '4' },
     'dry-run': { type: 'boolean', default: false },
     sample: { type: 'boolean', default: false },
+    prune: { type: 'boolean', default: false },
   },
 });
 
@@ -98,18 +101,34 @@ const scowl = lock.files[SCOWL];
 if (!scowl) {
   throw new Error(`No ${SCOWL} in sources.lock.json`);
 }
-const common = scowlWords(
-  await fetchLocked(SCOWL, scowl, {
-    cacheDir: join(ROOT, '.cache'),
-    rootDir: ROOT,
-    updateLock: false,
-  }),
-);
-const candidates = selectCandidates(doc, sourced, common);
+const archive = await fetchLocked(SCOWL, scowl, {
+  cacheDir: join(ROOT, '.cache'),
+  rootDir: ROOT,
+  updateLock: false,
+});
+const candidates = selectCandidates(doc, sourced, scowlWords(archive), scowlWords(archive, 10));
 const occurrences = candidates.reduce((n, c) => n + c.occurrences.length, 0);
 console.warn(
   `${play.info.title}: ${String(candidates.length)} candidate words, ${String(occurrences)} occurrences`,
 );
+
+const save = async (file: GeneratedFile) => {
+  await mkdir(dirname(path), { recursive: true });
+  await writeFile(path, formatGeneratedFile(file));
+};
+
+if (args.prune) {
+  if (!existing) {
+    throw new Error(`No generated definitions yet at ${path}`);
+  }
+  const pruned = pruneGenerated(existing, candidates);
+  await save(pruned.file);
+  console.warn(
+    `Removed ${String(pruned.entries)} unreviewed entries and ${String(pruned.notNeeded)} ` +
+      `occurrences needing no definition; ${String(pruned.file.entries.length)} entries remain.`,
+  );
+  process.exit(0);
+}
 
 if (args['dry-run']) {
   print(candidates.map((c) => `${c.word} (${String(c.occurrences.length)})`).join(', '));
@@ -161,10 +180,7 @@ const result = await generateDefinitions({
   existing,
   model,
   ask,
-  save: async (file) => {
-    await mkdir(dirname(path), { recursive: true });
-    await writeFile(path, formatGeneratedFile(file));
-  },
+  save,
   today: new Date().toISOString().slice(0, 10),
   concurrency: Number(args.concurrency),
   ...(args.words ? { maxWords: Number(args.words) } : {}),

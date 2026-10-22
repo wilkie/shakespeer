@@ -8,7 +8,7 @@ import { PartOfSpeechSchema } from '../../src/schema.ts';
 import type { Candidate, Occurrence, SpeechLine } from './candidates.ts';
 
 /** Bump when the instructions or the request change, so a file is never mixed (GEN-013). */
-export const PROMPT_VERSION = 1;
+export const PROMPT_VERSION = 2;
 
 /** Occurrences per request, for frequent words (GEN-011). */
 export const BATCH_SIZE = 40;
@@ -21,6 +21,7 @@ You are given one word from a play and passages where it occurs, two lines eithe
 
 - If the word means there what it ordinarily means in modern English, or only its spelling or an elision differs in a way a reader will work out, set "needed" to false and leave "meaning" empty.
 - Otherwise set "needed" to true and give its sense in that passage as "meaning": a dictionary-style gloss in plain modern English, at most 25 words, without quotation marks, without repeating the word itself, and without explaining the plot. Give its part of speech there, or null if none fits.
+- A proper name (a person, god, place or thing alluded to) needs a definition unless a modern reader will know it: say briefly who or what it is, as its meaning, with part of speech "noun".
 
 Occurrences in the same sense may share a meaning. Answer every occurrence, by its number.`;
 
