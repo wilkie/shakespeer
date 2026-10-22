@@ -95,7 +95,7 @@ describe('note counts, unattached notes and definition sources', () => {
     expect(within(dialog).getByText('Every note is attached to its text.')).toBeInTheDocument();
   });
 
-  it('DEF-012: switching a definition source off hides its terms', async () => {
+  it('DEF-012/GEN-032: switching a definition source off hides its terms', async () => {
     const { user } = await openReader();
     const terms = () => document.querySelectorAll('.term').length;
     await waitFor(() => {
@@ -113,14 +113,16 @@ describe('note counts, unattached notes and definition sources', () => {
     await waitFor(() => {
       expect(terms()).toBeLessThan(all);
     }, SLOW);
-    expect(terms()).toBeGreaterThan(0); // Onions' terms remain
+    expect(terms()).toBeGreaterThan(0); // Onions' and generated terms remain
     await toggle('Onions');
+    await toggle('Generated'); // GEN-032
     await waitFor(() => {
       expect(terms()).toBe(0);
     }, SLOW);
 
     await toggle('Schmidt');
     await toggle('Onions');
+    await toggle('Generated');
     await waitFor(() => {
       expect(terms()).toBe(all);
     }, SLOW);

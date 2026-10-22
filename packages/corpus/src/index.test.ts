@@ -47,9 +47,15 @@ describe('loadSourcedDefinitions', () => {
   it('CRP-070: loads every source for a version, or none', async () => {
     const files = await loadSourcedDefinitions('the-tempest', 'folger');
 
-    expect(files.map((file) => file.sourceId)).toStrictEqual(['schmidt-1902', 'onions-1919']);
+    // Generated definitions come last (GEN-031).
+    expect(files.map((file) => file.sourceId)).toStrictEqual([
+      'schmidt-1902',
+      'onions-1919',
+      'generated',
+    ]);
     expect(files[0]?.terms.length).toBeGreaterThan(1000);
     expect(files[1]?.terms.length).toBeGreaterThan(400);
+    expect(files[2]?.terms.length).toBeGreaterThan(50);
     await expect(loadSourcedDefinitions('the-tempest', 'f1-1623')).resolves.toStrictEqual([]);
   });
 });

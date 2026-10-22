@@ -51,6 +51,10 @@ export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[
       import('../../plays/hamlet/definitions/folger/onions-1919.json', {
         with: { type: 'json' },
       }),
+    () =>
+      import('../../plays/hamlet/definitions/folger/generated.json', {
+        with: { type: 'json' },
+      }),
   ],
   'the-tempest/folger': [
     () =>
@@ -61,6 +65,10 @@ export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[
       import('../../plays/the-tempest/definitions/folger/onions-1919.json', {
         with: { type: 'json' },
       }),
+    () =>
+      import('../../plays/the-tempest/definitions/folger/generated.json', {
+        with: { type: 'json' },
+      }),
   ],
   'troilus-and-cressida/folger': [
     () =>
@@ -69,6 +77,10 @@ export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[
       }),
     () =>
       import('../../plays/troilus-and-cressida/definitions/folger/onions-1919.json', {
+        with: { type: 'json' },
+      }),
+    () =>
+      import('../../plays/troilus-and-cressida/definitions/folger/generated.json', {
         with: { type: 'json' },
       }),
   ],

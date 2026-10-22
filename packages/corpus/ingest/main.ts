@@ -619,11 +619,14 @@ async function generatedSource(): Promise<Source | undefined> {
     return undefined;
   }
   const made = [...new Set(files.map((f) => `${f.model}, ${f.generatedAt}`))].sort().join('; ');
+  const checked = files.every((f) => f.entries.every((e) => e.status !== 'auto'))
+    ? 'Each was checked by hand, but they may still be wrong.'
+    : 'A sample was checked by hand; the rest were not, so they may be wrong.';
   return {
     id: GENERATED_SOURCE_ID,
     name: 'Generated definitions',
     shortName: 'Generated',
-    description: `Definitions written by a language model (${made}) for words the glossaries do not define here, from the passage around each one. A sample was checked by hand; the rest were not, so they may be wrong.`,
+    description: `Definitions written by a language model (${made}) for words the glossaries do not define here, from the passage around each one. ${checked}`,
     url: 'https://github.com/wilkie/shakespeer/blob/main/specs/data/generated-definitions.md',
     license: {
       name: 'CC0 1.0 Universal',
