@@ -10,9 +10,15 @@ describe('play selection', () => {
     const titles = await screen.findAllByRole('heading', { level: 2 });
     expect(titles.map((h) => h.textContent)).toStrictEqual([
       'Hamlet',
+      'Othello',
+      'Richard II',
       'The Tempest',
       'Troilus and Cressida',
     ]);
+
+    const richard = screen.getByRole('link', { name: /Richard II/ });
+    expect(within(richard).getByText(/History/)).toBeInTheDocument();
+    expect(within(richard).getByText('First Quarto (1597)')).toBeInTheDocument();
 
     const tempest = screen.getByRole('link', { name: /The Tempest/ });
     expect(within(tempest).getByText(/Romance/)).toBeInTheDocument();

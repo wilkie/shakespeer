@@ -24,6 +24,7 @@
       "dependsOn": ["^typecheck"]
     },
     "test": {
+      "dependsOn": ["^typecheck"],
       "outputs": []
     },
     "test:watch": {
