@@ -622,7 +622,19 @@ async function generatedSource(): Promise<Source | undefined> {
   if (files.length === 0) {
     return undefined;
   }
-  const made = [...new Set(files.map((f) => `${f.model}, ${f.generatedAt}`))].sort().join('; ');
+  // Each model once, with the dates it was run: "claude-opus-5-5, 2026-10-22 and 2026-10-23".
+  const dates = new Map<string, Set<string>>();
+  for (const f of files) {
+    dates.set(f.model, (dates.get(f.model) ?? new Set()).add(f.generatedAt));
+  }
+  const list = (items: string[]) =>
+    items.length > 1
+      ? `${items.slice(0, -1).join(', ')} and ${items.at(-1) ?? ''}`
+      : (items[0] ?? '');
+  const made = [...dates]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([model, days]) => `${model}, ${list([...days].sort())}`)
+    .join('; ');
   const checked = files.every((f) => f.entries.every((e) => e.status !== 'auto'))
     ? 'Each was checked by hand, but they may still be wrong.'
     : 'A sample was checked by hand; the rest were not, so they may be wrong.';

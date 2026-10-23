@@ -112,6 +112,10 @@ export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[
       import('../../plays/richard-ii/definitions/folger/onions-1919.json', {
         with: { type: 'json' },
       }),
+    () =>
+      import('../../plays/richard-ii/definitions/folger/generated.json', {
+        with: { type: 'json' },
+      }),
   ],
   'othello/folger': [
     () =>
@@ -120,6 +124,10 @@ export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[
       }),
     () =>
       import('../../plays/othello/definitions/folger/onions-1919.json', {
+        with: { type: 'json' },
+      }),
+    () =>
+      import('../../plays/othello/definitions/folger/generated.json', {
         with: { type: 'json' },
       }),
   ],
