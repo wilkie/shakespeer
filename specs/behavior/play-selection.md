@@ -8,10 +8,10 @@ The entry page. A reader chooses a play here and returns here from any play.
 
 - **SEL-001** — The app's home route (`/`) MUST be the play selection page.
 - **SEL-002** — The page MUST list every play in the corpus ([CRP](../data/corpus.md)) with its
-  title, genre (comedy, tragedy, history, romance, or "problem play" where the corpus says so) and
-  approximate date of composition.
-- **SEL-003** — Plays MUST be ordered by title. Grouping by genre MAY be added once the corpus
-  holds enough plays to need it.
+  title and approximate date of composition. It shows no genre: the categories (the First
+  Folio's comedies, histories and tragedies, or later critics' "romances" and "problem plays")
+  are disputed.
+- **SEL-003** — Plays MUST be ordered by title.
 - **SEL-004** — Each play entry MUST list its available versions by display name (e.g. "Folger
   edition", "First Quarto (1603)") so a reader knows which printings exist.
 - **SEL-005** — Choosing a play MUST open it in the reader ([RDR](reader.md)) at the reader's

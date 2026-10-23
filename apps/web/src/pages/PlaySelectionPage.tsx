@@ -7,21 +7,13 @@ import CardContent from '@mui/material/CardContent';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { listPlays, type Genre, type PlayInfo } from '@shakespeer/corpus';
+import { listPlays, type PlayInfo } from '@shakespeer/corpus';
 import { useState } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router';
 
 import { ImportDialog } from '@/features/exchange/ImportDialog';
 import { useFileDrop } from '@/features/exchange/useFileDrop';
 import { totalNotes, useNoteCounts } from '@/features/notes/useNoteCounts';
-
-const GENRES: Record<Genre, string> = {
-  comedy: 'Comedy',
-  tragedy: 'Tragedy',
-  history: 'History',
-  romance: 'Romance',
-  problem: 'Problem play',
-};
 
 /** Sorts by title, ignoring a leading article ("The Tempest" under T) (SEL-003). */
 function sortKey(play: PlayInfo): string {
@@ -107,7 +99,7 @@ export function PlaySelectionPage() {
                     {play.title}
                   </Typography>
                   <Typography variant="body2" color="text.secondary" sx={{ mb: 1.5 }}>
-                    {GENRES[play.genre]} · {composed(play.composed)}
+                    Written {composed(play.composed)}
                   </Typography>
                   <Stack direction="row" spacing={1} useFlexGap sx={{ flexWrap: 'wrap' }}>
                     {play.versions.map((version) => (

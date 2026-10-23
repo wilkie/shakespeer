@@ -36,9 +36,6 @@ export type SourcesFile = z.infer<typeof SourcesFileSchema>;
 // ---------------------------------------------------------------------------------------------
 // Play index (CRP-010)
 
-export const GenreSchema = z.enum(['comedy', 'tragedy', 'history', 'romance', 'problem']);
-export type Genre = z.infer<typeof GenreSchema>;
-
 export const VersionKindSchema = z.enum(['modern', 'original']);
 export type VersionKind = z.infer<typeof VersionKindSchema>;
 
@@ -56,7 +53,6 @@ export const PlayInfoSchema = z.object({
   id,
   title: z.string(),
   shortTitle: z.string(),
-  genre: GenreSchema,
   composed: z.object({ from: z.int(), to: z.int() }),
   modernVersionId: id,
   versions: z.array(VersionInfoSchema).min(1),

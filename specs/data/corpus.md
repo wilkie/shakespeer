@@ -77,7 +77,7 @@ the Second Quarto (29).
 
 ## Play index
 
-- **CRP-010** — `plays.json` MUST list each play with: `id`, `title`, `shortTitle`, `genre`,
+- **CRP-010** — `plays.json` MUST list each play with: `id`, `title`, `shortTitle`,
   `composed` (`{ "from": 1599, "to": 1601 }`), `modernVersionId`, and `versions`: each with `id`,
   `name` ("Second Quarto (1604)"), `shortName` ("Q2"), `kind` (`modern` | `original`),
   `printed` (year, for originals), and `sourceIds`.

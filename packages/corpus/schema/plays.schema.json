@@ -21,16 +21,6 @@
           "shortTitle": {
             "type": "string"
           },
-          "genre": {
-            "type": "string",
-            "enum": [
-              "comedy",
-              "tragedy",
-              "history",
-              "romance",
-              "problem"
-            ]
-          },
           "composed": {
             "type": "object",
             "properties": {
@@ -107,7 +97,6 @@
           "id",
           "title",
           "shortTitle",
-          "genre",
           "composed",
           "modernVersionId",
           "versions"

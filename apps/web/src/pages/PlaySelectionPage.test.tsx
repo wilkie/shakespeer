@@ -4,7 +4,7 @@ import { screen, waitFor, within } from '@testing-library/react';
 import { renderRoute } from '@/test/render';
 
 describe('play selection', () => {
-  it('SEL-002/003/004: lists plays by title with genre and versions', async () => {
+  it('SEL-002/003/004: lists plays by title with date and versions', async () => {
     renderRoute('/');
 
     const titles = await screen.findAllByRole('heading', { level: 2 });
@@ -17,11 +17,12 @@ describe('play selection', () => {
     ]);
 
     const richard = screen.getByRole('link', { name: /Richard II/ });
-    expect(within(richard).getByText(/History/)).toBeInTheDocument();
+    // No genre: the categories are disputed (SEL-002).
+    expect(within(richard).queryByText(/History/)).not.toBeInTheDocument();
     expect(within(richard).getByText('First Quarto (1597)')).toBeInTheDocument();
 
     const tempest = screen.getByRole('link', { name: /The Tempest/ });
-    expect(within(tempest).getByText(/Romance/)).toBeInTheDocument();
+    expect(within(tempest).getByText('Written c. 1610–11')).toBeInTheDocument();
     expect(within(tempest).getByText('First Folio (1623)')).toBeInTheDocument();
   });
 

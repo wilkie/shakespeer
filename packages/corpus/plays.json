@@ -5,7 +5,6 @@
       "id": "hamlet",
       "title": "Hamlet",
       "shortTitle": "Hamlet",
-      "genre": "tragedy",
       "composed": {
         "from": 1599,
         "to": 1601
@@ -57,7 +56,6 @@
       "id": "the-tempest",
       "title": "The Tempest",
       "shortTitle": "Tempest",
-      "genre": "romance",
       "composed": {
         "from": 1610,
         "to": 1611
@@ -89,7 +87,6 @@
       "id": "troilus-and-cressida",
       "title": "Troilus and Cressida",
       "shortTitle": "Troilus",
-      "genre": "problem",
       "composed": {
         "from": 1601,
         "to": 1602
@@ -131,7 +128,6 @@
       "id": "richard-ii",
       "title": "Richard II",
       "shortTitle": "Richard II",
-      "genre": "history",
       "composed": {
         "from": 1595,
         "to": 1595
@@ -173,7 +169,6 @@
       "id": "othello",
       "title": "Othello",
       "shortTitle": "Othello",
-      "genre": "tragedy",
       "composed": {
         "from": 1603,
         "to": 1604
