@@ -247,3 +247,42 @@ describe('convertTcpPlay on a quarto holding a single play', () => {
     );
   });
 });
+
+describe('convertTcpPlay on a letter read outside a speech', () => {
+  it('CRP-020: reads its lines as a speech without a heading', () => {
+    const xml = `<TEI xmlns="http://www.tei-c.org/ns/1.0"><text><body><div type="text">
+      <head>The most excellent Tragedie of Romeo and Iuliet.</head>
+      <sp><speaker>Rom:</speaker><p>Stay fellow I can read.</p></sp>
+      <stage>He reads the Letter.</stage>
+      <floatingText type="letter"><body><p>SEigneur Martino and his wife and daughters,</p></body></floatingText>
+    </div></body></text></TEI>`;
+    const { divisions } = convertTcpPlay(xml, { title: /Romeo/, ids: IdMap.empty('rom-q1') });
+    expect(
+      divisions[0]?.scenes[0]?.blocks.map((b) =>
+        b.type === 'sd'
+          ? `sd: ${b.node.text}`
+          : `${b.label}: ${b.nodes.map((n) => n.text).join(' / ')}`,
+      ),
+    ).toStrictEqual([
+      'Rom:: Stay fellow I can read.',
+      'sd: He reads the Letter.',
+      ': SEigneur Martino and his wife and daughters,',
+    ]);
+  });
+});
+
+describe('convertTcpPlay on a letter quoted as running text', () => {
+  it('CRP-020: reads it as a prose line of the speech', () => {
+    const xml = `<TEI xmlns="http://www.tei-c.org/ns/1.0"><text><body><div type="text">
+      <head>THE TRAGEDIE OF ROMEO and IVLIET.</head>
+      <sp><speaker>Rom.</speaker><l>Stay fellow, I can read.</l>
+        <q>SEigneur Martino, and his wife and daugh<g ref="char:EOLhyphen"/>ters:</q></sp>
+    </div></body></text></TEI>`;
+    const { divisions } = convertTcpPlay(xml, { title: /ROMEO/, ids: IdMap.empty('rom-f1') });
+    const speech = divisions[0]?.scenes[0]?.blocks[0];
+    expect(speech?.type === 'speech' && speech.nodes.map((n) => [n.kind, n.text])).toStrictEqual([
+      ['line', 'Stay fellow, I can read.'],
+      ['line', 'SEigneur Martino, and his wife and daughters:'],
+    ]);
+  });
+});

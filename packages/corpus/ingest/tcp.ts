@@ -21,7 +21,7 @@ import type {
 } from '../src/schema.ts';
 import type { IdMap } from './lib/ids.ts';
 import { TextBuilder } from './lib/text-builder.ts';
-import { attr, childNodes, children, isElement, parseXml, plainText } from './lib/xml.ts';
+import { attr, childNodes, children, isElement, isText, parseXml, plainText } from './lib/xml.ts';
 
 export interface TcpPlayOptions {
   /** Matches the play's `<head>`, e.g. /TEMPEST/; omitted for a file holding a single play. */
@@ -200,8 +200,13 @@ function speechNodes(element: Element, context: Context, marks: MarkType[] = [])
       case 'q':
       case 'floatingText':
       case 'body':
-        // A quoted passage or a letter read aloud: its lines are part of the speech.
-        nodes.push(...speechNodes(child, context, marks));
+        // A quoted passage or a letter read aloud: its lines are part of the speech. One printed
+        // as running text (the Folio's letter in Romeo and Juliet) is a prose line.
+        nodes.push(
+          ...(childNodes(child).some((node) => isText(node) && node.textContent?.trim())
+            ? lineNodes(child, 'prose', context, marks)
+            : speechNodes(child, context, marks)),
+        );
         break;
       case 'opener':
       case 'closer':
@@ -312,7 +317,10 @@ function sceneBlocks(div: Element, context: Context): Block[] {
       case 'p':
         pushNodes(lineNodes(child, 'prose', context, []));
         break;
+      // A letter read aloud outside any speech (Romeo's in the 1597 Romeo and Juliet): its
+      // lines form a speech without a heading, whose speaker alignment supplies.
       case 'lg':
+      case 'floatingText':
         pushNodes(speechNodes(child, context));
         break;
       case 'pb':

@@ -64,6 +64,38 @@
     "tcp-othello-q1": {
       "url": "https://raw.githubusercontent.com/textcreationpartnership/A11992/12d8a9dd8ccc113b8e7daeba8a42c7019ad2856b/A11992.xml",
       "sha256": "8b16b18b582d37bf5db8bef9db501b853d2417c9c37ac962ba610c6935735be9"
+    },
+    "folger-king-lear": {
+      "url": "https://folger-main-site-assets.s3.amazonaws.com/uploads/2022/11/king-lear_XML_FolgerShakespeare.zip",
+      "sha256": "79c9f4d61e6fac62b3d072cad53bf36fa55095a6de8c625827fed470ff97195a",
+      "member": "king-lear_XML_FolgerShakespeare/Lr.xml"
+    },
+    "folger-romeo-and-juliet": {
+      "url": "https://folger-main-site-assets.s3.amazonaws.com/uploads/2022/11/romeo-and-juliet_XML_FolgerShakespeare.zip",
+      "sha256": "e41c01df88757b07e35a307c56a326584ee77bf416d514baef8f5e660adf974d",
+      "member": "romeo-and-juliet_XML_FolgerShakespeare/Rom.xml"
+    },
+    "folger-macbeth": {
+      "url": "https://folger-main-site-assets.s3.amazonaws.com/uploads/2022/11/macbeth_XML_FolgerShakespeare.zip",
+      "sha256": "9b7ac69b42d28fb51da98faf31f2ae518bb67567771f2d9eec6d9cf765cc5d19",
+      "member": "macbeth_XML_FolgerShakespeare/Mac.xml"
+    },
+    "folger-a-midsummer-nights-dream": {
+      "url": "https://folger-main-site-assets.s3.amazonaws.com/uploads/2022/11/a-midsummer-nights-dream_XML_FolgerShakespeare.zip",
+      "sha256": "42fcca5bb89a4981200a09650aab89104c629b35a7cbcd3abdea99a13830db58",
+      "member": "a-midsummer-nights-dream_XML_FolgerShakespeare/MND.xml"
+    },
+    "tcp-king-lear-q1": {
+      "url": "https://raw.githubusercontent.com/textcreationpartnership/A11978/de316d8c3e381afac0e73197ad38a7e395ca9ebd/A11978.xml",
+      "sha256": "ee678800fb36c91b1864302f87e025b184ea039adff53c0bc1d5ae99cab55531"
+    },
+    "tcp-romeo-and-juliet-q1": {
+      "url": "https://raw.githubusercontent.com/textcreationpartnership/A12010/ddb8dbadc57e9426a3018ddd0a7bbb668609583c/A12010.xml",
+      "sha256": "95ac59760235c334f68d57c29c06080567ddce568d277b1285fbf02e73ecb164"
+    },
+    "tcp-midsummer-q1": {
+      "url": "https://raw.githubusercontent.com/textcreationpartnership/A11989/88bd63c97a54b251938c7512efa6d83dc2595300/A11989.xml",
+      "sha256": "e437bd27914a1a508ccc68f114d8fff82d784fff19c6e1c931864d084021d40c"
     }
   }
 }

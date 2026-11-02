@@ -205,6 +205,160 @@
           ]
         }
       ]
+    },
+    {
+      "id": "king-lear",
+      "title": "King Lear",
+      "shortTitle": "Lear",
+      "composed": {
+        "from": 1605,
+        "to": 1606
+      },
+      "modernVersionId": "folger",
+      "versions": [
+        {
+          "id": "folger",
+          "name": "Folger edition",
+          "shortName": "Folger",
+          "kind": "modern",
+          "sourceIds": [
+            "folger"
+          ]
+        },
+        {
+          "id": "q1-1608",
+          "name": "First Quarto (1608)",
+          "shortName": "Q1",
+          "kind": "original",
+          "printed": 1608,
+          "sourceIds": [
+            "eebo-tcp"
+          ]
+        },
+        {
+          "id": "f1-1623",
+          "name": "First Folio (1623)",
+          "shortName": "F1",
+          "kind": "original",
+          "printed": 1623,
+          "sourceIds": [
+            "eebo-tcp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "romeo-and-juliet",
+      "title": "Romeo and Juliet",
+      "shortTitle": "Romeo",
+      "composed": {
+        "from": 1595,
+        "to": 1596
+      },
+      "modernVersionId": "folger",
+      "versions": [
+        {
+          "id": "folger",
+          "name": "Folger edition",
+          "shortName": "Folger",
+          "kind": "modern",
+          "sourceIds": [
+            "folger"
+          ]
+        },
+        {
+          "id": "q1-1597",
+          "name": "First Quarto (1597)",
+          "shortName": "Q1",
+          "kind": "original",
+          "printed": 1597,
+          "sourceIds": [
+            "eebo-tcp"
+          ]
+        },
+        {
+          "id": "f1-1623",
+          "name": "First Folio (1623)",
+          "shortName": "F1",
+          "kind": "original",
+          "printed": 1623,
+          "sourceIds": [
+            "eebo-tcp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "macbeth",
+      "title": "Macbeth",
+      "shortTitle": "Macbeth",
+      "composed": {
+        "from": 1606,
+        "to": 1606
+      },
+      "modernVersionId": "folger",
+      "versions": [
+        {
+          "id": "folger",
+          "name": "Folger edition",
+          "shortName": "Folger",
+          "kind": "modern",
+          "sourceIds": [
+            "folger"
+          ]
+        },
+        {
+          "id": "f1-1623",
+          "name": "First Folio (1623)",
+          "shortName": "F1",
+          "kind": "original",
+          "printed": 1623,
+          "sourceIds": [
+            "eebo-tcp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a-midsummer-nights-dream",
+      "title": "A Midsummer Night's Dream",
+      "shortTitle": "Dream",
+      "composed": {
+        "from": 1595,
+        "to": 1596
+      },
+      "modernVersionId": "folger",
+      "versions": [
+        {
+          "id": "folger",
+          "name": "Folger edition",
+          "shortName": "Folger",
+          "kind": "modern",
+          "sourceIds": [
+            "folger"
+          ]
+        },
+        {
+          "id": "q1-1600",
+          "name": "First Quarto (1600)",
+          "shortName": "Q1",
+          "kind": "original",
+          "printed": 1600,
+          "sourceIds": [
+            "eebo-tcp"
+          ]
+        },
+        {
+          "id": "f1-1623",
+          "name": "First Folio (1623)",
+          "shortName": "F1",
+          "kind": "original",
+          "printed": 1623,
+          "sourceIds": [
+            "eebo-tcp"
+          ]
+        }
+      ]
     }
   ]
 }

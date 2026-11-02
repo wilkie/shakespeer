@@ -58,4 +58,4 @@ by side, row by row, through alignment ([CRP-050](../data/corpus.md)). This deta
 
 1. Variant marks appear in every play with seeded variants: every play has them from the Folger
    markup (_Hamlet_ 502, _Troilus and Cressida_ 518, _The Tempest_ 171, _Richard II_ 213,
-   _Othello_ 434).
+   _Othello_ 434; the counts for later plays are reported by ingest).

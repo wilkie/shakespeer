@@ -26,6 +26,25 @@ export const versionLoaders: Readonly<Partial<Record<string, Loader>>> = {
   'othello/folger': () => import('../../plays/othello/folger.json', { with: { type: 'json' } }),
   'othello/q1-1622': () => import('../../plays/othello/q1-1622.json', { with: { type: 'json' } }),
   'othello/f1-1623': () => import('../../plays/othello/f1-1623.json', { with: { type: 'json' } }),
+  'king-lear/folger': () => import('../../plays/king-lear/folger.json', { with: { type: 'json' } }),
+  'king-lear/q1-1608': () =>
+    import('../../plays/king-lear/q1-1608.json', { with: { type: 'json' } }),
+  'king-lear/f1-1623': () =>
+    import('../../plays/king-lear/f1-1623.json', { with: { type: 'json' } }),
+  'romeo-and-juliet/folger': () =>
+    import('../../plays/romeo-and-juliet/folger.json', { with: { type: 'json' } }),
+  'romeo-and-juliet/q1-1597': () =>
+    import('../../plays/romeo-and-juliet/q1-1597.json', { with: { type: 'json' } }),
+  'romeo-and-juliet/f1-1623': () =>
+    import('../../plays/romeo-and-juliet/f1-1623.json', { with: { type: 'json' } }),
+  'macbeth/folger': () => import('../../plays/macbeth/folger.json', { with: { type: 'json' } }),
+  'macbeth/f1-1623': () => import('../../plays/macbeth/f1-1623.json', { with: { type: 'json' } }),
+  'a-midsummer-nights-dream/folger': () =>
+    import('../../plays/a-midsummer-nights-dream/folger.json', { with: { type: 'json' } }),
+  'a-midsummer-nights-dream/q1-1600': () =>
+    import('../../plays/a-midsummer-nights-dream/q1-1600.json', { with: { type: 'json' } }),
+  'a-midsummer-nights-dream/f1-1623': () =>
+    import('../../plays/a-midsummer-nights-dream/f1-1623.json', { with: { type: 'json' } }),
 };
 
 export const alignmentLoaders: Readonly<Partial<Record<string, Loader>>> = {
@@ -49,6 +68,24 @@ export const alignmentLoaders: Readonly<Partial<Record<string, Loader>>> = {
     import('../../plays/othello/alignment/q1-1622.json', { with: { type: 'json' } }),
   'othello/f1-1623': () =>
     import('../../plays/othello/alignment/f1-1623.json', { with: { type: 'json' } }),
+  'king-lear/q1-1608': () =>
+    import('../../plays/king-lear/alignment/q1-1608.json', { with: { type: 'json' } }),
+  'king-lear/f1-1623': () =>
+    import('../../plays/king-lear/alignment/f1-1623.json', { with: { type: 'json' } }),
+  'romeo-and-juliet/q1-1597': () =>
+    import('../../plays/romeo-and-juliet/alignment/q1-1597.json', { with: { type: 'json' } }),
+  'romeo-and-juliet/f1-1623': () =>
+    import('../../plays/romeo-and-juliet/alignment/f1-1623.json', { with: { type: 'json' } }),
+  'macbeth/f1-1623': () =>
+    import('../../plays/macbeth/alignment/f1-1623.json', { with: { type: 'json' } }),
+  'a-midsummer-nights-dream/q1-1600': () =>
+    import('../../plays/a-midsummer-nights-dream/alignment/q1-1600.json', {
+      with: { type: 'json' },
+    }),
+  'a-midsummer-nights-dream/f1-1623': () =>
+    import('../../plays/a-midsummer-nights-dream/alignment/f1-1623.json', {
+      with: { type: 'json' },
+    }),
 };
 
 export const variantLoaders: Readonly<Partial<Record<string, Loader>>> = {
@@ -58,6 +95,12 @@ export const variantLoaders: Readonly<Partial<Record<string, Loader>>> = {
     import('../../plays/troilus-and-cressida/variants.json', { with: { type: 'json' } }),
   'richard-ii': () => import('../../plays/richard-ii/variants.json', { with: { type: 'json' } }),
   othello: () => import('../../plays/othello/variants.json', { with: { type: 'json' } }),
+  'king-lear': () => import('../../plays/king-lear/variants.json', { with: { type: 'json' } }),
+  'romeo-and-juliet': () =>
+    import('../../plays/romeo-and-juliet/variants.json', { with: { type: 'json' } }),
+  macbeth: () => import('../../plays/macbeth/variants.json', { with: { type: 'json' } }),
+  'a-midsummer-nights-dream': () =>
+    import('../../plays/a-midsummer-nights-dream/variants.json', { with: { type: 'json' } }),
 };
 
 export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[]>>> = {
@@ -128,6 +171,46 @@ export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[
       }),
     () =>
       import('../../plays/othello/definitions/folger/generated.json', {
+        with: { type: 'json' },
+      }),
+  ],
+  'king-lear/folger': [
+    () =>
+      import('../../plays/king-lear/definitions/folger/schmidt-1902.json', {
+        with: { type: 'json' },
+      }),
+    () =>
+      import('../../plays/king-lear/definitions/folger/onions-1919.json', {
+        with: { type: 'json' },
+      }),
+  ],
+  'romeo-and-juliet/folger': [
+    () =>
+      import('../../plays/romeo-and-juliet/definitions/folger/schmidt-1902.json', {
+        with: { type: 'json' },
+      }),
+    () =>
+      import('../../plays/romeo-and-juliet/definitions/folger/onions-1919.json', {
+        with: { type: 'json' },
+      }),
+  ],
+  'macbeth/folger': [
+    () =>
+      import('../../plays/macbeth/definitions/folger/schmidt-1902.json', {
+        with: { type: 'json' },
+      }),
+    () =>
+      import('../../plays/macbeth/definitions/folger/onions-1919.json', {
+        with: { type: 'json' },
+      }),
+  ],
+  'a-midsummer-nights-dream/folger': [
+    () =>
+      import('../../plays/a-midsummer-nights-dream/definitions/folger/schmidt-1902.json', {
+        with: { type: 'json' },
+      }),
+    () =>
+      import('../../plays/a-midsummer-nights-dream/definitions/folger/onions-1919.json', {
         with: { type: 'json' },
       }),
   ],

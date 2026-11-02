@@ -331,13 +331,18 @@ function sceneKind(type: string | undefined): SceneKind {
     case 'epilogue':
     case 'induction':
       return type;
+    // A chorus opening an act is its prologue (CRP-020: Romeo and Juliet, Act 2).
+    case 'chorus':
+      return 'prologue';
     default:
       throw new Error(`Unknown division type ${type ?? '(none)'}`);
   }
 }
 
 function scene(div: Element, actN: number | null): Scene {
-  const kind = sceneKind(attr(div, 'type'));
+  // A division within an act is a scene even where it is typed as an act (King Lear's 4.4).
+  const type = attr(div, 'type');
+  const kind = sceneKind(actN !== null && type === 'act' ? 'scene' : type);
   const n = kind === 'scene' ? Number(attr(div, 'n')) : null;
   const id =
     kind === 'scene' ? `${String(actN)}.${String(n)}` : actN ? `${String(actN)}.${kind}` : kind;

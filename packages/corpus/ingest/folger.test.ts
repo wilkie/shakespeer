@@ -54,6 +54,23 @@ describe('convertFolger', () => {
     ]);
   });
 
+  it('CRP-020: an act-opening chorus is a prologue; a division typed as an act inside one is a scene', () => {
+    const { divisions } = convertFolger(
+      tei(`
+      <div1 type="act" n="2">
+        <div2 type="chorus" n="CHO"><sp who="#Prospero_Tmp"><ab><milestone unit="ftln" xml:id="ftln-0200" n="2.CHO.1" ana="#verse"/>${w('Now')}</ab></sp></div2>
+        <div2 type="scene" n="1"><sp who="#Prospero_Tmp"><ab><milestone unit="ftln" xml:id="ftln-0201" n="2.1.1" ana="#verse"/>${w('Here')}</ab></sp></div2>
+        <div2 type="act" n="2"><head>${w('Scene')}${c}${w('2')}</head>
+          <sp who="#Prospero_Tmp"><ab><milestone unit="ftln" xml:id="ftln-0202" n="2.2.1" ana="#verse"/>${w('There')}</ab></sp></div2>
+      </div1>`),
+    );
+    expect(divisions[0]?.scenes.map((s) => [s.id, s.kind, s.n])).toStrictEqual([
+      ['2.prologue', 'prologue', null],
+      ['2.1', 'scene', 1],
+      ['2.2', 'scene', 2],
+    ]);
+  });
+
   it('reads characters, naming group members from their IDs', () => {
     expect(result.characters).toStrictEqual([
       { id: 'prospero', name: 'Prospero' },

@@ -20,6 +20,10 @@ describe('corpus API', () => {
       'troilus-and-cressida',
       'richard-ii',
       'othello',
+      'king-lear',
+      'romeo-and-juliet',
+      'macbeth',
+      'a-midsummer-nights-dream',
     ]);
     expect(getPlay('the-tempest')?.title).toBe('The Tempest');
     expect(getVersionInfo('the-tempest', 'f1-1623')?.kind).toBe('original');

@@ -1,0 +1,6856 @@
+{
+ "schemaVersion": 1,
+ "playId": "a-midsummer-nights-dream",
+ "variants": [
+  {
+   "id": "folger-ptr-0003",
+   "title": "Editorial emendation: “and Philostrate,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0000",
+      "offset": 26
+     },
+     "end": {
+      "nodeId": "stg-0000",
+      "offset": 42
+     },
+     "text": "and Philostrate,"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00001",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00001",
+      "offset": 38
+     },
+     "text": "Enter Theseus, Hippolita, with others."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00001",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00001",
+      "offset": 38
+     },
+     "text": "Enter Theseus, Hippolita, with others."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0004",
+   "title": "Editorial emendation: “wanes!” (1.1.4)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0004",
+      "offset": 14
+     },
+     "end": {
+      "nodeId": "ftln-0004",
+      "offset": 20
+     },
+     "text": "wanes!"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00005",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00005",
+      "offset": 45
+     },
+     "text": "This old Moone waues! She lingers my desires,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00005",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00005",
+      "offset": 43
+     },
+     "text": "This old Moon wanes; She lingers my desires"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0006",
+   "title": "Editorial emendation: “Philostrate exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0016.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0016.1",
+      "offset": 18
+     },
+     "text": "Philostrate exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0007",
+   "title": "Editorial emendation: “to Theseus”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0101.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0101.0",
+      "offset": 12
+     },
+     "text": "to Theseus"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0008",
+   "title": "Editorial emendation: “All but Hermia and Lysander”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0129.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0129.1",
+      "offset": 27
+     },
+     "text": "All but Hermia and Lysander"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00135",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00135",
+      "offset": 26
+     },
+     "text": "Manet Lysander and Hermia."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0009",
+   "title": "Editorial emendation: “low.” (1.1.138)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0138",
+      "offset": 38
+     },
+     "end": {
+      "nodeId": "ftln-0138",
+      "offset": 42
+     },
+     "text": "low."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00143",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00143",
+      "offset": 42
+     },
+     "text": "O crosse! too high to be inthrald to loue."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00144",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00144",
+      "offset": 43
+     },
+     "text": "O crosse! too high to be enthral'd to loue."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0010",
+   "title": "Editorial emendation: “Yours would” (1.1.190)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0190",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ftln-0190",
+      "offset": 11
+     },
+     "text": "Yours would"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00196",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00196",
+      "offset": 44
+     },
+     "text": "Your words I catch, faire Hermia, ere I goe,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00197",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00197",
+      "offset": 42
+     },
+     "text": "Your words I catch, faire Hermia ere I go,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0011",
+   "title": "Editorial emendation: “I’d” (1.1.195)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0195",
+      "offset": 9
+     },
+     "end": {
+      "nodeId": "ftln-0195",
+      "offset": 12
+     },
+     "text": "I’d"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00200",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00200",
+      "offset": 42
+     },
+     "text": "The rest ile giue to be to you translated."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00201",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00201",
+      "offset": 42
+     },
+     "text": "The rest Ile giue to be to you translated."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0012",
+   "title": "Editorial emendation: “sweet,” (1.1.221)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0221",
+      "offset": 37
+     },
+     "end": {
+      "nodeId": "ftln-0221",
+      "offset": 43
+     },
+     "text": "sweet,"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00225",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00225",
+      "offset": 46
+     },
+     "text": "Emptying our bosomes, of their counsell sweld,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00225",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00225",
+      "offset": 46
+     },
+     "text": "Emptying our bosomes, of their counsell sweld:"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0013",
+   "title": "Editorial emendation: “stranger companies.” (1.1.224)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0224",
+      "offset": 24
+     },
+     "end": {
+      "nodeId": "ftln-0224",
+      "offset": 43
+     },
+     "text": "stranger companies."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00228",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00228",
+      "offset": 44
+     },
+     "text": "To seeke new friends and strange companions."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00228",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00228",
+      "offset": 44
+     },
+     "text": "To seeke new friends and strange companions,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0015",
+   "title": "Editorial emendation: “giving out the parts,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0352",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0352",
+      "offset": 21
+     },
+     "text": "giving out the parts,"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0018",
+   "title": "Editorial emendation: “Oberon”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0425.1",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "stg-0425.1",
+      "offset": 12
+     },
+     "text": "Oberon"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00363",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00363",
+      "offset": 96
+     },
+     "text": "Enter the King of Fairies, at one doore, with his traine: and the Queene, at another, with hers."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00366",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00366",
+      "offset": 92
+     },
+     "text": "Enter the King of Fairies at one doore with his traine, and the Queene at another with hers."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0019",
+   "title": "Editorial emendation: “Titania”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0425.1",
+      "offset": 66
+     },
+     "end": {
+      "nodeId": "stg-0425.1",
+      "offset": 73
+     },
+     "text": "Titania"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00363",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00363",
+      "offset": 96
+     },
+     "text": "Enter the King of Fairies, at one doore, with his traine: and the Queene, at another, with hers."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00366",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00366",
+      "offset": 92
+     },
+     "text": "Enter the King of Fairies at one doore with his traine, and the Queene at another with hers."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0020",
+   "title": "Editorial emendation: “Fairies,” (2.1.63)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0427",
+      "offset": 22
+     },
+     "end": {
+      "nodeId": "ftln-0427",
+      "offset": 30
+     },
+     "text": "Fairies,"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00365",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00365",
+      "offset": 41
+     },
+     "text": "What, Iealous Oberon? Fairy skippe hence."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00369",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00369",
+      "offset": 39
+     },
+     "text": "What, iealous Oberon? Fairy skip hence."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0021",
+   "title": "Editorial emendation: “Perigouna,” (2.1.81)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0445",
+      "offset": 5
+     },
+     "end": {
+      "nodeId": "ftln-0445",
+      "offset": 15
+     },
+     "text": "Perigouna,"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00382",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00382",
+      "offset": 33
+     },
+     "text": "From Perigenia, whom he rauished?"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00386",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00386",
+      "offset": 33
+     },
+     "text": "From Peregenia, whom he rauished?"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0022",
+   "title": "Editorial emendation: “Aegles” (2.1.82)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0446",
+      "offset": 23
+     },
+     "end": {
+      "nodeId": "ftln-0446",
+      "offset": 29
+     },
+     "text": "Aegles"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00383",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00383",
+      "offset": 49
+     },
+     "text": "And make him, with faire Eagles, breake his faith"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00387",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00387",
+      "offset": 48
+     },
+     "text": "And make him vvith faire Eagles breake his faith"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0023",
+   "title": "Editorial emendation: “thin” (2.1.112)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0476",
+      "offset": 18
+     },
+     "end": {
+      "nodeId": "ftln-0476",
+      "offset": 22
+     },
+     "text": "thin"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00413",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00413",
+      "offset": 39
+     },
+     "text": "And on old Hyems chinne and Icy crowne,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00417",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00417",
+      "offset": 40
+     },
+     "text": "And on old Hyems chinne and Icie crowne,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0024",
+   "title": "Editorial emendation: “Titania and her fairies”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0514.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0514.1",
+      "offset": 23
+     },
+     "text": "Titania and her fairies"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0025",
+   "title": "Editorial emendation: “the” (2.1.164)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0528",
+      "offset": 28
+     },
+     "end": {
+      "nodeId": "ftln-0528",
+      "offset": 31
+     },
+     "text": "the"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00465",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00465",
+      "offset": 36
+     },
+     "text": "At a faire Vestall, throned by west,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00469",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00469",
+      "offset": 40
+     },
+     "text": "At a faire Vestall, throned by the West,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0026",
+   "title": "Editorial emendation: “He exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0546",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0546",
+      "offset": 9
+     },
+     "text": "He exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0027",
+   "title": "Editorial emendation: “nor” (2.1.208)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0572",
+      "offset": 19
+     },
+     "end": {
+      "nodeId": "ftln-0572",
+      "offset": 22
+     },
+     "text": "nor"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00509",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00509",
+      "offset": 42
+     },
+     "text": "Tell you I doe not, not I cannot loue you?"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00513",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00513",
+      "offset": 42
+     },
+     "text": "Tell you I doe not, nor I cannot loue you?"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0028",
+   "title": "Editorial emendation: “Demetrius exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0613.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0613.1",
+      "offset": 16
+     },
+     "text": "Demetrius exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0029",
+   "title": "Editorial emendation: “Helena exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0615",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0615",
+      "offset": 13
+     },
+     "text": "Helena exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0030",
+   "title": "Editorial emendation: “Robin.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0617.1",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "stg-0617.1",
+      "offset": 12
+     },
+     "text": "Robin."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0031",
+   "title": "Editorial emendation: “Robin gives him the flower.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0620.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0620.1",
+      "offset": 27
+     },
+     "text": "Robin gives him the flower."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0032",
+   "title": "Editorial emendation: “He gives Robin part of the flower.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0631.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0631.1",
+      "offset": 34
+     },
+     "text": "He gives Robin part of the flower."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0034",
+   "title": "Editorial emendation: “She lies down.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0648",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0648",
+      "offset": 14
+     },
+     "text": "She lies down."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0038",
+   "title": "Editorial emendation: “Titania sleeps.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0670.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0670.1",
+      "offset": 15
+     },
+     "text": "Titania sleeps."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0039",
+   "title": "Editorial emendation: “Fairies exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0672",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0672",
+      "offset": 13
+     },
+     "text": "Fairies exit."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0040",
+   "title": "Editorial emendation: “who anoints Titania’s eyelids with the nectar.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0672.1",
+      "offset": 14
+     },
+     "end": {
+      "nodeId": "stg-0672.1",
+      "offset": 60
+     },
+     "text": "who anoints Titania’s eyelids with the nectar."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00607",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00607",
+      "offset": 13
+     },
+     "text": "Enter Oberon."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00613",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00613",
+      "offset": 13
+     },
+     "text": "Enter Oberon."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0041",
+   "title": "Editorial emendation: “He exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0680",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0680",
+      "offset": 9
+     },
+     "text": "He exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0042",
+   "title": "Editorial emendation: “Be” (2.2.45)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0685",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ftln-0685",
+      "offset": 2
+     },
+     "text": "Be"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00621",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00621",
+      "offset": 42
+     },
+     "text": "Bet it so Lysander: finde you out a bedde:"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00627",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00627",
+      "offset": 39
+     },
+     "text": "Be it so Lysander; finde you out a bed,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0043",
+   "title": "Editorial emendation: “is” (2.2.53)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0693",
+      "offset": 32
+     },
+     "end": {
+      "nodeId": "ftln-0693",
+      "offset": 34
+     },
+     "text": "is"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00629",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00629",
+      "offset": 40
+     },
+     "text": "I mean that my heart vnto yours it knit;"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00635",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00635",
+      "offset": 41
+     },
+     "text": "I meane that my heart vnto yours is knit,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0044",
+   "title": "Editorial emendation: “They sleep.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0711.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0711.1",
+      "offset": 11
+     },
+     "text": "They sleep."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00655",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00655",
+      "offset": 12
+     },
+     "text": "They sleepe."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0045",
+   "title": "Editorial emendation: “Robin.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0711.2",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "stg-0711.2",
+      "offset": 12
+     },
+     "text": "Robin."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00648",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00648",
+      "offset": 12
+     },
+     "text": "Enter Pucke."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0046",
+   "title": "Editorial emendation: “He sees Lysander.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0715.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0715.1",
+      "offset": 17
+     },
+     "text": "He sees Lysander."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0047",
+   "title": "Editorial emendation: “He anoints Lysander’s eyelids with the nectar.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0725.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0725.1",
+      "offset": 46
+     },
+     "text": "He anoints Lysander’s eyelids with the nectar."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0048",
+   "title": "Editorial emendation: “Demetrius exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0733",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0733",
+      "offset": 16
+     },
+     "text": "Demetrius exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00680",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00680",
+      "offset": 15
+     },
+     "text": "Exit Demetrius."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0049",
+   "title": "Editorial emendation: “waking up”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0749.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0749.0",
+      "offset": 11
+     },
+     "text": "waking up"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0050",
+   "title": "Editorial emendation: “waking up”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0792.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0792.0",
+      "offset": 11
+     },
+     "text": "waking up"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0053",
+   "title": "Editorial emendation: “With Titania still asleep onstage,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0803.2",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0803.2",
+      "offset": 34
+     },
+     "text": "With Titania still asleep onstage,"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00745",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00745",
+      "offset": 18
+     },
+     "text": "Enter the Clownes."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00753",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00753",
+      "offset": 18
+     },
+     "text": "Enter the Clownes."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0054",
+   "title": "Editorial emendation: “Bottom, Quince, Snout, Starveling, Snug, and Flute.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0803.2",
+      "offset": 53
+     },
+     "end": {
+      "nodeId": "stg-0803.2",
+      "offset": 104
+     },
+     "text": "Bottom, Quince, Snout, Starveling, Snug, and Flute."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00745",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00745",
+      "offset": 18
+     },
+     "text": "Enter the Clownes."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00753",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00753",
+      "offset": 18
+     },
+     "text": "Enter the Clownes."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0055",
+   "title": "Editorial emendation: “Quince takes out a book.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0856.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0856.1",
+      "offset": 24
+     },
+     "text": "Quince takes out a book."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0057",
+   "title": "Editorial emendation: “invisible to those onstage.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0878.1",
+      "offset": 12
+     },
+     "end": {
+      "nodeId": "stg-0878.1",
+      "offset": 39
+     },
+     "text": "invisible to those onstage."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00770",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00770",
+      "offset": 12
+     },
+     "text": "Enter Robin."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00779",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00779",
+      "offset": 12
+     },
+     "text": "Enter Robin."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0058",
+   "title": "Editorial emendation: “aside”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0879.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0879.0",
+      "offset": 7
+     },
+     "text": "aside"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0059",
+   "title": "Editorial emendation: “odors!” (3.1.82)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0885",
+      "offset": 7
+     },
+     "end": {
+      "nodeId": "ftln-0885",
+      "offset": 13
+     },
+     "text": "odors!"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0060",
+   "title": "Editorial emendation: “, aside”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0890.0",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0890.0",
+      "offset": 7
+     },
+     "text": ", aside"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0061",
+   "title": "Editorial emendation: “He exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0890",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0890",
+      "offset": 9
+     },
+     "text": "He exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0062",
+   "title": "Editorial emendation: “As Thisbe.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0905",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0905",
+      "offset": 10
+     },
+     "text": "As Thisbe."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0063",
+   "title": "Editorial emendation: “Enter Robin, and Bottom as Pyramus with the ass-head.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0906.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0906.1",
+      "offset": 53
+     },
+     "text": "Enter Robin, and Bottom as Pyramus with the ass-head."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0064",
+   "title": "Editorial emendation: “fair” (3.1.104)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-0907",
+      "offset": 16
+     },
+     "end": {
+      "nodeId": "ftln-0907",
+      "offset": 20
+     },
+     "text": "fair"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00795",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00795",
+      "offset": 44
+     },
+     "text": "If I were faire, Thysby, I were onely thine."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00802",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00802",
+      "offset": 43
+     },
+     "text": "If I were faire, Thisby I were onely thine."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0065",
+   "title": "Editorial emendation: “Quince, Flute, Snout, Snug, and Starveling exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0909.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0909.1",
+      "offset": 48
+     },
+     "text": "Quince, Flute, Snout, Snug, and Starveling exit."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00804",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00804",
+      "offset": 21
+     },
+     "text": "The Clownes all Exit."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0066",
+   "title": "Editorial emendation: “Snout exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0922",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0922",
+      "offset": 12
+     },
+     "text": "Snout exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0067",
+   "title": "Editorial emendation: “He sings.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0930",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0930",
+      "offset": 9
+     },
+     "text": "He sings."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0068",
+   "title": "Editorial emendation: “waking up”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0934.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-0934.0",
+      "offset": 11
+     },
+     "text": "waking up"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0069",
+   "title": "Editorial emendation: “sings”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0935.0",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-0935.0",
+      "offset": 5
+     },
+     "text": "sings"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0070",
+   "title": "Editorial emendation: “Peaseblossom, Cobweb, Mote, and Mustardseed.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-0967.1",
+      "offset": 20
+     },
+     "end": {
+      "nodeId": "stg-0967.1",
+      "offset": 64
+     },
+     "text": "Peaseblossom, Cobweb, Mote, and Mustardseed."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00842",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00842",
+      "offset": 20
+     },
+     "text": "Enter foure Fairyes."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00850",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00850",
+      "offset": 69
+     },
+     "text": "Enter Pease-blossome, Cobweb, Moth, Mustard-seede, and foure Fairies."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0080",
+   "title": "Editorial emendation: “of” (3.1.202)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1005",
+      "offset": 28
+     },
+     "end": {
+      "nodeId": "ftln-1005",
+      "offset": 30
+     },
+     "text": "of"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00864",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00864",
+      "offset": 257
+     },
+     "text": "Good master Mustardseede, I know your patience woll. That same cowardly, gyantlike, Ox-beefe hath deuourd many a gentleman of your house. I promise you, your kindred hath made my eyes water, ere now. I desire you more acquaintance, good master Mustardseede."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00874",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00874",
+      "offset": 259
+     },
+     "text": "Good master Mustard-seede, I know your patience well: that same cowardly gyant-like Oxe beefe hath deuoured many a gentleman of your house. I promise you, your kindred hath made my eyes water ere now. I desire you more acquaintance, good Master Mustard-seede."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0081",
+   "title": "Editorial emendation: “They”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1011.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1011.1",
+      "offset": 4
+     },
+     "text": "They"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00870",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00870",
+      "offset": 5
+     },
+     "text": "Exit."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00880",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00880",
+      "offset": 5
+     },
+     "text": "Exit."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0083",
+   "title": "Editorial emendation: “Oberon,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1011.2",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "stg-1011.2",
+      "offset": 13
+     },
+     "text": "Oberon,"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00871",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00871",
+      "offset": 44
+     },
+     "text": "Enter King of Fairies, and Robin goodfellow."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00881",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00881",
+      "offset": 29
+     },
+     "text": "Enter King of Pharies, solus."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0084",
+   "title": "Editorial emendation: “Enter Robin Goodfellow.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1014.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1014.1",
+      "offset": 23
+     },
+     "text": "Enter Robin Goodfellow."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00885",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00885",
+      "offset": 12
+     },
+     "text": "Enter Pucke."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0085",
+   "title": "Editorial emendation: “mimic” (3.2.19)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1030",
+      "offset": 13
+     },
+     "end": {
+      "nodeId": "ftln-1030",
+      "offset": 18
+     },
+     "text": "mimic"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00890",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00890",
+      "offset": 46
+     },
+     "text": "And forth my Minnick comes. When they him spy;"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00901",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00901",
+      "offset": 47
+     },
+     "text": "And forth my Mimmick comes: when they him spie,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0086",
+   "title": "Editorial emendation: “They step aside.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1055.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1055.1",
+      "offset": 16
+     },
+     "text": "They step aside."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0087",
+   "title": "Editorial emendation: “so.” (3.2.82)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1093",
+      "offset": 35
+     },
+     "end": {
+      "nodeId": "ftln-1093",
+      "offset": 38
+     },
+     "text": "so."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00951",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00952",
+      "offset": 25
+     },
+     "text": "And from thy hated presence part I: see me no more;\nWhether he be dead or no."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00962",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00963",
+      "offset": 25
+     },
+     "text": "And from thy hated presence part I: see me no more\nWhether he be dead or no."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0088",
+   "title": "Editorial emendation: “sleep” (3.2.87)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1098",
+      "offset": 23
+     },
+     "end": {
+      "nodeId": "ftln-1098",
+      "offset": 28
+     },
+     "text": "sleep"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00957",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00957",
+      "offset": 46
+     },
+     "text": "For debt that bankrout flippe doth sorrow owe:"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00968",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00968",
+      "offset": 44
+     },
+     "text": "For debt that bankrout slip doth sorrow owe,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0089",
+   "title": "Editorial emendation: “He”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1100.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1100.1",
+      "offset": 2
+     },
+     "text": "He"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00971",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00971",
+      "offset": 10
+     },
+     "text": "Lie downe."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0090",
+   "title": "Editorial emendation: “and falls asleep.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1100.1",
+      "offset": 13
+     },
+     "end": {
+      "nodeId": "stg-1100.1",
+      "offset": 30
+     },
+     "text": "and falls asleep."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00971",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00971",
+      "offset": 10
+     },
+     "text": "Lie downe."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0091",
+   "title": "Editorial emendation: “to Robin”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1101.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1101.0",
+      "offset": 10
+     },
+     "text": "to Robin"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0092",
+   "title": "Editorial emendation: “He exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1114",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1114",
+      "offset": 9
+     },
+     "text": "He exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0093",
+   "title": "Editorial emendation: “applying the nectar to Demetrius’ eyes”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1115.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1115.0",
+      "offset": 40
+     },
+     "text": "applying the nectar to Demetrius’ eyes"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0094",
+   "title": "Editorial emendation: “Robin.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1122.1",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "stg-1122.1",
+      "offset": 12
+     },
+     "text": "Robin."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-00983",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-00983",
+      "offset": 11
+     },
+     "text": "Enter Puck."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-00995",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-00995",
+      "offset": 12
+     },
+     "text": "Enter Pucke."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0095",
+   "title": "Editorial emendation: “They step aside.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1134.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1134.1",
+      "offset": 16
+     },
+     "text": "They step aside."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0096",
+   "title": "Editorial emendation: “waking up”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1151.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1151.0",
+      "offset": 11
+     },
+     "text": "waking up"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0097",
+   "title": "Editorial emendation: “to Lysander”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1192.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1192.0",
+      "offset": 13
+     },
+     "text": "to Lysander"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0098",
+   "title": "Editorial emendation: “like” (3.2.218)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1229",
+      "offset": 18
+     },
+     "end": {
+      "nodeId": "ftln-1229",
+      "offset": 22
+     },
+     "text": "like"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01090",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01090",
+      "offset": 40
+     },
+     "text": "Two of the first life coats in heraldry,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01103",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01103",
+      "offset": 40
+     },
+     "text": "Two of the first life coats in Heraldry,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0099",
+   "title": "Editorial emendation: “to Lysander”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1264.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1264.0",
+      "offset": 13
+     },
+     "text": "to Lysander"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0100",
+   "title": "Editorial emendation: “to Lysander”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1265.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1265.0",
+      "offset": 13
+     },
+     "text": "to Lysander"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0101",
+   "title": "Editorial emendation: “prayers.” (3.2.257)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1268",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ftln-1268",
+      "offset": 8
+     },
+     "text": "prayers."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0102",
+   "title": "Editorial emendation: “She takes hold of Lysander.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1275.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1275.1",
+      "offset": 27
+     },
+     "text": "She takes hold of Lysander."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0103",
+   "title": "Editorial emendation: “to Hermia”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1277.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1277.0",
+      "offset": 11
+     },
+     "text": "to Hermia"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0104",
+   "title": "Editorial emendation: “To Lysander.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1278",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1278",
+      "offset": 12
+     },
+     "text": "To Lysander."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0105",
+   "title": "Editorial emendation: “to Hermia”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1281.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1281.0",
+      "offset": 11
+     },
+     "text": "to Hermia"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0106",
+   "title": "Editorial emendation: “Hermia turns him loose.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1306.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1306.1",
+      "offset": 23
+     },
+     "text": "Hermia turns him loose."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0107",
+   "title": "Editorial emendation: “To Helena.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1307",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1307",
+      "offset": 10
+     },
+     "text": "To Helena."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0108",
+   "title": "Editorial emendation: “gentlemen,” (3.2.314)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1325",
+      "offset": 32
+     },
+     "end": {
+      "nodeId": "ftln-1325",
+      "offset": 42
+     },
+     "text": "gentlemen,"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01183",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01183",
+      "offset": 43
+     },
+     "text": "I pray you, though you mocke me, gentleman,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01196",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01196",
+      "offset": 42
+     },
+     "text": "I pray you though you mocke me, gentlemen,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0109",
+   "title": "Editorial emendation: “but” (3.2.343)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1354",
+      "offset": 24
+     },
+     "end": {
+      "nodeId": "ftln-1354",
+      "offset": 27
+     },
+     "text": "but"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01212",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01212",
+      "offset": 42
+     },
+     "text": "Little againe? Nothing hut low and little?"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01225",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01225",
+      "offset": 42
+     },
+     "text": "Little againe? Nothing but low and little?"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0110",
+   "title": "Editorial emendation: “Demetrius and Lysander exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1369.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1369.1",
+      "offset": 28
+     },
+     "text": "Demetrius and Lysander exit."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01241",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01241",
+      "offset": 28
+     },
+     "text": "Exit Lysander and Demetrius."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0111",
+   "title": "Editorial emendation: “Helena retreats.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1370.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1370.1",
+      "offset": 16
+     },
+     "text": "Helena retreats."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0112",
+   "title": "Editorial emendation: “She exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1375",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1375",
+      "offset": 10
+     },
+     "text": "She exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0113",
+   "title": "Editorial emendation: “She exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1376",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1376",
+      "offset": 10
+     },
+     "text": "She exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0114",
+   "title": "Editorial emendation: “to Robin”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1377",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1377",
+      "offset": 10
+     },
+     "text": "to Robin"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0115",
+   "title": "Editorial emendation: “He gives a flower to Robin.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1398.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1398.1",
+      "offset": 27
+     },
+     "text": "He gives a flower to Robin."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0116",
+   "title": "Editorial emendation: “He exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1428",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1428",
+      "offset": 9
+     },
+     "text": "He exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0117",
+   "title": "Editorial emendation: “in Demetrius’ voice”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1435.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1435.0",
+      "offset": 21
+     },
+     "text": "in Demetrius’ voice"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0118",
+   "title": "Editorial emendation: “in Demetrius’ voice”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1437",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1437",
+      "offset": 21
+     },
+     "text": "in Demetrius’ voice"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0119",
+   "title": "Editorial emendation: “Lysander exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1438",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1438",
+      "offset": 15
+     },
+     "text": "Lysander exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0120",
+   "title": "Editorial emendation: “in Lysander’s voice”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1443.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1443.0",
+      "offset": 21
+     },
+     "text": "in Lysander’s voice"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0121",
+   "title": "Editorial emendation: “in Lysander’s voice”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1450.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1450.0",
+      "offset": 21
+     },
+     "text": "in Lysander’s voice"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0122",
+   "title": "Editorial emendation: “They exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1450.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1450.1",
+      "offset": 10
+     },
+     "text": "They exit."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01318",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01318",
+      "offset": 5
+     },
+     "text": "Exit."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0123",
+   "title": "Editorial emendation: “Enter Lysander.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1450.2",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1450.2",
+      "offset": 15
+     },
+     "text": "Enter Lysander."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0124",
+   "title": "Editorial emendation: “He lies down and sleeps.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1458.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1458.1",
+      "offset": 24
+     },
+     "text": "He lies down and sleeps."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0125",
+   "title": "Editorial emendation: “Enter”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1458.2",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1458.2",
+      "offset": 5
+     },
+     "text": "Enter"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01315",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01315",
+      "offset": 21
+     },
+     "text": "Robin, and Demetrius."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01329",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01329",
+      "offset": 26
+     },
+     "text": "Enter Robin and Demetrius."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0126",
+   "title": "Editorial emendation: “in Lysander’s voice”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1459.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1459.0",
+      "offset": 21
+     },
+     "text": "in Lysander’s voice"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0127",
+   "title": "Editorial emendation: “in Lysander’s voice”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1464.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1464.0",
+      "offset": 21
+     },
+     "text": "in Lysander’s voice"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0128",
+   "title": "Editorial emendation: “He lies down and sleeps.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1470.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1470.1",
+      "offset": 24
+     },
+     "text": "He lies down and sleeps."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0129",
+   "title": "Editorial emendation: “She lies down and”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1476.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1476.1",
+      "offset": 17
+     },
+     "text": "She lies down and"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0130",
+   "title": "Editorial emendation: “Enter Hermia.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1481.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1481.1",
+      "offset": 13
+     },
+     "text": "Enter Hermia."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0131",
+   "title": "Editorial emendation: “She lies down and sleeps.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1487.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1487.1",
+      "offset": 25
+     },
+     "text": "She lies down and sleeps."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0132",
+   "title": "Editorial emendation: “To” (3.2.480)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1491",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ftln-1491",
+      "offset": 2
+     },
+     "text": "To"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01347",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01347",
+      "offset": 41
+     },
+     "text": "Ile apply your eye, gentle louer, remedy."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01362",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01362",
+      "offset": 40
+     },
+     "text": "Ile apply your eie gentle louer, remedy."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0133",
+   "title": "Editorial emendation: “Robin applies the nectar to Lysander’s eyes.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1492.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1492.1",
+      "offset": 44
+     },
+     "text": "Robin applies the nectar to Lysander’s eyes."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0134",
+   "title": "Editorial emendation: “He exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1504.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1504.1",
+      "offset": 9
+     },
+     "text": "He exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0137",
+   "title": "Editorial emendation: “With the four lovers still asleep onstage,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1504.2",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1504.2",
+      "offset": 42
+     },
+     "text": "With the four lovers still asleep onstage,"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01355",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01355",
+      "offset": 78
+     },
+     "text": "Enter Queene of Faieries, and Clowne, and Faieries. and the king behinde them."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01371",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01371",
+      "offset": 76
+     },
+     "text": "Enter Queene of Fairies, and Clowne, and Fairies, and the King behinde them."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0138",
+   "title": "Editorial emendation: “Titania,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1504.2",
+      "offset": 49
+     },
+     "end": {
+      "nodeId": "stg-1504.2",
+      "offset": 57
+     },
+     "text": "Titania,"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01355",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01355",
+      "offset": 78
+     },
+     "text": "Enter Queene of Faieries, and Clowne, and Faieries. and the king behinde them."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01371",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01371",
+      "offset": 76
+     },
+     "text": "Enter Queene of Fairies, and Clowne, and Fairies, and the King behinde them."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0139",
+   "title": "Editorial emendation: “Bottom”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1504.2",
+      "offset": 80
+     },
+     "end": {
+      "nodeId": "stg-1504.2",
+      "offset": 86
+     },
+     "text": "Bottom"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01355",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01355",
+      "offset": 78
+     },
+     "text": "Enter Queene of Faieries, and Clowne, and Faieries. and the king behinde them."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01371",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01371",
+      "offset": 76
+     },
+     "text": "Enter Queene of Fairies, and Clowne, and Fairies, and the King behinde them."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0140",
+   "title": "Editorial emendation: “Oberon,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1504.2",
+      "offset": 104
+     },
+     "end": {
+      "nodeId": "stg-1504.2",
+      "offset": 111
+     },
+     "text": "Oberon,"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01355",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01355",
+      "offset": 78
+     },
+     "text": "Enter Queene of Faieries, and Clowne, and Faieries. and the king behinde them."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01371",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01371",
+      "offset": 76
+     },
+     "text": "Enter Queene of Fairies, and Clowne, and Fairies, and the King behinde them."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0141",
+   "title": "Editorial emendation: “unseen by those onstage.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1504.2",
+      "offset": 134
+     },
+     "end": {
+      "nodeId": "stg-1504.2",
+      "offset": 158
+     },
+     "text": "unseen by those onstage."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01355",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01355",
+      "offset": 78
+     },
+     "text": "Enter Queene of Faieries, and Clowne, and Faieries. and the king behinde them."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01371",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01371",
+      "offset": 76
+     },
+     "text": "Enter Queene of Fairies, and Clowne, and Fairies, and the King behinde them."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0142",
+   "title": "Editorial emendation: “Cobweb exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1521",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1521",
+      "offset": 13
+     },
+     "text": "Cobweb exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0143",
+   "title": "Editorial emendation: “Fairies exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1546.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1546.1",
+      "offset": 13
+     },
+     "text": "Fairies exit."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0144",
+   "title": "Editorial emendation: “Bottom and Titania sleep.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1550.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1550.1",
+      "offset": 25
+     },
+     "text": "Bottom and Titania sleep."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0145",
+   "title": "Editorial emendation: “He applies the nectar to her eyes.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1575.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1575.1",
+      "offset": 34
+     },
+     "text": "He applies the nectar to her eyes."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0146",
+   "title": "Editorial emendation: “waking”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1581.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1581.0",
+      "offset": 8
+     },
+     "text": "waking"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0147",
+   "title": "Editorial emendation: “five” (4.1.84)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1588",
+      "offset": 31
+     },
+     "end": {
+      "nodeId": "ftln-1588",
+      "offset": 35
+     },
+     "text": "five"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01419",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01419",
+      "offset": 49
+     },
+     "text": "Then common sleepe: of all these, fine the sense."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01440",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01440",
+      "offset": 49
+     },
+     "text": "Then common sleepe; of all these, fine the sense."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0148",
+   "title": "Editorial emendation: “removing the ass-head from Bottom”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1590.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1590.0",
+      "offset": 35
+     },
+     "text": "removing the ass-head from Bottom"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0149",
+   "title": "Editorial emendation: “Music.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1592",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1592",
+      "offset": 6
+     },
+     "text": "Music."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0150",
+   "title": "Editorial emendation: “Titania and Oberon dance.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1594.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1594.1",
+      "offset": 25
+     },
+     "text": "Titania and Oberon dance."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0151",
+   "title": "Editorial emendation: “Oberon, Robin, and Titania”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1610.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1610.1",
+      "offset": 26
+     },
+     "text": "Oberon, Robin, and Titania"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0152",
+   "title": "Editorial emendation: “Hippolyta, Egeus.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1610.2",
+      "offset": 44
+     },
+     "end": {
+      "nodeId": "stg-1610.2",
+      "offset": 61
+     },
+     "text": "Hippolyta, Egeus."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01441",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01441",
+      "offset": 33
+     },
+     "text": "Enter Theseus and all his traine."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01464",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01465",
+      "offset": 51
+     },
+     "text": "Winde Hornes.\nEnter Theseus, Egeus, Hippolita and all his traine."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0153",
+   "title": "Editorial emendation: “A Servant exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1616.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1616.1",
+      "offset": 16
+     },
+     "text": "A Servant exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0154",
+   "title": "Editorial emendation: “Seemed” (4.1.121)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1625",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ftln-1625",
+      "offset": 6
+     },
+     "text": "Seemed"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01457",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01457",
+      "offset": 40
+     },
+     "text": "Seeme all one mutuall cry. I neuer heard"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01480",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01480",
+      "offset": 40
+     },
+     "text": "Seeme all one mutuall cry. I neuer heard"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0155",
+   "title": "Editorial emendation: “is” (4.1.133)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1637",
+      "offset": 14
+     },
+     "end": {
+      "nodeId": "ftln-1637",
+      "offset": 16
+     },
+     "text": "is"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01468",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01468",
+      "offset": 41
+     },
+     "text": "My Lord, this my daughter heere a sleepe,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01491",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01491",
+      "offset": 43
+     },
+     "text": "My Lord, this is my daughter heere asleepe,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0156",
+   "title": "Editorial emendation: “A Servant exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1647.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1647.1",
+      "offset": 16
+     },
+     "text": "A Servant exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0157",
+   "title": "Editorial emendation: “Demetrius, Helena, Hermia, and Lysander kneel.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1649.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1649.1",
+      "offset": 46
+     },
+     "text": "Demetrius, Helena, Hermia, and Lysander kneel."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0158",
+   "title": "Editorial emendation: “They rise.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1651.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1651.1",
+      "offset": 10
+     },
+     "text": "They rise."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0159",
+   "title": "Editorial emendation: “saw” (4.1.179)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1683",
+      "offset": 22
+     },
+     "end": {
+      "nodeId": "ftln-1683",
+      "offset": 25
+     },
+     "text": "saw"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01514",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01514",
+      "offset": 34
+     },
+     "text": "Was I betrothed, ere I see Hermia:"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01538",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01538",
+      "offset": 34
+     },
+     "text": "Was I betroth'd, ere I see Hermia,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0160",
+   "title": "Editorial emendation: “Theseus and his train, including Hippolyta and Egeus, exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1697.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1697.1",
+      "offset": 59
+     },
+     "text": "Theseus and his train, including Hippolyta and Egeus, exit."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01553",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01553",
+      "offset": 20
+     },
+     "text": "Exit Duke and Lords."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0161",
+   "title": "Editorial emendation: “us” (4.1.209)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1713",
+      "offset": 19
+     },
+     "end": {
+      "nodeId": "ftln-1713",
+      "offset": 21
+     },
+     "text": "us"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01542",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01542",
+      "offset": 81
+     },
+     "text": "Why then, we are awake: lets follow him, and by the way lets recount our dreames."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01567",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01567",
+      "offset": 82
+     },
+     "text": "Why then we are awake; lets follow him, and by the way let vs recount our dreames."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0162",
+   "title": "Editorial emendation: “Lovers exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1713.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1713.1",
+      "offset": 12
+     },
+     "text": "Lovers exit."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01569",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01569",
+      "offset": 12
+     },
+     "text": "Exit Louers."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0163",
+   "title": "Editorial emendation: “waking up”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1714",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1714",
+      "offset": 11
+     },
+     "text": "waking up"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0164",
+   "title": "Editorial emendation: “to” (4.1.217)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1721",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "ftln-1721",
+      "offset": 2
+     },
+     "text": "to"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01543",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01543",
+      "offset": 965
+     },
+     "text": "When my cue comes, call mee, and I will answere. My next is, most faire Pyramus. Hey ho. Peeter Quince? Flute, the bellowes mender? Snout the tinker? Starueling? Gods my life! Stolne hence, and left mee a sleepe? I haue had a most rare vision. I haue had a dreame, past the wit of man, to say; what dreame it was. Man is but an Asse, if hee goe about expound this dreame. Me thought I was, there is no man can tell what. Me thought I was, and me thought I had. But man is but patcht a foole, If hee will offer to say, what mee thought I had. The eye of man hath not heard, the eare of man hath not seene, •ns hand is not able to taste, his tongue to conceiue, nor his hearte to report, what my dreame was, I will get Peter Quince to write a Ballet of this dreame: it shall be call'd Bottoms Dreame; because it hath no bottome: and I will sing it in the latter end of a Play, before the Duke. Peraduenture, to make it the more gratious, I shall sing it at her death."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01570",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01570",
+      "offset": 955
+     },
+     "text": "When my cue comes, call me, and I will answer. My next is, most faire Piramus. Hey ho. Peter Quince? Flute the bellowes-mender? Snout the tinker? Starueling? Gods my life! Stolne hence, and left me asleepe: I haue had a most rare vision. I had a dreame, past the wit of man, to say, what dreame it was. Man is but an Asse, if he goe about to expound this dreame. Me-thought I was, there is no man can tell what. Me-thought I was, and me-thought I had. But man is but a patch'd foole, if he will offer to say, what me-thought I had. The eye of man hath not heard, the eare of man hath not seen, mans hand is not able to taste, his tongue to conceiue, nor his heart to report, what my dreame was. I will get Peter Quince to write a ballet of this dreame, it shall be called Bottomes Dreame, because it hath no bottome; and I will sing it in the latter end of a play, before the Duke. Peradventure, to make it the more gracious, I shall sing it at her death."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0165",
+   "title": "Editorial emendation: “a patched” (4.1.219)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1723",
+      "offset": 31
+     },
+     "end": {
+      "nodeId": "ftln-1723",
+      "offset": 40
+     },
+     "text": "a patched"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01543",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01543",
+      "offset": 965
+     },
+     "text": "When my cue comes, call mee, and I will answere. My next is, most faire Pyramus. Hey ho. Peeter Quince? Flute, the bellowes mender? Snout the tinker? Starueling? Gods my life! Stolne hence, and left mee a sleepe? I haue had a most rare vision. I haue had a dreame, past the wit of man, to say; what dreame it was. Man is but an Asse, if hee goe about expound this dreame. Me thought I was, there is no man can tell what. Me thought I was, and me thought I had. But man is but patcht a foole, If hee will offer to say, what mee thought I had. The eye of man hath not heard, the eare of man hath not seene, •ns hand is not able to taste, his tongue to conceiue, nor his hearte to report, what my dreame was, I will get Peter Quince to write a Ballet of this dreame: it shall be call'd Bottoms Dreame; because it hath no bottome: and I will sing it in the latter end of a Play, before the Duke. Peraduenture, to make it the more gratious, I shall sing it at her death."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01570",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01570",
+      "offset": 955
+     },
+     "text": "When my cue comes, call me, and I will answer. My next is, most faire Piramus. Hey ho. Peter Quince? Flute the bellowes-mender? Snout the tinker? Starueling? Gods my life! Stolne hence, and left me asleepe: I haue had a most rare vision. I had a dreame, past the wit of man, to say, what dreame it was. Man is but an Asse, if he goe about to expound this dreame. Me-thought I was, there is no man can tell what. Me-thought I was, and me-thought I had. But man is but a patch'd foole, if he will offer to say, what me-thought I had. The eye of man hath not heard, the eare of man hath not seen, mans hand is not able to taste, his tongue to conceiue, nor his heart to report, what my dreame was. I will get Peter Quince to write a ballet of this dreame, it shall be called Bottomes Dreame, because it hath no bottome; and I will sing it in the latter end of a play, before the Duke. Peradventure, to make it the more gracious, I shall sing it at her death."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0166",
+   "title": "Editorial emendation: “He exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1733.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1733.1",
+      "offset": 9
+     },
+     "text": "He exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0168",
+   "title": "Editorial emendation: “Snout, and Starveling.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1733.2",
+      "offset": 21
+     },
+     "end": {
+      "nodeId": "stg-1733.2",
+      "offset": 43
+     },
+     "text": "Snout, and Starveling."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01544",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01544",
+      "offset": 43
+     },
+     "text": "Enter Quince, Flute, Thisby and the rabble."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01572",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01572",
+      "offset": 52
+     },
+     "text": "Enter Quince, Flute, Thisbie, Snout, and Starueling."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0170",
+   "title": "Editorial emendation: “They exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1778.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1778.1",
+      "offset": 10
+     },
+     "text": "They exit."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0173",
+   "title": "Editorial emendation: “Lords, and Attendants.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1778.2",
+      "offset": 43
+     },
+     "end": {
+      "nodeId": "stg-1778.2",
+      "offset": 65
+     },
+     "text": "Lords, and Attendants."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01561",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01561",
+      "offset": 42
+     },
+     "text": "Enter Theseus, Hyppolita, and Philostrate."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01590",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01590",
+      "offset": 46
+     },
+     "text": "Enter Theseus, Hippolita, Egeus and his Lords."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0174",
+   "title": "Editorial emendation: “our” (5.1.37)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1815",
+      "offset": 8
+     },
+     "end": {
+      "nodeId": "ftln-1815",
+      "offset": 11
+     },
+     "text": "our"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01593",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01595",
+      "offset": 52
+     },
+     "text": "To weare away this long age of three hours, betweene\nOr after supper, & bed-time? Where is our vsuall manager\nOf mirth? What Reuels are in hand? Is there no play,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01624",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01624",
+      "offset": 39
+     },
+     "text": "Between our after supper, and bed-time?"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0175",
+   "title": "Editorial emendation: “coming forward”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1820.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1820.0",
+      "offset": 16
+     },
+     "text": "coming forward"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0176",
+   "title": "Editorial emendation: “giving Theseus a paper”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1824.0",
+      "offset": 2
+     },
+     "end": {
+      "nodeId": "stg-1824.0",
+      "offset": 24
+     },
+     "text": "giving Theseus a paper"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0177",
+   "title": "Editorial emendation: “Philostrate exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1868.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1868.1",
+      "offset": 18
+     },
+     "text": "Philostrate exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0178",
+   "title": "Editorial emendation: “Enter Philostrate.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1889.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1889.1",
+      "offset": 18
+     },
+     "text": "Enter Philostrate."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0179",
+   "title": "Editorial emendation: “Prologue exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1902.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1902.1",
+      "offset": 15
+     },
+     "text": "Prologue exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0180",
+   "title": "Editorial emendation: “(Bottom),”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1911.1",
+      "offset": 14
+     },
+     "end": {
+      "nodeId": "stg-1911.1",
+      "offset": 23
+     },
+     "text": "(Bottom),"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01682",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01682",
+      "offset": 62
+     },
+     "text": "Enter Pyramus, and Thisby, and Wall, and Mooneshine, and Lyon."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01714",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01714",
+      "offset": 54
+     },
+     "text": "Enter Pyramus and Thisby, Wall, Moone-shine, and Lyon."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0181",
+   "title": "Editorial emendation: “(Flute),”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1911.1",
+      "offset": 35
+     },
+     "end": {
+      "nodeId": "stg-1911.1",
+      "offset": 43
+     },
+     "text": "(Flute),"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01682",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01682",
+      "offset": 62
+     },
+     "text": "Enter Pyramus, and Thisby, and Wall, and Mooneshine, and Lyon."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01714",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01714",
+      "offset": 54
+     },
+     "text": "Enter Pyramus and Thisby, Wall, Moone-shine, and Lyon."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0182",
+   "title": "Editorial emendation: “(Snout),”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1911.1",
+      "offset": 53
+     },
+     "end": {
+      "nodeId": "stg-1911.1",
+      "offset": 61
+     },
+     "text": "(Snout),"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01682",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01682",
+      "offset": 62
+     },
+     "text": "Enter Pyramus, and Thisby, and Wall, and Mooneshine, and Lyon."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01714",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01714",
+      "offset": 54
+     },
+     "text": "Enter Pyramus and Thisby, Wall, Moone-shine, and Lyon."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0183",
+   "title": "Editorial emendation: “(Starveling),”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1911.1",
+      "offset": 76
+     },
+     "end": {
+      "nodeId": "stg-1911.1",
+      "offset": 89
+     },
+     "text": "(Starveling),"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01682",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01682",
+      "offset": 62
+     },
+     "text": "Enter Pyramus, and Thisby, and Wall, and Mooneshine, and Lyon."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01714",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01714",
+      "offset": 54
+     },
+     "text": "Enter Pyramus and Thisby, Wall, Moone-shine, and Lyon."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0184",
+   "title": "Editorial emendation: “(Snug),”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1911.1",
+      "offset": 99
+     },
+     "end": {
+      "nodeId": "stg-1911.1",
+      "offset": 106
+     },
+     "text": "(Snug),"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01682",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01682",
+      "offset": 62
+     },
+     "text": "Enter Pyramus, and Thisby, and Wall, and Mooneshine, and Lyon."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01714",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01714",
+      "offset": 54
+     },
+     "text": "Enter Pyramus and Thisby, Wall, Moone-shine, and Lyon."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0185",
+   "title": "Editorial emendation: “and Prologue (Quince).”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1911.1",
+      "offset": 107
+     },
+     "end": {
+      "nodeId": "stg-1911.1",
+      "offset": 129
+     },
+     "text": "and Prologue (Quince)."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01682",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01682",
+      "offset": 62
+     },
+     "text": "Enter Pyramus, and Thisby, and Wall, and Mooneshine, and Lyon."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01714",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01714",
+      "offset": 54
+     },
+     "text": "Enter Pyramus and Thisby, Wall, Moone-shine, and Lyon."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0186",
+   "title": "Editorial emendation: “scare” (5.1.150)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1928",
+      "offset": 4
+     },
+     "end": {
+      "nodeId": "ftln-1928",
+      "offset": 9
+     },
+     "text": "scare"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01697",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01697",
+      "offset": 40
+     },
+     "text": "Did scarre away, or rather did affright:"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01729",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01729",
+      "offset": 40
+     },
+     "text": "Did scarre away, or rather did affright:"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0187",
+   "title": "Editorial emendation: “and Prologue”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1941.1",
+      "offset": 25
+     },
+     "end": {
+      "nodeId": "stg-1941.1",
+      "offset": 37
+     },
+     "text": "and Prologue"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01710",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01710",
+      "offset": 34
+     },
+     "text": "Exit Lyon, Thysby, and Mooneshine."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01743",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01743",
+      "offset": 35
+     },
+     "text": "Exit Lyon, Thisbie, and Mooneshine."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0188",
+   "title": "Editorial emendation: “Snout” (5.1.165)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1943",
+      "offset": 12
+     },
+     "end": {
+      "nodeId": "ftln-1943",
+      "offset": 17
+     },
+     "text": "Snout"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01712",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01712",
+      "offset": 43
+     },
+     "text": "That I, one Flute (by name) present a wall:"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01745",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01745",
+      "offset": 43
+     },
+     "text": "That I, one Snowt (by name) present a wall:"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0189",
+   "title": "Editorial emendation: “(Flute).”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1977.1",
+      "offset": 13
+     },
+     "end": {
+      "nodeId": "stg-1977.1",
+      "offset": 21
+     },
+     "text": "(Flute)."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01741",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01741",
+      "offset": 13
+     },
+     "text": "Enter Thisby."
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0190",
+   "title": "Editorial emendation: “up in thee.” (5.1.203)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1981",
+      "offset": 35
+     },
+     "end": {
+      "nodeId": "ftln-1981",
+      "offset": 46
+     },
+     "text": "up in thee."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01745",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01745",
+      "offset": 49
+     },
+     "text": "Thy stones, with lime and hayire knit now againe."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01779",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01779",
+      "offset": 48
+     },
+     "text": "Thy stones vvith Lime and Haire knit vp in thee."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0191",
+   "title": "Editorial emendation: “Bottom and Flute exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1994.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1994.1",
+      "offset": 22
+     },
+     "text": "Bottom and Flute exit."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0192",
+   "title": "Editorial emendation: “He exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-1996",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-1996",
+      "offset": 9
+     },
+     "text": "He exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0193",
+   "title": "Editorial emendation: “wall down” (5.1.219)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-1997",
+      "offset": 11
+     },
+     "end": {
+      "nodeId": "ftln-1997",
+      "offset": 20
+     },
+     "text": "wall down"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01760",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01760",
+      "offset": 47
+     },
+     "text": "Now is the Moon vsed between the two neighbors."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01795",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01795",
+      "offset": 51
+     },
+     "text": "Now is the morall downe betweene the two Neighbors."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0194",
+   "title": "Editorial emendation: “(Snug)”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2009.1",
+      "offset": 11
+     },
+     "end": {
+      "nodeId": "stg-2009.1",
+      "offset": 17
+     },
+     "text": "(Snug)"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01766",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01766",
+      "offset": 28
+     },
+     "text": "Enter Lyon, and Moone-shine."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01801",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01801",
+      "offset": 27
+     },
+     "text": "Enter Lyon and Moone-shine."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0195",
+   "title": "Editorial emendation: “(Starveling).”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2009.1",
+      "offset": 32
+     },
+     "end": {
+      "nodeId": "stg-2009.1",
+      "offset": 45
+     },
+     "text": "(Starveling)."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01766",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01766",
+      "offset": 28
+     },
+     "text": "Enter Lyon, and Moone-shine."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01801",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01801",
+      "offset": 27
+     },
+     "text": "Enter Lyon and Moone-shine."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0196",
+   "title": "Editorial emendation: “(Flute).”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2055.1",
+      "offset": 13
+     },
+     "end": {
+      "nodeId": "stg-2055.1",
+      "offset": 21
+     },
+     "text": "(Flute)."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01793",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01793",
+      "offset": 13
+     },
+     "text": "Enter Thisby."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01828",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01828",
+      "offset": 13
+     },
+     "text": "Enter Thisby."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0197",
+   "title": "Editorial emendation: “The Lion roars. Thisbe runs off, dropping her mantle.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2057.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2057.1",
+      "offset": 53
+     },
+     "text": "The Lion roars. Thisbe runs off, dropping her mantle."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01831",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01831",
+      "offset": 33
+     },
+     "text": "The Lion roares, Thisby runs off."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0198",
+   "title": "Editorial emendation: “Lion worries the mantle.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2061.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2061.1",
+      "offset": 24
+     },
+     "text": "Lion worries the mantle."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0199",
+   "title": "Editorial emendation: “(Bottom).”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2062.1",
+      "offset": 14
+     },
+     "end": {
+      "nodeId": "stg-2062.1",
+      "offset": 23
+     },
+     "text": "(Bottom)."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0200",
+   "title": "Editorial emendation: “Lion exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2063.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2063.1",
+      "offset": 11
+     },
+     "text": "Lion exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0201",
+   "title": "Editorial emendation: “gleams,” (5.1.289)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2067",
+      "offset": 40
+     },
+     "end": {
+      "nodeId": "ftln-2067",
+      "offset": 47
+     },
+     "text": "gleams,"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01804",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01804",
+      "offset": 47
+     },
+     "text": "For by thy gratious, golden, glittering beames,"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01842",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01842",
+      "offset": 47
+     },
+     "text": "For by thy gracious, golden, glittering beames,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0202",
+   "title": "Editorial emendation: “Pyramus stabs himself.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2093",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2093",
+      "offset": 22
+     },
+     "text": "Pyramus stabs himself."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0203",
+   "title": "Editorial emendation: “Moonshine exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2099",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2099",
+      "offset": 16
+     },
+     "text": "Moonshine exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0204",
+   "title": "Editorial emendation: “Pyramus falls.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2100",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2100",
+      "offset": 14
+     },
+     "text": "Pyramus falls."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0205",
+   "title": "Editorial emendation: “Enter Thisbe (Flute).”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2109.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2109.1",
+      "offset": 21
+     },
+     "text": "Enter Thisbe (Flute)."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0206",
+   "title": "Editorial emendation: “Thisbe stabs herself.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2139.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2139.1",
+      "offset": 21
+     },
+     "text": "Thisbe stabs herself."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0207",
+   "title": "Editorial emendation: “Thisbe falls.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2142",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2142",
+      "offset": 13
+     },
+     "text": "Thisbe falls."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0208",
+   "title": "Editorial emendation: “Bottom and Flute arise.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2145.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2145.1",
+      "offset": 23
+     },
+     "text": "Bottom and Flute arise."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0210",
+   "title": "Editorial emendation: “Dance, and the players exit.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2157.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2157.1",
+      "offset": 28
+     },
+     "text": "Dance, and the players exit."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0211",
+   "title": "Editorial emendation: “Robin Goodfellow.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2165.2",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "stg-2165.2",
+      "offset": 23
+     },
+     "text": "Robin Goodfellow."
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01865",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01865",
+      "offset": 12
+     },
+     "text": "Enter Pucke."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01907",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01907",
+      "offset": 12
+     },
+     "text": "Enter Pucke."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0212",
+   "title": "Editorial emendation: “lion” (5.1.388)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2166",
+      "offset": 15
+     },
+     "end": {
+      "nodeId": "ftln-2166",
+      "offset": 19
+     },
+     "text": "lion"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01866",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01866",
+      "offset": 28
+     },
+     "text": "Now the hungry Lyons roares."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01908",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01908",
+      "offset": 27
+     },
+     "text": "Now the hungry Lyons rores,"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0213",
+   "title": "Editorial emendation: “behowls” (5.1.389)",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "ftln-2167",
+      "offset": 13
+     },
+     "end": {
+      "nodeId": "ftln-2167",
+      "offset": 20
+     },
+     "text": "behowls"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01867",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01867",
+      "offset": 32
+     },
+     "text": "And the wolfe beholds the Moone;"
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01909",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01909",
+      "offset": 32
+     },
+     "text": "And the Wolfe beholds the Moone:"
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0214",
+   "title": "Editorial emendation: “Oberon and Titania,”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2185.1",
+      "offset": 6
+     },
+     "end": {
+      "nodeId": "stg-2185.1",
+      "offset": 25
+     },
+     "text": "Oberon and Titania,"
+    },
+    {
+     "versionId": "q1-1600",
+     "start": {
+      "nodeId": "mnd-q1-01886",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-q1-01886",
+      "offset": 56
+     },
+     "text": "Enter King and Queene of Fairies, with all their traine."
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01928",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01928",
+      "offset": 52
+     },
+     "text": "Enter King and Queene of Fairies, with their traine."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0215",
+   "title": "Editorial emendation: “Oberon leads the Fairies in song and dance.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2195.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2195.1",
+      "offset": 43
+     },
+     "text": "Oberon leads the Fairies in song and dance."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "start": {
+      "nodeId": "mnd-f1-01938",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "mnd-f1-01938",
+      "offset": 9
+     },
+     "text": "The Song."
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0216",
+   "title": "Editorial emendation: “All but Robin”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2217.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2217.1",
+      "offset": 13
+     },
+     "text": "All but Robin"
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": "folger-ptr-0217",
+   "title": "Editorial emendation: “He exits.”",
+   "note": "",
+   "sourceIds": [
+    "folger"
+   ],
+   "readings": [
+    {
+     "versionId": "folger",
+     "start": {
+      "nodeId": "stg-2233.1",
+      "offset": 0
+     },
+     "end": {
+      "nodeId": "stg-2233.1",
+      "offset": 9
+     },
+     "text": "He exits."
+    },
+    {
+     "versionId": "q1-1600",
+     "text": ""
+    },
+    {
+     "versionId": "f1-1623",
+     "text": ""
+    }
+   ]
+  }
+ ]
+}

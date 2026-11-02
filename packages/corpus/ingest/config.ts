@@ -103,6 +103,10 @@ export const GLOSSARIES: GlossaryConfig[] = [
       'troilus-and-cressida': 'Troil',
       'richard-ii': 'R2',
       othello: 'Oth',
+      'king-lear': 'Lr',
+      'romeo-and-juliet': 'Rom',
+      macbeth: 'Mcb',
+      'a-midsummer-nights-dream': 'Mids',
     },
   },
   {
@@ -115,6 +119,10 @@ export const GLOSSARIES: GlossaryConfig[] = [
       'troilus-and-cressida': 'Troil',
       'richard-ii': 'R2',
       othello: 'Oth',
+      'king-lear': 'Lr',
+      'romeo-and-juliet': 'Rom',
+      macbeth: 'Mac',
+      'a-midsummer-nights-dream': 'MND',
     },
   },
 ];
@@ -278,6 +286,70 @@ export const PLAYS: PlayConfig[] = [
         idPrefix: 'oth-q1',
       }),
       firstFolio(/Othello/, 'oth-f1'),
+    ],
+  },
+  {
+    info: {
+      id: 'king-lear',
+      title: 'King Lear',
+      shortTitle: 'Lear',
+      composed: { from: 1605, to: 1606 },
+      modernVersionId: 'folger',
+    },
+    versions: [
+      folgerVersion('folger-king-lear'),
+      quarto('q1-1608', 'First Quarto (1608)', 'Q1', 1608, {
+        lockKey: 'tcp-king-lear-q1',
+        title: /King Lear/,
+        idPrefix: 'lr-q1',
+      }),
+      firstFolio(/KING LEAR/, 'lr-f1'),
+    ],
+  },
+  {
+    info: {
+      id: 'romeo-and-juliet',
+      title: 'Romeo and Juliet',
+      shortTitle: 'Romeo',
+      composed: { from: 1595, to: 1596 },
+      modernVersionId: 'folger',
+    },
+    versions: [
+      folgerVersion('folger-romeo-and-juliet'),
+      quarto('q1-1597', 'First Quarto (1597)', 'Q1', 1597, {
+        lockKey: 'tcp-romeo-and-juliet-q1',
+        title: /Romeo and Iuliet/,
+        idPrefix: 'rom-q1',
+      }),
+      firstFolio(/ROMEO/, 'rom-f1'),
+    ],
+  },
+  {
+    info: {
+      id: 'macbeth',
+      title: 'Macbeth',
+      shortTitle: 'Macbeth',
+      composed: { from: 1606, to: 1606 },
+      modernVersionId: 'folger',
+    },
+    versions: [folgerVersion('folger-macbeth'), firstFolio(/MACBETH/, 'mac-f1')],
+  },
+  {
+    info: {
+      id: 'a-midsummer-nights-dream',
+      title: "A Midsummer Night's Dream",
+      shortTitle: 'Dream',
+      composed: { from: 1595, to: 1596 },
+      modernVersionId: 'folger',
+    },
+    versions: [
+      folgerVersion('folger-a-midsummer-nights-dream'),
+      quarto('q1-1600', 'First Quarto (1600)', 'Q1', 1600, {
+        lockKey: 'tcp-midsummer-q1',
+        title: /MIDSOMMER/,
+        idPrefix: 'mnd-q1',
+      }),
+      firstFolio(/MIDSOMMER/, 'mnd-f1'),
     ],
   },
 ];

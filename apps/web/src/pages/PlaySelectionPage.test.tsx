@@ -10,8 +10,12 @@ describe('play selection', () => {
     const titles = await screen.findAllByRole('heading', { level: 2 });
     expect(titles.map((h) => h.textContent)).toStrictEqual([
       'Hamlet',
+      'King Lear',
+      'Macbeth',
+      "A Midsummer Night's Dream",
       'Othello',
       'Richard II',
+      'Romeo and Juliet',
       'The Tempest',
       'Troilus and Cressida',
     ]);
