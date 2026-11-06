@@ -183,6 +183,10 @@ export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[
       import('../../plays/king-lear/definitions/folger/onions-1919.json', {
         with: { type: 'json' },
       }),
+    () =>
+      import('../../plays/king-lear/definitions/folger/generated.json', {
+        with: { type: 'json' },
+      }),
   ],
   'romeo-and-juliet/folger': [
     () =>
@@ -191,6 +195,10 @@ export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[
       }),
     () =>
       import('../../plays/romeo-and-juliet/definitions/folger/onions-1919.json', {
+        with: { type: 'json' },
+      }),
+    () =>
+      import('../../plays/romeo-and-juliet/definitions/folger/generated.json', {
         with: { type: 'json' },
       }),
   ],
@@ -203,6 +211,10 @@ export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[
       import('../../plays/macbeth/definitions/folger/onions-1919.json', {
         with: { type: 'json' },
       }),
+    () =>
+      import('../../plays/macbeth/definitions/folger/generated.json', {
+        with: { type: 'json' },
+      }),
   ],
   'a-midsummer-nights-dream/folger': [
     () =>
@@ -211,6 +223,10 @@ export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[
       }),
     () =>
       import('../../plays/a-midsummer-nights-dream/definitions/folger/onions-1919.json', {
+        with: { type: 'json' },
+      }),
+    () =>
+      import('../../plays/a-midsummer-nights-dream/definitions/folger/generated.json', {
         with: { type: 'json' },
       }),
   ],
