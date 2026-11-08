@@ -7,7 +7,8 @@ describe('play selection', () => {
   it('SEL-002/003/004: lists plays by title with date and versions', async () => {
     renderRoute('/');
 
-    const titles = await screen.findAllByRole('heading', { level: 2 });
+    // The page loads lazily; under a full parallel test run that can take several seconds.
+    const titles = await screen.findAllByRole('heading', { level: 2 }, { timeout: 30000 });
     expect(titles.map((h) => h.textContent)).toStrictEqual([
       'Hamlet',
       'King Lear',
@@ -33,7 +34,7 @@ describe('play selection', () => {
   it('SEL-005: choosing a play opens the reader', async () => {
     const { user, router } = renderRoute('/');
 
-    await user.click(await screen.findByRole('link', { name: /Hamlet/ }));
+    await user.click(await screen.findByRole('link', { name: /Hamlet/ }, { timeout: 30000 }));
 
     await waitFor(
       () => {

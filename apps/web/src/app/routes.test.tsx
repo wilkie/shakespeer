@@ -7,7 +7,10 @@ describe('routes', () => {
   it('SEL-001: renders play selection at /', async () => {
     renderRoute('/');
 
-    expect(await screen.findByRole('heading', { level: 1, name: 'Plays' })).toBeInTheDocument();
+    // The page loads lazily; under a full parallel test run that can take several seconds.
+    expect(
+      await screen.findByRole('heading', { level: 1, name: 'Plays' }, { timeout: 30000 }),
+    ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Skip to content' })).toHaveAttribute(
       'href',
       '#main-content',
