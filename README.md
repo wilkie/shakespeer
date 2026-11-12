@@ -81,6 +81,17 @@ It writes `packages/corpus/curation/<playId>/generated/folger.json`. Mark each s
 `reviewed` or `rejected` there, then run ingest: a play's set ships once its sample is reviewed
 with at most 10% rejected. See [specs/data/generated-definitions.md](specs/data/generated-definitions.md).
 
+Scholarship links come from a snapshot of OpenAlex's full-text index, gathered by hand with
+`OPENALEX_API_KEY` set (a free key from openalex.org):
+
+```sh
+pnpm --filter @shakespeer/corpus find-scholarship --play the-tempest          # the whole play
+pnpm --filter @shakespeer/corpus find-scholarship --play hamlet --from 3.1.1 --to 3.1.100
+```
+
+It writes `packages/corpus/curation/<playId>/scholarship/folger.json`, resuming where it stopped;
+run ingest afterwards. See [specs/data/scholarship.md](specs/data/scholarship.md).
+
 ## Specifications
 
 Behavior and data are specified in [specs/](specs/README.md).

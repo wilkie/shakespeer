@@ -18,6 +18,8 @@ import { z } from 'zod';
 import {
   AlignmentFileSchema,
   PlayIndexSchema,
+  SCHOLARSHIP_SOURCE_ID,
+  ScholarshipFileSchema,
   SourcedDefinitionsFileSchema,
   VariantsFileSchema,
   SourcesFileSchema,
@@ -45,6 +47,11 @@ import {
   type GeneratedFile,
 } from './generated/file.ts';
 import { matchCitations, type GlossCitation, type SceneOffsets } from './glossaries/match.ts';
+import {
+  buildScholarship,
+  loadScholarshipCuration,
+  scholarshipFilePath,
+} from './scholarship/file.ts';
 import { parseOnions } from './glossaries/onions.ts';
 import { parseEntries, type Entry } from './glossaries/schmidt.ts';
 import { fetchLocked, type LockFile } from './lib/fetch.ts';
@@ -447,6 +454,15 @@ function loadersModule(index: PlayIndex): string {
     ...definitionLines,
     '};',
     '',
+    'export const scholarshipLoaders: Readonly<Partial<Record<string, Loader>>> = {',
+    ...entries
+      .filter(({ play, version }) => existsSync(scholarshipOutputPath(play.id, version.id)))
+      .map(
+        ({ play, version }) =>
+          `  '${play.id}/${version.id}': () =>\n    import('../../plays/${play.id}/scholarship/${version.id}.json', { with: { type: 'json' } }),`,
+      ),
+    '};',
+    '',
   ].join('\n');
 }
 
@@ -654,6 +670,74 @@ async function generatedSource(): Promise<Source | undefined> {
 }
 const generated = await generatedSource();
 
+function scholarshipOutputPath(playId: string, versionId: string): string {
+  return join(ROOT, 'plays', playId, 'scholarship', `${versionId}.json`);
+}
+
+/** Ships a play's scholarship snapshot, filtered (SCH-002, SCH-003, SCH-012). */
+async function ingestScholarship(playId: string, doc: VersionDocument): Promise<void> {
+  const output = scholarshipOutputPath(playId, doc.versionId);
+  const curation = await loadScholarshipCuration(scholarshipFilePath(ROOT, playId, doc.versionId));
+  if (!curation) {
+    await rm(output, { force: true });
+    return;
+  }
+  const { file, report } = buildScholarship(doc, curation);
+  const { dropped } = report;
+  console.warn(
+    `  ${playId}: ${String(report.linesWithWorks)} of ${String(report.lines)} lines quoted by ` +
+      `${String(report.works)} works; dropped ${String(dropped.reprints)} reprints, ` +
+      `${String(dropped.outsideField)} outside the humanities, ${String(dropped.rejected)} rejected` +
+      (dropped.staleLines ? `, ${String(dropped.staleLines)} lines no longer in the text` : ''),
+  );
+  // Compact: large and only ever read by machines.
+  await writeJson(output, ScholarshipFileSchema.parse(file), 0);
+}
+
+console.warn(SCHOLARSHIP_SOURCE_ID);
+for (const [playId, doc] of modernDocs) {
+  await ingestScholarship(playId, doc);
+}
+
+/** The source entry for scholarship, naming when the snapshots were gathered (SCH-012). */
+async function scholarshipSource(): Promise<Source> {
+  const dates = new Set<string>();
+  for (const play of PLAYS) {
+    const versionId = play.info.modernVersionId;
+    if (existsSync(scholarshipOutputPath(play.info.id, versionId))) {
+      const file = await loadScholarshipCuration(
+        scholarshipFilePath(ROOT, play.info.id, versionId),
+      );
+      if (file) {
+        dates.add(file.retrievedAt);
+      }
+    }
+  }
+  const sorted = [...dates].sort();
+  const when =
+    sorted.length > 1
+      ? `between ${sorted[0] ?? ''} and ${sorted.at(-1) ?? ''}`
+      : `on ${sorted[0] ?? ''}`;
+  return {
+    id: SCHOLARSHIP_SOURCE_ID,
+    name: 'OpenAlex',
+    shortName: 'OpenAlex',
+    description:
+      (sorted.length > 0
+        ? `Scholarly works that quote each line, found in OpenAlex's full-text index ${when}. `
+        : "Scholarly works that quote a line, found in OpenAlex's full-text index. ") +
+      'Only works whose full text OpenAlex holds can be found, mostly open-access work.',
+    url: 'https://openalex.org',
+    license: {
+      name: 'CC0 1.0 Universal',
+      url: 'https://creativecommons.org/publicdomain/zero/1.0/',
+      commercialUse: true,
+    },
+    attribution: 'Data from OpenAlex (openalex.org), dedicated to the public domain under CC0 1.0.',
+  };
+}
+const scholarship = await scholarshipSource();
+
 const index: PlayIndex = PlayIndexSchema.parse({
   schemaVersion: 1,
   plays: PLAYS.map((play) => ({
@@ -666,7 +750,7 @@ await writeJson(
   join(ROOT, 'sources.json'),
   SourcesFileSchema.parse({
     schemaVersion: 1,
-    sources: generated ? [...SOURCES, generated] : SOURCES,
+    sources: [...SOURCES, ...(generated ? [generated] : []), scholarship],
   }),
   2,
 );
@@ -679,6 +763,7 @@ const schemas = {
   'alignment.schema.json': AlignmentFileSchema,
   'definitions.schema.json': SourcedDefinitionsFileSchema,
   'variants.schema.json': VariantsFileSchema,
+  'scholarship.schema.json': ScholarshipFileSchema,
 };
 for (const [name, schema] of Object.entries(schemas)) {
   await writeJson(join(ROOT, 'schema', name), z.toJSONSchema(schema), 2);

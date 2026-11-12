@@ -26,4 +26,21 @@ describe('routes', () => {
 
     expect(router.state.location.pathname).toBe('/');
   });
+
+  it('ATR-020/SCH-031: links play selection to About & licenses, listing sources and the live lookup', async () => {
+    const { user } = renderRoute('/');
+    await user.click(
+      await screen.findByRole('link', { name: 'About & licenses' }, { timeout: 30000 }),
+    );
+    expect(
+      await screen.findByRole(
+        'heading',
+        { level: 1, name: 'About & licenses' },
+        { timeout: 30000 },
+      ),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Folger Shakespeare' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'OpenAlex' })).toBeInTheDocument();
+    expect(screen.getByText(/sends the words of the chosen lines/)).toBeInTheDocument();
+  });
 });

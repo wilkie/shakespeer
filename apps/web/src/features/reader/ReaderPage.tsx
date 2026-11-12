@@ -14,6 +14,8 @@ import {
   getSource,
   getVersionInfo,
   loadAlignment,
+  loadVersion,
+  SCHOLARSHIP_SOURCE_ID,
   type TextAnchor,
 } from '@shakespeer/corpus';
 import { getPosition, savePosition, type NoteCounts } from '@shakespeer/storage';
@@ -40,6 +42,8 @@ import {
   restoreNodes,
 } from '@/features/cuts/operations';
 import { editableOperations, useCut } from '@/features/cuts/useCut';
+import { ScholarshipEntry } from '@/features/scholarship/ScholarshipEntry';
+import { lookupLinesFor } from '@/features/scholarship/scholarship';
 import { variantMarks } from '@/features/variants/marks';
 import { useCompare } from '@/features/variants/useCompare';
 import { CollectionsDialog } from '@/features/exchange/CollectionsDialog';
@@ -176,7 +180,8 @@ function RevealButton({
 }
 
 export function ReaderPage() {
-  const { play, version, doc, definitions, variants, alignment } = useLoaderData<ReaderData>();
+  const { play, version, doc, definitions, variants, alignment, scholarship } =
+    useLoaderData<ReaderData>();
   const navigate = useNavigate();
   const location = useLocation();
   const theme = useTheme();
@@ -188,6 +193,10 @@ export function ReaderPage() {
   const cut = useCut(play.id, version.id, index);
   // Where the play's variants show in this version (VAR-001 – VAR-003).
   const [showVariantMarks, setShowVariantMarks] = useSetting('variants.showMarks', true);
+  const [showScholarshipMarks, setShowScholarshipMarks] = useSetting(
+    'scholarship.showMarks',
+    false,
+  );
   const marks = variantMarks(
     index,
     variants,
@@ -240,6 +249,15 @@ export function ReaderPage() {
   // Sources switched off show none of their definitions (DEF-012).
   const [enabledSources, setEnabledSources] = useSetting('definitions.enabledSources', {});
   const shownSources = definitions.filter((file) => enabledSources[file.sourceId] !== false);
+  // The modern version's snapshot, unless switched off (SCH-013, SCH-023).
+  const scholarshipShown =
+    version.kind === 'modern' && enabledSources[SCHOLARSHIP_SOURCE_ID] !== false
+      ? scholarship
+      : undefined;
+  const scholarshipLines =
+    showScholarshipMarks && scholarshipShown
+      ? new Set(Object.keys(scholarshipShown.lines))
+      : undefined;
   const notes = createNoteIndex(index, shownSources, stored.definitions, stored.annotations);
   const noteCounts = useNoteCounts([play.id]).get(play.id) ?? new Map<string, NoteCounts>();
 
@@ -396,6 +414,26 @@ export function ReaderPage() {
     }
   };
 
+  /** Opens scholarship on lines (SCH-020). */
+  const openScholarship = (lineIds: readonly string[], element: HTMLElement | null) => {
+    if (lineIds.length === 0) {
+      return;
+    }
+    opener.current = element;
+    panel.openScholarship(lineIds);
+    revealInPanel(element ?? nodeElement(lineIds[0] ?? ''), element === null);
+  };
+
+  /** The lines a selection touches (SCH-020). */
+  const selectedLines = ({ start, end }: SelectedRange) => {
+    const from = index.indexOf(start.nodeId) ?? 0;
+    const to = index.indexOf(end.nodeId) ?? from;
+    return index.nodes
+      .slice(Math.min(from, to), Math.max(from, to) + 1)
+      .filter((node) => node.kind === 'line')
+      .map((node) => node.id);
+  };
+
   /** Turns a selection into an anchor, snapped to whole words (SELX-005). */
   const selectionAnchor = ({ start, end }: SelectedRange) => {
     const snapped = snapToWords(index, start, end);
@@ -509,6 +547,8 @@ export function ReaderPage() {
     };
     const variantTarget = (event: Event) =>
       (event.target as Element).closest<HTMLElement>('[data-variant-ids]');
+    const scholarshipTarget = (event: Event) =>
+      (event.target as Element).closest<HTMLElement>('[data-scholarship-line]');
     const onOver = (event: Event) => {
       const ids = (variantTarget(event)?.dataset['variantIds'] ?? '').split(' ').filter(Boolean);
       if (ids.join(' ') !== outlined.join(' ')) {
@@ -528,6 +568,11 @@ export function ReaderPage() {
       const mark = variantTarget(event);
       if (mark) {
         openVariants(mark);
+        return;
+      }
+      const quoted = scholarshipTarget(event);
+      if (quoted) {
+        openScholarship([quoted.dataset['scholarshipLine'] ?? ''], quoted);
         return;
       }
       const element = target(event);
@@ -551,6 +596,12 @@ export function ReaderPage() {
       if (mark) {
         event.preventDefault();
         openVariants(mark);
+        return;
+      }
+      const quoted = scholarshipTarget(event);
+      if (quoted) {
+        event.preventDefault();
+        openScholarship([quoted.dataset['scholarshipLine'] ?? ''], quoted);
         return;
       }
       const element = target(event);
@@ -691,6 +742,32 @@ export function ReaderPage() {
     onSaveAnnotation: panel.saveAnnotation,
     onDeleteAnnotation: panel.deleteAnnotation,
     variants: panel.variants,
+    scholarship:
+      panel.scholarship.length > 0 ? (
+        <ScholarshipEntry
+          key={panel.scholarship.join(' ')}
+          lines={panel.scholarship.map((id) => {
+            const node = index.node(id);
+            return { id, n: node?.kind === 'line' ? (node.n ?? '') : '' };
+          })}
+          snapshot={scholarshipShown}
+          switchedOff={version.kind === 'modern' && scholarship !== undefined && !scholarshipShown}
+          reprints={scholarship?.reprints ?? []}
+          lookupLines={async () => {
+            const lines = panel.scholarship.map((id) => {
+              const node = index.node(id);
+              return { id, n: node?.kind === 'line' ? (node.n ?? '') : '' };
+            });
+            const modern =
+              version.kind === 'modern' ? doc : await loadVersion(play.id, play.modernVersionId);
+            return lookupLinesFor(lines, modern, alignment);
+          }}
+          onSource={(sourceId) => {
+            setSourceDialog({ title: 'Source', sourceIds: [sourceId] });
+          }}
+          onCite={panel.citeInNote}
+        />
+      ) : undefined,
     versionId: version.id,
     versions: play.versions,
     onOpenReading: (reading) => {
@@ -728,11 +805,23 @@ export function ReaderPage() {
         showAnnotationMarks={showMarks}
         onShowAnnotationMarks={setShowMarks}
         noteCounts={noteCounts}
-        definitionSources={definitions.map((file) => ({
-          id: file.sourceId,
-          name: getSource(file.sourceId)?.shortName ?? file.sourceId,
-          enabled: enabledSources[file.sourceId] !== false,
-        }))}
+        definitionSources={[
+          ...definitions.map((file) => ({
+            id: file.sourceId,
+            name: getSource(file.sourceId)?.shortName ?? file.sourceId,
+            enabled: enabledSources[file.sourceId] !== false,
+          })),
+          // Scholarship switches like any source (SCH-023).
+          ...(version.kind === 'modern' && scholarship
+            ? [
+                {
+                  id: SCHOLARSHIP_SOURCE_ID,
+                  name: 'Scholarship',
+                  enabled: enabledSources[SCHOLARSHIP_SOURCE_ID] !== false,
+                },
+              ]
+            : []),
+        ]}
         onDefinitionSource={(id, enabled) => {
           setEnabledSources({ ...enabledSources, [id]: enabled });
         }}
@@ -809,6 +898,9 @@ export function ReaderPage() {
         onExactSpelling={compare.setExact}
         showVariantMarks={showVariantMarks}
         onShowVariantMarks={setShowVariantMarks}
+        hasScholarship={scholarshipShown !== undefined}
+        showScholarshipMarks={showScholarshipMarks}
+        onShowScholarshipMarks={setShowScholarshipMarks}
       />
       <Box
         sx={{
@@ -827,6 +919,7 @@ export function ReaderPage() {
             revealTerms={revealTerms}
             footer={<AboutThisText sourceIds={version.sourceIds} />}
             variants={showVariantMarks ? marks : undefined}
+            scholarship={scholarshipLines}
             compare={
               compare.version && compare.rows && compare.right
                 ? {
@@ -907,6 +1000,9 @@ export function ReaderPage() {
         }}
         onAnnotate={(range) => {
           fromSelection(range, 'annotate');
+        }}
+        onScholarship={(range) => {
+          openScholarship(selectedLines(range), null);
         }}
         cutActions={cutActions}
       />

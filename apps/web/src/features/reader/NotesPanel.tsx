@@ -32,6 +32,8 @@ export interface NotesPanelProps {
   annotations: readonly AnnotationRecord[];
   /** Variants at the activated point (VAR-004). */
   variants: readonly Variant[];
+  /** Scholarship for the chosen lines, when the panel shows it (SCH-020). */
+  scholarship?: ReactNode;
   /** The version shown, whose reading of a variant comes first. */
   versionId: string;
   versions: readonly VersionInfo[];
@@ -161,6 +163,7 @@ function Body(props: NotesPanelProps) {
         />
       ),
     })),
+    ...(props.scholarship ? [{ key: 's', label: 'Scholarship', content: props.scholarship }] : []),
   ];
 
   if (entries.length === 0) {

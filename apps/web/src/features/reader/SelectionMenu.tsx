@@ -3,6 +3,7 @@ import AddComment from '@mui/icons-material/PlaylistAdd';
 import ContentCut from '@mui/icons-material/ContentCut';
 import EditNote from '@mui/icons-material/EditNote';
 import MenuBook from '@mui/icons-material/MenuBookOutlined';
+import School from '@mui/icons-material/SchoolOutlined';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
@@ -24,9 +25,9 @@ interface MenuState {
 
 const GAP = 8;
 const MENU_HEIGHT = 40;
-const MENU_WIDTH = 300;
+const MENU_WIDTH = 420;
 /** With the cut actions of edit mode. */
-const WIDE_MENU_WIDTH = 560;
+const WIDE_MENU_WIDTH = 680;
 
 /** Where the menu goes for a selection, in viewport coordinates (SELX-008, SELX-009). */
 function placement(
@@ -67,6 +68,8 @@ export interface SelectionMenuProps {
   topOffset: () => number;
   onDefine: (range: SelectedRange) => void;
   onAnnotate: (range: SelectedRange) => void;
+  /** Scholarship on the lines the selection touches (SCH-020). */
+  onScholarship: (range: SelectedRange) => void;
   /** In a cut's edit mode, its actions on the selection (CUT-031). */
   cutActions?: CutActions | undefined;
 }
@@ -88,6 +91,7 @@ export function SelectionMenu({
   topOffset,
   onDefine,
   onAnnotate,
+  onScholarship,
   cutActions,
 }: SelectionMenuProps) {
   const [menu, setMenu] = useState<MenuState | null>(null);
@@ -223,6 +227,15 @@ export function SelectionMenu({
         }}
       >
         Add annotation
+      </Button>
+      <Button
+        size="small"
+        startIcon={<School />}
+        onClick={() => {
+          act(onScholarship);
+        }}
+      >
+        Scholarship
       </Button>
       {cutActions && (
         <>

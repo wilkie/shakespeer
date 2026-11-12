@@ -78,6 +78,10 @@ export interface ReaderTopBarProps {
   hasVariants: boolean;
   showVariantMarks: boolean;
   onShowVariantMarks: (value: boolean) => void;
+  /** Whether this version shows a scholarship snapshot (SCH-020). */
+  hasScholarship: boolean;
+  showScholarshipMarks: boolean;
+  onShowScholarshipMarks: (value: boolean) => void;
   /** The version being compared with, if any (VAR-020). */
   compareWith: VersionInfo | undefined;
   onCompare: (versionId: string | undefined) => void;
@@ -214,6 +218,9 @@ export function ReaderTopBar({
   hasVariants,
   showVariantMarks,
   onShowVariantMarks,
+  hasScholarship,
+  showScholarshipMarks,
+  onShowScholarshipMarks,
   compareWith,
   onCompare,
   exactSpelling,
@@ -470,6 +477,25 @@ export function ReaderTopBar({
                 />
               </ListItemIcon>
               <ListItemText primary="Show variant marks" />
+            </MenuItem>
+          )}
+          {hasScholarship && (
+            <MenuItem
+              role="menuitemcheckbox"
+              aria-checked={showScholarshipMarks}
+              onClick={() => {
+                onShowScholarshipMarks(!showScholarshipMarks);
+              }}
+            >
+              <ListItemIcon>
+                <Switch
+                  size="small"
+                  checked={showScholarshipMarks}
+                  tabIndex={-1}
+                  slotProps={{ input: { 'aria-hidden': true } }}
+                />
+              </ListItemIcon>
+              <ListItemText primary="Show scholarship marks" />
             </MenuItem>
           )}
           {compareWith && (

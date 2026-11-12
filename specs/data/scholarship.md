@@ -17,8 +17,9 @@ its lines, 1,620 works in all, with 83% of them linking to an open-access copy.
   12 words. A line that cannot reach 6 words within its speech has no phrase and is not looked up.
 - **SCH-002** — Only works whose primary topic is in the field "Arts and Humanities" are kept, so
   that a medical paper titled with a famous line is not listed.
-- **SCH-003** — A work quoting a quarter or more of a version's lines reprints the play rather
-  than discussing it (an edition, an acting version) and is dropped. Records OpenAlex holds more
+- **SCH-003** — A work quoting a quarter or more of the version's lines that can be looked up
+  (those with a phrase, SCH-001) reprints the play rather than discussing it (an edition, an
+  acting version) and is dropped. Records OpenAlex holds more
   than once for the same work (same title, ignoring case and punctuation) are merged.
 - **SCH-004** — Each work records: its OpenAlex ID, title, authors (as listed), year, venue, type
   (article, book chapter, book, dissertation, review…), DOI, and its open-access URL if any.

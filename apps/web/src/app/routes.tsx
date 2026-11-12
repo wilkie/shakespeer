@@ -20,6 +20,10 @@ export const routes: RouteObject[] = [
         }),
       },
       {
+        path: 'about',
+        lazy: async () => ({ Component: (await import('@/pages/AboutPage')).AboutPage }),
+      },
+      {
         path: '*',
         lazy: async () => ({ Component: (await import('@/pages/NotFoundPage')).NotFoundPage }),
       },
@@ -35,10 +39,11 @@ export const routes: RouteObject[] = [
     path: '/plays/:playId/:versionId',
     errorElement: <RouteErrorPage />,
     lazy: async () => {
-      const [{ ReaderPage, ReaderLoading }, { readerLoader }] = await Promise.all([
-        import('@/features/reader/ReaderPage'),
-        import('@/features/reader/routes'),
-      ]);
+      // One after the other: imported at once, the two modules can race while Jest's ESM loader
+      // links the packages they share ("from a module not been linked"). The loader's module is
+      // small, so loading it first costs little.
+      const { readerLoader } = await import('@/features/reader/routes');
+      const { ReaderPage, ReaderLoading } = await import('@/features/reader/ReaderPage');
       return { loader: readerLoader, Component: ReaderPage, HydrateFallback: ReaderLoading };
     },
   },

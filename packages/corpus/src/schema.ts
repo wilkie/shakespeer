@@ -295,3 +295,39 @@ export const VariantsFileSchema = z.object({
   variants: z.array(VariantSchema),
 });
 export type VariantsFile = z.infer<typeof VariantsFileSchema>;
+
+// ---------------------------------------------------------------------------------------------
+// Scholarship (specs/data/scholarship.md)
+
+/** The source ID of scholarship links found in OpenAlex (SCH-012). */
+export const SCHOLARSHIP_SOURCE_ID = 'openalex';
+
+/** A scholarly work, as OpenAlex describes it; nothing from its text (SCH-004). */
+export const ScholarshipWorkSchema = z.object({
+  /** OpenAlex's ID, e.g. "W2084172947". */
+  id,
+  title: z.string(),
+  authors: z.array(z.string()),
+  year: z.int().optional(),
+  venue: z.string().optional(),
+  /** OpenAlex's work type: article, book-chapter, book, dissertation, review… */
+  type: z.string(),
+  doi: z.string().optional(),
+  /** An open-access copy, where there is one. */
+  oaUrl: z.string().optional(),
+});
+export type ScholarshipWork = z.infer<typeof ScholarshipWorkSchema>;
+
+export const ScholarshipFileSchema = z.object({
+  schemaVersion: z.literal(1),
+  playId: id,
+  versionId: id,
+  /** When the snapshot was gathered, YYYY-MM-DD. */
+  retrievedAt: z.iso.date(),
+  /** For each line with citing works, their IDs, most recent first (SCH-021). */
+  lines: z.record(z.string(), z.array(id)),
+  works: z.record(z.string(), ScholarshipWorkSchema),
+  /** Works dropped as reprints of the play, also dropped from live lookups (SCH-003, SCH-030). */
+  reprints: z.array(id),
+});
+export type ScholarshipFile = z.infer<typeof ScholarshipFileSchema>;

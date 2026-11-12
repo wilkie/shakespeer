@@ -231,3 +231,8 @@ export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[
       }),
   ],
 };
+
+export const scholarshipLoaders: Readonly<Partial<Record<string, Loader>>> = {
+  'the-tempest/folger': () =>
+    import('../../plays/the-tempest/scholarship/folger.json', { with: { type: 'json' } }),
+};

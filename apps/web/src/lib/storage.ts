@@ -19,6 +19,8 @@ export interface Settings extends Record<string, unknown> {
   'cuts.showCutText': boolean;
   /** Variant marks in the text (VAR-003). */
   'variants.showMarks': boolean;
+  /** Margin marks on lines with scholarship (SCH-020). */
+  'scholarship.showMarks': boolean;
   [key: `export.lastName.${string}`]: string;
 }
 

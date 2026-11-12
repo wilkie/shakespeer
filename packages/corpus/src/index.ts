@@ -7,6 +7,7 @@ import sourcesData from '../sources.json' with { type: 'json' };
 import {
   alignmentLoaders,
   definitionLoaders,
+  scholarshipLoaders,
   variantLoaders,
   versionLoaders,
 } from './generated/loaders';
@@ -14,6 +15,7 @@ import type {
   AlignmentFile,
   PlayIndex,
   PlayInfo,
+  ScholarshipFile,
   Source,
   SourcedDefinitionsFile,
   SourcesFile,
@@ -25,7 +27,8 @@ import type {
 export type * from './schema';
 export { createVersionIndex, type IndexedScene, type VersionIndex } from './version-index';
 export { wordKey, wordSpans } from './words';
-export { GENERATED_SOURCE_ID } from './schema';
+export { GENERATED_SOURCE_ID, SCHOLARSHIP_SOURCE_ID } from './schema';
+export * from './scholarship';
 
 const playIndex = playIndexData as PlayIndex;
 const sources = (sourcesData as SourcesFile).sources;
@@ -87,4 +90,13 @@ export async function loadVariants(playId: string): Promise<VariantsFile> {
   return load
     ? ((await load()).default as VariantsFile)
     : { schemaVersion: 1, playId, variants: [] };
+}
+
+/** A version's scholarship snapshot (SCH-012); undefined where none was gathered. */
+export async function loadScholarship(
+  playId: string,
+  versionId: string,
+): Promise<ScholarshipFile | undefined> {
+  const load = scholarshipLoaders[`${playId}/${versionId}`];
+  return load ? ((await load()).default as ScholarshipFile) : undefined;
 }

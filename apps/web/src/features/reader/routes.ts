@@ -2,11 +2,13 @@ import {
   getPlay,
   getVersionInfo,
   loadAlignment,
+  loadScholarship,
   loadSourcedDefinitions,
   loadVariants,
   loadVersion,
   type AlignmentFile,
   type PlayInfo,
+  type ScholarshipFile,
   type SourcedDefinitionsFile,
   type Variant,
   type VersionDocument,
@@ -37,6 +39,11 @@ export interface ReaderData {
   variants: Variant[];
   /** For an original version, its alignment to the modern one (VAR-002). */
   alignment: AlignmentFile | undefined;
+  /**
+   * The play's scholarship snapshot, for its modern version (SCH-013); an original version uses
+   * only its reprints, for live lookups (SCH-030).
+   */
+  scholarship: ScholarshipFile | undefined;
 }
 
 /** Loads a version and its sourced definitions; unknown IDs are a 404 (RDR-001). */
@@ -47,11 +54,12 @@ export async function readerLoader({ params }: LoaderFunctionArgs): Promise<Read
     // eslint-disable-next-line @typescript-eslint/only-throw-error -- React Router's error responses
     throw data('Not found', { status: 404 });
   }
-  const [doc, definitions, variants, alignment] = await Promise.all([
+  const [doc, definitions, variants, alignment, scholarship] = await Promise.all([
     loadVersion(play.id, version.id),
     loadSourcedDefinitions(play.id, version.id),
     loadVariants(play.id),
     version.kind === 'original' ? loadAlignment(play.id, version.id) : undefined,
+    loadScholarship(play.id, play.modernVersionId),
   ]);
-  return { play, version, doc, definitions, variants: variants.variants, alignment };
+  return { play, version, doc, definitions, variants: variants.variants, alignment, scholarship };
 }

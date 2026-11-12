@@ -78,6 +78,19 @@
         "commercialUse": true
       },
       "attribution": "Generated with claude-opus-5-5, 2026-10-22, 2026-10-23 and 2026-11-05 for Shakespeer. Dedicated to the public domain under CC0 1.0."
+    },
+    {
+      "id": "openalex",
+      "name": "OpenAlex",
+      "shortName": "OpenAlex",
+      "description": "Scholarly works that quote each line, found in OpenAlex's full-text index on 2026-11-12. Only works whose full text OpenAlex holds can be found, mostly open-access work.",
+      "url": "https://openalex.org",
+      "license": {
+        "name": "CC0 1.0 Universal",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "commercialUse": true
+      },
+      "attribution": "Data from OpenAlex (openalex.org), dedicated to the public domain under CC0 1.0."
     }
   ]
 }

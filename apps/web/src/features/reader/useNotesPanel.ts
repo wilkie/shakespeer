@@ -6,6 +6,7 @@ import {
   snapshotNotes,
   trackCreated,
   type AnnotationRecord,
+  type Citation,
   type DefinitionRecord,
   type NoteKind,
   type NoteSnapshot,
@@ -16,7 +17,7 @@ import type { NoteIndex } from '@/features/notes/noteIndex';
 import { getDatabase } from '@/lib/storage';
 import { setSetting, useSetting } from '@/lib/useSetting';
 
-import { anchorKey, comparePositions } from './anchors';
+import { anchorKey, comparePositions, makeAnchor } from './anchors';
 import type { PanelTerm, SaveStatus } from './NotesPanel';
 
 interface PanelState {
@@ -24,6 +25,8 @@ interface PanelState {
   annotationIds: string[];
   /** Variants at the activated point, listed after the notes (VAR-004, VAR-005). */
   variants: Variant[];
+  /** Lines whose scholarship the panel shows (SCH-020). */
+  scholarship?: string[];
   /** Annotations created here, shown until the stored copy arrives. */
   created: AnnotationRecord[];
   /** New definitions not yet saved (DEF-021). */
@@ -211,6 +214,60 @@ export function useNotesPanel(
     );
   };
 
+  /** Scholarship for the lines a selection or mark touches (SCH-020). */
+  const openScholarship = (lineIds: readonly string[]) => {
+    open({
+      terms: [],
+      annotationIds: [],
+      variants: [],
+      scholarship: [...lineIds],
+      created: [],
+      drafts: [],
+      editing: false,
+      focusId: undefined,
+    });
+  };
+
+  /**
+   * Cite in a note (SCH-032): adds a citation to the first annotation starting on the line, or to
+   * a new one covering the whole line in the last color. Returns whether a note was created.
+   */
+  const citeInNote = async (lineId: string, citation: Citation): Promise<'added' | 'created'> => {
+    const db = await getDatabase();
+    const existing = notes.annotations.find((a) => a.anchor.start.nodeId === lineId);
+    if (existing) {
+      await saveNote(db, 'annotations', {
+        ...existing,
+        citations: [...existing.citations, citation],
+      });
+      return 'added';
+    }
+    const text = index.node(lineId)?.text ?? '';
+    const anchor = makeAnchor(
+      index,
+      { nodeId: lineId, offset: 0 },
+      { nodeId: lineId, offset: text.length },
+    );
+    if (!anchor) {
+      throw new Error(`No line ${lineId}`);
+    }
+    const now = new Date().toISOString();
+    await saveNote(db, 'annotations', {
+      id: newId(),
+      playId,
+      versionId,
+      anchor,
+      origin: { kind: 'own' },
+      createdAt: now,
+      updatedAt: now,
+      color: lastColor,
+      notes: '',
+      links: [],
+      citations: [citation],
+    });
+    return 'created';
+  };
+
   const close = () => {
     session.current = null;
     setPanel(null);
@@ -329,6 +386,9 @@ export function useNotesPanel(
     terms,
     annotations,
     variants: panel?.variants ?? [],
+    scholarship: panel?.scholarship ?? [],
+    openScholarship,
+    citeInNote,
     editing: panel?.editing ?? false,
     focusId: panel?.focusId,
     status,

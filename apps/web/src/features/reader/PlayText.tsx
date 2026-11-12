@@ -35,6 +35,8 @@ export interface PlayTextProps {
   cut?: CutView | undefined;
   /** Where the play's variants show in this version, or none when marks are off (VAR-001). */
   variants?: VariantMarks | undefined;
+  /** Lines with scholarship, marked in the margin, or none when marks are off (SCH-020). */
+  scholarship?: ReadonlySet<string> | undefined;
   /** Comparing with another version, row by row (VAR-021). */
   compare?: CompareView | undefined;
 }
@@ -305,6 +307,7 @@ interface BlockContext {
   /** Text of earlier parts of each split verse line, for indentation (RDR-024). */
   ghosts: ReadonlyMap<string, string>;
   variants: VariantMarks | undefined;
+  scholarship?: ReadonlySet<string> | undefined;
   /** Words that differ from the compared version, per node (VAR-023). */
   diffs?: ReadonlyMap<string, readonly Decoration[]>;
 }
@@ -325,6 +328,22 @@ function VariantMark({ nodeId, context }: { nodeId: string; context: BlockContex
         ids.length === 1 ? `Variant: ${titles[0] ?? ''}` : `${String(ids.length)} variants`
       }
       data-variant-ids={ids.join(' ')}
+    />
+  );
+}
+
+/** The margin mark of a line that scholarship quotes (SCH-020). */
+function ScholarshipMark({ nodeId, context }: { nodeId: string; context: BlockContext }) {
+  if (!context.scholarship?.has(nodeId) || context.forceReveal) {
+    return null;
+  }
+  return (
+    <span
+      className="sch-mark"
+      role="button"
+      tabIndex={0}
+      aria-label="Scholarship on this line"
+      data-scholarship-line={nodeId}
     />
   );
 }
@@ -364,6 +383,7 @@ function Line({
       )}
       <VariantMark nodeId={node.id} context={context} />
       <NodeText node={node} context={context} />
+      <ScholarshipMark nodeId={node.id} context={context} />
     </span>
   );
 }
@@ -1122,6 +1142,22 @@ const textStyles: SxProps<Theme> = (theme) => {
       '&::before': { content: '"◇"' },
       '&:focus-visible': { outline: `2px solid ${palette.primary.main}`, borderRadius: '2px' },
     },
+    // Scholarship (SCH-020): in the right margin, clear of line numbers and variant marks.
+    '& .sch-mark': {
+      position: 'absolute',
+      right: '-1.6em',
+      width: '1em',
+      textAlign: 'center',
+      textIndent: 0,
+      fontSize: '0.75em',
+      lineHeight: '1.6rem',
+      fontStyle: 'normal',
+      color: palette.text.secondary,
+      cursor: 'pointer',
+      userSelect: 'none',
+      '&::before': { content: '"❝"' },
+      '&:focus-visible': { outline: `2px solid ${palette.primary.main}`, borderRadius: '2px' },
+    },
     '& .var-absent': {
       display: 'flex',
       alignItems: 'center',
@@ -1257,6 +1293,7 @@ export function PlayText({
   footer,
   cut,
   variants,
+  scholarship,
   compare,
 }: PlayTextProps) {
   const context: BlockContext = {
@@ -1266,6 +1303,7 @@ export function PlayText({
     forceReveal: false,
     ghosts: splitLineGhosts(doc),
     variants,
+    scholarship,
   };
   const byScene = compare ? rowsByScene(compare) : undefined;
   const classes = [revealTerms && 'reveal-terms', compare && 'comparing'].filter(Boolean);

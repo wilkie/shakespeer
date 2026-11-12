@@ -14,6 +14,8 @@ packages in `packages/`. See README.md for layout and conventions.
 - `pnpm --filter @shakespeer/corpus generate-definitions --play <playId>` — write generated
   definitions with the Claude API (needs `ANTHROPIC_API_KEY`; `--dry-run` needs none). Never run
   by ingest or CI.
+- `pnpm --filter @shakespeer/corpus find-scholarship --play <playId>` — gather a play's
+  scholarship snapshot from OpenAlex (needs `OPENALEX_API_KEY`). Never run by ingest or CI.
 - `pnpm --filter @shakespeer/storage schema` — regenerate the notes-file JSON Schema
   (`packages/storage/schema/notes-file.v1.json`) after changing `src/notes-file.ts`.
 

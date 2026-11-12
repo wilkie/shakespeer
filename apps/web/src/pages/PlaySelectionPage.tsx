@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import Chip from '@mui/material/Chip';
+import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { listPlays, type PlayInfo } from '@shakespeer/corpus';
@@ -61,7 +62,12 @@ export function PlaySelectionPage() {
           <Typography variant="h3" component="h1" gutterBottom>
             Plays
           </Typography>
-          <Typography color="text.secondary">Choose a play to read.</Typography>
+          <Typography color="text.secondary">
+            Choose a play to read.{' '}
+            <Link component={RouterLink} to="/about">
+              About & licenses
+            </Link>
+          </Typography>
         </div>
         <Button
           variant="outlined"
