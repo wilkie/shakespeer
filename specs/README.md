@@ -26,6 +26,7 @@ disagree, one of them is a bug. Behavior changes start as spec changes, reviewed
 | [data/storage.md](data/storage.md)                             | STO    | IndexedDB stores, records and the app's data API              |
 | [data/exchange-format.md](data/exchange-format.md)             | XCH    | The export/import file format and import algorithm            |
 | [data/generated-definitions.md](data/generated-definitions.md) | GEN    | Definitions written by a language model                       |
+| [data/scholarship.md](data/scholarship.md)                     | SCH    | Links from lines to scholarly works that quote them           |
 
 ## Conventions
 
