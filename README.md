@@ -116,3 +116,11 @@ Behavior and data are specified in [specs/](specs/README.md).
   lint-staged.
 - Dependency versions live in one place: the `catalog` in `pnpm-workspace.yaml`. Packages refer
   to them as `"catalog:"`.
+
+## License
+
+Shakespeer's code is licensed under the [Apache License 2.0](LICENSE). The texts, definitions
+and links in `packages/corpus` keep their own licenses, recorded in
+[`packages/corpus/sources.json`](packages/corpus/sources.json) and shown on the app's About &
+licenses page; some of them (the Folger editions and the Quartos Archive's Hamlet) forbid
+commercial use.

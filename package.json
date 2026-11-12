@@ -1,6 +1,7 @@
 {
   "name": "shakespeer",
   "private": true,
+  "license": "Apache-2.0",
   "description": "A web application for reading and exploring the plays of William Shakespeare.",
   "type": "module",
   "packageManager": "pnpm@12.8.1",

@@ -1,6 +1,7 @@
 {
   "name": "@shakespeer/corpus",
   "version": "0.0.0",
+  "license": "Apache-2.0",
   "private": true,
   "description": "Shakespeare texts, alignment and sourced definitions, with the scripts that build them.",
   "type": "module",

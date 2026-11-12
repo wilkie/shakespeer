@@ -27,7 +27,7 @@ describe('routes', () => {
     expect(router.state.location.pathname).toBe('/');
   });
 
-  it('ATR-020/SCH-031: links play selection to About & licenses, listing sources and the live lookup', async () => {
+  it('ATR-020/SCH-031: links play selection to About & licenses: the app’s license, sources and the live lookup', async () => {
     const { user } = renderRoute('/');
     await user.click(
       await screen.findByRole('link', { name: 'About & licenses' }, { timeout: 30000 }),
@@ -39,6 +39,10 @@ describe('routes', () => {
         { timeout: 30000 },
       ),
     ).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Apache License 2.0' })).toHaveAttribute(
+      'href',
+      'https://www.apache.org/licenses/LICENSE-2.0',
+    );
     expect(screen.getByRole('link', { name: 'Folger Shakespeare' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'OpenAlex' })).toBeInTheDocument();
     expect(screen.getByText(/sends the words of the chosen lines/)).toBeInTheDocument();

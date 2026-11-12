@@ -7,8 +7,8 @@ import { Link as RouterLink } from 'react-router';
 import { SourceDetails } from '@/features/reader/SourceInfo';
 
 /**
- * About & licenses (ATR-020): every source and its license, and what leaves the reader's browser
- * when they search OpenAlex (SCH-031).
+ * About & licenses (ATR-020): the app's own license, every source and its license, and what
+ * leaves the reader's browser when they search OpenAlex (SCH-031).
  */
 export function AboutPage() {
   return (
@@ -23,6 +23,24 @@ export function AboutPage() {
           link it ships comes from the sources below, under their licenses.
         </Typography>
       </div>
+
+      <section>
+        <Typography variant="h5" component="h2" gutterBottom>
+          Shakespeer
+        </Typography>
+        <Typography>
+          Shakespeer’s own code is licensed under the{' '}
+          <Link
+            href="https://www.apache.org/licenses/LICENSE-2.0"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Apache License 2.0
+          </Link>
+          . The texts, definitions and links it ships keep their own licenses, listed below; some of
+          them forbid commercial use.
+        </Typography>
+      </section>
 
       <section>
         <Typography variant="h5" component="h2" gutterBottom>

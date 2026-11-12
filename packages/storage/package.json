@@ -1,6 +1,7 @@
 {
   "name": "@shakespeer/storage",
   "version": "0.0.0",
+  "license": "Apache-2.0",
   "private": true,
   "description": "Typed IndexedDB persistence layer for Shakespeer.",
   "type": "module",
