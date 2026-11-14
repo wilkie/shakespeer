@@ -83,7 +83,7 @@
       "id": "openalex",
       "name": "OpenAlex",
       "shortName": "OpenAlex",
-      "description": "Scholarly works that quote each line, found in OpenAlex's full-text index on 2026-11-12. Only works whose full text OpenAlex holds can be found, mostly open-access work.",
+      "description": "Scholarly works that quote each line, found in OpenAlex's full-text index between 2026-11-12 and 2026-11-14. Only works whose full text OpenAlex holds can be found, mostly open-access work.",
       "url": "https://openalex.org",
       "license": {
         "name": "CC0 1.0 Universal",

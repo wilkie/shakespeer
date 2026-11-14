@@ -233,6 +233,24 @@ export const definitionLoaders: Readonly<Partial<Record<string, readonly Loader[
 };
 
 export const scholarshipLoaders: Readonly<Partial<Record<string, Loader>>> = {
+  'hamlet/folger': () =>
+    import('../../plays/hamlet/scholarship/folger.json', { with: { type: 'json' } }),
   'the-tempest/folger': () =>
     import('../../plays/the-tempest/scholarship/folger.json', { with: { type: 'json' } }),
+  'troilus-and-cressida/folger': () =>
+    import('../../plays/troilus-and-cressida/scholarship/folger.json', { with: { type: 'json' } }),
+  'richard-ii/folger': () =>
+    import('../../plays/richard-ii/scholarship/folger.json', { with: { type: 'json' } }),
+  'othello/folger': () =>
+    import('../../plays/othello/scholarship/folger.json', { with: { type: 'json' } }),
+  'king-lear/folger': () =>
+    import('../../plays/king-lear/scholarship/folger.json', { with: { type: 'json' } }),
+  'romeo-and-juliet/folger': () =>
+    import('../../plays/romeo-and-juliet/scholarship/folger.json', { with: { type: 'json' } }),
+  'macbeth/folger': () =>
+    import('../../plays/macbeth/scholarship/folger.json', { with: { type: 'json' } }),
+  'a-midsummer-nights-dream/folger': () =>
+    import('../../plays/a-midsummer-nights-dream/scholarship/folger.json', {
+      with: { type: 'json' },
+    }),
 };
